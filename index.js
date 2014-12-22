@@ -1,6 +1,6 @@
-var traceur = require('traceur');
-traceur.require.makeDefault(function(filename) {
-    // don't transpile our dependencies, just our app
-    return filename.indexOf('node_modules') === -1;
-});
-require('./api');
+var api = require('./src/api');
+
+api = new api('localhost', '5.0');
+api.login('new@user.attask', 'user').then(function(/*data*/){
+    api.get();
+}, console.error);
