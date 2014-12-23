@@ -22,7 +22,7 @@ gulp.task('clean', function(cb) {
  * File will be named as api.js
  */
 gulp.task('build', function() {
-	return browserify('./src/api.js')
+	return browserify('./src/api.js', {standalone: 'Api'})
 		.bundle()
 		.pipe(source('api.js'))
 		.pipe(gulp.dest(BUILD_DIR));

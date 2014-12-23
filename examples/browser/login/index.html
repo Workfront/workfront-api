@@ -3,33 +3,47 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>Login example</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
 	<script src="/dist/api.js"></script>
+	<script>
+		function doLogin() {
+			var host = document.getElementById('hostname').value;
+			var port = document.getElementById('port').value;
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+
+			var instance = window.Api.getInstance({hostname: host, version: '5.0', port: port});
+			instance.login(username, password).then(function(data){
+				console.log(data)
+			}, console.error);
+			return false;
+		}
+	</script>
 </head>
 <body>
-	<div>
-		<label>
-			Hostname
-			<input name="hostname" value="localhost"/>
-		</label>
-	</div>
-	<div>
-		<label>
-			Port
-			<input name="port" value="8080"/>
-		</label>
-	</div>
+	<div class="container">
+		<form onsubmit="return doLogin()">
+			<div class="form-group">
+				<label for="hostname">Hostname</label>
+				<input type="text" class="form-control" id="hostname" value="localhost" placeholder="Hostname to use for connection to AtTask">
+			</div>
+			<div class="form-group">
+				<label for="port">Port</label>
+				<input type="text" class="form-control" id="port" value="8080" placeholder="Port to use for connection to AtTask">
+			</div>
 
-	<div>
-		<label>
-			Username
-			<input name="username"/>
-		</label>
-	</div>
-	<div>
-		<label>
-			Password
-			<input name="password"/>
-		</label>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" id="username" value="new@user.attask" placeholder="Your AtTask login">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="text" class="form-control" id="password" value="user" placeholder="Your AtTask password">
+			</div>
+
+			<button type="submit" class="btn btn-default">Login</button>
+		</form>
 	</div>
 </body>
 </html>
