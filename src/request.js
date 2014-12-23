@@ -3,7 +3,7 @@ var ctor = require('./constructor'),
     queryString = require('querystring'),
     http = require('http'),
     Promise = require('promise'),
-    _ = require('lodash');
+    util = require('util');
 
 ctor.prototype.request = function(path, params, fields, method) {
     params = params || {};
@@ -11,12 +11,12 @@ ctor.prototype.request = function(path, params, fields, method) {
     method = method || this.httpOptions.method;
 
     var options = {};
-    _.assign(options, this.httpOptions);
+    util._extend(options, this.httpOptions);
     options.method = method;
     options.path = path_module.join(this.httpOptions.path, path);
 
     if (fields.length !== 0) {
-        _.assign(params, {fields: fields.join()});
+        params[fields] = fields.join();
     }
     options.path += '?' + queryString.stringify(params);
 
