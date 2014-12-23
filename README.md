@@ -2,6 +2,11 @@
 
 An AtTask API for the Node and Web
 
+## Usage
+
+This is currently work in progress. Do not try to use this in development or production.
+This section will be updated and package will be published to NPM registry once everything will be ready.
+
 
 [license-image]: http://img.shields.io/badge/license-APv2-blue.svg?style=flat
 [license-url]: LICENSE
