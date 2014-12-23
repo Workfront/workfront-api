@@ -27,6 +27,11 @@ var getInstance = function(config, returnNewInstance) {
     }
 };
 
+var deleteInstance = function() {
+    _instance = undefined;
+};
+
 module.exports = {
-    getInstance: getInstance
+    getInstance: getInstance,
+    deleteInstance: deleteInstance
 };
