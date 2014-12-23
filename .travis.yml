@@ -1,7 +1,10 @@
 language: node_js
-email:
-  on_failure: always
-  on_success: change
+
+notifications:
+  email:
+    on_failure: always
+    on_success: change
+
 node_js:
   - "0.11"
   - "0.10"
