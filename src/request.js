@@ -17,7 +17,7 @@ module.exports = function(Api) {
         options.path = path_module.join(this.httpOptions.path, path);
 
         if (fields.length !== 0) {
-            params[fields] = fields.join();
+            params["fields"] = fields.join();
         }
         options.path += '?' + queryString.stringify(params);
 
@@ -28,6 +28,7 @@ module.exports = function(Api) {
         //if (xsrfValue) {
         //    headers[config.xsrfHeaderName || defaults.xsrfHeaderName] = xsrfValue;
         //}
+
         return new Promise(function (resolve, reject) {
             var req = http.request(options, function (res) {
                 var body = '';
