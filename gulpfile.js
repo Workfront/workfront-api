@@ -3,21 +3,30 @@ var gulp = require('gulp');
 const BUILD_DIR = './dist/';
 const COVERAGE_DIR = 'coverage';
 
-gulp.task('default', ['clean', 'build']);
+gulp.task('default', ['build']);
 
 /**
- * Empties BUILD_DIR and all generated files
+ * Empties BUILD_DIR
  */
-gulp.task('clean', function(cb) {
+gulp.task('clean', ['clean-coverage'], function(cb) {
 	var del = require('del');
 	del([BUILD_DIR + '*', COVERAGE_DIR], cb);
 });
 
 /**
+ * Cleans coverage data
+ */
+gulp.task('clean-coverage', function(cb) {
+	var del = require('del');
+	del([COVERAGE_DIR], cb);
+});
+
+
+/**
  * Generates browser-ready version for API in BUILD_DIR
  * File will be named as api.js
  */
-gulp.task('build', function() {
+gulp.task('build', ['clean'], function() {
 	var browserify = require('browserify');
 	var source = require('vinyl-source-stream');
 	return browserify(
@@ -53,7 +62,7 @@ var runMocha = function() {
 
 gulp.task('test', runMocha);
 
-gulp.task('test-coverage', function(cb) {
+gulp.task('test-coverage', ['clean-coverage'], function(cb) {
 	var mocha = require('gulp-mocha');
 	var istanbul = require('gulp-istanbul');
 
@@ -67,10 +76,8 @@ gulp.task('test-coverage', function(cb) {
 		});
 });
 
-gulp.task('test-coveralls', function() {
+gulp.task('test-ci', ['test-coverage'], function() {
 	var coveralls = require('gulp-coveralls');
 	return gulp.src(COVERAGE_DIR + '/lcov.info')
 		.pipe(coveralls());
 });
-
-gulp.task('test-ci', ['clean', 'test-coverage', 'test-coveralls']);
