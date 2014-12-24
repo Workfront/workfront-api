@@ -1,7 +1,8 @@
-var ctor = require('./constructor'),
-    path_module = require('path'),
-    Promise = require('promise');
+var Api = require('./Api'),
+    path_module = require('path');
 
-ctor.prototype.get = function(objCode, objID, fields) {
-    return this.request(path_module.join(objCode, objID), null, fields, 'GET');
+module.exports = function(Api) {
+    Api.prototype.get = function (objCode, objID, fields) {
+        return this.request(path_module.join(objCode, objID), null, fields, 'GET');
+    };
 };

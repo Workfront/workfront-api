@@ -1,7 +1,7 @@
-var ctor = require('./constructor'),
-    path_module = require('path'),
-    Promise = require('promise');
+var Api = require('./Api');
 
-ctor.prototype.post = function(objCode, params, fields) {
-    return this.request(objCode, params, fields, 'POST');
+module.exports = function(Api) {
+    Api.prototype.post = function (objCode, params, fields) {
+        return this.request(objCode, params, fields, 'POST');
+    };
 };

@@ -14,4 +14,11 @@ function Api(config) {
     }
 }
 
+require('./request')(Api);
+require('./login')(Api);
+require('./logout')(Api);
+require('./search')(Api);
+require('./get')(Api);
+require('./post')(Api);
+
 module.exports = Api;

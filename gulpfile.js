@@ -5,10 +5,12 @@ const COVERAGE_DIR = 'coverage';
 
 gulp.task('default', ['build']);
 
+gulp.task('clean', ['clean-coverage', 'clean-build']);
+
 /**
  * Empties BUILD_DIR
  */
-gulp.task('clean', ['clean-coverage'], function(cb) {
+gulp.task('clean-build', function(cb) {
 	var del = require('del');
 	del([BUILD_DIR + '*', COVERAGE_DIR], cb);
 });
@@ -26,17 +28,17 @@ gulp.task('clean-coverage', function(cb) {
  * Generates browser-ready version for API in BUILD_DIR
  * File will be named as api.js
  */
-gulp.task('build', ['clean'], function() {
+gulp.task('build', ['clean-build'], function() {
 	var browserify = require('browserify');
 	var source = require('vinyl-source-stream');
 	return browserify(
-			'./src/api.js',
+			'./index.js',
 			{
-				standalone: 'Api'
+				standalone: 'AtTask'
 			}
 		)
 		.bundle()
-		.pipe(source('api.js'))
+		.pipe(source('attask.js'))
 		.pipe(gulp.dest(BUILD_DIR));
 });
 
