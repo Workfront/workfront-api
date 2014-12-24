@@ -4,7 +4,7 @@ var ApiFactory = require('./../src/ApiFactory');
 var Api = require('./../src/Api');
 
 
-describe('Api.getInstance() when called for the frist time', function() {
+describe('ApiFactory.getInstance() when called for the frist time', function() {
 	it('should throw when called for the first time without config', function(){
 		expect(function() {
 			ApiFactory.getInstance()
@@ -13,7 +13,7 @@ describe('Api.getInstance() when called for the frist time', function() {
 });
 
 
-describe('Api.getInstance() when called multiple times', function() {
+describe('ApiFactory.getInstance() when called multiple times', function() {
 	var firstInstance;
 
 	beforeEach(function() {
