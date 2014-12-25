@@ -29,9 +29,16 @@ module.exports = function(Api) {
         //}
 
         return new Promise(function (resolve, reject) {
+            /*options = {
+                hostname: 'echo.jsontest.com',
+                port: 80,
+                path: '/data/123',
+                withCredentials: false
+            };*/
+
             var req = http.request(options, function (res) {
                 var body = '';
-                res.setEncoding('utf8');
+                //res.setEncoding('utf8');
                 res.on('data', function (chunk) {
                     body += chunk;
                 });

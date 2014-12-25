@@ -5,7 +5,8 @@ function Api(config) {
         hostname: config.hostname,
         port: config.port || 80,
         path: '/attask/api',
-        method: 'GET'
+        method: 'GET',
+        withCredentials: false
     };
 
     // Append version to hostname if provided
