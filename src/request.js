@@ -2,7 +2,6 @@ var Api = require('./Api'),
     path_module = require('path'),
     queryString = require('querystring'),
     http = require('http'),
-    Promise = require('promise'),
     util = require('util');
 
 module.exports = function(Api) {

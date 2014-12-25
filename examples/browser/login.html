@@ -5,7 +5,8 @@
 	<title>Login example</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
 
-	<script src="/dist/api.js"></script>
+	<script src="https://www.promisejs.org/polyfills/promise-6.0.0.min.js"></script>
+	<script src="/dist/attask.js"></script>
 	<script>
 		function doLogin() {
 			var host = document.getElementById('hostname').value;
@@ -13,7 +14,7 @@
 			var username = document.getElementById('username').value;
 			var password = document.getElementById('password').value;
 
-			var instance = window.ApiFactory.getInstance({hostname: host, version: '5.0', port: port});
+			var instance = window.AtTask.ApiFactory.getInstance({hostname: host, version: '5.0', port: port});
 			instance.login(username, password).then(function(data){
 				console.log(data)
 			}, console.error);
@@ -23,7 +24,7 @@
 </head>
 <body>
 	<div class="container">
-		<form onsubmit="return doLogin()">
+		<form onsubmit="return doLogin()" action="">
 			<div class="form-group">
 				<label for="hostname">Hostname</label>
 				<input type="text" class="form-control" id="hostname" value="localhost" placeholder="Hostname to use for connection to AtTask">

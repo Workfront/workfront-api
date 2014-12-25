@@ -1,5 +1,4 @@
-var Api = require('./Api'),
-    Promise = require('promise');
+var Api = require('./Api');
 
 module.exports = function(Api) {
     Api.prototype.logout = function () {
