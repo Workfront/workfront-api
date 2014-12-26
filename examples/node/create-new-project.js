@@ -1,5 +1,3 @@
-global.Promise = require('promise');
-
 var ApiFactory = require('./../../').ApiFactory;
 var util = require('util');
 

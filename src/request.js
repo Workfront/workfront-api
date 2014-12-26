@@ -16,17 +16,9 @@ module.exports = function(Api) {
         options.path = path_module.join(this.httpOptions.path, path);
 
         if (fields.length !== 0) {
-            params["fields"] = fields.join();
+            params['fields'] = fields.join();
         }
         options.path += '?' + queryString.stringify(params);
-
-        // Add xsrf header
-        //var xsrfValue = urlIsSameOrigin(config.url)
-        //    ? cookies.read(config.xsrfCookieName || defaults.xsrfCookieName)
-        //    : undefined;
-        //if (xsrfValue) {
-        //    headers[config.xsrfHeaderName || defaults.xsrfHeaderName] = xsrfValue;
-        //}
 
         return new Promise(function (resolve, reject) {
             /*options = {
@@ -36,13 +28,15 @@ module.exports = function(Api) {
                 withCredentials: false
             };*/
 
-            var req = http.request(options, function (res) {
+            var request = http.request(options, function (response) {
                 var body = '';
-                //res.setEncoding('utf8');
-                res.on('data', function (chunk) {
+                if (typeof response.setEncoding === 'function') {
+                    response.setEncoding('utf8');
+                }
+                response.on('data', function (chunk) {
                     body += chunk;
                 });
-                res.on('end', function () {
+                response.on('end', function () {
                     var data = JSON.parse(body);
                     if (data.error) {
                         reject(data);
@@ -51,8 +45,8 @@ module.exports = function(Api) {
                     }
                 });
             });
-            req.on('error', reject);
-            req.end();
+            request.on('error', reject);
+            request.end();
         });
     };
 };

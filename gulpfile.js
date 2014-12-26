@@ -37,6 +37,7 @@ gulp.task('build', ['clean-build'], function() {
 				standalone: 'AtTask'
 			}
 		)
+		.ignore('promise/polyfill')
 		.bundle()
 		.pipe(source('attask.js'))
 		.pipe(gulp.dest(BUILD_DIR));
