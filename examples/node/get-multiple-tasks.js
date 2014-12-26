@@ -11,6 +11,7 @@ var instance = ApiFactory.getInstance({
 	port: 8080
 });
 
+util.print('Logs in, queries details of multiple tasks\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

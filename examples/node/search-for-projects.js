@@ -11,6 +11,7 @@ var instance = ApiFactory.getInstance({
 	port: 8080
 });
 
+util.print('Logs in, then search for projects with percentComplete > 0\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {
