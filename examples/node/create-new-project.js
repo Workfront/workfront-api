@@ -1,3 +1,7 @@
+/**
+ * Logs in, then creates a new project with name "API Project"
+ */
+
 var ApiFactory = require('./../../').ApiFactory;
 var util = require('util');
 

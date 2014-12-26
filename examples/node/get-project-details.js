@@ -1,3 +1,7 @@
+/**
+ * Logs in, queries project and project owner details by project id
+ */
+
 var ApiFactory = require('./../../').ApiFactory;
 var util = require('util');
 

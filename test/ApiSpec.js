@@ -16,6 +16,7 @@ describe('Create new instance for API', function() {
 		expect(api).to.respondTo('report');
 		expect(api).to.respondTo('count');
 		expect(api).to.respondTo('copy');
+		expect(api).to.respondTo('upload');
 		expect(api).to.respondTo('execute');
 		expect(api).to.respondTo('namedQuery');
 		expect(api).to.respondTo('metadata');

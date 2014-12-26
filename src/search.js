@@ -1,8 +1,7 @@
-var Api = require('./Api'),
-    path_module = require('path');
+var Api = require('./Api');
 
 module.exports = function(Api) {
     Api.prototype.search = function (objCode, query, fields) {
-        return this.request(path_module.join(objCode, 'search'), query, fields, 'GET');
+        return this.request(objCode + '/search', query, fields, 'GET');
     };
 };

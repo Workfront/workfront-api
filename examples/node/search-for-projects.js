@@ -1,3 +1,7 @@
+/**
+ * Logs in, then search for projects with percentComplete > 0
+ */
+
 var ApiFactory = require('./../../').ApiFactory;
 var util = require('util');
 

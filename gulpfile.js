@@ -31,6 +31,8 @@ gulp.task('clean-coverage', function(cb) {
 gulp.task('build', ['clean-build'], function() {
 	var browserify = require('browserify');
 	var source = require('vinyl-source-stream');
+	var buffer = require('vinyl-buffer');
+	var uglify = require('gulp-uglify');
 	return browserify(
 			'./index.js',
 			{
@@ -39,7 +41,9 @@ gulp.task('build', ['clean-build'], function() {
 		)
 		.ignore('promise/polyfill')
 		.bundle()
-		.pipe(source('attask.js'))
+		.pipe(source('attask.min.js'))
+		.pipe(buffer())
+		.pipe(uglify())
 		.pipe(gulp.dest(BUILD_DIR));
 });
 

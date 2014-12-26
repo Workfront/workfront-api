@@ -1,5 +1,3 @@
-var path_module = require('path');
-
 function Api(config) {
     this.httpOptions = {
         hostname: config.hostname,
@@ -11,7 +9,7 @@ function Api(config) {
 
     // Append version to hostname if provided
     if (config.version) {
-        this.httpOptions.path = path_module.join(this.httpOptions.path, 'v' + config.version);
+        this.httpOptions.path = this.httpOptions.path + '/v' + config.version;
     }
 }
 

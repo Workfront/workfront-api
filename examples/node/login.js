@@ -1,3 +1,7 @@
+/**
+ * Logs in
+ */
+
 var ApiFactory = require('./../../').ApiFactory;
 var util = require('util');
 

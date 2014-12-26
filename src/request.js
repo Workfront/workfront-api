@@ -1,5 +1,4 @@
 var Api = require('./Api'),
-    path_module = require('path'),
     queryString = require('querystring'),
     http = require('http'),
     util = require('util');
@@ -13,11 +12,12 @@ module.exports = function(Api) {
         var options = {};
         util._extend(options, this.httpOptions);
         options.method = method;
-        options.path = path_module.join(this.httpOptions.path, path);
+        options.path = this.httpOptions.path + '/' + path;
 
         if (fields.length !== 0) {
             params['fields'] = fields.join();
         }
+
         options.path += '?' + queryString.stringify(params);
 
         return new Promise(function (resolve, reject) {
