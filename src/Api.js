@@ -36,7 +36,16 @@ var plugins = [
     'logout',
     'search',
     'get',
-    'post'
+    'post',
+    'put',
+    'delete',
+    'report',
+    'count',
+    'copy',
+    'upload',
+    'execute',
+    'namedQuery',
+    'metadata'
 ];
 for(var i=0; i<plugins.length; ++i) {
     require('./plugins/' + plugins[i])(Api);
