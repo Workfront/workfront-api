@@ -1,4 +1,4 @@
-var Api = require('./Api'),
+var Api = require('./../Api'),
     queryString = require('querystring'),
     http = require('http'),
     util = require('util');

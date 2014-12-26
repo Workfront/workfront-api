@@ -1,4 +1,4 @@
-var Api = require('./Api');
+var Api = require('./../Api');
 
 module.exports = function(Api) {
     Api.prototype.search = function (objCode, query, fields) {
