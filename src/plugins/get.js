@@ -6,7 +6,7 @@ module.exports = function(Api) {
      * @param {String} objCode
      * @param {String|Array} objIDs    Either one or multiple object ids
      * @param {Object} fields
-     * @return {Object}
+     * @return {Promise}
      */
     Api.prototype.get = function (objCode, objIDs, fields) {
         if (typeof objIDs === 'string') {
