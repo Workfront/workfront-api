@@ -1,5 +1,5 @@
 # attask-api
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][coveralls-image]][coveralls-url]
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url]
 
 An AtTask API for the Node and Web
 
@@ -92,3 +92,7 @@ Visit [http://localhost:8000/examples/browser/](http://localhost:8000/examples/b
 
 [coveralls-url]: https://coveralls.io/r/bhovhannes/attask-api
 [coveralls-image]: https://img.shields.io/coveralls/bhovhannes/attask-api.svg?style=flat
+
+[code-climate-url]: https://codeclimate.com/github/bhovhannes/attask-api
+[code-climate-image]: https://img.shields.io/codeclimate/github/bhovhannes/attask-api.svg?style=flat
+
