@@ -1,18 +1,22 @@
 var gulp = require('gulp');
 
 const BUILD_DIR = './dist/';
+const DOCS_DIR = './docs/';
 const COVERAGE_DIR = 'coverage';
 
 gulp.task('default', ['build']);
 
-gulp.task('clean', ['clean-coverage', 'clean-build']);
+/**
+ * Empties BUILD_DIR, DOCS_DIR and cleans coverage data
+ */
+gulp.task('clean', ['clean-coverage', 'clean-build', 'clean-docs']);
 
 /**
  * Empties BUILD_DIR
  */
 gulp.task('clean-build', function(cb) {
 	var del = require('del');
-	del([BUILD_DIR + '*', COVERAGE_DIR], cb);
+	del([BUILD_DIR + '*'], cb);
 });
 
 /**
@@ -21,6 +25,14 @@ gulp.task('clean-build', function(cb) {
 gulp.task('clean-coverage', function(cb) {
 	var del = require('del');
 	del([COVERAGE_DIR], cb);
+});
+
+/**
+ * Empties DOCS_DIR
+ */
+gulp.task('clean-docs', function(cb) {
+	var del = require('del');
+	del([DOCS_DIR + '*'], cb);
 });
 
 
@@ -47,7 +59,30 @@ gulp.task('build', ['clean-build'], function() {
 		.pipe(gulp.dest(BUILD_DIR));
 });
 
+/**
+ * Generate documentation in ./docs/ directory
+ */
+gulp.task('docs', ['clean-docs'], function() {
+	var jsdoc = require("gulp-jsdoc");
+	return gulp.src(["src/**/*.js", "README.md"])
+		.pipe(
+			jsdoc(DOCS_DIR, {
+				path: 'ink-docstrap',
+				systemName: 'AtTask',
+				//footer: "Something",
+				//copyright: "Something",
+				navType: "vertical",
+				theme: "united",
+				linenums: true,
+				collapseSymbols: false,
+				inverseNav: false
+			})
+		)
+});
 
+/**
+ * Opens web server in a project directory
+ */
 gulp.task('serve', function() {
 	var webserver = require('gulp-webserver');
 	gulp.src('./')
@@ -61,14 +96,20 @@ gulp.task('serve', function() {
 });
 
 
-var runMocha = function() {
+var runTests = function() {
 	var mocha = require('gulp-mocha');
 	return gulp.src('test/**/*Spec.js', {read: false})
 		.pipe(mocha({}));
 };
 
-gulp.task('test', runMocha);
+/**
+ * Runs all tests
+ */
+gulp.task('test', runTests);
 
+/**
+ * Runs all tests with coverage
+ */
 gulp.task('test-coverage', ['clean-coverage'], function(cb) {
 	var mocha = require('gulp-mocha');
 	var istanbul = require('gulp-istanbul');
@@ -77,12 +118,16 @@ gulp.task('test-coverage', ['clean-coverage'], function(cb) {
 		.pipe(istanbul()) // Covering files
 		.pipe(istanbul.hookRequire()) // Force `require` to return covered files
 		.on('finish', function () {
-			runMocha()
+			runTests()
 			.pipe(istanbul.writeReports()) // Creating the reports after tests runned
 			.on('end', cb);
 		});
 });
 
+/**
+ * This intended to be run only on Travis CI.
+ * Runs all tests with coverage, when upload coverage data to coveralls.io
+ */
 gulp.task('test-ci', ['test-coverage'], function() {
 	var coveralls = require('gulp-coveralls');
 	return gulp.src(COVERAGE_DIR + '/lcov.info')

@@ -1,5 +1,8 @@
-var ApiUtil = {
+/**
+ * @name ApiUtil
+ * @memberOf AtTask
+ * @namespace
+ */
+module.exports = {
 
 };
-
-module.exports = ApiUtil;

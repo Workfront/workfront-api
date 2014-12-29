@@ -1,11 +1,9 @@
 /**
- * Creates new Api instance. Accepts configuration object with the following keys:
- *     hostname {String} - Required. A name of host to connect to
- *     port {String} - Optional. A port on host to connect to. Defaults to 80.
- *     version {String} - Optional. Which version of api to use.
- *                        At the moment of writing can be 1.0, 2.0, 3.0, 4.0, 5.0.
- *                        Pass 'internal' to use AtTask internal API (this is the latest version, maybe unstable)
- * @param {Object} config
+ * Creates new Api instance.
+ * @param {Object} config   An object with the following keys:<br/>
+ *     <code>hostname</code> {String} - Required. A name of host to connect to<br/>
+ *     <code>port</code> {String} - Optional. A port on host to connect to. Defaults to 80.<br/>
+ *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0, 5.0. Pass 'internal' to use AtTask internal API (this is the latest version, maybe unstable)
  * @constructor
  */
 function Api(config) {
