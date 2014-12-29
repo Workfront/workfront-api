@@ -13,9 +13,9 @@ This is currently work in progress. Package will be published to NPM registry on
 
 #### Server-side usage
 
-Install as a dev dependency:
+Install as a dependency:
 	
-    npm install attask-api --save-dev
+    npm install --save attask-api
 	
 Then `require('attask-api')` in your code. For example:
 ```javascript
