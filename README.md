@@ -11,7 +11,7 @@ This is currently work in progress. Package will be published to NPM registry on
 
 ## Usage
 
-#### Server-side usage
+#### Server-side
 
 Install as a dependency:
 	
@@ -36,7 +36,7 @@ console.log(util.inspect(attask, {depth:0}));
 
 #### In a browser
 
-This package uses [Browserify](http://browserify.org) to generate [dist/attask.min.js](dist/attask.min.js). Loading that script will create `window.AtTask` object which will contain all the classes and methods just as in the server-side environment (see [Server-side usage](#server-side-usage) section).  
+This package uses [Browserify](http://browserify.org) to generate [dist/attask.min.js](dist/attask.min.js). Loading that script will create `window.AtTask` object which will contain all the classes and methods just as in the server-side environment (see [Server-side](#server-side) section).
 This package makes use of [Promises](https://www.promisejs.org). Promises are not currently supported by all browsers (see [kangax compatibility tables](http://kangax.github.io/compat-table/es6/#Promise) but there are many polyfills available, including one listed in [www.promisejs.org](https://www.promisejs.org). Load polyfill before `attask.min.js` and everything will work just fine.  
 Although the lack of CORS support may prevent you from sending request to AtTask servers, there are some usage examples in [examples/browser](examples/browser) folder to give you an idea.
 
