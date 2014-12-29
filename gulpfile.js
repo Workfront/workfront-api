@@ -68,7 +68,7 @@ gulp.task('docs', ['clean-docs'], function() {
 		.pipe(
 			jsdoc(DOCS_DIR, {
 				path: 'ink-docstrap',
-				systemName: 'AtTask',
+				systemName: 'attask-api',
 				//footer: "Something",
 				//copyright: "Something",
 				navType: "vertical",
