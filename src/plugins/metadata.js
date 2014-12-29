@@ -1,5 +1,3 @@
-var Api = require('./../Api');
-
 module.exports = function(Api) {
     /**
      * Retrieves API metadata for an object.

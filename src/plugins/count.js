@@ -1,5 +1,3 @@
-var Api = require('./../Api');
-
 module.exports = function(Api) {
     /**
      * Used to retrieve number of objects matching given search criteria

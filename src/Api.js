@@ -17,7 +17,7 @@ function Api(config) {
     // Append version to path if provided
     var path;
     if (config.version === 'internal') {
-        path = '/attask/api-internal'
+        path = '/attask/api-internal';
     }
     else {
         path = '/attask/api';

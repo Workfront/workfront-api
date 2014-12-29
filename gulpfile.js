@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 
-const BUILD_DIR = './dist/';
-const DOCS_DIR = './docs/';
-const COVERAGE_DIR = 'coverage';
+var BUILD_DIR = './dist/';
+var DOCS_DIR = './docs/';
+var COVERAGE_DIR = 'coverage';
 
 gulp.task('default', ['build']);
 
@@ -77,7 +77,7 @@ gulp.task('docs', ['clean-docs'], function() {
 				collapseSymbols: false,
 				inverseNav: false
 			})
-		)
+		);
 });
 
 /**
@@ -111,7 +111,6 @@ gulp.task('test', runTests);
  * Runs all tests with coverage
  */
 gulp.task('test-coverage', ['clean-coverage'], function(cb) {
-	var mocha = require('gulp-mocha');
 	var istanbul = require('gulp-istanbul');
 
 	gulp.src(['src/**/*.js'])

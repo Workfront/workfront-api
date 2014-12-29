@@ -1,5 +1,3 @@
-var Api = require('./../Api');
-
 module.exports = function(Api) {
     /**
      * Used for retrieve an object or multiple objects.

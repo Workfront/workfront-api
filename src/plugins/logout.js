@@ -1,5 +1,3 @@
-var Api = require('./../Api');
-
 module.exports = function(Api) {
     /**
      * Logs out from AtTask

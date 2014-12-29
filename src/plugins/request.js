@@ -1,5 +1,4 @@
-var Api = require('./../Api'),
-    queryString = require('querystring'),
+var queryString = require('querystring'),
     http = require('http'),
     util = require('util');
 
@@ -15,7 +14,7 @@ module.exports = function(Api) {
         options.path = this.httpOptions.path + '/' + path;
 
         if (fields.length !== 0) {
-            params['fields'] = fields.join();
+            params.fields = fields.join();
         }
 
         options.path += '?' + queryString.stringify(params);

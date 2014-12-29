@@ -1,5 +1,3 @@
-var Api = require('./../Api');
-
 module.exports = function(Api) {
     /**
      * Logs in into AtTask. Should be a first call to AtTask API.
