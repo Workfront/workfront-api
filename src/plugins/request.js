@@ -5,7 +5,6 @@ module.exports = function(Api) {
     Api.prototype.request = function(path, params, fields, method) {
         params = params || {};
         fields = fields || [];
-        method = method || 'GET';
 
         var options = {};
         util._extend(options, this.httpOptions);
@@ -21,7 +20,10 @@ module.exports = function(Api) {
             params.fields = fields.join();
         }
 
-        options.path += '?' + queryString.stringify(params);
+        params = queryString.stringify(params);
+        if (params) {
+            options.path += '?' + params;
+        }
 
         var httpTransport = this.httpTransport;
 
