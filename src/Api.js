@@ -1,16 +1,23 @@
+var url = require('url'),
+    http = require('http'),
+    https = require('https');
+
 /**
  * Creates new Api instance.
  * @param {Object} config   An object with the following keys:<br/>
- *     <code>hostname</code> {String} - Required. A name of host to connect to<br/>
- *     <code>port</code> {String} - Optional. A port on host to connect to. Defaults to 80.<br/>
+ *     <code>url</code> {String} - Required. An url to AtTask server (for example: http://localhost:8080)<br/>
  *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'internal' to use AtTask internal API (this is the latest version, maybe unstable)
  * @constructor
  */
 function Api(config) {
+    var parsed = url.parse(config.url);
+
+    // Create the request
+    this.httpTransport = parsed.protocol === 'https:' ? https : http;
+
     this.httpOptions = {
-        hostname: config.hostname,
-        port: config.port || 80,
-        method: 'GET',
+        host: parsed.hostname,
+        port: parsed.port || 80,
         withCredentials: false
     };
 

@@ -7,9 +7,8 @@ var ApiConstants = require('./../../').ApiConstants;
 var util = require('util');
 
 var instance = ApiFactory.getInstance({
-	hostname: 'localhost',
-	version: '5.0',
-	port: 8080
+	url: 'http://localhost:8080',
+	version: '5.0'
 });
 
 util.print('Logs in, returns number of active users\n');

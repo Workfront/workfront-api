@@ -11,12 +11,11 @@
 	<script src="/dist/attask.min.js"></script>
 	<script>
 		function doLogin() {
-			var host = document.getElementById('hostname').value;
-			var port = document.getElementById('port').value;
+			var url = document.getElementById('url').value;
 			var username = document.getElementById('username').value;
 			var password = document.getElementById('password').value;
 
-			var instance = new window.AtTask.Api({hostname: host, version: '5.0', port: port});
+			var instance = new window.AtTask.Api({url: url, version: '5.0'});
 			instance.login(username, password).then(function(data){
 				console.log(data)
 			}, console.error);
@@ -27,12 +26,8 @@
 	<div class="container">
 		<div>
 			<div class="form-group">
-				<label for="hostname">Hostname</label>
-				<input type="text" class="form-control" id="hostname" value="localhost" placeholder="Hostname to use for connection to AtTask">
-			</div>
-			<div class="form-group">
-				<label for="port">Port</label>
-				<input type="text" class="form-control" id="port" value="8080" placeholder="Port to use for connection to AtTask">
+				<label for="url">Url</label>
+				<input type="text" class="form-control" id="url" value="http://localhost:8080" placeholder="Url to use for connection to AtTask">
 			</div>
 
 			<div class="form-group">

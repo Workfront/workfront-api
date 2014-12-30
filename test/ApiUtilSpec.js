@@ -1,6 +1,5 @@
-var expect = require('chai').expect;
-
-var ApiUtil = require('./../src/ApiUtil');
+require('./common');
+var ApiUtil = require('./../').ApiUtil;
 
 
 describe('ApiUtil', function() {

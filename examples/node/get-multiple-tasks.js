@@ -6,9 +6,8 @@ var ApiFactory = require('./../../').ApiFactory;
 var util = require('util');
 
 var instance = ApiFactory.getInstance({
-	hostname: 'localhost',
-	version: '5.0',
-	port: 8080
+	url: 'http://localhost:8080',
+	version: '5.0'
 });
 
 util.print('Logs in, queries details of multiple tasks\n');

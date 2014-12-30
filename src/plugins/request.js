@@ -1,17 +1,21 @@
 var queryString = require('querystring'),
-    http = require('http'),
     util = require('util');
 
 module.exports = function(Api) {
     Api.prototype.request = function(path, params, fields, method) {
         params = params || {};
         fields = fields || [];
-        method = method || this.httpOptions.method;
+        method = method || 'GET';
 
         var options = {};
         util._extend(options, this.httpOptions);
         options.method = method;
-        options.path = this.httpOptions.path + '/' + path;
+        if (path.indexOf('/') === 0) {
+            options.path = this.httpOptions.path + path;
+        }
+        else {
+            options.path = this.httpOptions.path + '/' + path;
+        }
 
         if (fields.length !== 0) {
             params.fields = fields.join();
@@ -19,15 +23,16 @@ module.exports = function(Api) {
 
         options.path += '?' + queryString.stringify(params);
 
+        var httpTransport = this.httpTransport;
+
         return new Promise(function (resolve, reject) {
             /*options = {
-                hostname: 'echo.jsontest.com',
-                port: 80,
+                url: 'http://echo.jsontest.com',
                 path: '/data/123',
                 withCredentials: false
             };*/
 
-            var request = http.request(options, function (response) {
+            var request = httpTransport.request(options, function (response) {
                 var body = '';
                 if (typeof response.setEncoding === 'function') {
                     response.setEncoding('utf8');

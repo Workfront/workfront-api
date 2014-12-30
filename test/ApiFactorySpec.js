@@ -1,7 +1,6 @@
-var expect = require('chai').expect;
-
-var ApiFactory = require('./../src/ApiFactory');
-var Api = require('./../src/Api');
+require('./common');
+var ApiFactory = require('./../').ApiFactory;
+var Api = require('./../').Api;
 
 
 describe('ApiFactory.getInstance() when called for the frist time', function() {
@@ -18,7 +17,7 @@ describe('ApiFactory.getInstance() when called multiple times', function() {
 
 	beforeEach(function() {
 		firstInstance = ApiFactory.getInstance({
-			hostname: 'foo'
+			url: 'http://foo'
 		});
 	});
 
@@ -28,7 +27,6 @@ describe('ApiFactory.getInstance() when called multiple times', function() {
 	});
 
 	it('should return Api instance when called for the first time', function(){
-		expect(firstInstance).to.exist();
 		expect(firstInstance).to.be.instanceOf(Api);
 	});
 
@@ -39,14 +37,14 @@ describe('ApiFactory.getInstance() when called multiple times', function() {
 
 	it('should return the same Api instance when called for the second time with another config and with 1 argument', function(){
 		var instance2 = ApiFactory.getInstance({
-			hostname: 'bar'
+			url: 'http://bar'
 		});
 		expect(instance2).to.equal(firstInstance);
 	});
 
 	it('should return another instance when called with 2 arguments for the second time', function(){
 		var instance2 = ApiFactory.getInstance({
-			hostname: 'bar'
+			url: 'http://bar'
 		}, true);
 		expect(instance2).not.to.equal(firstInstance);
 	});

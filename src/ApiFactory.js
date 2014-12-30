@@ -12,8 +12,7 @@ module.exports = {
      * One can use this if Api is intended to be used as singleton.
      * @memberOf AtTask.ApiFactory
      * @param {Object} config   An object with the following keys:<br/>
-     *     <code>hostname</code> {String} - Required. A name of host to connect to<br/>
-     *     <code>port</code> {String} - Optional. A port on host to connect to. Defaults to 80.<br/>
+     *     <code>url</code> {String} - Required. An url to AtTask server (for example: http://localhost:8080)<br/>
      *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'internal' to use AtTask internal API (this is the latest version, maybe unstable)
      * @param {Boolean} [returnNewInstance]    If true, always creates a new instance
      * @return {Api}
