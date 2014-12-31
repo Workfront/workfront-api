@@ -8,7 +8,7 @@ var util = require('util');
 
 var instance = ApiFactory.getInstance({
 	url: 'http://localhost:8080',
-	version: '5.0'
+	version: '4.0'
 });
 
 util.print('Logs in, returns number of active users\n');
