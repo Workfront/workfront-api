@@ -15,7 +15,7 @@ util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {
 		util.log('Getting metadata ...');
-		instance.objects().then(
+		instance.metadata().then(
 			function(data) {
 				util.log('Get success. Received data:');
 				console.log(util.inspect(data, {colors:true}));

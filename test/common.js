@@ -1,9 +1,15 @@
+// this files defines globals which can be used in tests
+
 var chai = require('chai');
-var chaiAsPromised = require("chai-as-promised");
+chai.use(require('chai-as-promised'));
 
-chai.use(chaiAsPromised);
-
-var expect = chai.expect;
+chai.use(require('sinon-chai'));
 
 global.chai = chai;
-global.expect = expect;
+
+global.expect = chai.expect;
+
+global.sinon = require('sinon');
+
+require('promise/polyfill');
+require('sinon-as-promised')(Promise);
