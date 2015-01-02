@@ -15,7 +15,7 @@
 			var username = document.getElementById('username').value;
 			var password = document.getElementById('password').value;
 
-			var instance = new window.AtTask.Api({url: url, version: '5.0'});
+			var instance = new window.AtTask.Api({url: url, version: '4.0'});
 			instance.login(username, password).then(function(data){
 				console.log(data)
 			}, console.error);

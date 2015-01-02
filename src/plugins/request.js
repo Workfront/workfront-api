@@ -2,6 +2,10 @@ var queryString = require('querystring'),
     util = require('util');
 
 module.exports = function(Api) {
+    var requestHasData = function(method) {
+        return method !== 'GET';
+    };
+
     Api.prototype.request = function(path, params, fields, method) {
         params = params || {};
         fields = fields || [];
@@ -22,7 +26,14 @@ module.exports = function(Api) {
 
         params = queryString.stringify(params);
         if (params) {
-            options.path += '?' + params;
+            if (requestHasData(options.method)) {
+                options.headers = options.headers || {};
+                options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+                options.headers['Content-Length'] = Buffer.byteLength(params);
+            }
+            else {
+                options.path += '?' + params;
+            }
         }
 
         var httpTransport = this.httpTransport;
@@ -52,6 +63,9 @@ module.exports = function(Api) {
                 });
             });
             request.on('error', reject);
+            if (params && requestHasData(options.method)) {
+                request.write(params);
+            }
             request.end();
         });
     };

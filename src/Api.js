@@ -35,25 +35,20 @@ function Api(config) {
     this.httpOptions.path = path;
 }
 
-var plugins = [
-    'request',
-    'login',
-    'logout',
-    'search',
-    'get',
-    'post',
-    'put',
-    'delete',
-    'report',
-    'count',
-    'copy',
-    'upload',
-    'execute',
-    'namedQuery',
-    'metadata'
-];
-for(var i=0; i<plugins.length; ++i) {
-    require('./plugins/' + plugins[i])(Api);
-}
+require('./plugins/request')(Api);
+require('./plugins/login')(Api);
+require('./plugins/logout')(Api);
+require('./plugins/search')(Api);
+require('./plugins/get')(Api);
+require('./plugins/post')(Api);
+require('./plugins/put')(Api);
+require('./plugins/delete')(Api);
+require('./plugins/report')(Api);
+require('./plugins/count')(Api);
+require('./plugins/copy')(Api);
+require('./plugins/upload')(Api);
+require('./plugins/execute')(Api);
+require('./plugins/namedQuery')(Api);
+require('./plugins/metadata')(Api);
 
 module.exports = Api;
