@@ -18,7 +18,8 @@ function Api(config) {
     this.httpOptions = {
         host: parsed.hostname,
         port: parsed.port || 80,
-        withCredentials: false
+        withCredentials: false,
+        headers: {}
     };
 
     // Append version to path if provided
