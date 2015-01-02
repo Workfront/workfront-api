@@ -11,7 +11,6 @@ module.exports = function(Api) {
         return new Promise(function (resolve, reject) {
             that.request('login', {username: username, password: password}, null, 'POST')
                 .then(function (data) {
-                    that.httpOptions.headers = that.httpOptions.headers || {};
                     that.httpOptions.headers.sessionID = data.sessionID;
                     resolve(data);
                 }, reject);
