@@ -98,7 +98,7 @@ gulp.task('serve', function() {
 
 var runTests = function() {
 	var mocha = require('gulp-mocha');
-	return gulp.src('test/**/*Spec.js', {read: false})
+	return gulp.src('test/**/*.spec.js', {read: false})
 		.pipe(mocha({}));
 };
 
