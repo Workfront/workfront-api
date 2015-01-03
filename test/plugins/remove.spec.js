@@ -31,13 +31,18 @@ describe('Api.remove() method', function() {
 
 	it('should resolve returned promise if removal was ok', function(done) {
 		api.request.resolves({success: true});
-		var promise = api.logout();
+		var promise = api.remove('foo', '123', true);
 		expect(promise).to.be.fulfilled.and.notify(done);
 	});
 
 	it('should reject returned promise if removal was not ok', function(done) {
-		api.httpOptions.headers.sessionID = 123;
 		api.request.resolves(false);
+		var promise = api.remove('foo', '123');
+		expect(promise).to.be.rejected.and.notify(done);
+	});
+
+	it('should reject returned promise if removal was not ok (request() rejected)', function(done) {
+		api.request.rejects();
 		var promise = api.remove('foo', '123');
 		expect(promise).to.be.rejected.and.notify(done);
 	});

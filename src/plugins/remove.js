@@ -11,14 +11,13 @@ module.exports = function(Api) {
         var that = this;
         return new Promise(function (resolve, reject) {
             var params = bForce ? {force: true} : null;
-            return that.request(objCode + '/' + objID, params, null, 'DELETE').then(function (result) {
+            that.request(objCode + '/' + objID, params, null, 'DELETE').then(function (result) {
                 if (result && result.success) {
                     resolve();
                 } else {
                     reject();
                 }
-            });
+            }, reject);
         });
-
     };
 };
