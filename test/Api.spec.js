@@ -11,7 +11,7 @@ describe('Create new instance for API', function() {
 		expect(api).to.respondTo('post');
 		expect(api).to.respondTo('put');
 		expect(api).to.respondTo('search');
-		expect(api).to.respondTo('delete');
+		expect(api).to.respondTo('remove');
 		expect(api).to.respondTo('report');
 		expect(api).to.respondTo('count');
 		expect(api).to.respondTo('copy');

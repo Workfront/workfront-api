@@ -43,7 +43,7 @@ require('./plugins/search')(Api);
 require('./plugins/get')(Api);
 require('./plugins/post')(Api);
 require('./plugins/put')(Api);
-require('./plugins/delete')(Api);
+require('./plugins/remove')(Api);
 require('./plugins/report')(Api);
 require('./plugins/count')(Api);
 require('./plugins/copy')(Api);

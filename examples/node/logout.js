@@ -16,9 +16,8 @@ instance.login('new@user.attask', 'user').then(
 	function(data) {
 		util.log('Logging out ...');
 		instance.logout().then(
-			function(data) {
-				util.log('Logout success. Received data:');
-				console.log(util.inspect(data, {colors:true}));
+			function() {
+				util.log('Logout success.');
 			},
 			function(error) {
 				util.log('Logout failure. Received data:');
