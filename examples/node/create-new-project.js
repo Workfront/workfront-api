@@ -15,7 +15,7 @@ util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {
 		util.log('Creating new project ...');
-		instance.post('proj', {name: 'API Project', description: 'This project has been created using API'}).then(
+		instance.create('proj', {name: 'API Project', description: 'This project has been created using API'}).then(
 			function(data) {
 				util.log('Create success. Received data:');
 				console.log(util.inspect(data, {colors:true}));

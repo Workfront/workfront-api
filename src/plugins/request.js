@@ -3,7 +3,7 @@ var queryString = require('querystring'),
 
 module.exports = function(Api) {
     var requestHasData = function(method) {
-        return method !== 'GET';
+        return method !== 'GET' && method !== 'PUT';
     };
 
     Api.prototype.request = function(path, params, fields, method) {

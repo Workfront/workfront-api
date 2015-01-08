@@ -8,8 +8,8 @@ describe('Create new instance for API', function() {
 		expect(api).to.respondTo('get');
 		expect(api).to.respondTo('login');
 		expect(api).to.respondTo('logout');
-		expect(api).to.respondTo('post');
-		expect(api).to.respondTo('put');
+		expect(api).to.respondTo('create');
+		expect(api).to.respondTo('edit');
 		expect(api).to.respondTo('search');
 		expect(api).to.respondTo('remove');
 		expect(api).to.respondTo('report');
