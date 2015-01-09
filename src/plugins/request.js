@@ -28,7 +28,7 @@ module.exports = function(Api) {
         if (params) {
             if (requestHasData(options.method)) {
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-                options.headers['Content-Length'] = Buffer.byteLength(params);
+                options.headers['Content-Length'] = params.length;
             }
             else {
                 options.path += '?' + params;
