@@ -62,7 +62,7 @@ First enter into `attask-api` directory and install all the dependencies:
 
 Use `node` to run the examples. For examples:
 
-    node examples/node/get-use-count.js
+    node examples/node/get-user-count.js
 
 Each example script outputs all its results into console and contains comments in the source code explaining what is happenning in more details.
 

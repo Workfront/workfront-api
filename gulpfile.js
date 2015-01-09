@@ -38,13 +38,14 @@ gulp.task('clean-docs', function(cb) {
 
 /**
  * Generates browser-ready version for API in BUILD_DIR
- * File will be named as api.js
+ * File will be named as attask.js, minified version will be attask.min.js
  */
 gulp.task('build', ['clean-build'], function() {
 	var browserify = require('browserify');
 	var source = require('vinyl-source-stream');
 	var buffer = require('vinyl-buffer');
 	var uglify = require('gulp-uglify');
+	var rename = require('gulp-rename');
 	return browserify(
 			'./index.js',
 			{
@@ -53,8 +54,10 @@ gulp.task('build', ['clean-build'], function() {
 		)
 		.ignore('promise/polyfill')
 		.bundle()
-		.pipe(source('attask.min.js'))
+		.pipe(source('attask.js'))
 		.pipe(buffer())
+		.pipe(gulp.dest(BUILD_DIR))
+		.pipe(rename({ extname: '.min.js' }))
 		.pipe(uglify())
 		.pipe(gulp.dest(BUILD_DIR));
 });
