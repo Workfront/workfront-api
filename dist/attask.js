@@ -6635,6 +6635,38 @@ var ApiConstants = {
 	DATAEXTENSION: "DE:",
 
 	/**
+	 * Suffix for specifying which fields will be added to the GROUP BY clause in a ReportQuery. Value is "_GroupBy".
+	 * @readonly
+	 * @type {String}
+	 */
+	GROUPBY: "_GroupBy",
+
+	/**
+	 * Suffix for specifying force "_GroupBy". Value is "$$_ForceGroupBy".
+	 */
+	FORCE_GROUPBY: "$$_ForceGroupBy",
+
+	/**
+	 * Suffix for specifying aggregate functions in a ReportQuery. Value is "_AggFunc".
+	 */
+	AGGFUNC: "_AggFunc",
+
+	/**
+	 * Suffix for specifying comma-separated list of aggregated currency fields for the report
+	 */
+	AGGCURRENCY_FIELDS: "$$AggCurr",
+	GROUPCURRENCY_FIELDS: "$$GroupCurr",
+
+
+	SORTCURRENCY_FIELDS: "$$SortCurr",
+	FILTERCURRENCY_FIELDS: "$$FilterCurr",
+
+	/**
+	 * Key used to specify that a GROUP BY query should be done WITH ROLLUP. Value is "$$ROLLUP"
+	 */
+	ROLLUP: "$$ROLLUP",
+
+	/**
 	 * Values which can be used as wildcards
 	 * @readonly
 	 * @enum {String}
@@ -7306,8 +7338,14 @@ module.exports = function(Api) {
 };
 },{}],51:[function(require,module,exports){
 module.exports = function(Api) {
-    Api.prototype.report = function () {
-        throw new Error('Not implemented')
+    /**
+     * Performs report request, where only the aggregate of some field is desired, with one or more groupings.
+     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|AtTask API Explorer}
+     * @param {Object} query    An object with search criteria and aggregate functions
+     * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
+     */
+    Api.prototype.report = function (objCode, query) {
+        return this.request(objCode + '/report', query, null, Api.Methods.GET);
     };
 };
 },{}],52:[function(require,module,exports){
