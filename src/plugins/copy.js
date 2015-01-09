@@ -15,6 +15,6 @@ module.exports = function(Api) {
         if (updates) {
             params.updates = JSON.stringify(updates);
         }
-        return this.request(objCode, params, fields, 'POST');
+        return this.request(objCode, params, fields, Api.Methods.POST);
     };
 };

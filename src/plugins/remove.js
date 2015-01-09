@@ -11,7 +11,7 @@ module.exports = function(Api) {
         var that = this;
         return new Promise(function (resolve, reject) {
             var params = bForce ? {force: true} : null;
-            that.request(objCode + '/' + objID, params, null, 'DELETE').then(function (result) {
+            that.request(objCode + '/' + objID, params, null, Api.Methods.DELETE).then(function (result) {
                 if (result && result.success) {
                     resolve();
                 } else {

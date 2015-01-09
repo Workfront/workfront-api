@@ -11,6 +11,6 @@ module.exports = function(Api) {
         var params = {
             updates: JSON.stringify(updates)
         };
-        return this.request(objCode + '/' + objID, params, fields, 'PUT');
+        return this.request(objCode + '/' + objID, params, fields, Api.Methods.PUT);
     };
 };

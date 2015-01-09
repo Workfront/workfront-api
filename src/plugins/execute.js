@@ -9,6 +9,6 @@ module.exports = function(Api) {
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.execute = function (objCode, objID, action, actionArgs) {
-        return this.request(objCode + '/' + objID + '/' + action, actionArgs, null, 'PUT');
+        return this.request(objCode + '/' + objID + '/' + action, actionArgs, null, Api.Methods.PUT);
     };
 };

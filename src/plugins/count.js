@@ -8,7 +8,7 @@ module.exports = function(Api) {
     Api.prototype.count = function (objCode, query) {
         var that = this;
         return new Promise(function (resolve, reject) {
-            that.request(objCode + '/count', query, null, 'GET')
+            that.request(objCode + '/count', query, null, Api.Methods.GET)
                 .then(function (data) {
                     resolve(data.count);
                 }, reject);

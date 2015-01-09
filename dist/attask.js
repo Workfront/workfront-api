@@ -6556,6 +6556,13 @@ function Api(config) {
     this.httpOptions.path = path;
 }
 
+Api.Methods = {
+    GET: 'GET',
+    PUT: 'PUT',
+    DELETE: 'DELETE',
+    POST: 'POST'
+};
+
 require('./plugins/request')(Api);
 require('./plugins/login')(Api);
 require('./plugins/logout')(Api);
@@ -7117,7 +7124,7 @@ module.exports = function(Api) {
         if (updates) {
             params.updates = JSON.stringify(updates);
         }
-        return this.request(objCode, params, fields, 'POST');
+        return this.request(objCode, params, fields, Api.Methods.POST);
     };
 };
 },{}],41:[function(require,module,exports){
@@ -7131,7 +7138,7 @@ module.exports = function(Api) {
     Api.prototype.count = function (objCode, query) {
         var that = this;
         return new Promise(function (resolve, reject) {
-            that.request(objCode + '/count', query, null, 'GET')
+            that.request(objCode + '/count', query, null, Api.Methods.GET)
                 .then(function (data) {
                     resolve(data.count);
                 }, reject);
@@ -7148,7 +7155,7 @@ module.exports = function(Api) {
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
     Api.prototype.create = function (objCode, params, fields) {
-        return this.request(objCode, params, fields, 'POST');
+        return this.request(objCode, params, fields, Api.Methods.POST);
     };
 };
 },{}],43:[function(require,module,exports){
@@ -7165,7 +7172,7 @@ module.exports = function(Api) {
         var params = {
             updates: JSON.stringify(updates)
         };
-        return this.request(objCode + '/' + objID, params, fields, 'PUT');
+        return this.request(objCode + '/' + objID, params, fields, Api.Methods.PUT);
     };
 };
 },{}],44:[function(require,module,exports){
@@ -7180,7 +7187,7 @@ module.exports = function(Api) {
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.execute = function (objCode, objID, action, actionArgs) {
-        return this.request(objCode + '/' + objID + '/' + action, actionArgs, null, 'PUT');
+        return this.request(objCode + '/' + objID + '/' + action, actionArgs, null, Api.Methods.PUT);
     };
 };
 },{}],45:[function(require,module,exports){
@@ -7197,9 +7204,9 @@ module.exports = function(Api) {
             objIDs = [objIDs];
         }
         if (objIDs.length === 1) {
-            return this.request(objCode + '/' + objIDs[0], null, fields, 'GET');
+            return this.request(objCode + '/' + objIDs[0], null, fields, Api.Methods.GET);
         } else {
-            return this.request(objCode, {id: objIDs}, fields, 'GET');
+            return this.request(objCode, {id: objIDs}, fields, Api.Methods.GET);
         }
     };
 };
@@ -7215,7 +7222,7 @@ module.exports = function(Api) {
     Api.prototype.login = function (username, password) {
         var that = this;
         return new Promise(function (resolve, reject) {
-            that.request('login', {username: username, password: password}, null, 'POST')
+            that.request('login', {username: username, password: password}, null, Api.Methods.POST)
                 .then(function (data) {
                     that.httpOptions.headers.sessionID = data.sessionID;
                     resolve(data);
@@ -7232,7 +7239,7 @@ module.exports = function(Api) {
     Api.prototype.logout = function () {
         var that = this;
         return new Promise(function (resolve, reject) {
-            that.request('logout', null, null, 'GET').then(function (result) {
+            that.request('logout', null, null, Api.Methods.GET).then(function (result) {
                 if (result && result.success) {
                     delete that.httpOptions.headers.sessionID;
                     resolve();
@@ -7255,7 +7262,7 @@ module.exports = function(Api) {
         if (objCode) {
             path = objCode + path;
         }
-        return this.request(path, null, null, 'GET');
+        return this.request(path, null, null, Api.Methods.GET);
     };
 };
 },{}],49:[function(require,module,exports){
@@ -7270,7 +7277,7 @@ module.exports = function(Api) {
      * @returns {Promise}    A promise which will resolved with received data if everything went ok and rejected with error info otherwise
      */
     Api.prototype.namedQuery = function (objCode, query, queryArgs, fields) {
-        return this.request(objCode + '/' + query, queryArgs, fields, 'GET');
+        return this.request(objCode + '/' + query, queryArgs, fields, Api.Methods.GET);
     };
 };
 },{}],50:[function(require,module,exports){
@@ -7287,7 +7294,7 @@ module.exports = function(Api) {
         var that = this;
         return new Promise(function (resolve, reject) {
             var params = bForce ? {force: true} : null;
-            that.request(objCode + '/' + objID, params, null, 'DELETE').then(function (result) {
+            that.request(objCode + '/' + objID, params, null, Api.Methods.DELETE).then(function (result) {
                 if (result && result.success) {
                     resolve();
                 } else {
@@ -7310,7 +7317,7 @@ var queryString = require('querystring'),
 
 module.exports = function(Api) {
     var requestHasData = function(method) {
-        return method !== 'GET' && method !== 'PUT';
+        return method !== Api.Methods.GET && method !== Api.Methods.PUT;
     };
 
     Api.prototype.request = function(path, params, fields, method) {
@@ -7389,7 +7396,7 @@ module.exports = function(Api) {
      * @return {Promise}    A promise which will resolved with search results if everything went ok and rejected otherwise
      */
     Api.prototype.search = function (objCode, query, fields) {
-        return this.request(objCode + '/search', query, fields, 'GET');
+        return this.request(objCode + '/search', query, fields, Api.Methods.GET);
     };
 };
 },{}],54:[function(require,module,exports){

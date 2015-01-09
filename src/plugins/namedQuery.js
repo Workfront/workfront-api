@@ -9,6 +9,6 @@ module.exports = function(Api) {
      * @returns {Promise}    A promise which will resolved with received data if everything went ok and rejected with error info otherwise
      */
     Api.prototype.namedQuery = function (objCode, query, queryArgs, fields) {
-        return this.request(objCode + '/' + query, queryArgs, fields, 'GET');
+        return this.request(objCode + '/' + query, queryArgs, fields, Api.Methods.GET);
     };
 };

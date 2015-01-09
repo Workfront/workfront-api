@@ -36,6 +36,13 @@ function Api(config) {
     this.httpOptions.path = path;
 }
 
+Api.Methods = {
+    GET: 'GET',
+    PUT: 'PUT',
+    DELETE: 'DELETE',
+    POST: 'POST'
+};
+
 require('./plugins/request')(Api);
 require('./plugins/login')(Api);
 require('./plugins/logout')(Api);

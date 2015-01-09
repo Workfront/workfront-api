@@ -6,7 +6,7 @@ module.exports = function(Api) {
     Api.prototype.logout = function () {
         var that = this;
         return new Promise(function (resolve, reject) {
-            that.request('logout', null, null, 'GET').then(function (result) {
+            that.request('logout', null, null, Api.Methods.GET).then(function (result) {
                 if (result && result.success) {
                     delete that.httpOptions.headers.sessionID;
                     resolve();

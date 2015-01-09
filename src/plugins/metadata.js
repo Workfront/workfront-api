@@ -9,6 +9,6 @@ module.exports = function(Api) {
         if (objCode) {
             path = objCode + path;
         }
-        return this.request(path, null, null, 'GET');
+        return this.request(path, null, null, Api.Methods.GET);
     };
 };

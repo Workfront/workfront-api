@@ -7,6 +7,6 @@ module.exports = function(Api) {
      * @return {Promise}    A promise which will resolved with search results if everything went ok and rejected otherwise
      */
     Api.prototype.search = function (objCode, query, fields) {
-        return this.request(objCode + '/search', query, fields, 'GET');
+        return this.request(objCode + '/search', query, fields, Api.Methods.GET);
     };
 };

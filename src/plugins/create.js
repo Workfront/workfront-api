@@ -7,6 +7,6 @@ module.exports = function(Api) {
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
     Api.prototype.create = function (objCode, params, fields) {
-        return this.request(objCode, params, fields, 'POST');
+        return this.request(objCode, params, fields, Api.Methods.POST);
     };
 };

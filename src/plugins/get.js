@@ -11,9 +11,9 @@ module.exports = function(Api) {
             objIDs = [objIDs];
         }
         if (objIDs.length === 1) {
-            return this.request(objCode + '/' + objIDs[0], null, fields, 'GET');
+            return this.request(objCode + '/' + objIDs[0], null, fields, Api.Methods.GET);
         } else {
-            return this.request(objCode, {id: objIDs}, fields, 'GET');
+            return this.request(objCode, {id: objIDs}, fields, Api.Methods.GET);
         }
     };
 };
