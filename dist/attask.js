@@ -6536,6 +6536,7 @@ function Api(config) {
     this.httpTransport = parsed.protocol === 'https:' ? https : http;
 
     this.httpOptions = {
+        protocol: parsed.protocol,
         host: parsed.hostname,
         port: parsed.port || 80,
         withCredentials: false,
@@ -7349,7 +7350,6 @@ module.exports = function(Api) {
     };
 };
 },{}],52:[function(require,module,exports){
-(function (Buffer){
 var queryString = require('querystring'),
     util = require('util');
 
@@ -7380,7 +7380,7 @@ module.exports = function(Api) {
         if (params) {
             if (requestHasData(options.method)) {
                 options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-                options.headers['Content-Length'] = Buffer.byteLength(params);
+                options.headers['Content-Length'] = params.length;
             }
             else {
                 options.path += '?' + params;
@@ -7423,8 +7423,7 @@ module.exports = function(Api) {
 };
 
 
-}).call(this,require("buffer").Buffer)
-},{"buffer":3,"querystring":19,"util":35}],53:[function(require,module,exports){
+},{"querystring":19,"util":35}],53:[function(require,module,exports){
 module.exports = function(Api) {
     /**
      * Used for object retrieval by multiple search criteria.

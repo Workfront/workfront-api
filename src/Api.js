@@ -16,6 +16,7 @@ function Api(config) {
     this.httpTransport = parsed.protocol === 'https:' ? https : http;
 
     this.httpOptions = {
+        protocol: parsed.protocol,
         host: parsed.hostname,
         port: parsed.port || 80,
         withCredentials: false,
