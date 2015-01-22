@@ -6526,7 +6526,7 @@ var url = require('url'),
  * Creates new Api instance.
  * @param {Object} config   An object with the following keys:<br/>
  *     <code>url</code> {String} - Required. An url to AtTask server (for example: http://localhost:8080)<br/>
- *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'internal' to use AtTask internal API (this is the latest version, maybe unstable)
+ *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'unsupported' to use AtTask latest API (maybe unstable).
  *     <code>secureProtocol</code> {String} - Optional. Used only in https. The SSL method to use, e.g. TLSv1_method to force TLS version 1. The possible values depend on your installation of OpenSSL and are defined in the constant {@link http://www.openssl.org/docs/ssl/ssl.html#DEALING_WITH_PROTOCOL_METHODS|SSL_METHODS}.
  * @constructor
  */
@@ -6552,8 +6552,8 @@ function Api(config) {
 
     // Append version to path if provided
     var path;
-    if (config.version === 'internal') {
-        path = '/attask/api-internal';
+    if (config.version === 'internal' || config.version === 'unsupported') {
+        path = '/attask/api-' + config.version;
     }
     else {
         path = '/attask/api';
@@ -7412,7 +7412,14 @@ module.exports = function(Api) {
                     body += chunk;
                 });
                 response.on('end', function () {
-                    var data = JSON.parse(body);
+                    var data;
+                    try {
+                        data = JSON.parse(body);
+                    }
+                    catch(e) {
+                        reject(body);
+                        return;
+                    }
                     if (data.error) {
                         reject(data);
                     } else {
@@ -7445,7 +7452,13 @@ module.exports = function(Api) {
 };
 },{}],54:[function(require,module,exports){
 module.exports = function(Api) {
-    Api.prototype.upload = function () {
+    /**
+     * Starting from version 2.0 API allows users to upload files.
+     * The server will return the JSON data which includes 'handle' of uploaded file.
+     * Returned 'handle' can be passed to create() method to create a new document.
+     * @param {fs.ReadStream} stream    A readable stream with file contents
+     */
+    Api.prototype.upload = function (stream) {
         throw new Error('Not implemented')
     };
 };

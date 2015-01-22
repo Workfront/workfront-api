@@ -53,7 +53,14 @@ module.exports = function(Api) {
                     body += chunk;
                 });
                 response.on('end', function () {
-                    var data = JSON.parse(body);
+                    var data;
+                    try {
+                        data = JSON.parse(body);
+                    }
+                    catch(e) {
+                        reject(body);
+                        return;
+                    }
                     if (data.error) {
                         reject(data);
                     } else {
