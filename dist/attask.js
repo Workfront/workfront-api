@@ -6527,21 +6527,28 @@ var url = require('url'),
  * @param {Object} config   An object with the following keys:<br/>
  *     <code>url</code> {String} - Required. An url to AtTask server (for example: http://localhost:8080)<br/>
  *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'internal' to use AtTask internal API (this is the latest version, maybe unstable)
+ *     <code>secureProtocol</code> {String} - Optional. Used only in https. The SSL method to use, e.g. TLSv1_method to force TLS version 1. The possible values depend on your installation of OpenSSL and are defined in the constant {@link http://www.openssl.org/docs/ssl/ssl.html#DEALING_WITH_PROTOCOL_METHODS|SSL_METHODS}.
  * @constructor
  */
 function Api(config) {
-    var parsed = url.parse(config.url);
+    var parsed = url.parse(config.url),
+        isHttps = parsed.protocol === 'https:';
 
     // Create the request
-    this.httpTransport = parsed.protocol === 'https:' ? https : http;
+    this.httpTransport = isHttps ? https : http;
 
     this.httpOptions = {
         protocol: parsed.protocol,
         host: parsed.hostname,
-        port: parsed.port || 80,
+        port: parsed.port || (isHttps ? 443 : 80),
         withCredentials: false,
         headers: {}
     };
+
+    if (isHttps) {
+        this.httpOptions.secureProtocol = config.secureProtocol || 'TLSv1_method';
+        this.httpOptions.agent = false;
+    }
 
     // Append version to path if provided
     var path;
