@@ -8,4 +8,6 @@ node_modules
 
 # coverage reporter output
 coverage
+
+# generated API docs
 docs
