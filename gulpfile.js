@@ -189,7 +189,6 @@ function generateChangelog() {
 function release(type, cb) {
 	var testsStream = runTests();
 	testsStream.on('error', function(e) {
-		console.log(333);
 		cb(e);
 	});
 	testsStream.on('finish', function() {
@@ -210,7 +209,6 @@ function release(type, cb) {
 		shell.exec("git push origin master --tags");
 		//shell.exec("npm publish");
 		publishDocs(cb);
-		cb(0);
 	});
 }
 
