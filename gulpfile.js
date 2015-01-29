@@ -188,9 +188,7 @@ function generateChangelog() {
  */
 function release(type, cb) {
 	var testsStream = runTests();
-	testsStream.on('error', function(e) {
-		cb(e);
-	});
+	testsStream.on('error', cb);
 	testsStream.on('end', function() {
 		try {
 			var newVersion = execHandlingErrors("npm version " + type, { silent: true }).trim();
