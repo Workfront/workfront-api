@@ -40,11 +40,11 @@ gulp.task('build', 'Generates browser-ready version for API in '+BUILD_DIR, ['cl
 	var uglify = require('gulp-uglify');
 	var rename = require('gulp-rename');
 	return browserify(
-			'./index.js',
-			{
-				standalone: 'AtTask'
-			}
-		)
+		'./index.js',
+		{
+			standalone: 'AtTask'
+		}
+	)
 		.ignore('promise/polyfill')
 		.bundle()
 		.pipe(source('attask.js'))
@@ -196,7 +196,6 @@ function release(type, cb) {
 		var shell = require('shelljs'),
 			newVersion;
 
-		target.test();
 		newVersion = shell.exec("npm version " + type, { silent: true }).output.trim();
 		generateChangelog();
 
@@ -291,8 +290,8 @@ gulp.task('test-coverage', 'Run all tests and generate coverage data in '+COVERA
 		.pipe(istanbul.hookRequire()) // Force `require` to return covered files
 		.on('finish', function () {
 			runTests()
-			.pipe(istanbul.writeReports()) // Creating the reports after tests runned
-			.on('end', cb);
+				.pipe(istanbul.writeReports()) // Creating the reports after tests runned
+				.on('end', cb);
 		});
 });
 
