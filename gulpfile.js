@@ -1,3 +1,5 @@
+"use strict";
+
 var gulp = require('gulp-help')(require('gulp'));
 
 var BUILD_DIR = './dist/';
@@ -54,7 +56,7 @@ gulp.task('build', 'Generates browser-ready version for API in '+BUILD_DIR, ['cl
 });
 
 
-var generateDocs = function(destinationPath) {
+function generateDocs(destinationPath) {
 	var jsdoc = require("gulp-jsdoc");
 	return gulp.src(["src/**/*.js", "README.md"])
 		.pipe(
@@ -70,9 +72,9 @@ var generateDocs = function(destinationPath) {
 			inverseNav: false
 		})
 	);
-};
+}
 
-var publishDocs = function(cb) {
+function publishDocs(cb) {
 	var shell = require('shelljs'),
 		path = require('path'),
 		os = require('os'),
@@ -88,9 +90,9 @@ var publishDocs = function(cb) {
 	shell.rm('-rf', ghPagesDir);
 	shell.mkdir(ghPagesDir);
 	shell.exec('git clone -b gh-pages https://github.com/bhovhannes/attask-api.git "'+ghPagesDir+'"');
-	shell.rm('-rf', path.join(ghPagesDir, 'api-docs', '*'));
+	shell.rm('-rf', path.join(ghPagesDir, '*'));
 
-	var stream = generateDocs(path.join(ghPagesDir, 'api-docs'));
+	var stream = generateDocs(ghPagesDir);
 	stream.on('finish', function() {
 		shell.cd(ghPagesDir);
 		shell.exec('git add -A .');
@@ -105,7 +107,113 @@ var publishDocs = function(cb) {
 	stream.on('error', function(e) {
 		cb('Error ' + e.name + ': ' + e.message);
 	});
-};
+}
+
+/**
+ * Splits a command result to separate lines.
+ * @param {String} result The command result string.
+ * @returns {String[]} The separated lines.
+ */
+function splitCommandResultToLines(result) {
+	return result.trim().split("\n");
+}
+
+/**
+ * Returns sorted array of version tags
+ * @returns {String[]}
+ */
+function getVersionTags() {
+	var shell = require('shelljs'),
+		semver = require('semver');
+
+	var tags = splitCommandResultToLines(shell.exec("git tag", { silent: true }).output);
+
+	return tags.reduce(function(list, tag) {
+		if (semver.valid(tag)) {
+			list.push(tag);
+		}
+		return list;
+	}, []).sort(semver.compare);
+}
+
+function generateChangelog() {
+	var shell = require('shelljs'),
+		dateformat = require('dateformat');
+
+	// get most recent two tags
+	var tags = getVersionTags(),
+		rangeTags,
+		now = new Date(),
+		timestamp = dateformat(now, "mmmm d, yyyy");
+
+	var header;
+	if (tags.length > 1) {
+		rangeTags = tags.slice(tags.length - 2);
+		header = rangeTags[1] + " - " + timestamp + "\n";
+	}
+	else if (tags.length === 1) {
+		rangeTags = tags.slice(tags.length - 1);
+		header = rangeTags[0] + " - " + timestamp + "\n";
+	}
+	else {
+		rangeTags = [];
+		header = timestamp + "\n";
+	}
+
+	// output header
+	header.to("CHANGELOG.tmp");
+
+	// get log statements
+	var logs = shell.exec("git log --pretty=format:\"* %s (%an)\" " + rangeTags.join(".."), {silent: true}).output.split(/\n/g);
+	logs = logs.filter(function(line) {
+		return line.indexOf("Merge pull request") === -1 && line.indexOf("Merge branch") === -1;
+	});
+	logs.push(""); // to create empty lines
+	logs.unshift("");
+
+	// output log statements
+	logs.join("\n").toEnd("CHANGELOG.tmp");
+
+	shell.cat("CHANGELOG.tmp", "CHANGELOG.md").to("CHANGELOG.md.tmp");
+	shell.rm("CHANGELOG.tmp");
+	shell.rm("CHANGELOG.md");
+	shell.mv("CHANGELOG.md.tmp", "CHANGELOG.md");
+}
+
+/**
+ * Creates a release version tag and pushes to origin.
+ * @param {String} type   The type of release to do (patch, minor, major)
+ * @param {Function} cb    Callback
+ * @returns {void}
+ */
+function release(type, cb) {
+	var testsStream = runTests();
+	testsStream.on('error', function(e) {
+		console.log(333);
+		cb(e);
+	});
+	testsStream.on('finish', function() {
+		var shell = require('shelljs'),
+			newVersion;
+
+		target.test();
+		newVersion = shell.exec("npm version " + type, { silent: true }).output.trim();
+		generateChangelog();
+
+		// add changelog to commit
+		shell.exec("git add CHANGELOG.md");
+		shell.exec("git commit --amend --no-edit");
+
+		// replace existing tag
+		shell.exec("git tag -f " + newVersion);
+
+		// push all the things
+		shell.exec("git push origin master --tags");
+		//shell.exec("npm publish");
+		publishDocs(cb);
+		cb(0);
+	});
+}
 
 
 /**
@@ -140,11 +248,32 @@ gulp.task('serve', 'Start supplied web server in a project directory. Binds to h
 });
 
 
-var runTests = function() {
+function runTests() {
 	var mocha = require('gulp-mocha');
 	return gulp.src('test/**/*.spec.js', {read: false})
 		.pipe(mocha({}));
-};
+}
+
+/**
+ * Do patch release
+ */
+gulp.task('release-patch', 'Do patch release', [], function(cb) {
+	release('patch', cb);
+});
+
+/**
+ * Do minor release
+ */
+gulp.task('release-minor', 'Do minor release', [], function(cb) {
+	release('minor', cb);
+});
+
+/**
+ * Do major release
+ */
+gulp.task('release-major', 'Do major release', [], function(cb) {
+	release('major', cb);
+});
 
 /**
  * Runs all tests
