@@ -204,7 +204,7 @@ function release(type, cb) {
 			// push all the things
 			execHandlingErrors("git push origin master --tags");
 
-			//execHandlingErrors("npm publish");
+			execHandlingErrors("npm publish");
 			publishDocs(cb);
 		}
 		catch(e) {
