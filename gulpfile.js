@@ -164,7 +164,7 @@ function generateChangelog() {
 	header.to("CHANGELOG.tmp");
 
 	// get log statements
-	var logs = execHandlingErrors("git log --pretty=format:\"* %s (%an)\" " + rangeTags.join(".."), {silent: true}).output.split(/\n/g);
+	var logs = execHandlingErrors("git log --pretty=format:\"* %s (%an)\" " + rangeTags.join(".."), {silent: true}).split(/\n/g);
 	logs = logs.filter(function(line) {
 		return line.indexOf("Merge pull request") === -1 && line.indexOf("Merge branch") === -1;
 	});
