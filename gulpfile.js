@@ -126,7 +126,7 @@ function getVersionTags() {
 	var shell = require('shelljs'),
 		semver = require('semver');
 
-	var tags = splitCommandResultToLines(execHandlingErrors("git tag", { silent: true }).output);
+	var tags = splitCommandResultToLines(execHandlingErrors("git tag", { silent: true }));
 
 	return tags.reduce(function(list, tag) {
 		if (semver.valid(tag)) {
