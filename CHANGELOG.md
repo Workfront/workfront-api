@@ -1,3 +1,8 @@
+v0.4.0 - January 29, 2015
+
+* 0.4.0 (Hovhannes Babayan)
+* added release task. minor fixes (Hovhannes Babayan)
+
 v0.3.0 - January 29, 2015
 
 * 0.3.0 (Hovhannes Babayan)
