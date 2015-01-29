@@ -211,9 +211,7 @@ function release(type, cb) {
 		}
 		catch(e) {
 			cb(e);
-			return;
 		}
-		cb(0);
 	});
 }
 
