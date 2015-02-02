@@ -139,8 +139,7 @@ function splitCommandResultToLines(result) {
  * @returns {String[]}
  */
 function getVersionTags() {
-	var shell = require('shelljs'),
-		semver = require('semver');
+	var semver = require('semver');
 
 	var tags = splitCommandResultToLines(shellExec("git tag", { silent: true }));
 
