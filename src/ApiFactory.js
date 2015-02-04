@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 AtTask
+ * Copyright 2015 Workfront
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,17 +19,17 @@ var Api = require('./Api'),
 
 /**
  * @name ApiFactory
- * @memberOf AtTask
+ * @memberOf Workfront
  * @namespace
  */
 module.exports = {
     /**
      * Returns an Api instance. Creates a new one if no instance exists.<br/>
      * One can use this if Api is intended to be used as singleton.
-     * @memberOf AtTask.ApiFactory
+     * @memberOf Workfront.ApiFactory
      * @param {Object} config   An object with the following keys:<br/>
-     *     <code>url</code> {String} - Required. An url to AtTask server (for example: http://localhost:8080)<br/>
-     *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'internal' to use AtTask internal API (this is the latest version, maybe unstable)
+     *     <code>url</code> {String} - Required. An url to Workfront server (for example: http://localhost:8080)<br/>
+     *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'internal' to use Workfront internal API (this is the latest version, maybe unstable)
      * @param {Boolean} [returnNewInstance]    If true, always creates a new instance
      * @return {Api}
      */
@@ -50,7 +50,7 @@ module.exports = {
 
     /**
      * Removes previously created Api instance.
-     * @memberOf AtTask.ApiFactory
+     * @memberOf Workfront.ApiFactory
      */
     deleteInstance: function() {
         _instance = undefined;

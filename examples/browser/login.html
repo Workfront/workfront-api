@@ -1,5 +1,5 @@
 <!--
- Copyright 2015 AtTask
+ Copyright 2015 Workfront
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -23,14 +23,14 @@
 	<!-- The script below is not needed if your browser supports ES6 promises -->
 	<script src="https://www.promisejs.org/polyfills/promise-6.0.0.min.js"></script>
 
-	<script src="/dist/attask.min.js"></script>
+	<script src="/dist/workfront.min.js"></script>
 	<script>
 		function doLogin() {
 			var url = document.getElementById('url').value;
 			var username = document.getElementById('username').value;
 			var password = document.getElementById('password').value;
 
-			var instance = new window.AtTask.Api({url: url, version: '4.0'});
+			var instance = new window.Workfront.Api({url: url, version: '4.0'});
 			instance.login(username, password).then(function(data){
 				console.log(data)
 			}, console.error);
@@ -42,16 +42,16 @@
 		<div>
 			<div class="form-group">
 				<label for="url">Url</label>
-				<input type="text" class="form-control" id="url" value="http://localhost:8080" placeholder="Url to use for connection to AtTask">
+				<input type="text" class="form-control" id="url" value="http://localhost:8080" placeholder="Url to use for connection to Workfront">
 			</div>
 
 			<div class="form-group">
 				<label for="username">Username</label>
-				<input type="text" class="form-control" id="username" value="new@user.attask" placeholder="Your AtTask login">
+				<input type="text" class="form-control" id="username" value="new@user.attask" placeholder="Your Workfront login">
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
-				<input type="text" class="form-control" id="password" value="user" placeholder="Your AtTask password">
+				<input type="text" class="form-control" id="password" value="user" placeholder="Your Workfront password">
 			</div>
 
 			<button type="submit" class="btn btn-default" onclick="doLogin()">Login</button>

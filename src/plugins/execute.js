@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 AtTask
+ * Copyright 2015 Workfront
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,10 @@ module.exports = function(Api) {
 
     /**
      * Executes an action for the given object
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|AtTask API Explorer}
+     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object
-     * @param {String} action    An action to execute. A list of allowed named queries are available within the {@link https://developers.attask.com/api-docs/api-explorer/|AtTask API Explorer} under "actions" for each object.
-     * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|AtTask API Explorer} for the list of valid arguments
+     * @param {String} action    An action to execute. A list of allowed named queries are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
+     * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.execute = function (objCode, objID, action, actionArgs) {

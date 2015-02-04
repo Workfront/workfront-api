@@ -1,7 +1,7 @@
 {
-  "name": "attask-api",
+  "name": "workfront-api",
   "version": "0.4.0",
-  "description": "An AtTask API for the Node and Web",
+  "description": "A Workfront API for the Node.js and the Web",
   "main": "index.js",
   "dependencies": {
     "promise": "^6.0.1"
@@ -35,20 +35,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bhovhannes/attask-api.git"
+    "url": "https://github.com/Workfront/workfront-api.git"
   },
   "keywords": [
+    "Workfront",
     "AtTask",
     "API"
   ],
-  "author": "AtTask",
+  "author": "Workfront",
   "contributors": [
     "Hovhannes Babayan <bhovhannes@gmail.com>",
     "Sassoun Derderian <citizen.sas@gmail.com>"
   ],
   "license": "ALv2",
   "bugs": {
-    "url": "https://github.com/bhovhannes/attask-api/issues"
+    "url": "https://github.com/Workfront/workfront-api/issues"
   },
-  "homepage": "https://github.com/bhovhannes/attask-api"
+  "homepage": "https://github.com/Workfront/workfront-api"
 }

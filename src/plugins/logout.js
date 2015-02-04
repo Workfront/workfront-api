@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 AtTask
+ * Copyright 2015 Workfront
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 module.exports = function(Api) {
     /**
-     * Logs out from AtTask
+     * Logs out from Workfront
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.logout = function () {

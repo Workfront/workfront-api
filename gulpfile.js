@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 AtTask
+ * Copyright 2015 Workfront
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ gulp.task('clean-coverage', false, [], function(cb) {
 
 /**
  * Generates browser-ready version for API in BUILD_DIR
- * File will be named as attask.js, minified version will be attask.min.js
+ * File will be named as workfront.js, minified version will be workfront.min.js
  */
 gulp.task('build', 'Generates browser-ready version for API in '+BUILD_DIR, ['clean-build'], function() {
 	var browserify = require('browserify');
@@ -58,12 +58,12 @@ gulp.task('build', 'Generates browser-ready version for API in '+BUILD_DIR, ['cl
 	return browserify(
 		'./index.js',
 		{
-			standalone: 'AtTask'
+			standalone: 'Workfront'
 		}
 	)
 		.ignore('promise/polyfill')
 		.bundle()
-		.pipe(source('attask.js'))
+		.pipe(source('workfront.js'))
 		.pipe(buffer())
 		.pipe(gulp.dest(BUILD_DIR))
 		.pipe(rename({ extname: '.min.js' }))
@@ -78,7 +78,7 @@ function generateDocs(destinationPath) {
 		.pipe(
 		jsdoc(destinationPath, {
 			path: 'ink-docstrap',
-			systemName: 'attask-api',
+			systemName: 'workfront-api',
 			//footer: "Something",
 			//copyright: "Something",
 			navType: "vertical",
@@ -105,7 +105,7 @@ function publishDocs(cb) {
 		currentDir = process.cwd();
 	shell.rm('-rf', ghPagesDir);
 	shell.mkdir(ghPagesDir);
-	shellExec('git clone -b gh-pages https://github.com/bhovhannes/attask-api.git "'+ghPagesDir+'"');
+	shellExec('git clone -b gh-pages https://github.com/Workfront/workfront-api.git "'+ghPagesDir+'"');
 	shell.rm('-rf', path.join(ghPagesDir, '*'));
 
 	var stream = generateDocs(ghPagesDir);
@@ -249,7 +249,7 @@ gulp.task('docs', 'Generate API documentation in ./docs/ folder', [], function()
 /**
  * Generate and publish API documentation to gh-pages branch
  */
-gulp.task('publish-docs', 'Generate and publish API documentation to http://bhovhannes.github.io/attask-api/', [], function(cb) {
+gulp.task('publish-docs', 'Generate and publish API documentation to http://workfront.github.io/workfront-api/', [], function(cb) {
 	publishDocs(cb);
 });
 

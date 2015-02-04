@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 AtTask
+ * Copyright 2015 Workfront
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 
 module.exports = function(Api) {
     /**
-     * Logs in into AtTask. Should be a first call to AtTask API.
+     * Logs in into Workfront. Should be a first call to Workfront API.
      * Other calls should be made after this one will be completed.
-     * @param {String} username    A username in AtTask
+     * @param {String} username    A username in Workfront
      * @param {String} password    Password to use
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */

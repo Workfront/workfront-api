@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 AtTask
+ * Copyright 2015 Workfront
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,14 +22,13 @@ var ApiFactory = require('./../../').ApiFactory;
 var util = require('util');
 
 var instance = ApiFactory.getInstance({
-	url: 'https://hub.attask.com',
+    url: 'http://localhost:8080',
 	version: '4.0'
 });
 
 util.print('Logs in\n');
 util.log('Logging in ...');
-//instance.login('new@user.attask', 'user').then(
-instance.login('sassounderderian', 'inMeLet14').then(
+instance.login('new@user.attask', 'user').then(
 	function(data) {
 		util.log('Login success. Received data:');
 		console.log(util.inspect(data, {colors:true}));

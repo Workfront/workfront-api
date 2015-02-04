@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 AtTask
+ * Copyright 2015 Workfront
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 module.exports = function(Api) {
     /**
      * Retrieves API metadata for an object.
-     * @param {String} [objCode]    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|AtTask API Explorer}. If omitted will return list of objects available in API.
+     * @param {String} [objCode]    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}. If omitted will return list of objects available in API.
      * @return {Promise}    A promise which will resolved with object metadata if everything went ok and rejected otherwise
      */
     Api.prototype.metadata = function (objCode) {
