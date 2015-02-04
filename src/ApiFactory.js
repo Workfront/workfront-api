@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
+
 var Api = require('./Api'),
     _instance;
 

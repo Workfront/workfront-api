@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Performs report request, where only the aggregate of some field is desired, with one or more groupings.
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} query    An object with search criteria and aggregate functions
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise

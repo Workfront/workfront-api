@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Edits an existing object
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object to modify
      * @param {Object} updates    Which fields to set. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.

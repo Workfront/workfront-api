@@ -14,10 +14,14 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
 
     /**
      * Deletes an object
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object
      * @param {Boolean} [bForce]    Pass true to cause the server to remove the specified data and its dependants

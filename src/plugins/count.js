@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Used to retrieve number of objects matching given search criteria
+     * @memberOf Workfront.Api
      * @param {String} objCode
      * @param {Object} query    An object with search criteria
      * @return {Promise}

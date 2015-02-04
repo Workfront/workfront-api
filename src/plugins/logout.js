@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Logs out from Workfront
+     * @memberOf Workfront.Api
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.logout = function () {

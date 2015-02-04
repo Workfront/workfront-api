@@ -14,10 +14,15 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Logs in into Workfront. Should be a first call to Workfront API.
      * Other calls should be made after this one will be completed.
+     * @memberOf Workfront.Api
      * @param {String} username    A username in Workfront
      * @param {String} password    Password to use
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise

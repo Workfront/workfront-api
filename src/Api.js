@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
+
 var url = require('url'),
     http = require('http'),
     https = require('https');
@@ -22,9 +27,10 @@ var url = require('url'),
  * Creates new Api instance.
  * @param {Object} config   An object with the following keys:<br/>
  *     <code>url</code> {String} - Required. An url to Workfront server (for example: http://localhost:8080)<br/>
- *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'unsupported' to use Workfront latest API (maybe unstable).
+ *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'unsupported' to use Workfront latest API (maybe unstable).<br/>
  *     <code>secureProtocol</code> {String} - Optional. Used only in https. The SSL method to use, e.g. TLSv1_method to force TLS version 1. The possible values depend on your installation of OpenSSL and are defined in the constant {@link http://www.openssl.org/docs/ssl/ssl.html#DEALING_WITH_PROTOCOL_METHODS|SSL_METHODS}.
  * @constructor
+ * @memberOf Workfront
  */
 function Api(config) {
     var parsed = url.parse(config.url),

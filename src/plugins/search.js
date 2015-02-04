@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Used for object retrieval by multiple search criteria.
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} query    An object with search criteria
      * @param {Array} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.

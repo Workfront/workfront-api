@@ -15,6 +15,10 @@
  */
 
 /**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
+
+/**
  * @namespace
  * @memberOf Workfront
  */
