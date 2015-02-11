@@ -254,22 +254,6 @@ gulp.task('publish-docs', 'Generate and publish API documentation to http://work
 });
 
 
-/**
- * Starts supplied web server in a project directory. Binds to http://localhost:8000/
- */
-gulp.task('serve', 'Start supplied web server in a project directory. Binds to http://localhost:8000/', [], function() {
-	var webserver = require('gulp-webserver');
-	gulp.src('./')
-		.pipe(webserver({
-			hostname: 'localhost',
-			port: 8000,
-			livereload: true,
-			directoryListing: true,
-			open: true
-		}));
-});
-
-
 function runTests() {
 	var mocha = require('gulp-mocha');
 	return gulp.src('test/**/*.spec.js', {read: false})

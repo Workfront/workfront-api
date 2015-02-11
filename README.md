@@ -63,14 +63,9 @@ Each example script outputs all its results into console and contains comments i
 
 #### Running [browser](examples/browser) examples
 
-There is a separate [Gulp](http://gulpjs.com) task for starting web server.
-To start webserver type:
+To start supplied webserver type:
 
-    node ./node_modules/gulp/bin/gulp.js serve
-
-or, if you have Gulp installed globally, just:
-
-    gulp serve
+    npm start
 
 Visit [http://localhost:8000/examples/browser/](http://localhost:8000/examples/browser/) to see list of all examples available for browser.
 

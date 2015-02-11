@@ -1,0 +1,33 @@
+{
+  "name": "workfront-api",
+  "main": [
+    "dist/workfront.js"
+  ],
+  "version": "0.0.0",
+  "homepage": "https://github.com/Workfront/workfront-api",
+  "authors": [
+    "Hovhannes Babayan <bhovhannes@gmail.com>",
+    "Sassoun Derderian <citizen.sas@gmail.com>"
+  ],
+  "description": "A Workfront API for the Node.js and the Web",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "Workfront",
+    "AtTask",
+    "API"
+  ],
+  "license": "ALv2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "docs",
+    "coverage",
+    "examples",
+    "src"
+  ]
+}
