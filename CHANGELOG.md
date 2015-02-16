@@ -1,3 +1,8 @@
+v1.0.2 - February 16, 2015
+
+* 1.0.2 (Hovhannes Babayan)
+* Added some node-related files into ignore list of bower.json (Hovhannes Babayan)
+
 v1.0.1 - February 16, 2015
 
 * 1.0.1 (Hovhannes Babayan)
