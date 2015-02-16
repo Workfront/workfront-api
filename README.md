@@ -94,7 +94,9 @@ provide as much detail and context as possible.
 
 Copyright (c) 2015 Workfront
 
-Licensed under the APv2 License
+Licensed under the Apache License, Version 2.0.
+See the top-level file `LICENSE` and
+(http://www.apache.org/licenses/LICENSE-2.0).
 
 
 [license-image]: http://img.shields.io/badge/license-APv2-blue.svg?style=flat
