@@ -28,6 +28,9 @@
     "docs",
     "coverage",
     "examples",
-    "src"
+    "src",
+    "gulpfile.js",
+    "index.js",
+    "package.json"
   ]
 }
