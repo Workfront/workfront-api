@@ -70,6 +70,33 @@ To start supplied webserver type:
 Visit [http://localhost:8000/examples/browser/](http://localhost:8000/examples/browser/) to see list of all examples available for browser.
 
 
+## Contributing
+
+We welcome contributions of all kinds from anyone. It can be either new example or fix or documentation improvement. Please read these guidelines:
+
+### Bug Reports
+A bug is a _demonstrable problem_ that is caused by the code in the repository. Good bug reports are extremely helpful - thank you! Please make sure to check these points to make a good bug report:
+
+1. **Use the GitHub issue search** &mdash; check if the issue has already been
+   reported.
+2. **Isolate the problem** &mdash; ideally create a [reduced test
+      case](http://css-tricks.com/6263-reduced-test-cases/).
+3. A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.
+
+### Feature requests
+
+Feature requests are welcome. But take a moment to find out whether your idea
+fits with the scope and aims of the project. It's up to *you* to make a strong
+case to convince the project's developers of the merits of this feature. Please
+provide as much detail and context as possible.
+
+## License
+
+Copyright (c) 2015 Workfront
+
+Licensed under the APv2 License
+
+
 [license-image]: http://img.shields.io/badge/license-APv2-blue.svg?style=flat
 [license-url]: LICENSE
 
