@@ -1,3 +1,9 @@
+v1.0.1 - February 16, 2015
+
+* 1.0.1 (Hovhannes Babayan)
+* Added node 0.12 to travis runs (Hovhannes Babayan)
+* fixed typo in license name (Hovhannes Babayan)
+
 v1.0.0 - February 16, 2015
 
 * 1.0.0 (Hovhannes Babayan)
