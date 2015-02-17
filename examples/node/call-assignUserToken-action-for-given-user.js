@@ -27,7 +27,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, loads list of active users, then calls assignUserToken action for the first user\n');
+console.log('Logs in, loads list of active users, then calls assignUserToken action for the first user\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

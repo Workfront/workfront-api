@@ -25,7 +25,7 @@ module.exports = function(Api) {
      * @memberOf Workfront.Api
      * @param {fs.ReadStream} stream    A readable stream with file contents
      */
-    Api.prototype.upload = function (stream) {
+    Api.prototype.upload = function (/*stream*/) {
         throw new Error('Not implemented')
     };
 };

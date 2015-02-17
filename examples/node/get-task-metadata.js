@@ -26,7 +26,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, queries metadata for the task object (objCode: TASK)\n');
+console.log('Logs in, queries metadata for the task object (objCode: TASK)\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

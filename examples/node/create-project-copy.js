@@ -26,7 +26,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, then creates a new project with name "API Project", then copies it\n');
+console.log('Logs in, then creates a new project with name "API Project", then copies it\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

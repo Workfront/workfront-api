@@ -27,7 +27,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, returns number of active users\n');
+console.log('Logs in, returns number of active users\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function() {

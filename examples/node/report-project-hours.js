@@ -27,7 +27,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, then returns list of hours grouped by project names\n');
+console.log('Logs in, then returns list of hours grouped by project names\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

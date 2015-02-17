@@ -26,7 +26,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, then creates a group "Api Group", edits the name to read "Api Group 2", then deletes it\n');
+console.log('Logs in, then creates a group "Api Group", edits the name to read "Api Group 2", then deletes it\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

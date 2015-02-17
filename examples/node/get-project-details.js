@@ -26,7 +26,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, queries project and project owner details by project id\n');
+console.log('Logs in, queries project and project owner details by project id\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

@@ -26,7 +26,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, then calls myWork named query for Work object (Items in My Work)\n');
+console.log('Logs in, then calls myWork named query for Work object (Items in My Work)\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

@@ -39,7 +39,7 @@ function deleteProject(projectID) {
 	);
 }
 
-util.print('Logs in, then deletes all projects with name containing "API Project"\n');
+console.log('Logs in, then deletes all projects with name containing "API Project"\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

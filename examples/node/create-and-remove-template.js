@@ -26,7 +26,7 @@ var instance = ApiFactory.getInstance({
 	version: '4.0'
 });
 
-util.print('Logs in, then creates a new template with name "API Template", then removes it\n');
+console.log('Logs in, then creates a new template with name "API Template", then removes it\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

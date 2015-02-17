@@ -59,12 +59,6 @@ module.exports = function(Api) {
         var httpTransport = this.httpTransport;
 
         return new Promise(function (resolve, reject) {
-            /*options = {
-                url: 'http://echo.jsontest.com',
-                path: '/data/123',
-                withCredentials: false
-            };*/
-
             var request = httpTransport.request(options, function (response) {
                 var body = '';
                 if (typeof response.setEncoding === 'function') {

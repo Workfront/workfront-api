@@ -51,7 +51,7 @@ var deleteGroup = function(data) {
 	return instance.remove('group', data.ID);
 };
 
-util.print('Logs in, then creates a group "Api Group", edits the name to read "Api Group 2", then deletes it\n');
+console.log('Logs in, then creates a group "Api Group", edits the name to read "Api Group 2", then deletes it\n');
 
 login().then(createGroup).then(editGroup).then(deleteGroup).then(
 	function() {
