@@ -23,12 +23,19 @@ module.exports = function(Api) {
      * Executes an action for the given object
      * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
-     * @param {String} objID    ID of object
-     * @param {String} action    An action to execute. A list of allowed named queries are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
+     * @param {String} objID    ID of object. Optional, pass null or undefined to omit
+     * @param {String} action    An action to execute. A list of allowed actions are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
      * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.execute = function (objCode, objID, action, actionArgs) {
-        return this.request(objCode + '/' + objID + '/' + action, actionArgs, null, Api.Methods.PUT);
+        var endPoint = objCode;
+        if (objID) {
+            endPoint += '/' + objID + '/' + action;
+        }
+        else {
+            actionArgs['action'] = action;
+        }
+        return this.request(endPoint, actionArgs, null, Api.Methods.PUT);
     };
 };
