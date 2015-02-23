@@ -1,3 +1,11 @@
+v1.0.3 - February 23, 2015
+
+* 1.0.3 (Hovhannes Babayan)
+* rebuilt before release (Hovhannes Babayan)
+* Feature: Add support for API actions with 'null' IDs (Hovhannes Babayan)
+* Doc improvement: describe available usage scenarios for browsers (Hovhannes Babayan)
+* Replaced obsolete util.print with console.log (Hovhannes Babayan)
+
 v1.0.2 - February 16, 2015
 
 * 1.0.2 (Hovhannes Babayan)
