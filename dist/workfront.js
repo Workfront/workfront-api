@@ -6818,6 +6818,11 @@ function hasOwnProperty(obj, prop) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
+
 var url = require('url'),
     http = require('http'),
     https = require('https');
@@ -6826,9 +6831,10 @@ var url = require('url'),
  * Creates new Api instance.
  * @param {Object} config   An object with the following keys:<br/>
  *     <code>url</code> {String} - Required. An url to Workfront server (for example: http://localhost:8080)<br/>
- *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'unsupported' to use Workfront latest API (maybe unstable).
+ *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'unsupported' to use Workfront latest API (maybe unstable).<br/>
  *     <code>secureProtocol</code> {String} - Optional. Used only in https. The SSL method to use, e.g. TLSv1_method to force TLS version 1. The possible values depend on your installation of OpenSSL and are defined in the constant {@link http://www.openssl.org/docs/ssl/ssl.html#DEALING_WITH_PROTOCOL_METHODS|SSL_METHODS}.
  * @constructor
+ * @memberOf Workfront
  */
 function Api(config) {
     var parsed = url.parse(config.url),
@@ -6903,6 +6909,10 @@ module.exports = Api;
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ */
+
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
  */
 
 /**
@@ -7426,6 +7436,11 @@ module.exports = ApiConstants;
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
+
 var Api = require('./Api'),
     _instance;
 
@@ -7486,6 +7501,10 @@ module.exports = {
  */
 
 /**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
+
+/**
  * @name ApiUtil
  * @memberOf Workfront
  * @namespace
@@ -7511,10 +7530,14 @@ module.exports = {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Copies an existing object with making changes on a copy.
      * Copying is supported only for some objects. The {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} page displays which objects support the Copy action.
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object to copy
      * @param {Object} updates    Which fields to set on copied object. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
@@ -7548,9 +7571,13 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Used to retrieve number of objects matching given search criteria
+     * @memberOf Workfront.Api
      * @param {String} objCode
      * @param {Object} query    An object with search criteria
      * @return {Promise}
@@ -7582,9 +7609,14 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Creates a new object.
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} params    Values of fields to be set for the new object. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @param {String[]} [fields]    Which fields of newly created object to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
@@ -7611,9 +7643,13 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Edits an existing object
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object to modify
      * @param {Object} updates    Which fields to set. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
@@ -7644,18 +7680,29 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
 
     /**
      * Executes an action for the given object
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
-     * @param {String} objID    ID of object
-     * @param {String} action    An action to execute. A list of allowed named queries are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
+     * @param {String} objID    ID of object. Optional, pass null or undefined to omit
+     * @param {String} action    An action to execute. A list of allowed actions are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
      * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.execute = function (objCode, objID, action, actionArgs) {
-        return this.request(objCode + '/' + objID + '/' + action, actionArgs, null, Api.Methods.PUT);
+        var endPoint = objCode;
+        if (objID) {
+            endPoint += '/' + objID + '/' + action;
+        }
+        else {
+            actionArgs['action'] = action;
+        }
+        return this.request(endPoint, actionArgs, null, Api.Methods.PUT);
     };
 };
 },{}],45:[function(require,module,exports){
@@ -7675,9 +7722,14 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Used for retrieve an object or multiple objects.
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String|Array} objIDs    Either one or multiple object ids
      * @param {Object} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
@@ -7711,10 +7763,15 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Logs in into Workfront. Should be a first call to Workfront API.
      * Other calls should be made after this one will be completed.
+     * @memberOf Workfront.Api
      * @param {String} username    A username in Workfront
      * @param {String} password    Password to use
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
@@ -7747,9 +7804,14 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Logs out from Workfront
+     * @memberOf Workfront.Api
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.logout = function () {
@@ -7783,9 +7845,13 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Retrieves API metadata for an object.
+     * @memberOf Workfront.Api
      * @param {String} [objCode]    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}. If omitted will return list of objects available in API.
      * @return {Promise}    A promise which will resolved with object metadata if everything went ok and rejected otherwise
      */
@@ -7814,10 +7880,14 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
 
     /**
      * Executes a named query for the given obj code
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} query    A query to execute. A list of allowed named queries are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
      * @param {Object} [queryArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
@@ -7845,10 +7915,14 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
 
     /**
      * Deletes an object
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object
      * @param {Boolean} [bForce]    Pass true to cause the server to remove the specified data and its dependants
@@ -7885,9 +7959,13 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Performs report request, where only the aggregate of some field is desired, with one or more groupings.
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} query    An object with search criteria and aggregate functions
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
@@ -7911,6 +7989,11 @@ module.exports = function(Api) {
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ */
+
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
  */
 
 var queryString = require('querystring'),
@@ -7953,12 +8036,6 @@ module.exports = function(Api) {
         var httpTransport = this.httpTransport;
 
         return new Promise(function (resolve, reject) {
-            /*options = {
-                url: 'http://echo.jsontest.com',
-                path: '/data/123',
-                withCredentials: false
-            };*/
-
             var request = httpTransport.request(options, function (response) {
                 var body = '';
                 if (typeof response.setEncoding === 'function') {
@@ -8010,9 +8087,14 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Sassoun Derderian <citizen.sas at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Used for object retrieval by multiple search criteria.
+     * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} query    An object with search criteria
      * @param {Array} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
@@ -8039,14 +8121,18 @@ module.exports = function(Api) {
  * limitations under the License.
  */
 
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
 module.exports = function(Api) {
     /**
      * Starting from version 2.0 API allows users to upload files.
      * The server will return the JSON data which includes 'handle' of uploaded file.
      * Returned 'handle' can be passed to create() method to create a new document.
+     * @memberOf Workfront.Api
      * @param {fs.ReadStream} stream    A readable stream with file contents
      */
-    Api.prototype.upload = function (stream) {
+    Api.prototype.upload = function (/*stream*/) {
         throw new Error('Not implemented')
     };
 };
