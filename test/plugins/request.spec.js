@@ -48,6 +48,30 @@ describe('Api.request() method', function() {
 	});
 
 
+    it('should resolve returned promise with data if everything went ok when fields are specified as string', function(done) {
+        var url = 'http://foobar:8080',
+            path = '/test',
+            params = {
+                'foo': 1,
+                'bar': 'baz'
+            },
+            fields = '*',
+            method = 'GET';
+
+        nock(url)
+            .get('/attask/api' + path + '?foo=1&bar=baz&fields=*')
+            .reply(200, {
+                data: {
+                    'got': 'ok'
+                }
+            });
+
+        var api = new Api({url: url});
+        var promise = api.request(path, params, fields, method);
+        expect(promise).to.eventually.deep.equal({'got': 'ok'}).and.notify(done);
+    });
+
+
 	it('should resolve returned promise with data if everything went ok when using POST', function(done) {
 		var url = 'http://foobar:8080',
 			path = '/test',

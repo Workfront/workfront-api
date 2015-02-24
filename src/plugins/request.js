@@ -31,6 +31,10 @@ module.exports = function(Api) {
         params = params || {};
         fields = fields || [];
 
+        if (typeof fields === 'string') {
+            fields = [fields];
+        }
+
         var options = {};
         util._extend(options, this.httpOptions);
         options.method = method;

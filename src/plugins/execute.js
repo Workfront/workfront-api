@@ -34,6 +34,7 @@ module.exports = function(Api) {
             endPoint += '/' + objID + '/' + action;
         }
         else {
+            actionArgs = actionArgs || {};
             actionArgs['action'] = action;
         }
         return this.request(endPoint, actionArgs, null, Api.Methods.PUT);
