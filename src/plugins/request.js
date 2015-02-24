@@ -28,12 +28,13 @@ module.exports = function(Api) {
     };
 
     Api.prototype.request = function(path, params, fields, method) {
-        params = params || {};
         fields = fields || [];
-
         if (typeof fields === 'string') {
             fields = [fields];
         }
+
+        params = params || {};
+        util._extend(params, this.httpParams);
 
         var options = {};
         util._extend(options, this.httpOptions);

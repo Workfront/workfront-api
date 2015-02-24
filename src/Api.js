@@ -47,6 +47,9 @@ function Api(config) {
         headers: {}
     };
 
+    // These params will be sent with each request
+    this.httpParams = {};
+
     if (isHttps) {
         this.httpOptions.secureProtocol = config.secureProtocol || 'TLSv1_method';
         this.httpOptions.agent = false;
@@ -88,5 +91,6 @@ require('./plugins/upload')(Api);
 require('./plugins/execute')(Api);
 require('./plugins/namedQuery')(Api);
 require('./plugins/metadata')(Api);
+require('./plugins/apiKey')(Api);
 
 module.exports = Api;
