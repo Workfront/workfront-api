@@ -103,6 +103,13 @@ var ApiConstants = {
 	 */
 	ROLLUP: "$$ROLLUP",
 
+    /**
+     * Prefix for constants.
+     * @readonly
+     * @type {String}
+     */
+    INTERNAL_PREFIX: '$$',
+
 	/**
 	 * Values which can be used as wildcards
 	 * @readonly

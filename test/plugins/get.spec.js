@@ -51,6 +51,24 @@ describe('Api.get() method', function() {
 		expect(actualReturnedValue).to.equal(expectedReturnValue);
 	});
 
+	it('should call request() with proper params and return value received from request() if called with single objId (String) containing internal prefix', function() {
+		var objId = '$$USER';
+
+		var fields = [
+			'*', "zzz:*"
+		];
+
+		var objCode = 'baz';
+
+		var expectedReturnValue = 123;
+		api.request.returns(expectedReturnValue);
+
+		var actualReturnedValue = api.get(objCode, objId, fields);
+		expect(api.request).to.have.callCount(1);
+		expect(api.request).to.have.been.calledWith(objCode, {id:objId}, fields, "GET");
+		expect(actualReturnedValue).to.equal(expectedReturnValue);
+	});
+
 	it('should call request() with proper params and return value received from request() if called with single objId (Array)', function() {
 		var objId = ['myid'];
 
