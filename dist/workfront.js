@@ -6851,6 +6851,9 @@ function Api(config) {
         headers: {}
     };
 
+    // These params will be sent with each request
+    this.httpParams = {};
+
     if (isHttps) {
         this.httpOptions.secureProtocol = config.secureProtocol || 'TLSv1_method';
         this.httpOptions.agent = false;
@@ -6892,9 +6895,10 @@ require('./plugins/upload')(Api);
 require('./plugins/execute')(Api);
 require('./plugins/namedQuery')(Api);
 require('./plugins/metadata')(Api);
+require('./plugins/apiKey')(Api);
 
 module.exports = Api;
-},{"./plugins/copy":40,"./plugins/count":41,"./plugins/create":42,"./plugins/edit":43,"./plugins/execute":44,"./plugins/get":45,"./plugins/login":46,"./plugins/logout":47,"./plugins/metadata":48,"./plugins/namedQuery":49,"./plugins/remove":50,"./plugins/report":51,"./plugins/request":52,"./plugins/search":53,"./plugins/upload":54,"http":8,"https":12,"url":33}],37:[function(require,module,exports){
+},{"./plugins/apiKey":40,"./plugins/copy":41,"./plugins/count":42,"./plugins/create":43,"./plugins/edit":44,"./plugins/execute":45,"./plugins/get":46,"./plugins/login":47,"./plugins/logout":48,"./plugins/metadata":49,"./plugins/namedQuery":50,"./plugins/remove":51,"./plugins/report":52,"./plugins/request":53,"./plugins/search":54,"./plugins/upload":55,"http":8,"https":12,"url":33}],37:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -6999,6 +7003,13 @@ var ApiConstants = {
 	 * Key used to specify that a GROUP BY query should be done WITH ROLLUP. Value is "$$ROLLUP"
 	 */
 	ROLLUP: "$$ROLLUP",
+
+    /**
+     * Prefix for constants.
+     * @readonly
+     * @type {String}
+     */
+    INTERNAL_PREFIX: '$$',
 
 	/**
 	 * Values which can be used as wildcards
@@ -7534,6 +7545,73 @@ module.exports = {
  * @author Hovhannes Babayan <bhovhannes at gmail dot com>
  */
 module.exports = function(Api) {
+
+    /**
+     * Used to obtain an API key
+     * @memberOf Workfront.Api
+     * @param {String} username    A username in Workfront
+     * @param {String} password    Password to use
+     * @return {Promise}    A promise which will resolved with API key if everything went ok and rejected otherwise
+     */
+    Api.prototype.getApiKey = function (username, password) {
+        var that = this;
+        return new Promise(function (resolve, reject) {
+            if (typeof that.httpParams.apiKey !== 'undefined') {
+                resolve(that.httpParams.apiKey);
+            }
+            else {
+                that.execute('USER', null, 'getApiKey', {
+                    username: username,
+                    password: password
+                }).then(function (data) {
+                    that.httpParams.apiKey = data.result;
+                    resolve(that.httpParams.apiKey);
+                }, reject);
+            }
+        });
+    };
+
+    /**
+     * Invalidates the current API key.
+     * Call this to be able to retrieve a new one using getApiKey().
+     * @memberOf Workfront.Api
+     * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
+     */
+    Api.prototype.clearApiKey = function () {
+        var that = this;
+        return new Promise(function (resolve, reject) {
+            that.execute('USER', null, 'clearApiKey').then(function (result) {
+                if (result) {
+                    delete that.httpParams.apiKey;
+                    resolve();
+                } else {
+                    reject();
+                }
+            });
+        });
+    }
+};
+},{}],41:[function(require,module,exports){
+/**
+ * Copyright 2015 Workfront
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ */
+module.exports = function(Api) {
     /**
      * Copies an existing object with making changes on a copy.
      * Copying is supported only for some objects. The {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} page displays which objects support the Copy action.
@@ -7541,7 +7619,7 @@ module.exports = function(Api) {
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object to copy
      * @param {Object} updates    Which fields to set on copied object. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
-     * @param {Object} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     Api.prototype.copy = function (objCode, objID, updates, fields) {
@@ -7554,7 +7632,7 @@ module.exports = function(Api) {
         return this.request(objCode, params, fields, Api.Methods.POST);
     };
 };
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7592,7 +7670,7 @@ module.exports = function(Api) {
         });
     };
 };
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7619,14 +7697,14 @@ module.exports = function(Api) {
      * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} params    Values of fields to be set for the new object. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
-     * @param {String[]} [fields]    Which fields of newly created object to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields of newly created object to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
     Api.prototype.create = function (objCode, params, fields) {
         return this.request(objCode, params, fields, Api.Methods.POST);
     };
 };
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7653,7 +7731,7 @@ module.exports = function(Api) {
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object to modify
      * @param {Object} updates    Which fields to set. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
-     * @param {Object} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     Api.prototype.edit = function (objCode, objID, updates, fields) {
@@ -7663,7 +7741,7 @@ module.exports = function(Api) {
         return this.request(objCode + '/' + objID, params, fields, Api.Methods.PUT);
     };
 };
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7700,12 +7778,13 @@ module.exports = function(Api) {
             endPoint += '/' + objID + '/' + action;
         }
         else {
+            actionArgs = actionArgs || {};
             actionArgs['action'] = action;
         }
         return this.request(endPoint, actionArgs, null, Api.Methods.PUT);
     };
 };
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7726,27 +7805,38 @@ module.exports = function(Api) {
  * @author Hovhannes Babayan <bhovhannes at gmail dot com>
  * @author Sassoun Derderian <citizen.sas at gmail dot com>
  */
+
+var ApiConstants = require('./../ApiConstants');
+
 module.exports = function(Api) {
     /**
      * Used for retrieve an object or multiple objects.
      * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String|Array} objIDs    Either one or multiple object ids
-     * @param {Object} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     Api.prototype.get = function (objCode, objIDs, fields) {
         if (typeof objIDs === 'string') {
             objIDs = [objIDs];
         }
+        var endPoint = objCode,
+            params = null;
         if (objIDs.length === 1) {
-            return this.request(objCode + '/' + objIDs[0], null, fields, Api.Methods.GET);
+            if (objIDs[0].indexOf(ApiConstants.INTERNAL_PREFIX) === 0) {
+                params = {id: objIDs[0]};
+            }
+            else {
+                endPoint += '/' + objIDs[0];
+            }
         } else {
-            return this.request(objCode, {id: objIDs}, fields, Api.Methods.GET);
+            params = {id: objIDs};
         }
+        return this.request(endPoint, params, fields, Api.Methods.GET);
     };
 };
-},{}],46:[function(require,module,exports){
+},{"./../ApiConstants":37}],47:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7787,7 +7877,7 @@ module.exports = function(Api) {
         });
     };
 };
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7828,7 +7918,7 @@ module.exports = function(Api) {
         });
     };
 };
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7863,7 +7953,7 @@ module.exports = function(Api) {
         return this.request(path, null, null, Api.Methods.GET);
     };
 };
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7891,14 +7981,14 @@ module.exports = function(Api) {
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} query    A query to execute. A list of allowed named queries are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
      * @param {Object} [queryArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
-     * @param {Object} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @returns {Promise}    A promise which will resolved with received data if everything went ok and rejected with error info otherwise
      */
     Api.prototype.namedQuery = function (objCode, query, queryArgs, fields) {
         return this.request(objCode + '/' + query, queryArgs, fields, Api.Methods.GET);
     };
 };
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7942,7 +8032,7 @@ module.exports = function(Api) {
         });
     };
 };
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -7974,7 +8064,7 @@ module.exports = function(Api) {
         return this.request(objCode + '/report', query, null, Api.Methods.GET);
     };
 };
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -8005,8 +8095,13 @@ module.exports = function(Api) {
     };
 
     Api.prototype.request = function(path, params, fields, method) {
-        params = params || {};
         fields = fields || [];
+        if (typeof fields === 'string') {
+            fields = [fields];
+        }
+
+        params = params || {};
+        util._extend(params, this.httpParams);
 
         var options = {};
         util._extend(options, this.httpOptions);
@@ -8070,7 +8165,7 @@ module.exports = function(Api) {
 };
 
 
-},{"querystring":19,"util":35}],53:[function(require,module,exports){
+},{"querystring":19,"util":35}],54:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *
@@ -8097,14 +8192,14 @@ module.exports = function(Api) {
      * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} query    An object with search criteria
-     * @param {Array} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with search results if everything went ok and rejected otherwise
      */
     Api.prototype.search = function (objCode, query, fields) {
         return this.request(objCode + '/search', query, fields, Api.Methods.GET);
     };
 };
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 /**
  * Copyright 2015 Workfront
  *

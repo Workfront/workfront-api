@@ -24,7 +24,7 @@ module.exports = function(Api) {
      * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} query    An object with search criteria
-     * @param {Array} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with search results if everything went ok and rejected otherwise
      */
     Api.prototype.search = function (objCode, query, fields) {

@@ -35,6 +35,8 @@ describe('Create new instance for API', function() {
 		expect(api).to.respondTo('execute');
 		expect(api).to.respondTo('namedQuery');
 		expect(api).to.respondTo('metadata');
+		expect(api).to.respondTo('getApiKey');
+		expect(api).to.respondTo('clearApiKey');
 	});
 
 	it('should set correct API path based on passed configuration (version is passed)', function() {

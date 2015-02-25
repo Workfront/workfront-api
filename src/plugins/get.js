@@ -18,23 +18,34 @@
  * @author Hovhannes Babayan <bhovhannes at gmail dot com>
  * @author Sassoun Derderian <citizen.sas at gmail dot com>
  */
+
+var ApiConstants = require('./../ApiConstants');
+
 module.exports = function(Api) {
     /**
      * Used for retrieve an object or multiple objects.
      * @memberOf Workfront.Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String|Array} objIDs    Either one or multiple object ids
-     * @param {Object} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     Api.prototype.get = function (objCode, objIDs, fields) {
         if (typeof objIDs === 'string') {
             objIDs = [objIDs];
         }
+        var endPoint = objCode,
+            params = null;
         if (objIDs.length === 1) {
-            return this.request(objCode + '/' + objIDs[0], null, fields, Api.Methods.GET);
+            if (objIDs[0].indexOf(ApiConstants.INTERNAL_PREFIX) === 0) {
+                params = {id: objIDs[0]};
+            }
+            else {
+                endPoint += '/' + objIDs[0];
+            }
         } else {
-            return this.request(objCode, {id: objIDs}, fields, Api.Methods.GET);
+            params = {id: objIDs};
         }
+        return this.request(endPoint, params, fields, Api.Methods.GET);
     };
 };

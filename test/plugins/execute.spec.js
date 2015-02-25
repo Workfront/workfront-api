@@ -50,4 +50,10 @@ describe('Api.execute() method', function() {
 		expect(api.request).to.have.callCount(1);
 		expect(api.request).to.have.been.calledWith('foo', {objID: 111, action: 'doSomething'}, null, "PUT");
 	});
+
+	it('should call request() with proper params (without args) when objID is omitted', function() {
+		api.execute('foo', null, 'doSomething');
+		expect(api.request).to.have.callCount(1);
+		expect(api.request).to.have.been.calledWith('foo', {action: 'doSomething'}, null, "PUT");
+	});
 });
