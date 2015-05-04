@@ -3,7 +3,7 @@
   "main": [
     "dist/workfront.js"
   ],
-  "version": "0.0.0",
+  "version": "1.0.x",
   "homepage": "https://github.com/Workfront/workfront-api",
   "authors": [
     "Hovhannes Babayan <bhovhannes@gmail.com>",
