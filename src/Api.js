@@ -44,7 +44,9 @@ function Api(config) {
         host: parsed.hostname,
         port: parsed.port || (isHttps ? 443 : 80),
         withCredentials: false,
-        headers: {}
+        headers: {},
+        //=== true to make undefined result in false
+        alwaysUseGet : config.alwaysUseGet === true
     };
 
     // These params will be sent with each request

@@ -212,4 +212,22 @@ describe('Api.request() method', function() {
 		var promise = api.request(path, params, fields, method);
 		expect(promise).to.be.rejectedWith({'message': 'fail'}).and.notify(done);
 	});
+    
+    it('should only use get if alwaysUseGet is true', function(done) {
+		var url = 'http://foobar:8080',
+			path = '/test',
+			method = 'DELETE';
+
+		nock(url)
+			.get('/attask/api' + path + '?method=DELETE')
+			.reply(200, {
+				data: {
+					'got': 'ok'
+				}
+			});
+
+		var api = new Api({url: url, alwaysUseGet: true});
+		var promise = api.request(path, undefined, undefined, method);
+		expect(promise).to.eventually.deep.equal({'got': 'ok'}).and.notify(done);
+	});
 });
