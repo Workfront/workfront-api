@@ -216,10 +216,11 @@ describe('Api.request() method', function() {
     it('should only use get if alwaysUseGet is true', function(done) {
 		var url = 'http://foobar:8080',
 			path = '/test',
-			method = 'DELETE';
+			method = 'DELETE',
+            params = {force: true};
 
 		nock(url)
-			.get('/attask/api' + path + '?method=DELETE')
+			.get('/attask/api' + path + '?force=true&method=DELETE')
 			.reply(200, {
 				data: {
 					'got': 'ok'
@@ -227,7 +228,7 @@ describe('Api.request() method', function() {
 			});
 
 		var api = new Api({url: url, alwaysUseGet: true});
-		var promise = api.request(path, undefined, undefined, method);
+		var promise = api.request(path, params, undefined, method);
 		expect(promise).to.eventually.deep.equal({'got': 'ok'}).and.notify(done);
 	});
 });
