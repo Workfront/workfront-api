@@ -1,3 +1,19 @@
+v1.1.0 - June 19, 2015
+
+* 1.1.0 (Hovhannes Babayan)
+* ran gulp build (ryan miller)
+* change querey to query and added back in Optional to the comment (ryan miller)
+* {String} to {Boolean}, Optional to Defaults to false, query to querey (ryan miller)
+* forgot a . (ryan miller)
+* Added a comment and example for alwaysUseGet (ryan miller)
+* Made the always use get test have a param that would normally show up in the body (ryan miller)
+* adding support to make every call a get so this project will work with the nodebalancer (ryan miller)
+* Update bower.json (citizensas)
+* rebuilt to include latest changes (Hovhannes Babayan)
+* Feature: add support for API keys (Hovhannes Babayan)
+* single field can now be passed as string (i.e. '*' is now the same as ['*']) (Hovhannes Babayan)
+* added support for ids beginning with internal prefix, such as $$USER (Hovhannes Babayan)
+
 v1.0.3 - February 23, 2015
 
 * 1.0.3 (Hovhannes Babayan)
