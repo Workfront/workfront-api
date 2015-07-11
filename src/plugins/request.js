@@ -34,6 +34,8 @@ module.exports = function(Api) {
         }
 
         params = params || {};
+        util._extend(params, this.httpParams);
+
         var options = {},
             alwaysUseGet = this.httpOptions.alwaysUseGet;
         
