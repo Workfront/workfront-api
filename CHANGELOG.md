@@ -1,3 +1,8 @@
+v1.1.1 - July 11, 2015
+
+* 1.1.1 (Hovhannes Babayan)
+* Fixes #8 (Hovhannes Babayan)
+
 v1.1.0 - June 19, 2015
 
 * 1.1.0 (Hovhannes Babayan)
