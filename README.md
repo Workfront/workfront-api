@@ -81,7 +81,7 @@ A bug is a _demonstrable problem_ that is caused by the code in the repository. 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
    reported.
 2. **Isolate the problem** &mdash; ideally create a [reduced test
-      case](http://css-tricks.com/6263-reduced-test-cases/).
+      case](https://css-tricks.com/reduced-test-cases/).
 3. A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.
 
 ### Feature requests
