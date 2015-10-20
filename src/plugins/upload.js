@@ -14,8 +14,12 @@
  * limitations under the License.
  */
 
+var FormData = require('form-data'),
+    util = require('util');
+
 /**
  * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * @author Matt Winchester <mwinche at gmail dot com>
  */
 module.exports = function(Api) {
     /**
@@ -24,8 +28,32 @@ module.exports = function(Api) {
      * Returned 'handle' can be passed to create() method to create a new document.
      * @memberOf Workfront.Api
      * @param {fs.ReadStream} stream    A readable stream with file contents
+     * @param {Object} [overrides] Override the filename and content type (using keys
+     * `filename` and `contentType` respectively).
      */
-    Api.prototype.upload = function (/*stream*/) {
-        throw new Error('Not implemented')
+    Api.prototype.upload = function(stream, overrides) {
+        var form = new FormData();
+        form.append('uploadedFile', stream, overrides);
+
+        var options = {
+          method: 'POST'
+        };
+
+        util._extend(options, this.httpOptions);
+        options.headers = form.getHeaders();
+        options.headers.sessionID = this.httpOptions.headers.sessionID;
+        options.path += '/upload';
+
+        delete options.headers['Content-Length'];
+
+        var httpTransport = this.httpTransport;
+
+        return new Promise(function (resolve, reject) {
+            var request = httpTransport.request(options, this._handleResponse(resolve, reject));
+
+            form.pipe(request);
+
+            request.on('error', reject);
+        }.bind(this));
     };
 };
