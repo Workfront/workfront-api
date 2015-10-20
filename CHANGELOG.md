@@ -1,3 +1,8 @@
+v1.2.1 - October 20, 2015
+
+* 1.2.1 (Hovhannes Babayan)
+* fix: improved docs (Hovhannes Babayan)
+
 v1.2.0 - October 20, 2015
 
 * 1.2.0 (Hovhannes Babayan)
