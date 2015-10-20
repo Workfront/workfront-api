@@ -62,6 +62,7 @@ gulp.task('build', 'Generates browser-ready version for API in '+BUILD_DIR, ['cl
 		}
 	)
 		.ignore('promise/polyfill')
+		.exclude('./plugins/upload')
 		.bundle()
 		.pipe(source('workfront.js'))
 		.pipe(buffer())

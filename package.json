@@ -4,6 +4,7 @@
   "description": "A Workfront API for the Node.js and the Web",
   "main": "index.js",
   "dependencies": {
+    "form-data": "0.2.0",
     "promise": "^6.0.1"
   },
   "devDependencies": {
