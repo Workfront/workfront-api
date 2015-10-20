@@ -1,3 +1,12 @@
+v1.2.0 - October 20, 2015
+
+* 1.2.0 (Hovhannes Babayan)
+* feat: adding upload support (Matt Winchester)
+* fix: issue with login example (Hovhannes Babayan)
+* chore: use new Travis CI infrastructure (Hovhannes Babayan)
+* fix: broken link (Hovhannes Babayan)
+* Update README.md (kishmiryan-karlen)
+
 v1.1.1 - July 11, 2015
 
 * 1.1.1 (Hovhannes Babayan)
