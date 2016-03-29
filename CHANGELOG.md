@@ -1,3 +1,9 @@
+v1.2.3 - March 29, 2016
+
+* 1.2.3 (Hovhannes Babayan)
+* chore: updated browser bundle (Hovhannes Babayan)
+* fix: removed console.log (Hovhannes Babayan)
+
 v1.2.2 - March 29, 2016
 
 * 1.2.2 (Hovhannes Babayan)
