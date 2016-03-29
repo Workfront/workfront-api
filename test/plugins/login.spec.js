@@ -36,6 +36,7 @@ describe('Api.login() method', function() {
 	it('should call request() with proper params', function() {
 		var username = 'bar',
 			password = 'baz';
+		api.request.resolves();
 		api.login(username, password);
 		expect(api.request).to.have.callCount(1);
 		expect(api.request).to.have.been.calledWith("login", {username: username, password: password}, null, "POST");

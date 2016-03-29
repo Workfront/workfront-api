@@ -41,6 +41,7 @@ describe('Api.count() method', function() {
 
 		var objCode = 'baz';
 
+		api.request.resolves();
 		api.count(objCode, query);
 		expect(api.request).to.have.callCount(1);
 		expect(api.request).to.have.been.calledWith(objCode + "/count", query, null, "GET");

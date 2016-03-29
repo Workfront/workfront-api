@@ -27,31 +27,32 @@ module.exports = function(Api) {
         return method !== Api.Methods.GET && method !== Api.Methods.PUT;
     };
 
-    Api.prototype._handleResponse = function(resolve, reject){
-      return function (response) {
-          var body = '';
-          if (typeof response.setEncoding === 'function') {
-              response.setEncoding('utf8');
-          }
-          response.on('data', function (chunk) {
-              body += chunk;
-          });
-          response.on('end', function () {
-              var data;
-              try {
-                  data = JSON.parse(body);
-              }
-              catch(e) {
-                  reject(body);
-                  return;
-              }
-              if (data.error) {
-                  reject(data);
-              } else {
-                  resolve(data.data);
-              }
-          });
-      };
+    Api.prototype._handleResponse = function (resolve, reject) {
+        return function (response) {
+            var body = '';
+            if (typeof response.setEncoding === 'function') {
+                response.setEncoding('utf8');
+            }
+            response.on('data', function (chunk) {
+                body += chunk;
+            });
+            response.on('end', function () {
+                console.log('end'); //eslint-disable-line
+                var data;
+                try {
+                    data = JSON.parse(body);
+                }
+                catch (e) {
+                    reject(body);
+                    return;
+                }
+                if (data.error) {
+                    reject(data);
+                } else {
+                    resolve(data.data);
+                }
+            });
+        };
     };
 
     Api.prototype.request = function(path, params, fields, method) {
@@ -73,7 +74,6 @@ module.exports = function(Api) {
             options.method = method;
         }
 
-        util._extend(options, this.httpOptions);
         if (path.indexOf('/') === 0) {
             options.path = this.httpOptions.path + path;
         }

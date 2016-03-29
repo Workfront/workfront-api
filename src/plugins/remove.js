@@ -28,16 +28,15 @@ module.exports = function(Api) {
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.remove = function (objCode, objID, bForce) {
-        var that = this;
         return new Promise(function (resolve, reject) {
             var params = bForce ? {force: true} : null;
-            that.request(objCode + '/' + objID, params, null, Api.Methods.DELETE).then(function (result) {
+            this.request(objCode + '/' + objID, params, null, Api.Methods.DELETE).then(function (result) {
                 if (result && result.success) {
                     resolve();
                 } else {
                     reject();
                 }
             }, reject);
-        });
+        }.bind(this));
     };
 };

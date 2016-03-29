@@ -28,13 +28,9 @@ module.exports = function(Api) {
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */
     Api.prototype.login = function (username, password) {
-        var that = this;
-        return new Promise(function (resolve, reject) {
-            that.request('login', {username: username, password: password}, null, Api.Methods.POST)
-                .then(function (data) {
-                    that.httpOptions.headers.sessionID = data.sessionID;
-                    resolve(data);
-                }, reject);
-        });
+        return this.request('login', {username: username, password: password}, null, Api.Methods.POST).then(function (data) {
+            this.httpOptions.headers.sessionID = data.sessionID;
+            return data;
+        }.bind(this));
     };
 };

@@ -51,16 +51,15 @@ module.exports = function(Api) {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.clearApiKey = function () {
-        var that = this;
         return new Promise(function (resolve, reject) {
-            that.execute('USER', null, 'clearApiKey').then(function (result) {
+            this.execute('USER', null, 'clearApiKey').then(function (result) {
                 if (result) {
-                    delete that.httpParams.apiKey;
+                    delete this.httpParams.apiKey;
                     resolve();
                 } else {
                     reject();
                 }
-            });
-        });
+            }.bind(this));
+        }.bind(this));
     }
 };
