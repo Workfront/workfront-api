@@ -52,7 +52,7 @@ module.exports = {
 
 },{}],3:[function(require,module,exports){
 module.exports=require(2)
-},{"/Users/matthewwinchester/code/workfront-api/node_modules/browserify/lib/_empty.js":2}],4:[function(require,module,exports){
+},{"/Users/hovhannesbabayan/Development/github/workfront/workfront-api/node_modules/browserify/lib/_empty.js":2}],4:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -62,9 +62,11 @@ module.exports=require(2)
  */
 /* eslint-disable no-proto */
 
+'use strict'
+
 var base64 = require('base64-js')
 var ieee754 = require('ieee754')
-var isArray = require('is-array')
+var isArray = require('isarray')
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -144,8 +146,10 @@ function Buffer (arg) {
     return new Buffer(arg)
   }
 
-  this.length = 0
-  this.parent = undefined
+  if (!Buffer.TYPED_ARRAY_SUPPORT) {
+    this.length = 0
+    this.parent = undefined
+  }
 
   // Common case.
   if (typeof arg === 'number') {
@@ -276,6 +280,10 @@ function fromJsonObject (that, object) {
 if (Buffer.TYPED_ARRAY_SUPPORT) {
   Buffer.prototype.__proto__ = Uint8Array.prototype
   Buffer.__proto__ = Uint8Array
+} else {
+  // pre-set for values that may exist in the future
+  Buffer.prototype.length = undefined
+  Buffer.prototype.parent = undefined
 }
 
 function allocate (that, length) {
@@ -425,10 +433,6 @@ function byteLength (string, encoding) {
   }
 }
 Buffer.byteLength = byteLength
-
-// pre-set for values that may exist in the future
-Buffer.prototype.length = undefined
-Buffer.prototype.parent = undefined
 
 function slowToString (encoding, start, end) {
   var loweredCase = false
@@ -1521,7 +1525,7 @@ function utf8ToBytes (string, units) {
       }
 
       // valid surrogate pair
-      codePoint = leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00 | 0x10000
+      codePoint = (leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00) + 0x10000
     } else if (leadSurrogate) {
       // valid bmp char, but last char was a lead
       if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
@@ -1600,7 +1604,7 @@ function blitBuffer (src, dst, offset, length) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":5,"ieee754":6,"is-array":7}],5:[function(require,module,exports){
+},{"base64-js":5,"ieee754":6,"isarray":7}],5:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -1813,38 +1817,10 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 }
 
 },{}],7:[function(require,module,exports){
+var toString = {}.toString;
 
-/**
- * isArray
- */
-
-var isArray = Array.isArray;
-
-/**
- * toString
- */
-
-var str = Object.prototype.toString;
-
-/**
- * Whether or not the given `val`
- * is an array.
- *
- * example:
- *
- *        isArray([]);
- *        // > true
- *        isArray(arguments);
- *        // > false
- *        isArray('');
- *        // > false
- *
- * @param {mixed} val
- * @return {bool}
- */
-
-module.exports = isArray || function (val) {
-  return !! val && '[object Array]' == str.call(val);
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
 };
 
 },{}],8:[function(require,module,exports){
@@ -5350,8 +5326,12 @@ function endWritable(stream, state, cb) {
 
 // NOTE: These type checking functions intentionally don't use `instanceof`
 // because it is fragile and can be easily faked with `Object.create()`.
-function isArray(ar) {
-  return Array.isArray(ar);
+
+function isArray(arg) {
+  if (Array.isArray) {
+    return Array.isArray(arg);
+  }
+  return objectToString(arg) === '[object Array]';
 }
 exports.isArray = isArray;
 
@@ -5391,7 +5371,7 @@ function isUndefined(arg) {
 exports.isUndefined = isUndefined;
 
 function isRegExp(re) {
-  return isObject(re) && objectToString(re) === '[object RegExp]';
+  return objectToString(re) === '[object RegExp]';
 }
 exports.isRegExp = isRegExp;
 
@@ -5401,13 +5381,12 @@ function isObject(arg) {
 exports.isObject = isObject;
 
 function isDate(d) {
-  return isObject(d) && objectToString(d) === '[object Date]';
+  return objectToString(d) === '[object Date]';
 }
 exports.isDate = isDate;
 
 function isError(e) {
-  return isObject(e) &&
-      (objectToString(e) === '[object Error]' || e instanceof Error);
+  return (objectToString(e) === '[object Error]' || e instanceof Error);
 }
 exports.isError = isError;
 
@@ -5426,14 +5405,12 @@ function isPrimitive(arg) {
 }
 exports.isPrimitive = isPrimitive;
 
-function isBuffer(arg) {
-  return Buffer.isBuffer(arg);
-}
-exports.isBuffer = isBuffer;
+exports.isBuffer = Buffer.isBuffer;
 
 function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
+
 }).call(this,{"isBuffer":require("../../../../insert-module-globals/node_modules/is-buffer/index.js")})
 },{"../../../../insert-module-globals/node_modules/is-buffer/index.js":15}],29:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
@@ -7896,17 +7873,16 @@ module.exports = function(Api) {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.clearApiKey = function () {
-        var that = this;
         return new Promise(function (resolve, reject) {
-            that.execute('USER', null, 'clearApiKey').then(function (result) {
+            this.execute('USER', null, 'clearApiKey').then(function (result) {
                 if (result) {
-                    delete that.httpParams.apiKey;
+                    delete this.httpParams.apiKey;
                     resolve();
                 } else {
                     reject();
                 }
-            });
-        });
+            }.bind(this));
+        }.bind(this));
     }
 };
 },{}],43:[function(require,module,exports){
@@ -7979,12 +7955,8 @@ module.exports = function(Api) {
      * @return {Promise}
      */
     Api.prototype.count = function (objCode, query) {
-        var that = this;
-        return new Promise(function (resolve, reject) {
-            that.request(objCode + '/count', query, null, Api.Methods.GET)
-                .then(function (data) {
-                    resolve(data.count);
-                }, reject);
+        return this.request(objCode + '/count', query, null, Api.Methods.GET).then(function (data) {
+            return data.count;
         });
     };
 };
@@ -8185,14 +8157,10 @@ module.exports = function(Api) {
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */
     Api.prototype.login = function (username, password) {
-        var that = this;
-        return new Promise(function (resolve, reject) {
-            that.request('login', {username: username, password: password}, null, Api.Methods.POST)
-                .then(function (data) {
-                    that.httpOptions.headers.sessionID = data.sessionID;
-                    resolve(data);
-                }, reject);
-        });
+        return this.request('login', {username: username, password: password}, null, Api.Methods.POST).then(function (data) {
+            this.httpOptions.headers.sessionID = data.sessionID;
+            return data;
+        }.bind(this));
     };
 };
 },{}],50:[function(require,module,exports){
@@ -8223,17 +8191,16 @@ module.exports = function(Api) {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.logout = function () {
-        var that = this;
         return new Promise(function (resolve, reject) {
-            that.request('logout', null, null, Api.Methods.GET).then(function (result) {
+            this.request('logout', null, null, Api.Methods.GET).then(function (result) {
                 if (result && result.success) {
-                    delete that.httpOptions.headers.sessionID;
+                    delete this.httpOptions.headers.sessionID;
                     resolve();
                 } else {
                     reject();
                 }
-            });
-        });
+            }.bind(this));
+        }.bind(this));
     };
 };
 },{}],51:[function(require,module,exports){
@@ -8337,17 +8304,16 @@ module.exports = function(Api) {
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     Api.prototype.remove = function (objCode, objID, bForce) {
-        var that = this;
         return new Promise(function (resolve, reject) {
             var params = bForce ? {force: true} : null;
-            that.request(objCode + '/' + objID, params, null, Api.Methods.DELETE).then(function (result) {
+            this.request(objCode + '/' + objID, params, null, Api.Methods.DELETE).then(function (result) {
                 if (result && result.success) {
                     resolve();
                 } else {
                     reject();
                 }
             }, reject);
-        });
+        }.bind(this));
     };
 };
 },{}],54:[function(require,module,exports){
@@ -8412,31 +8378,32 @@ module.exports = function(Api) {
         return method !== Api.Methods.GET && method !== Api.Methods.PUT;
     };
 
-    Api.prototype._handleResponse = function(resolve, reject){
-      return function (response) {
-          var body = '';
-          if (typeof response.setEncoding === 'function') {
-              response.setEncoding('utf8');
-          }
-          response.on('data', function (chunk) {
-              body += chunk;
-          });
-          response.on('end', function () {
-              var data;
-              try {
-                  data = JSON.parse(body);
-              }
-              catch(e) {
-                  reject(body);
-                  return;
-              }
-              if (data.error) {
-                  reject(data);
-              } else {
-                  resolve(data.data);
-              }
-          });
-      };
+    Api.prototype._handleResponse = function (resolve, reject) {
+        return function (response) {
+            var body = '';
+            if (typeof response.setEncoding === 'function') {
+                response.setEncoding('utf8');
+            }
+            response.on('data', function (chunk) {
+                body += chunk;
+            });
+            response.on('end', function () {
+                console.log('end'); //eslint-disable-line
+                var data;
+                try {
+                    data = JSON.parse(body);
+                }
+                catch (e) {
+                    reject(body);
+                    return;
+                }
+                if (data.error) {
+                    reject(data);
+                } else {
+                    resolve(data.data);
+                }
+            });
+        };
     };
 
     Api.prototype.request = function(path, params, fields, method) {
@@ -8458,7 +8425,6 @@ module.exports = function(Api) {
             options.method = method;
         }
 
-        util._extend(options, this.httpOptions);
         if (path.indexOf('/') === 0) {
             options.path = this.httpOptions.path + path;
         }
