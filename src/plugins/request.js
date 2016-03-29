@@ -37,7 +37,6 @@ module.exports = function(Api) {
                 body += chunk;
             });
             response.on('end', function () {
-                console.log('end'); //eslint-disable-line
                 var data;
                 try {
                     data = JSON.parse(body);
