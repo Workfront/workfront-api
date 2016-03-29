@@ -1,3 +1,10 @@
+v1.2.2 - March 29, 2016
+
+* 1.2.2 (Hovhannes Babayan)
+* chore: rebuild browser bundle (Hovhannes Babayan)
+* fix: shorter promise chains and better bind syntax (Hovhannes Babayan)
+* chore: Added Node 4.2 to travis config (Hovhannes Babayan)
+
 v1.2.1 - October 20, 2015
 
 * 1.2.1 (Hovhannes Babayan)
