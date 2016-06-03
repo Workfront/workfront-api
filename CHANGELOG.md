@@ -1,3 +1,9 @@
+v1.3.0 - June 3, 2016
+
+* 1.3.0 (Hovhannes Babayan)
+* chore: updated browser bundle (Hovhannes Babayan)
+* fix: switched to use workfront-api-constants (Hovhannes Babayan)
+
 v1.2.3 - March 29, 2016
 
 * 1.2.3 (Hovhannes Babayan)
