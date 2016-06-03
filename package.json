@@ -29,10 +29,15 @@
     "sinon-as-promised": "^2.0.3",
     "sinon-chai": "^2.6.0",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "workfront-api-constants": "1.0.4"
   },
   "scripts": {
     "test": "gulp test-ci",
+    "build": "gulp build",
+    "update-online-docs": "gulp publish-docs",
+    "prepublish": "npm run build",
+    "postpublish": "npm run update-online-docs",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"
   },
   "repository": {
@@ -49,12 +54,7 @@
     "Hovhannes Babayan <bhovhannes@gmail.com>",
     "Sassoun Derderian <citizen.sas@gmail.com>"
   ],
-  "licenses": [
-    {
-      "type": "Apache-2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
-  ],
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/Workfront/workfront-api/issues"
   },

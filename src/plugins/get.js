@@ -19,7 +19,7 @@
  * @author Sassoun Derderian <citizen.sas at gmail dot com>
  */
 
-var ApiConstants = require('./../ApiConstants');
+var INTERNAL_PREFIX = require('workfront-api-constants/dist/umd/constants').INTERNAL_PREFIX;
 
 module.exports = function(Api) {
     /**
@@ -37,7 +37,7 @@ module.exports = function(Api) {
         var endPoint = objCode,
             params = null;
         if (objIDs.length === 1) {
-            if (objIDs[0].indexOf(ApiConstants.INTERNAL_PREFIX) === 0) {
+            if (objIDs[0].indexOf(INTERNAL_PREFIX) === 0) {
                 params = {id: objIDs[0]};
             }
             else {

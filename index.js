@@ -38,7 +38,7 @@ var ApiUtil = require('./src/ApiUtil');
  * Constants to be used when working with API
  * @type {exports}
  */
-var ApiConstants = require('./src/ApiConstants');
+var ApiConstants = require('workfront-api-constants/dist/umd/constants');
 
 module.exports = {
     Api: Api,
