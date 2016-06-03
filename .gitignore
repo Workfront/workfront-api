@@ -5,6 +5,7 @@ node_modules
 # IntelliJ IDEA settings
 .idea
 *.iml
+*.log
 
 # coverage reporter output
 coverage
