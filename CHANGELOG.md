@@ -1,3 +1,7 @@
+v1.3.4 - June 13, 2016
+
+* 1.3.4 (Hovhannes Babayan)
+
 v1.3.3 - June 13, 2016
 
 * 1.3.3 (Hovhannes Babayan)
