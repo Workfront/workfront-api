@@ -1,3 +1,8 @@
+v1.3.3 - June 13, 2016
+
+* 1.3.3 (Hovhannes Babayan)
+* chore: workfront-api-constants should be a dep instead of devDep, deps upgrade (Hovhannes Babayan)
+
 v1.3.0 - June 3, 2016
 
 * 1.3.0 (Hovhannes Babayan)
