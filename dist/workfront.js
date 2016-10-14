@@ -8007,7 +8007,7 @@ function Api(config) {
 
     // Append version to path if provided
     var path;
-    if (config.version === 'internal' || config.version === 'unsupported') {
+    if (['internal', 'unsupported', 'asp'].indexOf(config.version) >= 0) {
         path = '/attask/api-' + config.version;
     }
     else {
