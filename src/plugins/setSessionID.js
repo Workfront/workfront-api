@@ -20,17 +20,11 @@
  */
 module.exports = function(Api) {
     /**
-     * Logs in into Workfront. Should be a first call to Workfront API.
-     * Other calls should be made after this one will be completed.
+     * Sets a sessionID in the headers
      * @memberOf Workfront.Api
-     * @param {String} username    A username in Workfront
-     * @param {String} password    Password to use
-     * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
+     * @param {String} sessionID   sessionID to set
      */
-    Api.prototype.login = function (username, password) {
-        return this.request('login', {username: username, password: password}, null, Api.Methods.POST).then(function (data) {
-            this.setSessionID(data.sessionID);
-            return data;
-        }.bind(this));
+    Api.prototype.setSessionID = function (sessionID) {
+        this.httpOptions.headers.sessionID = sessionID;
     };
 };
