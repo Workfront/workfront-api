@@ -20,11 +20,16 @@
  */
 module.exports = function(Api) {
     /**
-     * Sets a sessionID in the headers
+     * Sets a sessionID in the headers or removes sessionID if passed argument is undefined
      * @memberOf Workfront.Api
-     * @param {String} sessionID   sessionID to set
+     * @param {String|undefined} sessionID   sessionID to set
      */
     Api.prototype.setSessionID = function (sessionID) {
-        this.httpOptions.headers.sessionID = sessionID;
+        if (sessionID) {
+            this.httpOptions.headers.sessionID = sessionID;
+        }
+        else {
+            delete this.httpOptions.headers.sessionID;
+        }
     };
 };
