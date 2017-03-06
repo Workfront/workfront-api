@@ -50,7 +50,7 @@ module.exports = function(Api) {
      * @return {void}
      */
     Api.prototype.setAPIKey = function (apiKey) {
-        this.httpParams.apiKey = apiKey;
+        return this.httpParams.apiKey = apiKey;
     };
 
     /**
