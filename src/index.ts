@@ -15,14 +15,12 @@
  */
 
 /**
- * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+ * Simplifies creation of API instances as singletons
+ * @type {exports}
  */
+export * from './ApiFactory'
 
 /**
- * @name ApiUtil
- * @memberOf Workfront
- * @namespace
+ * An Api class
  */
-module.exports = {
-
-};
+export * from './Api'

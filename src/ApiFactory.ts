@@ -1,7 +1,7 @@
 /**
  * Copyright 2015 Workfront
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -19,15 +19,16 @@
  * @author Sassoun Derderian <citizen.sas at gmail dot com>
  */
 
-var Api = require('./Api'),
-    _instance;
+import {Api} from './Api'
+
+let _instance
 
 /**
  * @name ApiFactory
  * @memberOf Workfront
  * @namespace
  */
-module.exports = {
+export const ApiFactory = {
     /**
      * Returns an Api instance. Creates a new one if no instance exists.<br/>
      * One can use this if Api is intended to be used as singleton.
@@ -40,16 +41,16 @@ module.exports = {
      */
     getInstance: function(config, returnNewInstance) {
         if (returnNewInstance) {
-            return new Api(config);
+            return new Api(config)
         }
         else {
             if (!_instance) {
                 if (typeof config !== 'object') {
-                    throw new Error('Please provide configuration as an object.');
+                    throw new Error('Please provide configuration as an object.')
                 }
-                _instance = new Api(config);
+                _instance = new Api(config)
             }
-            return _instance;
+            return _instance
         }
     },
 
@@ -58,6 +59,6 @@ module.exports = {
      * @memberOf Workfront.ApiFactory
      */
     deleteInstance: function() {
-        _instance = undefined;
+        _instance = undefined
     }
-};
+}

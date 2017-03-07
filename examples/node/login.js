@@ -18,8 +18,9 @@
  * Logs in
  */
 
-var ApiFactory = require('./../../').ApiFactory;
+// var ApiFactory = require('./../../').ApiFactory;
 var util = require('util');
+var ApiFactory = require('./../../dist/workfront').ApiFactory;
 
 var instance = ApiFactory.getInstance({
     url: 'http://localhost:8080',

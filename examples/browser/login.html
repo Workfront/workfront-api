@@ -20,17 +20,16 @@
 	<title>Login example</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
 
-	<!-- The script below is not needed if your browser supports ES6 promises -->
-	<script src="https://www.promisejs.org/polyfills/promise-6.0.0.min.js"></script>
-
-	<script src="/dist/workfront.min.js"></script>
+	<!--<script src="/dist/workfront.min.js"></script>-->
+	<script src="/dist/workfront.js"></script>
 	<script>
+		console.log(window.Workfront)
 		function doLogin() {
 			var url = document.getElementById('url').value;
 			var username = document.getElementById('username').value;
 			var password = document.getElementById('password').value;
 
-			var instance = new window.Workfront.Api({url: url, version: '3.0'});
+			var instance = new window.Workfront.Api({url: url, version: '5.0'});
 			instance.login(username, password).then(function(data){
 				console.log(data);
 			}, console.error);
