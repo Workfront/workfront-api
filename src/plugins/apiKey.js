@@ -45,6 +45,15 @@ module.exports = function(Api) {
     };
 
     /**
+     * Sets a current API key for future requests
+     * @memberOf Workfront.Api
+     * @return {string} returns the given api key value
+     */
+    Api.prototype.setApiKey = function (apiKey) {
+        return this.httpParams.apiKey = apiKey;
+    };
+
+    /**
      * Invalidates the current API key.
      * Call this to be able to retrieve a new one using getApiKey().
      * @memberOf Workfront.Api
@@ -61,5 +70,5 @@ module.exports = function(Api) {
                 }
             }.bind(this));
         }.bind(this));
-    }
+    };
 };

@@ -36,6 +36,7 @@ describe('Create new instance for API', function() {
 		expect(api).to.respondTo('namedQuery');
 		expect(api).to.respondTo('metadata');
 		expect(api).to.respondTo('getApiKey');
+		expect(api).to.respondTo('setApiKey');
 		expect(api).to.respondTo('clearApiKey');
 	});
 
