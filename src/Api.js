@@ -79,21 +79,22 @@ Api.Methods = {
     POST: 'POST'
 };
 
-require('./plugins/request')(Api);
-require('./plugins/login')(Api);
-require('./plugins/logout')(Api);
-require('./plugins/search')(Api);
-require('./plugins/get')(Api);
+require('./plugins/apiKey')(Api);
+require('./plugins/copy')(Api);
+require('./plugins/count')(Api);
 require('./plugins/create')(Api);
 require('./plugins/edit')(Api);
+require('./plugins/execute')(Api);
+require('./plugins/get')(Api);
+require('./plugins/login')(Api);
+require('./plugins/logout')(Api);
+require('./plugins/metadata')(Api);
+require('./plugins/namedQuery')(Api);
 require('./plugins/remove')(Api);
 require('./plugins/report')(Api);
-require('./plugins/count')(Api);
-require('./plugins/copy')(Api);
-require('./plugins/execute')(Api);
-require('./plugins/namedQuery')(Api);
-require('./plugins/metadata')(Api);
-require('./plugins/apiKey')(Api);
+require('./plugins/request')(Api);
+require('./plugins/search')(Api);
+require('./plugins/setSessionID')(Api);
 
 if(typeof(window)==='undefined'){
   //These plugins only work in node
