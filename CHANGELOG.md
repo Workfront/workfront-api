@@ -1,3 +1,9 @@
+v1.4.1 - March 7, 2017
+
+* 1.4.1 (Sassoun Derderian)
+* Build dist/ files (Sassoun Derderian)
+* fix (closes #18): Added setAPIKey method (Zack Boman)
+
 v1.3.4 - June 13, 2016
 
 * 1.3.4 (Hovhannes Babayan)
