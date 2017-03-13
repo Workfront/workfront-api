@@ -37,7 +37,8 @@ module.exports = function (config) {
     config.set({
         reporters: ['spec', 'coverage', 'saucelabs'],
         sauceLabs: {
-            testName: 'Karma and Sauce Labs demo'
+            testName: 'Karma and Sauce Labs demo',
+            doctor: true
         },
         captureTimeout: 120000,
         customLaunchers: customLaunchers,

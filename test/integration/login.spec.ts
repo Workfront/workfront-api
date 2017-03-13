@@ -16,7 +16,7 @@
 
 import * as fetchMock from 'fetch-mock'
 import * as should from 'should'
-import 'should-sinon'
+// import 'should-sinon'
 // import * as sinon from 'sinon'
 
 import * as Workfront from '../..//dist/workfront'

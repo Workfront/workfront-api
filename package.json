@@ -43,7 +43,7 @@
     "semver": "5.1.0",
     "shelljs": "0.5.3",
     "should": "11.2.1",
-    "should-http": "0.1.0",
+    "should-sinon": "0.1.0",
     "should-spies": "1.1.0",
     "sinon": "^1.12.2",
     "source-map-loader": "0.1.6",
