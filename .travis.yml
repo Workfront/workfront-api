@@ -5,7 +5,6 @@ notifications:
     on_failure: always
     on_success: change
 node_js:
-  - '4'
   - '6'
 script: npm run ci-test
 addons:
