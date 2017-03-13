@@ -38,7 +38,8 @@ module.exports = function (config) {
         reporters: ['spec', 'coverage', 'saucelabs'],
         sauceLabs: {
             testName: 'Karma and Sauce Labs demo',
-            doctor: true
+            startConnect: false,
+            tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
         },
         captureTimeout: 120000,
         customLaunchers: customLaunchers,
