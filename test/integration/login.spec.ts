@@ -19,7 +19,7 @@ import * as should from 'should'
 // import 'should-sinon'
 // import * as sinon from 'sinon'
 
-import * as Workfront from '../..//dist/workfront'
+import * as Workfront from '../../dist/workfront'
 
 const API_URL = 'http://foobar:8080'
 
@@ -48,12 +48,27 @@ describe('Login', function () {
                 }
             )
         })
-        it('should return user data', function (done) {
-            this.api.login('username', 'password').then(function (data) {
+        it('should return user data', function () {
+            return this.api.login('foo', 'bar').then(function (data) {
                 should(data).have.property('data')
                 should(data.data).have.properties(['userID', 'sessionID'])
-                done()
             })
+        })
+        it('sets sessionID in header', function () {
+            let opts
+            return this.api.login('foo', 'bar').then(() => {
+                opts = fetchMock.lastOptions('login')
+                should(opts.headers.has('sessionID')).not.ok()
+                this.api.login('foo', 'bar').then(() => {
+                    opts = fetchMock.lastOptions('login')
+                    should(opts.headers.has('sessionID')).ok()
+                })
+            })
+        })
+        it('calls with proper params', function () {
+            this.api.login('foo', 'bar')
+            let opts = fetchMock.lastOptions('login')
+            should(opts.body).be.equal('username=foo&password=bar')
         })
     })
     describe('authentication exception', function () {
@@ -67,10 +82,9 @@ describe('Login', function () {
                 }
             )
         })
-        it('should reject with error message', function (done) {
-            this.api.login('username', 'password').then(function (data) {
-                should(data).have.property('error')
-                done()
+        it('should reject with error message', function () {
+            return this.api.login('foo', 'foo').catch(function (data) {
+                should(data).have.property('message')
             })
         })
     })

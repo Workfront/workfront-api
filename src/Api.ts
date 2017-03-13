@@ -213,7 +213,7 @@ export class Api {
      */
     login(username: string, password: string) {
         return this.request('login', {username: username, password: password}, null, Api.Methods.POST).then((data) => {
-            this.setSessionID(data.sessionID)
+            this.setSessionID(data.data.sessionID)
             return data
         })
     }
@@ -337,9 +337,10 @@ export class Api {
             method: method,
             headers: headers,
             body: bodyParams
-        }).then(function(response) {
-            return response.json()
-        })
+        }).then(
+            ResponseHandler.success,
+            ResponseHandler.failure
+        )
     }
 
     /**
@@ -368,4 +369,43 @@ export class Api {
 if (typeof(window) === 'undefined') {
   // These plugins only work in node
   // require('./plugins/upload')(Api)
+}
+
+const ResponseHandler = {
+    success: (response) => {
+        if (response.ok) {
+            return response.json().then(
+                (data) => {
+                    if (data.error) {
+                        throw {
+                            status: response.status,
+                            message: data.error.message
+                        }
+                    }
+                    return data
+                }
+            )
+        }
+        else {
+            return response.json().then(
+                (data) => {
+                    throw {
+                        status: response.status,
+                        message: data.error.message
+                    }
+                },
+                () => {
+                    throw {
+                        status: response.status,
+                        message: response.statusText
+                    }
+                }
+            )
+        }
+    },
+    failure: (err) => {
+        throw {
+            message: err.message || err.statusText
+        }
+    }
 }

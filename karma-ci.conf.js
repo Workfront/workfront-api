@@ -37,11 +37,10 @@ module.exports = function (config) {
     config.set({
         reporters: ['spec', 'coverage', 'saucelabs'],
         sauceLabs: {
-            testName: 'Karma and Sauce Labs demo',
+            testName: 'workfront-api CI tests',
             recordScreenshots: false,
             connectOptions: {
-                port: 5757,
-                logfile: 'sauce_connect.log'
+                port: 5757
             },
             public: 'public'
         },
