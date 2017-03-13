@@ -58,10 +58,10 @@
   "scripts": {
     "test": "karma start karma.conf.js",
     "ci-test": "karma start karma-ci.conf.js",
-    "build": "gulp build",
+    "build": "webpack -p --bail",
     "update-online-docs": "gulp publish-docs",
     "prepublish": "npm run build",
-    "postpublish": "npm run update-online-docs",
+    "//postpublish": "npm run update-online-docs",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"
   },
   "repository": {
