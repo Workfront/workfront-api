@@ -117,7 +117,7 @@ return /******/ (function(modules) { // webpackBootstrap
  */
 var Api = (function () {
     function Api(config) {
-        this.httpOptions = {
+        this._httpOptions = {
             url: config.url,
             headers: {}
         };
@@ -132,7 +132,7 @@ var Api = (function () {
                 path = path + '/v' + config.version;
             }
         }
-        this.httpOptions.path = path;
+        this._httpOptions.path = path;
     }
     /**
      * Used to obtain an API key
@@ -144,16 +144,16 @@ var Api = (function () {
     Api.prototype.getApiKey = function (username, password) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            if (typeof _this.httpParams.apiKey !== 'undefined') {
-                resolve(_this.httpParams.apiKey);
+            if (typeof _this._httpParams.apiKey !== 'undefined') {
+                resolve(_this._httpParams.apiKey);
             }
             else {
                 _this.execute('USER', null, 'getApiKey', {
                     username: username,
                     password: password
                 }).then(function (data) {
-                    _this.httpParams.apiKey = data.result;
-                    resolve(_this.httpParams.apiKey);
+                    _this._httpParams.apiKey = data.result;
+                    resolve(_this._httpParams.apiKey);
                 }, reject);
             }
         });
@@ -284,7 +284,7 @@ var Api = (function () {
         return new Promise(function (resolve, reject) {
             _this.request('logout', null, null, Api.Methods.GET).then(function (result) {
                 if (result && result.success) {
-                    delete _this.httpOptions.headers.sessionID;
+                    delete _this._httpOptions.headers.sessionID;
                     resolve();
                 }
                 else {
@@ -352,9 +352,9 @@ var Api = (function () {
     };
     Api.prototype.request = function (path, params, fields, method) {
         if (method === void 0) { method = Api.Methods.GET; }
-        params = Object.assign(params || {}, this.httpParams);
-        var alwaysUseGet = this.httpOptions.alwaysUseGet;
-        var options = Object.assign({}, this.httpOptions);
+        params = Object.assign(params || {}, this._httpParams);
+        var alwaysUseGet = this._httpOptions.alwaysUseGet;
+        var options = Object.assign({}, this._httpOptions);
         if (alwaysUseGet) {
             params.method = method;
         }
@@ -362,10 +362,10 @@ var Api = (function () {
             options.method = method;
         }
         if (path.indexOf('/') === 0) {
-            options.path = this.httpOptions.path + path;
+            options.path = this._httpOptions.path + path;
         }
         else {
-            options.path = this.httpOptions.path + '/' + path;
+            options.path = this._httpOptions.path + '/' + path;
         }
         fields = fields || [];
         if (typeof fields === 'string') {
@@ -376,8 +376,8 @@ var Api = (function () {
         }
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        if (this.httpOptions.headers.sessionID) {
-            headers.append('sessionID', this.httpOptions.headers.sessionID);
+        if (this._httpOptions.headers.sessionID) {
+            headers.append('sessionID', this._httpOptions.headers.sessionID);
         }
         var bodyParams = Object.keys(params).reduce(function (a, k) {
             a.push(k + '=' + encodeURIComponent(params[k]));
@@ -409,7 +409,7 @@ var Api = (function () {
      * @return {void}
      */
     Api.prototype.setSessionID = function (sessionID) {
-        this.httpOptions.headers.sessionID = sessionID;
+        this._httpOptions.headers.sessionID = sessionID;
     };
     return Api;
 }());

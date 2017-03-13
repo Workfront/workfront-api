@@ -12,3 +12,6 @@ coverage
 
 # generated API docs
 docs
+
+# dist
+dist

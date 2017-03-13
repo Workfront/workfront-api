@@ -43,18 +43,18 @@ type TFields = string | string[]
  * @constructor
  */
 export class Api {
-    public static Methods = {
+    static Methods = {
         GET: 'GET',
         PUT: 'PUT',
         DELETE: 'DELETE',
         POST: 'POST'
     }
 
-    protected httpOptions: THttpOptions
-    protected httpParams: THttpParams
+    _httpOptions: THttpOptions
+    _httpParams: THttpParams
 
     constructor(config) {
-        this.httpOptions = {
+        this._httpOptions = {
             url: config.url,
             headers: {}
         }
@@ -69,7 +69,7 @@ export class Api {
                 path = path + '/v' + config.version
             }
         }
-        this.httpOptions.path = path
+        this._httpOptions.path = path
     }
 
     /**
@@ -79,18 +79,18 @@ export class Api {
      * @param {String} password    Password to use
      * @return {Promise}    A promise which will resolved with API key if everything went ok and rejected otherwise
      */
-    public getApiKey(username: string, password: string): Promise<string> {
+    getApiKey(username: string, password: string): Promise<string> {
         return new Promise((resolve, reject) => {
-            if (typeof this.httpParams.apiKey !== 'undefined') {
-                resolve(this.httpParams.apiKey)
+            if (typeof this._httpParams.apiKey !== 'undefined') {
+                resolve(this._httpParams.apiKey)
             }
             else {
                 this.execute('USER', null, 'getApiKey', {
                     username: username,
                     password: password
                 }).then((data) => {
-                    this.httpParams.apiKey = data.result
-                    resolve(this.httpParams.apiKey)
+                    this._httpParams.apiKey = data.result
+                    resolve(this._httpParams.apiKey)
                 }, reject)
             }
         })
@@ -106,7 +106,7 @@ export class Api {
      * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    public copy(objCode: string, objID: string, updates: object, fields?: TFields) {
+    copy(objCode: string, objID: string, updates: object, fields?: TFields) {
         const params = {
             copySourceID: objID,
             updates: updates ? JSON.stringify(updates) : undefined
@@ -121,7 +121,7 @@ export class Api {
      * @param {Object} query    An object with search criteria
      * @return {Promise}
      */
-    public count(objCode: string, query: object): Promise<number> {
+    count(objCode: string, query: object): Promise<number> {
         return this.request(objCode + '/count', query, null, Api.Methods.GET).then(function (data) {
             return data.count
         })
@@ -135,7 +135,7 @@ export class Api {
      * @param {String|String[]} [fields]    Which fields of newly created object to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
-    public create(objCode: string, params: object, fields?: TFields) {
+    create(objCode: string, params: object, fields?: TFields) {
         return this.request(objCode, params, fields, Api.Methods.POST)
     }
 
@@ -148,7 +148,7 @@ export class Api {
      * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    public edit(objCode: string, objID: string, updates: object, fields?: TFields) {
+    edit(objCode: string, objID: string, updates: object, fields?: TFields) {
         const params = {
             updates: JSON.stringify(updates)
         }
@@ -164,7 +164,7 @@ export class Api {
      * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
-    public execute(objCode: string, objID: string, action: string, actionArgs?: object) {
+    execute(objCode: string, objID: string, action: string, actionArgs?: object) {
         let endPoint = objCode
         if (objID) {
             endPoint += '/' + objID + '/' + action
@@ -184,7 +184,7 @@ export class Api {
      * @param {String|String[]} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    public get(objCode: string, objIDs: string|string[], fields?: TFields) {
+    get(objCode: string, objIDs: string|string[], fields?: TFields) {
         if (typeof objIDs === 'string') {
             objIDs = [objIDs]
         }
@@ -211,7 +211,7 @@ export class Api {
      * @param {String} password    Password to use
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */
-    public login(username: string, password: string) {
+    login(username: string, password: string) {
         return this.request('login', {username: username, password: password}, null, Api.Methods.POST).then((data) => {
             this.setSessionID(data.sessionID)
             return data
@@ -223,11 +223,11 @@ export class Api {
      * @memberOf Api
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
-    public logout(): Promise<undefined> {
+    logout(): Promise<undefined> {
         return new Promise((resolve, reject) => {
             this.request('logout', null, null, Api.Methods.GET).then((result) => {
                 if (result && result.success) {
-                    delete this.httpOptions.headers.sessionID
+                    delete this._httpOptions.headers.sessionID
                     resolve()
                 } else {
                     reject()
@@ -242,7 +242,7 @@ export class Api {
      * @param {String} [objCode]    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}. If omitted will return list of objects available in API.
      * @return {Promise}    A promise which will resolved with object metadata if everything went ok and rejected otherwise
      */
-    public metadata(objCode: string) {
+    metadata(objCode: string) {
         let path = '/metadata'
         if (objCode) {
             path = objCode + path
@@ -259,7 +259,7 @@ export class Api {
      * @param {String|String[]} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @returns {Promise}    A promise which will resolved with received data if everything went ok and rejected with error info otherwise
      */
-    public namedQuery(objCode: string, query: string, queryArgs?: object, fields?: TFields) {
+    namedQuery(objCode: string, query: string, queryArgs?: object, fields?: TFields) {
         return this.request(objCode + '/' + query, queryArgs, fields, Api.Methods.GET)
     }
 
@@ -271,7 +271,7 @@ export class Api {
      * @param {Boolean} [bForce]    Pass true to cause the server to remove the specified data and its dependants
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
-    public remove(objCode: string, objID: string, bForce?: boolean): Promise<undefined> {
+    remove(objCode: string, objID: string, bForce?: boolean): Promise<undefined> {
         return new Promise((resolve, reject) => {
             const params = bForce ? {force: true} : null
             this.request(objCode + '/' + objID, params, null, Api.Methods.DELETE).then((result) => {
@@ -291,16 +291,16 @@ export class Api {
      * @param {Object} query    An object with search criteria and aggregate functions
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    public report(objCode: string, query) {
+    report(objCode: string, query) {
         return this.request(objCode + '/report', query, null, Api.Methods.GET)
     }
 
-    public request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
-        params = Object.assign(params || {}, this.httpParams)
+    request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
+        params = Object.assign(params || {}, this._httpParams)
 
-        const alwaysUseGet = this.httpOptions.alwaysUseGet
+        const alwaysUseGet = this._httpOptions.alwaysUseGet
 
-        let options = Object.assign({}, this.httpOptions)
+        let options = Object.assign({}, this._httpOptions)
         if (alwaysUseGet) {
             params.method = method
         } else {
@@ -308,10 +308,10 @@ export class Api {
         }
 
         if (path.indexOf('/') === 0) {
-            options.path = this.httpOptions.path + path
+            options.path = this._httpOptions.path + path
         }
         else {
-            options.path = this.httpOptions.path + '/' + path
+            options.path = this._httpOptions.path + '/' + path
         }
 
         fields = fields || []
@@ -324,8 +324,8 @@ export class Api {
 
         let headers = new Headers()
         headers.append('Content-Type', 'application/x-www-form-urlencoded')
-        if (this.httpOptions.headers.sessionID) {
-            headers.append('sessionID', this.httpOptions.headers.sessionID)
+        if (this._httpOptions.headers.sessionID) {
+            headers.append('sessionID', this._httpOptions.headers.sessionID)
         }
 
         let bodyParams = Object.keys(params).reduce(function(a, k) {
@@ -350,7 +350,7 @@ export class Api {
      * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with search results if everything went ok and rejected otherwise
      */
-    public search(objCode: string, query: object, fields?: TFields) {
+    search(objCode: string, query: object, fields?: TFields) {
         return this.request(objCode + '/search', query, fields, Api.Methods.GET)
     }
 
@@ -360,8 +360,8 @@ export class Api {
      * @param {String} sessionID   sessionID to set
      * @return {void}
      */
-    public setSessionID(sessionID: string): void {
-        this.httpOptions.headers.sessionID = sessionID
+    setSessionID(sessionID: string): void {
+        this._httpOptions.headers.sessionID = sessionID
     }
 }
 

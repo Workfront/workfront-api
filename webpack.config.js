@@ -1,28 +1,33 @@
+'use strict'
+
 module.exports = {
     entry: './src/index.ts',
     output: {
-        path: __dirname + "/dist",
-        filename: "workfront.js",
-        library: "Workfront",
-        libraryTarget: "umd"
+        path: __dirname + '/dist',
+        filename: 'workfront.js',
+        library: 'Workfront',
+        libraryTarget: 'umd'
     },
 
     // Enable sourcemaps for debugging webpack's output.
     devtool: 'source-map',
 
     resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ['.ts', '.tsx', '.js']
+        // Add '.ts' and '.js' as resolvable extensions.
+        extensions: ['.ts', '.js']
     },
 
     module: {
         rules: [
             // rules for modules (configure loaders, parser options, etc.)
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+            // All files with a '.ts' extension will be handled by 'awesome-typescript-loader'.
             {
-                test: /\.tsx?$/,
+                test: /\.ts$/,
                 loader: 'awesome-typescript-loader',
-                exclude: /(node_modules)/
+                exclude: [
+                    /(node_modules)/,
+                    /(test)/
+                ]
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
@@ -35,7 +40,7 @@ module.exports = {
             // lint
             {
                 enforce: 'pre',
-                test: /\.tsx?$/,
+                test: /\.ts$/,
                 loader: 'tslint-loader',
                 exclude: /(node_modules)/,
                 options: {

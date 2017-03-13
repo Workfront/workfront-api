@@ -40,9 +40,9 @@ module.exports = function(Api) {
           method: 'POST'
         };
 
-        util._extend(options, this.httpOptions);
+        util._extend(options, this._httpOptions);
         options.headers = form.getHeaders();
-        options.headers.sessionID = this.httpOptions.headers.sessionID;
+        options.headers.sessionID = this._httpOptions.headers.sessionID;
         options.path += '/upload';
 
         delete options.headers['Content-Length'];

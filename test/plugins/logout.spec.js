@@ -40,21 +40,21 @@ describe('Api.logout() method', function() {
 	});
 
 	it('should remove sessionID from headers if logout was ok', function(done) {
-		api.httpOptions.headers.sessionID = 123;
+		api._httpOptions.headers.sessionID = 123;
 		api.request.resolves({success: true});
 		var promise = api.logout();
 		expect(promise).to.be.fulfilled.then(function () {
-			expect(api.httpOptions.headers.sessionID).to.equal(undefined);
+			expect(api._httpOptions.headers.sessionID).to.equal(undefined);
 			done();
 		});
 	});
 
 	it('should reject returned promise and dont touch sessionID if logout was not ok', function(done) {
-		api.httpOptions.headers.sessionID = 123;
+		api._httpOptions.headers.sessionID = 123;
 		api.request.resolves(false);
 		var promise = api.logout();
 		expect(promise).to.be.rejected.then(function () {
-			expect(api.httpOptions.headers.sessionID).to.equal(123);
+			expect(api._httpOptions.headers.sessionID).to.equal(123);
 			done();
 		});
 	});

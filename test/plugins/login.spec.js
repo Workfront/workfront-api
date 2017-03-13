@@ -43,13 +43,13 @@ describe('Api.login() method', function() {
 	});
 
 	it('should set sessionID in headers if login was ok', function(done) {
-		expect(api.httpOptions.headers.sessionID).to.equal(undefined);
+		expect(api._httpOptions.headers.sessionID).to.equal(undefined);
 		api.request.resolves({
 			sessionID: 123
 		});
 		var promise = api.login('a', 'b');
 		expect(promise).to.be.fulfilled.then(function () {
-			expect(api.httpOptions.headers.sessionID).to.equal(123);
+			expect(api._httpOptions.headers.sessionID).to.equal(123);
 			done();
 		});
 	});
