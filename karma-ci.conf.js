@@ -7,44 +7,50 @@ module.exports = function (config) {
 
     // Browsers to run on Sauce Labs
     const customLaunchers = {
-        'SL_Chrome': {
-            base: 'SauceLabs',
-            browserName: 'chrome',
-            version: '48.0',
-            platform: 'Linux'
+        'bs_chrome_mac': {
+            base: 'BrowserStack',
+            browser: 'chrome',
+            browser_version: '56.0',
+            os: 'OS X',
+            os_version: 'Sierra'
         },
-        'SL_Firefox': {
-            base: 'SauceLabs',
-            browserName: 'firefox',
-            version: '50.0',
-            platform: 'Windows 10'
+        'bs_firefox_mac': {
+            base: 'BrowserStack',
+            browser: 'firefox',
+            browser_version: '52.0',
+            os: 'OS X',
+            os_version: 'Sierra'
         },
-        'SL_InternetExplorer': {
-            base: 'SauceLabs',
-            browserName: 'internet explorer',
-            version: '11.0',
-            platform: 'Windows 7'
+        'bs_internet_explorer_win': {
+            base: 'BrowserStack',
+            browser: 'internet explorer',
+            browser_version: '11.0',
+            os: 'Windows',
+            os_version: '7'
         },
-        'SL_Safari': {
-            base: 'SauceLabs',
-            browserName: 'safari',
-            platform: 'OS X 10.11',
-            version: '10.0'
+        'bs_safari_mac': {
+            base: 'BrowserStack',
+            browser: 'safari',
+            browser_version: '10.0',
+            os: 'OS X',
+            os_version: 'Sierra'
         }
     };
 
     // Override config for CI.
     config.set({
-        reporters: ['spec', 'coverage', 'saucelabs'],
-        sauceLabs: {
-            testName: 'workfront-api CI tests',
-            recordScreenshots: false,
-            connectOptions: {
-                port: 5757
-            },
-            public: 'public'
-        },
-        captureTimeout: 120000,
+        plugins: ['karma-browserstack-launcher'],
+
+        reporters: ['progress'],
+        // sauceLabs: {
+        //     testName: 'workfront-api CI tests',
+        //     recordScreenshots: false,
+        //     connectOptions: {
+        //         port: 5757
+        //     },
+        //     public: 'public'
+        // },
+        // captureTimeout: 120000,
         customLaunchers: customLaunchers,
 
         // start these browsers

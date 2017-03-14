@@ -9,8 +9,8 @@ node_js:
   - '4'
 script: npm run ci-test
 addons:
-  sauce_connect: true
-env:
-  global:
-  - secure: Zmndw3YPp7JUPHRWfzF6ieqwDqWs4GnKMqXNaPNCcY1D76rH2CGTe6YQHhvNEgIm5UItH39x306TMWjqZfCFUVpAks8AQEigADAMPbgqLg8JG4QVIb1sQiZPiVHJA5Ho6YNB4hqv3fp+D9DWRDIMiLYmWiRD8/hFaow/xkfMyiA=
-  - secure: jdw+OA04vF8+t+iOkWRfDWexKGVxrjpt8iwkY/CBnmANFQckseLwVrDJyHrjcxQlY7SlkSudMNXizINKJDldPx4BBlt1I6n7441CYQ2KpRqzAQXgLPWy+Ea/lM2QcSfihG/xC8Q30CVfMUTZTZx/6nUlIoeB2eItzy9+KsE9UaU=
+  browserstack:
+    username:
+      secure: "sassounderderian1"
+    access_key:
+      secure: "RiRAISQ1espgnPgoczTj3wlBh2GTfexfjnJhcTswhTO6TDWulwGNhltDgYDd9oVmy3p+zAh7vGakvVpEeMFv5NzUc4rN6SNBRaAPoqFa12gawHoL/UIFwsnfFdILLPoF3d8mWpqQbZ3xbd2EBndDS0/a+WifKeXPu73wqbSdLlU="
