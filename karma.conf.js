@@ -78,7 +78,13 @@ module.exports = function (config) {
         reporters: ['progress', 'coverage', 'remap-coverage'],
 
         coverageReporter: {
-            type: 'in-memory'
+            reporters: [
+                {type: 'in-memory'},
+                // generates ./coverage/lcov.info
+                {type: 'lcov', subdir: '.'},
+                // generates ./coverage/coverage-final.json
+                {type: 'json', subdir: '.'}
+            ]
         },
 
         remapOptions: {
