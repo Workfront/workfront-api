@@ -5,12 +5,10 @@ notifications:
     on_failure: always
     on_success: change
 node_js:
-  - '6'
-  - '4'
+- '6'
+- '4'
 script: npm run ci-test
-addons:
-  browserstack:
-    username:
-      secure: "sassounderderian1"
-    access_key:
-      secure: "RiRAISQ1espgnPgoczTj3wlBh2GTfexfjnJhcTswhTO6TDWulwGNhltDgYDd9oVmy3p+zAh7vGakvVpEeMFv5NzUc4rN6SNBRaAPoqFa12gawHoL/UIFwsnfFdILLPoF3d8mWpqQbZ3xbd2EBndDS0/a+WifKeXPu73wqbSdLlU="
+env:
+  global:
+  - secure: PGLnN1ksLylD9BpxnKQymWfi6GpcGUuqkOlEJqA6yJp4oq7itvlPENtDYylVqmD3LM7tgFUk8PJHFsKDBY1d2dK6uqleKVMI0u49vZcAf4uIqDTJh1CEGhEMCZY7tgdLiGyjwSMzh/GqkJWia9hOCWSnpCmZi3gL/aaI46bm1aY=
+  - secure: E3GeYXyCZO/inAMVX+JZMtiJ2ocSTOkIsuML0tTWbHtd8abtX4hOkXqIlSE5WOqO1LnYX43Qs96iysg+D6S+JUlbESsU2+otl0PBV+cE8KMh23c8bUXCZ6NKAKGXXFTWc1UkeAqv8jeq+TSp2WtyBANXJWhaFNYnGOAN1jcvcUc=
