@@ -39,8 +39,6 @@ module.exports = function (config) {
 
     // Override config for CI.
     config.set({
-        plugins: ['karma-browserstack-launcher'],
-
         reporters: ['progress'],
         // sauceLabs: {
         //     testName: 'workfront-api CI tests',
