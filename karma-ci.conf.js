@@ -49,6 +49,10 @@ module.exports = function (config) {
         //     public: 'public'
         // },
         // captureTimeout: 120000,
+        browserStack: {
+            username: process.env.BROWSERSTACK_USER,
+            accessKey: process.env.BROWSERSTACK_ACCESSKEY,
+        },
         customLaunchers: customLaunchers,
 
         // start these browsers
