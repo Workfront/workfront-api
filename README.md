@@ -1,8 +1,7 @@
 # workfront-api
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url]
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] ![BrowserStack Status][browserstack-url] [![Coverage][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url]
 
-A Workfront API for the Node and the Web
-
+Thanks to [BrowserStack](https://www.browserstack.com/), the code is tested against `Chrome 56`, `Firefox 52`, `IE 11` and `Safari 10`. 
 
 ## Usage
 
@@ -116,3 +115,4 @@ See the top-level file `LICENSE` and
 [code-climate-url]: https://codeclimate.com/github/Workfront/workfront-api
 [code-climate-image]: https://img.shields.io/codeclimate/github/Workfront/workfront-api.svg?style=flat
 
+[browserstack-url]: https://www.browserstack.com/automate/badge.svg?badge_key=UlhFQU9IS014UmVHQ0tNVTdnK09ZRWdTdDdUcHpsSC90QXVJd2RIeGlrYz0tLUdybk9DbGxzalkxS2h6MlFrRWF3Tmc9PQ==--e8c67fb780c7cfc1b77d5ed945e7e91644c950cd
