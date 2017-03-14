@@ -64,11 +64,8 @@
     "webpack": "2.2.1"
   },
   "scripts": {
-    "test": "run-s test:phantomjs",
-    "ci-test": "run-s -n test:phantomjs test:coverage test:saucelabs",
-    "test:saucelabs": "karma start karma-ci.conf.js",
-    "test:coverage": "codecov",
-    "test:phantomjs": "karma start karma.conf.js",
+    "test": "karma start karma.conf.js",
+    "ci-test": "karma start karma-ci.conf.js && codecov",
     "build": "webpack -p --bail",
     "update-online-docs": "gulp publish-docs",
     "prepublish": "npm run build",
