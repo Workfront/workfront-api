@@ -23,11 +23,8 @@ module.exports = {
             // All files with a '.ts' extension will be handled by 'awesome-typescript-loader'.
             {
                 test: /\.ts$/,
-                loader: 'awesome-typescript-loader',
-                exclude: [
-                    /(node_modules)/,
-                    /(test)/
-                ]
+                loader: 'ts-loader',
+                exclude: /(node_modules)/
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.

@@ -6,6 +6,7 @@ notifications:
     on_success: change
 node_js:
   - '6'
+  - '4'
 script: npm run ci-test
 addons:
   sauce_connect: true

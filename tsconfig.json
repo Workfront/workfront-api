@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "importHelpers": true,
     "module": "es6",
     "noImplicitAny": false,
     "noLib": true,
@@ -21,7 +22,6 @@
   ],
   "exclude": [
     "node_modules",
-    "coverage",
     "dist"
   ]
 }

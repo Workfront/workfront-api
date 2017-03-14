@@ -26,7 +26,7 @@ webpackConfig.module.rules.push({
 webpackConfig.module.rules.forEach(function(rule) {
     if (Array.isArray(rule.use)) {
         rule.use.forEach(function(loaderInfo) {
-            if (loaderInfo.loader === 'awesome-typescript-loader') {
+            if (loaderInfo.loader === 'ts-loader') {
                 loaderInfo.options = loaderInfo.options || {}
                 loaderInfo.options.compilerOptions = {
                     sourceMap: false,
@@ -52,6 +52,9 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'node_modules/es6-promise/dist/es6-promise.auto.min.js',
+            'node_modules/whatwg-fetch/fetch.js',
+            'node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
             'test/test-bundle.js'
         ],
 
@@ -89,7 +92,7 @@ module.exports = function (config) {
         port: 9876,
         colors: true,
         autoWatch: false,
-        browsers: ['Chrome'],
-        singleRun: false
+        browsers: ['PhantomJS'],
+        singleRun: true
     })
 }

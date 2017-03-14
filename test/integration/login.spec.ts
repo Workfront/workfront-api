@@ -19,7 +19,7 @@ import * as should from 'should'
 // import 'should-sinon'
 // import * as sinon from 'sinon'
 
-import * as Workfront from '../../dist/workfront'
+import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
