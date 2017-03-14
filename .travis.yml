@@ -13,6 +13,7 @@ env:
   global:
     - secure: PGLnN1ksLylD9BpxnKQymWfi6GpcGUuqkOlEJqA6yJp4oq7itvlPENtDYylVqmD3LM7tgFUk8PJHFsKDBY1d2dK6uqleKVMI0u49vZcAf4uIqDTJh1CEGhEMCZY7tgdLiGyjwSMzh/GqkJWia9hOCWSnpCmZi3gL/aaI46bm1aY=
     - secure: E3GeYXyCZO/inAMVX+JZMtiJ2ocSTOkIsuML0tTWbHtd8abtX4hOkXqIlSE5WOqO1LnYX43Qs96iysg+D6S+JUlbESsU2+otl0PBV+cE8KMh23c8bUXCZ6NKAKGXXFTWc1UkeAqv8jeq+TSp2WtyBANXJWhaFNYnGOAN1jcvcUc=
+  matrix:
     - CI=TRAVIS
 
 matrix:
