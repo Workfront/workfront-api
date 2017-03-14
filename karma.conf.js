@@ -22,21 +22,6 @@ webpackConfig.module.rules.push({
     }
 })
 
-// override compiler options for "ts-loader"
-webpackConfig.module.rules.forEach(function(rule) {
-    if (Array.isArray(rule.use)) {
-        rule.use.forEach(function(loaderInfo) {
-            if (loaderInfo.loader === 'ts-loader') {
-                loaderInfo.options = loaderInfo.options || {}
-                loaderInfo.options.compilerOptions = {
-                    sourceMap: false,
-                    inlineSourceMap: true
-                }
-            }
-        })
-    }
-})
-
 webpackConfig.externals = [
 ]
 
