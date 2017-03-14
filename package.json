@@ -40,6 +40,7 @@
     "karma-spec-reporter": "0.0.30",
     "karma-webpack": "2.0.2",
     "mocha": "3.2.0",
+    "npm-run-all": "4.0.2",
     "phantomjs-polyfill-object-assign": "0.0.2",
     "phantomjs-prebuilt": "2.1.14",
     "requirejs": "2.3.3",
@@ -61,8 +62,11 @@
     "webpack": "2.2.1"
   },
   "scripts": {
-    "test": "karma start karma.conf.js",
-    "ci-test": "karma start karma-ci.conf.js && codecov",
+    "test": "run-s test:phantomjs",
+    "ci-test": "run-s -n test:phantomjs test:coverage test:saucelabs",
+    "test:saucelabs": "karma start karma-ci.conf.js",
+    "test:coverage": "codecov",
+    "test:phantomjs": "karma start karma.conf.js",
     "build": "webpack -p --bail",
     "update-online-docs": "gulp publish-docs",
     "prepublish": "npm run build",
