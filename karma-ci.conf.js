@@ -57,8 +57,8 @@ else if (CI === 'SL') {
             },
         'SL_Edge13': {
             base: 'SauceLabs',
-            browserName: 'microsoftedge',
-            version: '13.0',
+            browserName: 'MicrosoftEdge',
+            version: '13.10586',
             platform: 'Windows 10'
             },
         'SL_Safari10': {
