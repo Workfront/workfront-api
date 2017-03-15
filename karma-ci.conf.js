@@ -55,9 +55,9 @@ else if (CI === 'SL') {
             version: '11.0',
             platform: 'Windows 7'
             },
-        'SL_InternetExplorer13': {
+        'SL_Edge13': {
             base: 'SauceLabs',
-            browserName: 'edge',
+            browserName: 'microsoftedge',
             version: '13.0',
             platform: 'Windows 10'
             },
