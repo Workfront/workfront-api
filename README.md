@@ -1,7 +1,8 @@
 # workfront-api
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] ![BrowserStack Status][browserstack-url] [![Coverage][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url]
-[![Build Status][saucelabs-badge]]([saucelabs-url])
-[![Build Status][saucelabs-matrix]]([saucelabs-url])
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url]
+[![Build Status][saucelabs-badge]][saucelabs-url]
+
+[![Build Status][saucelabs-matrix]][saucelabs-url]
 
 Thanks to [BrowserStack](https://www.browserstack.com/), the code is tested against `Chrome 56`, `Firefox 52`, `IE 11` and `Safari 10`. 
 
