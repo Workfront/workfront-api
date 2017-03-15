@@ -1,5 +1,7 @@
 'use strict'
 
+const CI = process.env.CI
+
 const webpackConfig = require('./webpack.config')
 webpackConfig.devtool = 'inline-source-map'
 
@@ -66,9 +68,7 @@ module.exports = function (config) {
             reporters: [
                 {type: 'in-memory'},
                 // generates ./coverage/lcov.info
-                {type: 'lcov', subdir: '.'},
-                // generates ./coverage/coverage-final.json
-                {type: 'json', subdir: '.'}
+                {type: CI ? 'lcovonly' : 'html', subdir: '.'}
             ]
         },
 

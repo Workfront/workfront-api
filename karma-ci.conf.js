@@ -22,17 +22,19 @@ else if (CI === 'SL') {
             'SL_Firefox_Latest-2': {version: 'latest-2', platform: 'OS X 10.11', browserName: 'firefox', base: 'SauceLabs'}
         }
         const safari = {
-            'SL_Safari_Latest': {version: '10.0', platform: 'OS X 10.11', browserName: 'safari', base: 'SauceLabs'},
-            'SL_Safari_Latest-1': {version: '9.0', platform: 'OS X 10.11', browserName: 'safari', base: 'SauceLabs'}
+            'SL_Safari_Latest': {version: 'latest', platform: 'OS X 10.12', browserName: 'safari', base: 'SauceLabs'},
+            'SL_Safari_10': {version: '10.0', platform: 'OS X 10.11', browserName: 'safari', base: 'SauceLabs'},
+            'SL_Safari_9': {version: '9.0', platform: 'OS X 10.11', browserName: 'safari', base: 'SauceLabs'}
         }
         const ie = {
-            'SL_InternetExplorer_Latest': {version: '11.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
-            'SL_InternetExplorer_Latest-1': {version: '10.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
-            'SL_InternetExplorer_Latest-2': {version: '9.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'}
+            'SL_InternetExplorer_11': {version: '11.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
+            'SL_InternetExplorer_10': {version: '10.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
+            'SL_InternetExplorer_9': {version: '9.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'}
         }
         const edge = {
-            'SL_Edge_Latest': {version: '14.14393', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'},
-            'SL_Edge_Latest-1': {version: '13.10586', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'}
+            'SL_Edge_Latest': {version: 'latest', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'},
+            'SL_Edge_14': {version: '14.14393', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'},
+            'SL_Edge_13': {version: '13.10586', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'}
         }
         const linux = {
             'SL_Chrome_Linux': {version: 'latest', platform: 'Linux', browserName: 'chrome', base: 'SauceLabs'},

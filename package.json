@@ -63,7 +63,7 @@
   },
   "scripts": {
     "test": "karma start karma.conf.js",
-    "ci-test": "karma start karma-ci.conf.js && codecov",
+    "ci-test": "karma start karma-ci.conf.js",
     "build": "webpack -p --bail",
     "update-online-docs": "gulp publish-docs",
     "prepublish": "npm run build",
