@@ -4,8 +4,6 @@
 
 [![Build Status][saucelabs-matrix]][saucelabs-url]
 
-Thanks to [BrowserStack](https://www.browserstack.com/), the code is tested against `Chrome 56`, `Firefox 52`, `IE 11` and `Safari 10`. 
-
 ## Usage
 
 #### Server-side
@@ -117,8 +115,6 @@ See the top-level file `LICENSE` and
 
 [code-climate-url]: https://codeclimate.com/github/Workfront/workfront-api
 [code-climate-image]: https://img.shields.io/codeclimate/github/Workfront/workfront-api.svg?style=flat
-
-[browserstack-url]: https://www.browserstack.com/automate/badge.svg?badge_key=UlhFQU9IS014UmVHQ0tNVTdnK09ZRWdTdDdUcHpsSC90QXVJd2RIeGlrYz0tLUdybk9DbGxzalkxS2h6MlFrRWF3Tmc9PQ==--e8c67fb780c7cfc1b77d5ed945e7e91644c950cd
 
 [saucelabs-badge]: https://saucelabs.com/buildstatus/citizensas
 [saucelabs-url]: https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14
