@@ -41,7 +41,6 @@
     "karma-spec-reporter": "0.0.30",
     "karma-webpack": "2.0.2",
     "mocha": "3.2.0",
-    "npm-run-all": "4.0.2",
     "phantomjs-polyfill-object-assign": "0.0.2",
     "phantomjs-prebuilt": "2.1.14",
     "remap-istanbul": "0.9.1",

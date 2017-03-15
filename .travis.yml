@@ -9,10 +9,12 @@ node_js:
   - '4'
 
 script: npm run ci-test
+addons:
+  sauce_connect: true
 env:
   global:
-    - secure: PGLnN1ksLylD9BpxnKQymWfi6GpcGUuqkOlEJqA6yJp4oq7itvlPENtDYylVqmD3LM7tgFUk8PJHFsKDBY1d2dK6uqleKVMI0u49vZcAf4uIqDTJh1CEGhEMCZY7tgdLiGyjwSMzh/GqkJWia9hOCWSnpCmZi3gL/aaI46bm1aY=
-    - secure: E3GeYXyCZO/inAMVX+JZMtiJ2ocSTOkIsuML0tTWbHtd8abtX4hOkXqIlSE5WOqO1LnYX43Qs96iysg+D6S+JUlbESsU2+otl0PBV+cE8KMh23c8bUXCZ6NKAKGXXFTWc1UkeAqv8jeq+TSp2WtyBANXJWhaFNYnGOAN1jcvcUc=
+    - secure: Zmndw3YPp7JUPHRWfzF6ieqwDqWs4GnKMqXNaPNCcY1D76rH2CGTe6YQHhvNEgIm5UItH39x306TMWjqZfCFUVpAks8AQEigADAMPbgqLg8JG4QVIb1sQiZPiVHJA5Ho6YNB4hqv3fp+D9DWRDIMiLYmWiRD8/hFaow/xkfMyiA=
+    - secure: jdw+OA04vF8+t+iOkWRfDWexKGVxrjpt8iwkY/CBnmANFQckseLwVrDJyHrjcxQlY7SlkSudMNXizINKJDldPx4BBlt1I6n7441CYQ2KpRqzAQXgLPWy+Ea/lM2QcSfihG/xC8Q30CVfMUTZTZx/6nUlIoeB2eItzy9+KsE9UaU=
   matrix:
     - CI=TRAVIS
 
