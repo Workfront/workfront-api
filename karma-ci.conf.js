@@ -7,7 +7,7 @@ const CI = process.env.CI
 if(CI === 'TRAVIS') {
     module.exports = karmaConfig
 }
-else if (CI === 'BS') {
+else if (CI === 'SL') {
     module.exports = function (config) {
         karmaConfig(config)
 
@@ -57,7 +57,7 @@ else if (CI === 'BS') {
             },
         'SL_InternetExplorer13': {
             base: 'SauceLabs',
-            browserName: 'internet explorer',
+            browserName: 'edge',
             version: '13.0',
             platform: 'Windows 10'
             },
