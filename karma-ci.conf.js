@@ -11,69 +11,32 @@ else if (CI === 'SL') {
     module.exports = function (config) {
         karmaConfig(config)
 
+        const chrome = {
+            'SL_Chrome_Latest': {version: 'latest', platform: 'OS X 10.11', browserName: 'chrome', base: 'SauceLabs'},
+            'SL_Chrome_Latest-1': {version: 'latest-1', platform: 'OS X 10.11', browserName: 'chrome', base: 'SauceLabs'},
+            'SL_Chrome_Latest-2': {version: 'latest-2', platform: 'OS X 10.11', browserName: 'chrome', base: 'SauceLabs'}
+        }
+        const firefox = {
+            'SL_Firefox_Latest': {version: 'latest', platform: 'OS X 10.11', browserName: 'firefox', base: 'SauceLabs'},
+            'SL_Firefox_Latest-1': {version: 'latest-1', platform: 'OS X 10.11', browserName: 'firefox', base: 'SauceLabs'},
+            'SL_Firefox_Latest-2': {version: 'latest-2', platform: 'OS X 10.11', browserName: 'firefox', base: 'SauceLabs'}
+        }
+        const safari = {
+            'SL_Safari_Latest': {version: 'latest', platform: 'OS X 10.11', browserName: 'safari', base: 'SauceLabs'},
+            'SL_Safari_Latest-1': {version: 'latest-1', platform: 'OS X 10.11', browserName: 'safari', base: 'SauceLabs'}
+        }
+        const ie = {
+            'SL_InternetExplorer_Latest': {version: 'latest', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
+            'SL_InternetExplorer_Latest-1': {version: 'latest-1', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
+            'SL_InternetExplorer_Latest-2': {version: 'latest-2', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'}
+        }
+        const edge = {
+            'SL_Edge_Latest': {version: 'latest', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'},
+            'SL_Edge_Latest-1': {version: 'latest-1', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'}
+        }
+
         // Browsers to run on Sauce Labs
-        const customLaunchers = {
-        'SL_Chrome': {
-            base: 'SauceLabs',
-            browserName: 'chrome',
-            version: '48.0',
-            platform: 'Linux'
-            },
-        'SL_Chrome56': {
-            base: 'SauceLabs',
-            browserName: 'chrome',
-            version: '56.0',
-            platform: 'OS X 10.12'
-            },
-        'SL_Chrome55': {
-            base: 'SauceLabs',
-            browserName: 'chrome',
-            version: '55.0',
-            platform: 'OS X 10.12'
-            },
-        'SL_Firefox50': {
-            base: 'SauceLabs',
-            browserName: 'firefox',
-            version: '50.0',
-            platform: 'Windows 10'
-            },
-        'SL_Firefox51': {
-            base: 'SauceLabs',
-            browserName: 'firefox',
-            version: '51.0',
-            platform: 'Windows 10'
-            },
-        'SL_InternetExplorer10': {
-            base: 'SauceLabs',
-            browserName: 'internet explorer',
-            version: '11.0',
-            platform: 'Windows 7'
-            },
-        'SL_InternetExplorer11': {
-            base: 'SauceLabs',
-            browserName: 'internet explorer',
-            version: '11.0',
-            platform: 'Windows 7'
-            },
-        'SL_Edge13': {
-            base: 'SauceLabs',
-            browserName: 'MicrosoftEdge',
-            version: '13.10586',
-            platform: 'Windows 10'
-            },
-        'SL_Safari10': {
-            base: 'SauceLabs',
-            browserName: 'safari',
-            platform: 'OS X 10.12',
-            version: '10.0'
-            },
-        'SL_Safari9': {
-            base: 'SauceLabs',
-            browserName: 'safari',
-            platform: 'OS X 10.11',
-            version: '9.0'
-            }
-        };
+        const customLaunchers = Object.assign({}, chrome, firefox, safari, ie, edge)
 
         // Override config for CI.
         config.set({
