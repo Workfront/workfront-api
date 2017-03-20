@@ -23,7 +23,7 @@ import {Api} from '../src/Api'
 describe('Create new instance for API', function () {
     it('should have methods', function () {
         const api = new Api({url: 'http://localhost'})
-        should(api.get).be.a.Function()
+        should(api.get).not.be.a.Function()
         should(api.login).be.a.Function()
         should(api.logout).be.a.Function()
         should(api.create).be.a.Function()

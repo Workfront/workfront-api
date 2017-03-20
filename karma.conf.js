@@ -70,9 +70,9 @@ module.exports = function (config) {
 
         port: 9876,
         colors: true,
-        autoWatch: true,
-        browsers: ['Chrome'],
-        singleRun: false
+        autoWatch: false,
+        browsers: ['PhantomJS'],
+        singleRun: true
     })
 
     if (CI_MODE === 'saucelabs') {
