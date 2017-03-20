@@ -2,7 +2,6 @@
 
 const CI = process.env.CI
 const CI_MODE = process.env.CI_MODE
-console.log('CI=', CI, typeof CI)
 
 process.env.WEBPACK_ENV = 'test'
 
