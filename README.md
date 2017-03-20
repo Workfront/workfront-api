@@ -1,7 +1,8 @@
 # workfront-api
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] ![BrowserStack Status][browserstack-url] [![Coverage][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url]
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url]
+[![Build Status][saucelabs-badge]][saucelabs-url]
 
-Thanks to [BrowserStack](https://www.browserstack.com/), the code is tested against `Chrome 56`, `Firefox 52`, `IE 11` and `Safari 10`. 
+[![Build Status][saucelabs-matrix]][saucelabs-url]
 
 ## Usage
 
@@ -115,4 +116,6 @@ See the top-level file `LICENSE` and
 [code-climate-url]: https://codeclimate.com/github/Workfront/workfront-api
 [code-climate-image]: https://img.shields.io/codeclimate/github/Workfront/workfront-api.svg?style=flat
 
-[browserstack-url]: https://www.browserstack.com/automate/badge.svg?badge_key=UlhFQU9IS014UmVHQ0tNVTdnK09ZRWdTdDdUcHpsSC90QXVJd2RIeGlrYz0tLUdybk9DbGxzalkxS2h6MlFrRWF3Tmc9PQ==--e8c67fb780c7cfc1b77d5ed945e7e91644c950cd
+[saucelabs-badge]: https://saucelabs.com/buildstatus/citizensas
+[saucelabs-url]: https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14
+[saucelabs-matrix]: https://saucelabs.com/browser-matrix/citizensas.svg
