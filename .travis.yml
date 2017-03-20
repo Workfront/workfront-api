@@ -8,8 +8,6 @@ node_js:
   - '6'
   - '4'
 
-addons:
-  sauce_connect: true
 env:
   global:
     - secure: Zmndw3YPp7JUPHRWfzF6ieqwDqWs4GnKMqXNaPNCcY1D76rH2CGTe6YQHhvNEgIm5UItH39x306TMWjqZfCFUVpAks8AQEigADAMPbgqLg8JG4QVIb1sQiZPiVHJA5Ho6YNB4hqv3fp+D9DWRDIMiLYmWiRD8/hFaow/xkfMyiA=
@@ -19,5 +17,7 @@ matrix:
   include:
     - node_js: '6'
       env: CI_MODE=saucelabs
+      addons:
+        sauce_connect: true
 
 after_success: codecov
