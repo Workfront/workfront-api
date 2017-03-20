@@ -70,9 +70,9 @@ module.exports = function (config) {
 
         port: 9876,
         colors: true,
-        autoWatch: false,
-        browsers: ['PhantomJS'],
-        singleRun: true
+        autoWatch: true,
+        browsers: ['Chrome'],
+        singleRun: false
     })
 
     if (CI_MODE === 'saucelabs') {
@@ -111,7 +111,7 @@ module.exports = function (config) {
 
         // Override config for CI.
         config.set({
-            reporters: ['spec', 'coverage', 'saucelabs'],
+            reporters: ['progress', 'saucelabs'],
             sauceLabs: {
                 testName: 'workfront-api',
                 recordScreenshots: false,
