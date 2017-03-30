@@ -18,14 +18,16 @@
  * Obtains an API key, returns detailed info of logged in user using that key, and then clears the key
  */
 
-var ApiFactory = require('./../../').ApiFactory;
-var ApiConstants = require('./../../').ApiConstants;
+'use strict';
+var Workfront = require('./../../');
+var ApiConstants = require('workfront-api-constants');
 var util = require('util');
 
-var instance = ApiFactory.getInstance({
-	url: 'http://localhost:8080',
-	version: 'unsupported'
+var instance = new Workfront.Api({
+    url: 'http://localhost:8080',
+    version: '4.0'
 });
+
 
 
 var getApiKey = function() {

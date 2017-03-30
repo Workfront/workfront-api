@@ -19,13 +19,15 @@
  * This examples is similar to create-edit-delete-group.js, but this one makes use of promise chaining (pc).
  */
 
-var ApiFactory = require('./../../').ApiFactory;
+'use strict';
+var Workfront = require('./../../');
 var util = require('util');
 
-var instance = ApiFactory.getInstance({
-	url: 'http://localhost:8080',
-	version: '4.0'
+var instance = new Workfront.Api({
+    url: 'http://localhost:8080',
+    version: '4.0'
 });
+
 
 var login = function() {
 	util.log('Logging in ...');

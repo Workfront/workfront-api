@@ -18,22 +18,25 @@
  * Logs in, then uploads an image and attaches it to a task
  */
 
-var ApiFactory = require('./../../').ApiFactory;
+'use strict';
+var Workfront = require('./../../');
+var ApiConstants = require('workfront-api-constants');
 var util = require('util');
-var fs = require('fs');
 
-var stream = fs.createReadStream('./image.jpg');
+var fs = require('fs')
+var stream = fs.createReadStream(__dirname + '/image.jpg');
 
-var instance = ApiFactory.getInstance({
-	url: 'http://localhost:8080',
-	version: '4.0'
+var instance = new Workfront.Api({
+    url: 'http://localhost:8080',
+    version: '4.0'
 });
 
+
 util.log('Logging in ...');
-instance.login('admin@user.attask', 'user').then(
+instance.login('new@user.attask', 'user').then(
 	function() {
 		util.log('Uploading a sweet picture...');
-		instance.upload(stream, {filename: 'sweet.jpg', contentType: 'image/jpeg'}).then(
+		instance.upload(stream, 'sweet.jpg').then(
 			function(data) {
 				util.log('Upload success. Received data:');
 				console.log(util.inspect(data, {colors:true}));
@@ -44,7 +47,7 @@ instance.login('admin@user.attask', 'user').then(
           docObjCode: 'TASK',
 
           //Obviously this will only work with a real TASK ID
-          objID: '561ffe36000006ee9f8453a6c921d636'
+          objID: '58da4a94000009fcee391929cdd2f463'
 				}).then(
 					function(data) {
 						util.log('Document creation success. Received data:');

@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "ID": "5461d77a000002bd766b5a3813fa2850",
+      "name": "Accounting",
+      "objCode": "ROLE",
+      "description": "For Accounting related work",
+      "maxUsers": 0
+    },
+    {
+      "ID": "5461d7610000028c62f5058b2aa4b797",
+      "name": "Consultant",
+      "objCode": "ROLE",
+      "description": "Consultant",
+      "maxUsers": 0
+    },
+    {
+      "ID": "5461d7610000028e1afd30e678207927",
+      "name": "Designer",
+      "objCode": "ROLE",
+      "description": "Creative expert",
+      "maxUsers": 0
+    },
+    {
+      "ID": "5461d7610000028fbd7ad1dd97efddf7",
+      "name": "Engineer",
+      "objCode": "ROLE",
+      "description": "Technical expert in design and implementation",
+      "maxUsers": 0
+    },
+    {
+      "ID": "5461d7610000029010f13fa8f8e3ea07",
+      "name": "Project Manager",
+      "objCode": "ROLE",
+      "description": "Manages project timelines, progress, and resources",
+      "maxUsers": 0
+    },
+    {
+      "ID": "5461d76100000291678d1cf6315d1c33",
+      "name": "QA Engineer",
+      "objCode": "ROLE",
+      "description": "Ensures quality of product and process",
+      "maxUsers": 0
+    },
+    {
+      "ID": "5461d76100000292057ef4e084b94a14",
+      "name": "Sales Representative",
+      "objCode": "ROLE",
+      "description": "Sales",
+      "maxUsers": 0
+    },
+    {
+      "ID": "5461d761000002936608f33bf475a29f",
+      "name": "Support Engineer",
+      "objCode": "ROLE",
+      "description": "Internal process support",
+      "maxUsers": 0
+    },
+    {
+      "ID": "5461d77a000002be01f8a7753f44d0ae",
+      "name": "Vendor/Subcontractor",
+      "objCode": "ROLE",
+      "description": "Use this job role for tasks that need to be completed by users outside the company.",
+      "maxUsers": 0
+    }
+  ]
+}

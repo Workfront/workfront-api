@@ -18,11 +18,10 @@
  * Creates a project using a get request
  */
 'use strict';
-var ApiFactory = require('./../../').ApiFactory;
-var ApiConstants = require('./../../').ApiConstants;
+var Workfront = require('./../../');
 var util = require('util');
 
-var instance = ApiFactory.getInstance({
+var instance = new Workfront.Api({
 	url: 'http://localhost:8080',
 	version: 'internal',
     alwaysUseGet: true

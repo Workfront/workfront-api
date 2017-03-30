@@ -15,12 +15,6 @@
  */
 
 /**
- * Simplifies creation of API instances as singletons
- * @type {exports}
- */
-export * from './ApiFactory'
-
-/**
  * An Api class
  */
 export * from './Api'

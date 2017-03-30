@@ -16,8 +16,6 @@
 
 import * as fetchMock from 'fetch-mock'
 import * as should from 'should'
-// import 'should-sinon'
-// import * as sinon from 'sinon'
 
 import * as Workfront from '../../src/index'
 
@@ -37,11 +35,11 @@ describe('Login', function () {
         this.api = undefined
     })
 
-    describe('successfully', function () {
+    describe('success', function () {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
-                require('../../fixtures/login/successful.json'),
+                require('../../fixtures/login.json'),
                 {
                     name: 'login',
                     method: 'POST'
@@ -50,8 +48,7 @@ describe('Login', function () {
         })
         it('should return user data', function () {
             return this.api.login('foo', 'bar').then(function (data) {
-                should(data).have.property('data')
-                should(data.data).have.properties(['userID', 'sessionID'])
+                should(data).have.properties(['userID', 'sessionID'])
             })
         })
         it('sets sessionID in header', function () {
@@ -67,15 +64,17 @@ describe('Login', function () {
         })
         it('calls with proper params', function () {
             this.api.login('foo', 'bar')
-            let opts = fetchMock.lastOptions('login')
-            should(opts.body).be.equal('username=foo&password=bar')
+            let [url, opts] = fetchMock.lastCall('login')
+            should(url).endWith('login')
+            should(opts.body).containEql('username=foo')
+            should(opts.body).containEql('password=bar')
         })
     })
     describe('authentication exception', function () {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
-                require('../../fixtures/login/exception.json'),
+                require('../../fixtures/exception.json'),
                 {
                     name: 'login',
                     method: 'POST'

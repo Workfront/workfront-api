@@ -1,0 +1,13 @@
+{
+  "data": {
+    "ID": "58d389be000000deb46805b72b41e3b4",
+    "name": "api test 2",
+    "objCode": "PROJ",
+    "percentComplete": 0,
+    "plannedCompletionDate": "2017-03-23T09:00:00:000+0400",
+    "plannedStartDate": "2017-03-23T09:00:00:000+0400",
+    "priority": 0,
+    "projectedCompletionDate": "2017-03-23T12:39:00:000+0400",
+    "status": "CUR"
+  }
+}

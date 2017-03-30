@@ -4,7 +4,7 @@ const WEBPACK_ENV = process.env.WEBPACK_ENV
 
 module.exports = {
     context: __dirname,
-    entry: './src/index.ts',
+    entry: './src/Api.ts',
     output: {
         path: __dirname + '/dist',
         filename: 'workfront.js',
@@ -39,7 +39,11 @@ module.exports = {
                                         }
                                     }
                                 }
-                                return {}
+                                return {
+                                    compilerOptions: {
+                                        sourceMap: true
+                                    }
+                                }
                             })()
                         }
                     ],
@@ -84,7 +88,8 @@ module.exports = {
             return []
         }
         return [
-            'isomorphic-fetch'
+            'isomorphic-fetch',
+            'form-data'
         ]
     })()
 };

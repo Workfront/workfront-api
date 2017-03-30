@@ -19,7 +19,9 @@
  * @author Sassoun Derderian <citizen.sas at gmail dot com>
  */
 
+import * as FormData from 'form-data'
 import 'isomorphic-fetch'
+import * as stream from 'stream'
 import {INTERNAL_PREFIX} from 'workfront-api-constants'
 
 
@@ -29,7 +31,7 @@ type THttpOptions = {
     method?: string
     url: string
     alwaysUseGet?: boolean
-    headers: { sessionID?: string }
+    headers: {sessionID?: string}
 }
 type TFields = string | string[]
 
@@ -107,9 +109,14 @@ export class Api {
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     copy(objCode: string, objID: string, updates: object, fields?: TFields) {
-        const params = {
-            copySourceID: objID,
-            updates: updates ? JSON.stringify(updates) : undefined
+        let params: {
+            copySourceID: string,
+            updates?: object
+        } = {
+            copySourceID: objID
+        }
+        if (updates) {
+            params.updates = updates
         }
         return this.request(objCode, params, fields, Api.Methods.POST)
     }
@@ -118,10 +125,10 @@ export class Api {
      * Used to retrieve number of objects matching given search criteria
      * @memberOf Api
      * @param {String} objCode
-     * @param {Object} query    An object with search criteria
+     * @param {[Object]} query    An object with search criteria
      * @return {Promise}
      */
-    count(objCode: string, query: object): Promise<number> {
+    count(objCode: string, query?: object): Promise<number> {
         return this.request(objCode + '/count', query, null, Api.Methods.GET).then(function (data) {
             return data.count
         })
@@ -149,22 +156,19 @@ export class Api {
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     edit(objCode: string, objID: string, updates: object, fields?: TFields) {
-        const params = {
-            updates: JSON.stringify(updates)
-        }
-        return this.request(objCode + '/' + objID, params, fields, Api.Methods.PUT)
+        return this.request(objCode + '/' + objID, updates, fields, Api.Methods.PUT)
     }
 
     /**
      * Executes an action for the given object
      * @memberOf Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
-     * @param {String} objID    ID of object. Optional, pass null or undefined to omit
+     * @param {String|null} objID    ID of object. Optional, pass null or undefined to omit
      * @param {String} action    An action to execute. A list of allowed actions are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
      * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
-    execute(objCode: string, objID: string, action: string, actionArgs?: object) {
+    execute(objCode: string, objID: string|null, action: string, actionArgs?: object) {
         let endPoint = objCode
         if (objID) {
             endPoint += '/' + objID + '/' + action
@@ -213,7 +217,7 @@ export class Api {
      */
     login(username: string, password: string) {
         return this.request('login', {username: username, password: password}, null, Api.Methods.POST).then((data) => {
-            this.setSessionID(data.data.sessionID)
+            this.setSessionID(data.sessionID)
             return data
         })
     }
@@ -242,7 +246,7 @@ export class Api {
      * @param {String} [objCode]    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}. If omitted will return list of objects available in API.
      * @return {Promise}    A promise which will resolved with object metadata if everything went ok and rejected otherwise
      */
-    metadata(objCode: string) {
+    metadata(objCode?: string) {
         let path = '/metadata'
         if (objCode) {
             path = objCode + path
@@ -291,7 +295,7 @@ export class Api {
      * @param {Object} query    An object with search criteria and aggregate functions
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    report(objCode: string, query) {
+    report(objCode: string, query: object) {
         return this.request(objCode + '/report', query, null, Api.Methods.GET)
     }
 
@@ -328,10 +332,17 @@ export class Api {
             headers.append('sessionID', this._httpOptions.headers.sessionID)
         }
 
-        let bodyParams = Object.keys(params).reduce(function(a, k) {
-            a.push(k + '=' + encodeURIComponent(params[k]))
-            return a
-        }, []).join('&')
+        let bodyParams
+        if (FormData && params instanceof FormData) {
+            bodyParams = params
+            headers.set('content-type', params.getHeaders()['content-type'])
+        }
+        else {
+            bodyParams = Object.keys(params).reduce(function (a, k) {
+                a.push(k + '=' + encodeURIComponent(params[k]))
+                return a
+            }, []).join('&')
+        }
 
         return fetch(options.url + options.path, {
             method: method,
@@ -364,12 +375,29 @@ export class Api {
     setSessionID(sessionID: string): void {
         this._httpOptions.headers.sessionID = sessionID
     }
+
+    /**
+     * Starting from version 2.0 API allows users to upload files.
+     * The server will return the JSON data which includes 'handle' of uploaded file.
+     * Returned 'handle' can be passed to create() method to create a new document.
+     * This method is not available for browser execution environments and it is available only for Node.
+     * @author Hovhannes Babayan <bhovhannes at gmail dot com>
+     * @author Matt Winchester <mwinche at gmail dot com>
+     * @memberOf Api
+     * @param {fs.ReadStream} stream    A readable stream with file contents
+     * @param {String} filename Override the filename
+     */
+    upload(stream: stream.Readable, filename: string) {
+        let data = new FormData()
+        data.append('uploadedFile', stream, filename)
+        return this.request('upload', data, null, Api.Methods.POST)
+    }
 }
 
-if (typeof(window) === 'undefined') {
-  // These plugins only work in node
-  // require('./plugins/upload')(Api)
-}
+// if (typeof(window) === 'undefined') {
+// These plugins only work in node
+// require('./plugins/upload')(Api)
+// }
 
 const ResponseHandler = {
     success: (response) => {
@@ -382,7 +410,7 @@ const ResponseHandler = {
                             message: data.error.message
                         }
                     }
-                    return data
+                    return data.data
                 }
             )
         }

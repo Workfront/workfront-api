@@ -1,0 +1,12 @@
+{
+  "error": {
+    "class": "com.attask.common.ProjectStatusViolationException",
+    "message": "Unable to complete operation for a project of status Complete",
+    "title": null,
+    "msgKey": "exception.attask",
+    "attributes": [
+      ""
+    ],
+    "code": 0
+  }
+}

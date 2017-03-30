@@ -18,16 +18,15 @@
  * Logs in
  */
 
-// var ApiFactory = require('./../../').ApiFactory;
+'use strict';
+var Workfront = require('./../../');
 var util = require('util');
-var ApiFactory = require('./../../dist/workfront').ApiFactory;
 
-var instance = ApiFactory.getInstance({
+var instance = new Workfront.Api({
     url: 'http://localhost:8080',
-	version: '4.0'
+    version: '4.0'
 });
 
-console.log('Logs in\n');
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
 	function(data) {

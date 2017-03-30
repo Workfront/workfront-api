@@ -1,0 +1,17 @@
+{
+  "data": {
+    "ID": "58da4c6400000c55d0ec660847a6d36b",
+    "name": "test",
+    "objCode": "TASK",
+    "percentComplete": 0,
+    "plannedCompletionDate": "2017-03-07T09:00:00:000+0400",
+    "plannedStartDate": "2017-03-07T09:00:00:000+0400",
+    "priority": 0,
+    "progressStatus": "LT",
+    "projectedCompletionDate": "2017-03-28T15:43:00:000+0400",
+    "projectedStartDate": "2017-03-28T15:43:00:000+0400",
+    "status": "NEW",
+    "taskNumber": 2,
+    "wbs": "2"
+  }
+}

@@ -43,9 +43,7 @@ module.exports = function (config) {
         reporters: ['progress', 'coverage', 'remap-coverage'],
 
         coverageReporter: {
-            reporters: [
-                {type: 'in-memory'}
-            ]
+            type: 'in-memory'
         },
 
         remapOptions: {
@@ -64,9 +62,6 @@ module.exports = function (config) {
                 html: './coverage'
             }
         })(),
-
-        // make sure both reporter plugins are loaded
-        // plugins: ['karma-coverage', 'karma-remap-coverage'],
 
         port: 9876,
         colors: true,

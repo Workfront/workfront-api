@@ -17,12 +17,12 @@
 /**
  * Logs in, loads list of user notes, then calls acknowledge action for the one
  */
-
-var ApiFactory = require('./../../').ApiFactory;
-var ApiConstants = require('./../../').ApiConstants;
+'use strict';
+var Workfront = require('./../../');
+var ApiConstants = require('workfront-api-constants');
 var util = require('util');
 
-var instance = ApiFactory.getInstance({
+var instance = new Workfront.Api({
 	url: 'http://localhost:8080',
 	version: 'internal'
 });
