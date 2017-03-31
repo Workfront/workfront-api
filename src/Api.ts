@@ -136,6 +136,25 @@ export class Api {
     }
 
     /**
+     * Invalidates the current API key.
+     * Call this to be able to retrieve a new one using getApiKey().
+     * @memberOf Api
+     * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
+     */
+    clearApiKey() {
+        return new Promise((resolve, reject) => {
+            this.execute('USER', null, 'clearApiKey').then(function (result) {
+                if (result) {
+                    delete this._httpParams.apiKey
+                    resolve()
+                } else {
+                    reject()
+                }
+            })
+        })
+    }
+
+    /**
      * Creates a new object.
      * @memberOf Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
@@ -370,13 +389,26 @@ export class Api {
     }
 
     /**
-     * Sets a sessionID in the headers
+     * Sets a current API key for future requests
      * @memberOf Api
-     * @param {String} sessionID   sessionID to set
-     * @return {void}
+     * @return {string} returns the given api key value
      */
-    setSessionID(sessionID: string): void {
-        this._httpOptions.headers.sessionID = sessionID
+    setApiKey(apiKey) {
+        return this._httpParams.apiKey = apiKey
+    }
+
+    /**
+     * Sets a sessionID in the headers or removes sessionID if passed argument is undefined
+     * @memberOf Api
+     * @param {String|undefined} sessionID   sessionID to set
+     */
+    setSessionID(sessionID) {
+        if (sessionID) {
+            this._httpOptions.headers.sessionID = sessionID
+        }
+        else {
+            delete this._httpOptions.headers.sessionID
+        }
     }
 
     /**

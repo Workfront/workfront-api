@@ -37,7 +37,8 @@ describe('Create new instance for API', function () {
         should(api.search).be.a.Function()
         should(api.uploadFromStream).be.a.Function()
         should(api.uploadFileContent).be.a.Function()
-        // should(api.clearApiKey).be.a.Function()
+        should(api.setApiKey).be.a.Function()
+        should(api.clearApiKey).be.a.Function()
     })
 
     it('should set correct API path based on passed configuration (version is passed)', function () {
