@@ -35,7 +35,8 @@ describe('Create new instance for API', function () {
         should(api.remove).be.a.Function()
         should(api.report).be.a.Function()
         should(api.search).be.a.Function()
-        // should(api.upload).be.a.Function()
+        should(api.uploadFromStream).be.a.Function()
+        should(api.uploadFileContent).be.a.Function()
         // should(api.clearApiKey).be.a.Function()
     })
 

@@ -19,11 +19,10 @@
  * @author Sassoun Derderian <citizen.sas at gmail dot com>
  */
 
-import * as FormData from 'form-data'
+import * as NodeFormData from 'form-data'
 import 'isomorphic-fetch'
 import * as stream from 'stream'
 import {INTERNAL_PREFIX} from 'workfront-api-constants'
-
 
 type THttpParams = any
 type THttpOptions = {
@@ -34,6 +33,8 @@ type THttpOptions = {
     headers: {sessionID?: string}
 }
 type TFields = string | string[]
+
+const GlobalScope = Function('return this')()
 
 /**
  * Creates new Api instance.
@@ -327,17 +328,19 @@ export class Api {
         }
 
         let headers = new Headers()
-        headers.append('Content-Type', 'application/x-www-form-urlencoded')
         if (this._httpOptions.headers.sessionID) {
             headers.append('sessionID', this._httpOptions.headers.sessionID)
         }
 
         let bodyParams
-        if (FormData && params instanceof FormData) {
+        if (NodeFormData && params instanceof NodeFormData) {
             bodyParams = params
-            headers.set('content-type', params.getHeaders()['content-type'])
+        }
+        else if (GlobalScope.FormData && params instanceof GlobalScope.FormData) {
+            bodyParams = params
         }
         else {
+            headers.append('Content-Type', 'application/x-www-form-urlencoded')
             bodyParams = Object.keys(params).reduce(function (a, k) {
                 a.push(k + '=' + encodeURIComponent(params[k]))
                 return a
@@ -387,9 +390,15 @@ export class Api {
      * @param {fs.ReadStream} stream    A readable stream with file contents
      * @param {String} filename Override the filename
      */
-    upload(stream: stream.Readable, filename: string) {
-        let data = new FormData()
+    uploadFromStream(stream: stream.Readable, filename: string) {
+        let data = new NodeFormData()
         data.append('uploadedFile', stream, filename)
+        return this.request('upload', data, null, Api.Methods.POST)
+    }
+
+    uploadFileContent(fileContent, filename: string) {
+        let data = new GlobalScope.FormData()
+        data.append('uploadedFile', fileContent, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
 }

@@ -34,39 +34,39 @@ var instance = new Workfront.Api({
 
 util.log('Logging in ...');
 instance.login('new@user.attask', 'user').then(
-	function() {
-		util.log('Uploading a sweet picture...');
-		instance.upload(stream, 'sweet.jpg').then(
-			function(data) {
-				util.log('Upload success. Received data:');
-				console.log(util.inspect(data, {colors:true}));
+    function () {
+        util.log('Uploading a sweet picture...');
+        instance.uploadFromStream(stream, 'sweet.jpg').then(
+            function (data) {
+                util.log('Upload success. Received data:');
+                console.log(util.inspect(data, {colors: true}));
 
-        instance.create('DOCU', {
-					name: 'sweet.jpg',
-          handle: data.handle,
-          docObjCode: 'TASK',
+                instance.create('DOCU', {
+                    name: 'sweet.jpg',
+                    handle: data.handle,
+                    docObjCode: 'TASK',
 
-          //Obviously this will only work with a real TASK ID
-          objID: '58da4a94000009fcee391929cdd2f463'
-				}).then(
-					function(data) {
-						util.log('Document creation success. Received data:');
-						console.log(util.inspect(data, {colors:true}));
-          },
-          function(error) {
-            util.log('Document creation failure. Received data:');
-            console.log(util.inspect(error, {colors:true}));
-          }
+                    //Obviously this will only work with a real TASK ID
+                    objID: '58da4a94000009fcee391929cdd2f463'
+                }).then(
+                    function (data) {
+                        util.log('Document creation success. Received data:');
+                        console.log(util.inspect(data, {colors: true}));
+                    },
+                    function (error) {
+                        util.log('Document creation failure. Received data:');
+                        console.log(util.inspect(error, {colors: true}));
+                    }
+                );
+            },
+            function (error) {
+                util.log('Upload failure. Received data:');
+                console.log(util.inspect(error, {colors: true}));
+            }
         );
-			},
-			function(error) {
-				util.log('Upload failure. Received data:');
-				console.log(util.inspect(error, {colors:true}));
-			}
-		);
-	},
-	function(error) {
-		util.log('Login failure. Received data:');
-		console.log(util.inspect(error, {colors:true}));
-	}
+    },
+    function (error) {
+        util.log('Login failure. Received data:');
+        console.log(util.inspect(error, {colors: true}));
+    }
 );
