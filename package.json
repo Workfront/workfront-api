@@ -50,8 +50,7 @@
     "docs": "typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\"",
     "changelog": "echo changelog",
     "prepublish": "npm run build",
-    "postpublish": "node ./postpublish.js",
-    "version": "node ./postpublish.js && git add CHANGELOG.md docs",
+    "version": "npm run docs && node ./generate_changelog.js && git add docs CHANGELOG.md",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"
   },
   "repository": {
