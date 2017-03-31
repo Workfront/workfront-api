@@ -53,7 +53,7 @@ module.exports = function (config) {
             if (CI) {
                 return {
                     'text-summary': null,
-                    lcovonly: './coverage'
+                    lcovonly: './coverage/lcov.info'
                 }
             }
             return {
