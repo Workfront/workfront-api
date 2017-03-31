@@ -48,9 +48,8 @@
     "debug": "npm run test -- --auto-watch --browsers Chrome --no-single-run",
     "build": "webpack -p --bail",
     "docs": "typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\"",
-    "changelog": "echo changelog",
     "prepublish": "npm run build",
-    "version": "npm run docs && node ./generate_changelog.js && git add docs CHANGELOG.md",
+    "version": "npm run docs && node ./generate-changelog.js && git add docs CHANGELOG.md",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"
   },
   "repository": {
