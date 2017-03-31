@@ -4,10 +4,12 @@ const WEBPACK_ENV = process.env.WEBPACK_ENV
 
 module.exports = {
     context: __dirname,
-    entry: './src/Api.ts',
+    entry: {
+		'./dist/workfront': './src/Api.ts'
+    },
     output: {
-        path: __dirname + '/dist',
-        filename: 'workfront.js',
+        path: __dirname,
+        filename: '[name].js',
         library: 'Workfront',
         libraryTarget: 'umd'
     },
