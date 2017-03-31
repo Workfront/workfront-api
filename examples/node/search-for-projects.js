@@ -18,13 +18,15 @@
  * Logs in, then search for projects with percentComplete > 0
  */
 
-var ApiFactory = require('./../../').ApiFactory;
+'use strict';
+var Workfront = require('./../../');
 var util = require('util');
 
-var instance = ApiFactory.getInstance({
-	url: 'http://localhost:8080',
-	version: '4.0'
+var instance = new Workfront.Api({
+    url: 'http://localhost:8080',
+    version: '4.0'
 });
+
 
 console.log('Logs in, then search for projects with percentComplete > 0\n');
 util.log('Logging in ...');

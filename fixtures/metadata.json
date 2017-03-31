@@ -1,0 +1,271 @@
+{
+  "data": {
+    "name": "Role",
+    "label": "Job Role",
+    "objCode": "ROLE",
+    "flags": [
+      "REPORTABLE"
+    ],
+    "url": "http://localhost:8080/attask/api-internal/role/metadata",
+    "fields": {
+      "ID": {
+        "label": "ID",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "string",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "billingPerHour": {
+        "flags": [
+          "CURRENCY"
+        ],
+        "label": "Billing Per Hour",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "double",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "costPerHour": {
+        "flags": [
+          "CURRENCY"
+        ],
+        "label": "Cost Per Hour",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "double",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "customerID": {
+        "flags": [
+          "NOT_GROUPABLE"
+        ],
+        "label": "Customer ID",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "string",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "defaultInterface": {
+        "label": "Default Interface",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "int",
+        "enumTargetObjCode": null,
+        "enumType": "com.attask.common.constants.UserInterfaceEnum",
+        "url": null,
+        "possibleValues": [
+          {
+            "label": "Default",
+            "value": 0
+          },
+          {
+            "label": "Project Management Home",
+            "value": 1
+          },
+          {
+            "label": "TeamHome",
+            "value": 2
+          },
+          {
+            "label": "Early Access",
+            "value": 3
+          }
+        ]
+      },
+      "description": {
+        "label": "Description",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "string",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "enteredByID": {
+        "flags": [
+          "NOT_GROUPABLE"
+        ],
+        "label": "Entered By ID",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "string",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "entryDate": {
+        "label": "Entry Date",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "dateTime",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "extRefID": {
+        "label": "External Reference ID",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "string",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "layoutTemplateID": {
+        "flags": [
+          "NOT_GROUPABLE"
+        ],
+        "label": "Layout Template ID",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "string",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "maxUsers": {
+        "label": "Max Users",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "int",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      },
+      "name": {
+        "label": "Name",
+        "typeObjCode": null,
+        "targetTypeObjCode": null,
+        "fieldType": "string",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": null
+      }
+    },
+    "references": {
+      "customer": {
+        "flags": [
+          "NOT_GROUPABLE"
+        ],
+        "label": "Customer",
+        "typeObjCode": "CUST",
+        "targetTypeObjCode": null,
+        "fieldType": "Customer",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": "http://localhost:8080/attask/api-internal/cust/metadata"
+      },
+      "enteredBy": {
+        "label": "Entered By",
+        "typeObjCode": "USER",
+        "targetTypeObjCode": null,
+        "fieldType": "User",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": "http://localhost:8080/attask/api-internal/user/metadata"
+      },
+      "layoutTemplate": {
+        "flags": [
+          "NOT_GROUPABLE"
+        ],
+        "label": "Layout Template",
+        "typeObjCode": "LYTMPL",
+        "targetTypeObjCode": null,
+        "fieldType": "LayoutTemplate",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": "http://localhost:8080/attask/api-internal/lytmpl/metadata"
+      }
+    },
+    "collections": {
+      "userRoles": {
+        "flags": [
+          "NOT_GROUPABLE"
+        ],
+        "label": "userRoles",
+        "typeObjCode": "USRROL",
+        "targetTypeObjCode": null,
+        "fieldType": "UserRole",
+        "enumTargetObjCode": null,
+        "enumType": null,
+        "url": "http://localhost:8080/attask/api-internal/usrrol/metadata"
+      }
+    },
+    "search": {},
+    "actions": {
+      "addEarlyAccess": {
+        "arguments": [
+          {
+            "name": "ids",
+            "type": "string[]"
+          }
+        ],
+        "label": "addEarlyAccess"
+      },
+      "deleteEarlyAccess": {
+        "arguments": [
+          {
+            "name": "ids",
+            "type": "string[]"
+          }
+        ],
+        "label": "deleteEarlyAccess"
+      },
+      "hasReference": {
+        "arguments": [
+          {
+            "name": "ids",
+            "type": "string[]"
+          }
+        ],
+        "resultType": "java.lang.Boolean",
+        "label": "hasReference"
+      },
+      "replaceDelete": {
+        "arguments": [
+          {
+            "name": "ids",
+            "type": "string[]"
+          },
+          {
+            "name": "replacementID",
+            "type": "string"
+          }
+        ],
+        "label": "replaceDelete"
+      }
+    },
+    "queries": {
+      "earlyAccessRoles": {
+        "label": "earlyAccessRoles"
+      },
+      "smartAssignmentRoles": {
+        "arguments": [
+          {
+            "name": "searchTerm",
+            "type": "string"
+          }
+        ],
+        "label": "smartAssignmentRoles"
+      }
+    },
+    "operations": [
+      "add",
+      "count",
+      "delete",
+      "edit",
+      "get",
+      "replace",
+      "report",
+      "search"
+    ]
+  }
+}

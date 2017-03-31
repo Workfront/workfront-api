@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "color": "C60000",
+      "equatesWith": "DED",
+      "label": "Dead",
+      "objCode": "CSTEM",
+      "value": "DED"
+    },
+    {
+      "color": "007100",
+      "equatesWith": "CUR",
+      "label": "Current",
+      "objCode": "CSTEM",
+      "value": "CUR"
+    },
+    {
+      "color": "BD39FF",
+      "equatesWith": "ONH",
+      "label": "On Hold",
+      "objCode": "CSTEM",
+      "value": "ONH"
+    },
+    {
+      "color": "FF3939",
+      "equatesWith": "PLN",
+      "label": "Planning",
+      "objCode": "CSTEM",
+      "value": "PLN"
+    },
+    {
+      "color": "2222E3",
+      "equatesWith": "CPL",
+      "label": "Complete",
+      "objCode": "CSTEM",
+      "value": "CPL"
+    },
+    {
+      "color": "39FF39",
+      "equatesWith": "REQ",
+      "label": "Requested",
+      "objCode": "CSTEM",
+      "value": "REQ"
+    },
+    {
+      "color": "FF7B39",
+      "equatesWith": "APR",
+      "label": "Approved",
+      "objCode": "CSTEM",
+      "value": "APR"
+    },
+    {
+      "color": "FFFF39",
+      "equatesWith": "REJ",
+      "label": "Rejected",
+      "objCode": "CSTEM",
+      "value": "REJ"
+    },
+    {
+      "color": "71FFD0",
+      "equatesWith": "IDA",
+      "label": "Idea",
+      "objCode": "CSTEM",
+      "value": "IDA"
+    },
+    {
+      "color": "007100",
+      "equatesWith": "CUR",
+      "label": "status 2",
+      "objCode": "CSTEM",
+      "value": "WSX"
+    },
+    {
+      "color": "007100",
+      "equatesWith": "PLN",
+      "label": "new planning",
+      "objCode": "CSTEM",
+      "value": "JHY"
+    }
+  ]
+}

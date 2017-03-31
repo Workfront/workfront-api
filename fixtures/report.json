@@ -1,0 +1,28 @@
+{
+  "data": {
+    "CPL": {
+      "dcount_ID": 1,
+      "status": "CPL"
+    },
+    "CPL:A": {
+      "dcount_ID": 4,
+      "status": "CPL:A"
+    },
+    "INP": {
+      "dcount_ID": 22,
+      "status": "INP"
+    },
+    "INP:A": {
+      "dcount_ID": 2,
+      "status": "INP:A"
+    },
+    "NEW": {
+      "dcount_ID": 117,
+      "status": "NEW"
+    },
+    "NEW:A": {
+      "dcount_ID": 1,
+      "status": "NEW:A"
+    }
+  }
+}

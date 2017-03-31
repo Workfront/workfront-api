@@ -18,13 +18,15 @@
  * Logs in, queries project and project owner details by project id
  */
 
-var ApiFactory = require('./../../').ApiFactory;
+'use strict';
+var Workfront = require('./../../');
 var util = require('util');
 
-var instance = ApiFactory.getInstance({
-	url: 'http://localhost:8080',
-	version: '4.0'
+var instance = new Workfront.Api({
+    url: 'http://localhost:8080',
+    version: '4.0'
 });
+
 
 console.log('Logs in, queries project and project owner details by project id\n');
 util.log('Logging in ...');

@@ -18,14 +18,16 @@
  * Logs in, then deletes all projects with name containing "API Project"
  */
 
-var Api = require('./../../').Api;
-var ApiConstants = require('./../../').ApiConstants;
+'use strict';
+var Workfront = require('./../../');
+var ApiConstants = require('workfront-api-constants');
 var util = require('util');
 
-var instance = new Api({
-	url: 'http://localhost:8080',
-	version: '4.0'
+var instance = new Workfront.Api({
+    url: 'http://localhost:8080',
+    version: '4.0'
 });
+
 
 function deleteProject(projectID) {
 	instance.remove('proj', projectID).then(

@@ -18,14 +18,16 @@
  * Logs in, then returns list of hours grouped by project names
  */
 
-var ApiFactory = require('./../../').ApiFactory;
-var ApiConstants = require('./../../').ApiConstants;
+'use strict';
+var Workfront = require('./../../');
+var ApiConstants = require('workfront-api-constants');
 var util = require('util');
 
-var instance = ApiFactory.getInstance({
-	url: 'http://localhost:8080',
-	version: '4.0'
+var instance = new Workfront.Api({
+    url: 'http://localhost:8080',
+    version: '4.0'
 });
+
 
 console.log('Logs in, then returns list of hours grouped by project names\n');
 util.log('Logging in ...');

@@ -1,8 +1,12 @@
 # workfront-api
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url]
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][codecov-image]][codecov-url] [![Code Climate][code-climate-image]][code-climate-url]
+[![Build Status][saucelabs-badge]][saucelabs-url]
 
-A Workfront API for the Node and the Web
+[![Build Status][saucelabs-matrix]][saucelabs-url]
 
+A client for Workfront API which can be used in both server (NodeJS) and client (browsers).
+
+If used in browser environment you may need to polyfill Promises (see ES6 Promise for polyfills) and fetch ([whatwg-fetch](https://github.com/fis-components/whatwg-fetch)). 
 
 ## Usage
 
@@ -20,22 +24,11 @@ var Workfront = require('workfront-api'),
 /**
  * The console.log statement below will output the following:
  * { 
- *    Api: [Function: Api],
- *    ApiFactory: [Object],
- *    ApiUtil: [Object],
- *    ApiConstants: [Object] 
+ *    Api: [Function: Api]
  * }
  */
 console.log(util.inspect(Workfront, {depth:0}));
 ```
-
-#### In a browser
-
-This package uses [Browserify](http://browserify.org) to generate [dist/workfront.min.js](dist/workfront.min.js). Loading that script will create `window.Workfront` object which will contain all the classes and methods just as in the server-side environment (see [Server-side](#server-side) section).  
-This package makes use of [Promises](https://www.promisejs.org). Promises are not currently supported by all browsers (see [kangax compatibility tables](http://kangax.github.io/compat-table/es6/#Promise)), but there are many polyfills available, including one listed in [www.promisejs.org](https://www.promisejs.org). Load polyfill before `workfront.min.js` and everything will work just fine.  
-Although the lack of CORS support may prevent you from sending request to Workfront servers, there are some usage examples in [examples/browser](examples/browser) folder to give you an idea.  
-Note, that it is still possible to make use of this package in privileged environment such as browser extensions.
-
 
 ## Documentation
 
@@ -110,9 +103,12 @@ See the top-level file `LICENSE` and
 [travis-url]: https://travis-ci.org/Workfront/workfront-api
 [travis-image]: https://img.shields.io/travis/Workfront/workfront-api.svg?style=flat
 
-[coveralls-url]: https://coveralls.io/r/Workfront/workfront-api
-[coveralls-image]: https://img.shields.io/coveralls/Workfront/workfront-api.svg?style=flat
+[codecov-url]: https://codecov.io/gh/Workfront/workfront-api
+[codecov-image]: https://codecov.io/gh/Workfront/workfront-api/branch/master/graph/badge.svg
 
 [code-climate-url]: https://codeclimate.com/github/Workfront/workfront-api
 [code-climate-image]: https://img.shields.io/codeclimate/github/Workfront/workfront-api.svg?style=flat
 
+[saucelabs-badge]: https://saucelabs.com/buildstatus/citizensas
+[saucelabs-url]: https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14
+[saucelabs-matrix]: https://saucelabs.com/browser-matrix/citizensas.svg

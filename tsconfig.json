@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "importHelpers": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "noEmitHelpers": true,
+    "noImplicitAny": false,
+    "noLib": true,
+    "noUnusedLocals": true,
+    "outDir": "./es",
+    "target": "es5"
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "files": [
+    "node_modules/typescript/lib/lib.es6.d.ts"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "coverage",
+    "docs",
+    "dist"
+  ]
+}
