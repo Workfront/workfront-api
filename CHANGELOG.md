@@ -1,3 +1,7 @@
+2.0.0 - April 4, 2017
+
+
+
 v1.4.1 - March 7, 2017
 
 * 1.4.1 (Sassoun Derderian)
