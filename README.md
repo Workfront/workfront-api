@@ -1,6 +1,5 @@
 # workfront-api
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Workfront/workfront-api.svg)](https://greenkeeper.io/)
 [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][codecov-image]][codecov-url] [![Code Climate][code-climate-image]][code-climate-url]
 [![Build Status][saucelabs-badge]][saucelabs-url]
 
