@@ -3,6 +3,9 @@
   "version": "2.0.1",
   "description": "A Workfront API for the Node.js and the Web",
   "main": "dist/workfront.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "es6-promise": "4.1.0",
     "form-data": "2.1.4",
