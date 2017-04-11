@@ -60,9 +60,11 @@
     "url": "https://github.com/Workfront/workfront-api.git"
   },
   "keywords": [
-    "Workfront",
+    "API",
     "AtTask",
-    "API"
+    "Workfront",
+    "TypeScript",
+    "Webpack"
   ],
   "author": "Workfront",
   "contributors": [
