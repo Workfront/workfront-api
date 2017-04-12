@@ -21,22 +21,22 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Copy', function () {
+describe('Copy', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    describe('success', function () {
-        beforeEach(function () {
+    describe('success', function() {
+        beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
                 require('../../fixtures/copy.json'),
@@ -45,16 +45,16 @@ describe('Copy', function () {
                 }
             )
         })
-        it('makes request to objCode with copySourceID in the params', function () {
-            return this.api.copy('foo', 'bar').then(function () {
-                let [url, opts] = fetchMock.lastCall('copy')
+        it('makes request to objCode with copySourceID in the params', function() {
+            return this.api.copy('foo', 'bar').then(function() {
+                const [url, opts] = fetchMock.lastCall('copy')
                 should(url).endWith('foo')
                 should(opts.method).equal('POST')
                 should(opts.body).containEql('copySourceID=bar')
             })
         })
-        it('returns data with a new ID', function () {
-            return this.api.copy('foo', 'bar').then(function (data) {
+        it('returns data with a new ID', function() {
+            return this.api.copy('foo', 'bar').then(function(data) {
                 should(data).have.property('ID')
                 should(data.ID).not.containEql('bar')
             })

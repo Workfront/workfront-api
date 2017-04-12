@@ -21,22 +21,22 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Get', function () {
+describe('Get', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    describe('Call with single objId (String)', function () {
-        beforeEach(function () {
+    describe('Call with single objId (String)', function() {
+        beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
                 require('../../fixtures/get.json'),
@@ -46,48 +46,48 @@ describe('Get', function () {
             )
         })
 
-        it('should call request() with proper params and return value received from request()', function () {
-            let objCode = 'PROJ',
+        it('should call request() with proper params and return value received from request()', function() {
+            const objCode = 'PROJ',
                 objID = 'foobar'
 
-            return this.api.get(objCode, objID).then(function (data) {
-                let [url, opts] = fetchMock.lastCall('get')
+            return this.api.get(objCode, objID).then(function(data) {
+                const [url, opts] = fetchMock.lastCall('get')
                 should(url).endWith(objCode + '/' + objID)
                 should(opts.method).equal('GET')
-                should(opts.body).equal('')
+                should(opts.body).be.null()
 
                 should(data).have.properties(['ID', 'name', 'objCode'])
             })
         })
-        it('should call request() with proper params and return value received from request() containing internal prefix', function () {
-            let objID = '$$USER',
+        it('should call request() with proper params and return value received from request() containing internal prefix', function() {
+            const objID = '$$USER',
                 objCode = 'USER'
 
-            return this.api.get(objCode, objID).then(function (data) {
-                let [url, opts] = fetchMock.lastCall('get')
-                should(url).endWith(objCode)
+            return this.api.get(objCode, objID).then(function(data) {
+                const [url, opts] = fetchMock.lastCall('get')
                 should(opts.method).equal('GET')
-                should(opts.body).equal('id=' + encodeURIComponent(objID))
+                should(url).endWith(objCode + '?id=' + encodeURIComponent(objID))
+                should(opts.body).be.null()
 
                 should(data).have.properties(['ID', 'name', 'objCode'])
             })
         })
-        it('should call request() with proper params and return value received from request() objID is Array with one item', function () {
-            let objID = ['foo'],
+        it('should call request() with proper params and return value received from request() objID is Array with one item', function() {
+            const objID = ['foo'],
                 objCode = 'bar'
 
-            return this.api.get(objCode, objID).then(function (data) {
-                let [url, opts] = fetchMock.lastCall('get')
-                should(url).endWith(objCode + '/' + objID[0])
+            return this.api.get(objCode, objID).then(function(data) {
+                const [url, opts] = fetchMock.lastCall('get')
                 should(opts.method).equal('GET')
-                should(opts.body).equal('')
+                should(url).endWith(objCode + '/' + objID[0])
+                should(opts.body).be.null()
 
                 should(data).have.properties(['ID', 'name', 'objCode'])
             })
         })
     })
-    describe('Call with single objId (String)', function () {
-        beforeEach(function () {
+    describe('Call with single objId (String)', function() {
+        beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
                 require('../../fixtures/get_multiple.json'),
@@ -96,15 +96,15 @@ describe('Get', function () {
                 }
             )
         })
-        it('should call request() with proper params and return value received from request() objID is Array with two items', function () {
-            let objID = ['foo', 'bar'],
+        it('should call request() with proper params and return value received from request() objID is Array with two items', function() {
+            const objID = ['foo', 'bar'],
                 objCode = 'baz'
 
-            return this.api.get(objCode, objID).then(function (data) {
-                let [url, opts] = fetchMock.lastCall('get')
-                should(url).endWith(objCode)
+            return this.api.get(objCode, objID).then(function(data) {
+                const [url, opts] = fetchMock.lastCall('get')
                 should(opts.method).equal('GET')
-                should(opts.body).equal('id=' + encodeURIComponent(objID.join(',')))
+                should(url).endWith(objCode + '?id=' + encodeURIComponent(objID.join(',')))
+                should(opts.body).be.null()
 
                 should(data).be.Array().and.have.length(2)
                 should(data).have.propertyByPath('0', 'ID')

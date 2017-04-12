@@ -1,14 +1,53 @@
-2.0.2 - April 11, 2017
+2.0.2 - April 12, 2017
 
+* 2.0.2 (Sassoun Derderian)
+* chore: update package keywords (Sassoun Derderian)
+* fix: adding dist/ folder in npm package (Sassoun Derderian)
+* chore(package): update tslint to version 5.1.0 (greenkeeper[bot])
+* fix(package): update form-data to version 2.1.4 (greenkeeper[bot])
+* chore(package): update tslint-loader to version 3.5.2 (greenkeeper[bot])
+* chore(package): update tslint-loader to version 3.5.1 (greenkeeper[bot])
+* chore(package): update karma to version 1.6.0 (greenkeeper[bot])
+* chore: greenkeeper initial PR (Sassoun Derderian)
+* docs(readme): add Greenkeeper badge (greenkeeper[bot])
+* chore(package): update dependencies (greenkeeper[bot])
+* 2.0.1 (Sassoun Derderian)
 
+v2.0.0 - April 4, 2017
 
-2.0.1 - April 4, 2017
-
-
-
-2.0.0 - April 4, 2017
-
-
+* 2.0.0 (Sassoun Derderian)
+* chore: remove docs/ before re-generating it (Sassoun Derderian)
+* fix: typo in package.json (Sassoun Derderian)
+* feat: setApiKey, clearApiKey fix: setSessionID chore: codecov badge (Sassoun Derderian)
+* fix: corrected lcov file name (Hovhannes Babayan)
+* chore: config tweak (Hovhannes Babayan)
+* separate upload methods for browser and node env (Sassoun Derderian)
+* no need for gulp tasks, use `np` instead (Sassoun Derderian)
+* get rid of ApiFactory (Sassoun Derderian)
+* Saucelabs integration (#21) (Sassoun Derderian)
+* chore: thank browserstack (Sassoun Derderian)
+* chore: matrix (Sassoun Derderian)
+* chore: global env (Sassoun Derderian)
+* chore: set CI variable (Sassoun Derderian)
+* chore: travis.yaml set CI env variable (Sassoun Derderian)
+* chore: set BrowserStack username and accesskey (Sassoun Derderian)
+* chore: set BrowserStack username and accesskey (Sassoun Derderian)
+* chore: setup BrowserStack (Sassoun Derderian)
+* chore: set sourceMap=true in ts-loader compilerOptions (Sassoun Derderian)
+* chore: set sourceMap=true in ts-loader compilerOptions (Sassoun Derderian)
+* chore: include karma coverageReporter lcov type (Sassoun Derderian)
+* chore: npm-run-all shorthands (Sassoun Derderian)
+* chore: run tests on PhantomJS (Sassoun Derderian)
+* fix: handle fetch response chore: add login tests (Sassoun Derderian)
+* remove dist/ (Sassoun Derderian)
+* try another config for karma-sauce-launcher (Sassoun Derderian)
+* fix: TRAVIS_JOB_NUMBER as tunnelIdentifier (Sassoun Derderian)
+* fix: wrong version of should-sinon (Sassoun Derderian)
+* fix: should-sinon not installed (Sassoun Derderian)
+* fix: build with webpack (Sassoun Derderian)
+* refactor: Replace Browserify to Webpack, code in Typescript (Sassoun Derderian)
+* refactor: Replace Browserify to Webpack, code in Typescript (Sassoun Derderian)
+* feat: set sessionID in headers via setSessionID method (Sassoun Derderian)
 
 v1.4.1 - March 7, 2017
 

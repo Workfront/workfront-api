@@ -21,21 +21,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Create', function () {
+describe('Create', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    beforeEach(function () {
+    beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api/`,
             require('../../fixtures/create.json'),
@@ -45,28 +45,28 @@ describe('Create', function () {
         )
     })
 
-    it('makes a request with proper params', function () {
-        let params = {
+    it('makes a request with proper params', function() {
+        const params = {
             foo: 'bar'
         }
-        let fields = ['*', 'zzz:*']
-        let objCode = 'baz'
+        const fields = ['*', 'zzz:*']
+        const objCode = 'baz'
 
-        return this.api.create(objCode, params, fields).then(function () {
-            let [url, opts] = fetchMock.lastCall('create')
+        return this.api.create(objCode, params, fields).then(function() {
+            const [url, opts] = fetchMock.lastCall('create')
             should(url).endWith(objCode)
             should(opts.method).equal('POST')
             should(opts.body).containEql('foo=bar')
             should(opts.body).containEql(encodeURIComponent(fields.join(',')))
         })
     })
-    it('should return the new created object', function () {
-        let params = {
+    it('should return the new created object', function() {
+        const params = {
             name: 'test'
         }
-        let objCode = 'TASK'
+        const objCode = 'TASK'
 
-        return this.api.create(objCode, params).then(function (data) {
+        return this.api.create(objCode, params).then(function(data) {
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)
             should(data.name).equal(params.name)

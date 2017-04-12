@@ -18,8 +18,8 @@ import * as should from 'should'
 import {Api} from '../src/index'
 
 
-describe('Create new instance for API', function () {
-    it('should have methods', function () {
+describe('Create new instance for API', function() {
+    it('should have methods', function() {
         const api = new Api({url: 'http://localhost'})
         should(api.copy).be.a.Function()
         should(api.count).be.a.Function()
@@ -41,17 +41,17 @@ describe('Create new instance for API', function () {
         should(api.clearApiKey).be.a.Function()
     })
 
-    it('should set correct API path based on passed configuration (version is passed)', function () {
+    it('should set correct API path based on passed configuration (version is passed)', function() {
         const api = new Api({url: 'http://localhost', version: '2.0'})
         should(api._httpOptions.path).equal('/attask/api/v2.0')
     })
 
-    it('should set correct API path based on passed configuration (version is not passed)', function () {
+    it('should set correct API path based on passed configuration (version is not passed)', function() {
         const api = new Api({url: 'http://localhost'})
         should(api._httpOptions.path).equal('/attask/api')
     })
 
-    it('should set correct API path based on passed configuration (version="internal")', function () {
+    it('should set correct API path based on passed configuration (version="internal")', function() {
         const api = new Api({url: 'http://localhost', version: 'internal'})
         should(api._httpOptions.path).equal('/attask/api-internal')
     })

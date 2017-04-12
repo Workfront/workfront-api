@@ -21,21 +21,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Named Query', function () {
+describe('Named Query', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    beforeEach(function () {
+    beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api/`,
             require('../../fixtures/namedQuery.json'),
@@ -44,13 +44,13 @@ describe('Named Query', function () {
             }
         )
     })
-    it('makes a request with proper url and method', function () {
-        let objCode = 'CSTEM',
+    it('makes a request with proper url and method', function() {
+        const objCode = 'CSTEM',
             action = 'projectStatuses'
         this.api.namedQuery(objCode, action)
-        let [url, opts] = fetchMock.lastCall('namedQuery')
+        const [url, opts] = fetchMock.lastCall('namedQuery')
         should(url).endWith(`${objCode}/${action}`)
         should(opts.method).equal('GET')
-        should(opts.body).equal('')
+        should(opts.body).be.null()
     })
 })

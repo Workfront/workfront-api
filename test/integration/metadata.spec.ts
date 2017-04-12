@@ -21,21 +21,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Metadata', function () {
+describe('Metadata', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    beforeEach(function () {
+    beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api/`,
             require('../../fixtures/metadata.json'),
@@ -44,17 +44,19 @@ describe('Metadata', function () {
             }
         )
     })
-    it('calls without objCode', function () {
+    it('calls without objCode', function() {
         this.api.metadata()
-        let [url, opts] = fetchMock.lastCall('metadata')
+        const [url, opts] = fetchMock.lastCall('metadata')
         should(url).endWith('metadata')
-        should(opts.body).equal('')
+        should(opts.method).equal('GET')
+        should(opts.body).be.null()
     })
-    it('calls with objCode', function () {
-        let objCode = 'foo'
+    it('calls with objCode', function() {
+        const objCode = 'foo'
         this.api.metadata(objCode)
-        let [url, opts] = fetchMock.lastCall('metadata')
-        should(url).endWith(objCode + '/metadata')
-        should(opts.body).equal('')
+        const [url, opts] = fetchMock.lastCall('metadata')
+        should(url).endWith(`${objCode}/metadata`)
+        should(opts.method).equal('GET')
+        should(opts.body).be.null()
     })
 })

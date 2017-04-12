@@ -3,9 +3,13 @@
   "version": "2.0.2",
   "description": "A Workfront API for the Node.js and the Web",
   "main": "dist/workfront.js",
+  "module": "es/index.js",
   "files": [
-    "dist"
+    "dist",
+    "es",
+    "typings"
   ],
+  "typings": "typings/index.d.ts",
   "dependencies": {
     "es6-promise": "4.1.0",
     "form-data": "2.1.4",
@@ -49,7 +53,7 @@
   "scripts": {
     "test": "karma start karma.conf.js",
     "debug": "npm run test -- --auto-watch --browsers Chrome --no-single-run",
-    "build": "webpack -p --bail",
+    "build": "webpack -p --bail && tsc -p ./tsconfig.json -d --declarationDir ./typings",
     "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\"",
     "prepublish": "npm run build",
     "version": "npm run docs && node ./generate-changelog.js && git add docs CHANGELOG.md",
