@@ -1,3 +1,8 @@
+2.0.3 - April 12, 2017
+
+* fix (regression): GET and PUT requests should send params in URI query string (Sassoun Derderian)
+* fix: CHANGELOG.md generation (Sassoun Derderian)
+
 2.0.2 - April 12, 2017
 
 * 2.0.2 (Sassoun Derderian)
