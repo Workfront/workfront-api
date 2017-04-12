@@ -24,15 +24,15 @@ import 'isomorphic-fetch'
 import * as stream from 'stream'
 import {INTERNAL_PREFIX} from 'workfront-api-constants'
 
-type THttpParams = any
-type THttpOptions = {
+export type THttpParams = any
+export interface IHttpOptions {
     path?: string
     method?: string
     url: string
     alwaysUseGet?: boolean
     headers: {sessionID?: string}
 }
-type TFields = string | string[]
+export type TFields = string | string[]
 
 const GlobalScope = Function('return this')()
 
@@ -53,7 +53,7 @@ export class Api {
         POST: 'POST'
     }
 
-    _httpOptions: THttpOptions
+    _httpOptions: IHttpOptions
     _httpParams: THttpParams
 
     constructor(config) {
@@ -110,7 +110,7 @@ export class Api {
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     copy(objCode: string, objID: string, updates: object, fields?: TFields) {
-        let params: {
+        const params: {
             copySourceID: string,
             updates?: object
         } = {
@@ -130,7 +130,7 @@ export class Api {
      * @return {Promise}
      */
     count(objCode: string, query?: object): Promise<number> {
-        return this.request(objCode + '/count', query, null, Api.Methods.GET).then(function (data) {
+        return this.request(objCode + '/count', query, null, Api.Methods.GET).then(function(data) {
             return data.count
         })
     }
@@ -143,7 +143,7 @@ export class Api {
      */
     clearApiKey() {
         return new Promise((resolve, reject) => {
-            this.execute('USER', null, 'clearApiKey').then(function (result) {
+            this.execute('USER', null, 'clearApiKey').then(function(result) {
                 if (result) {
                     delete this._httpParams.apiKey
                     resolve()
@@ -324,7 +324,7 @@ export class Api {
 
         const alwaysUseGet = this._httpOptions.alwaysUseGet
 
-        let options = Object.assign({}, this._httpOptions)
+        const options = Object.assign({}, this._httpOptions)
         if (alwaysUseGet) {
             params.method = method
         } else {
@@ -346,12 +346,12 @@ export class Api {
             params.fields = fields.join()
         }
 
-        let headers = new Headers()
+        const headers = new Headers()
         if (this._httpOptions.headers.sessionID) {
             headers.append('sessionID', this._httpOptions.headers.sessionID)
         }
 
-        let bodyParams
+        let bodyParams = null, queryString = ''
         if (NodeFormData && params instanceof NodeFormData) {
             bodyParams = params
         }
@@ -360,13 +360,19 @@ export class Api {
         }
         else {
             headers.append('Content-Type', 'application/x-www-form-urlencoded')
-            bodyParams = Object.keys(params).reduce(function (a, k) {
+            bodyParams = Object.keys(params).reduce(function(a, k) {
                 a.push(k + '=' + encodeURIComponent(params[k]))
                 return a
             }, []).join('&')
+            if (method === Api.Methods.GET || method === Api.Methods.PUT) {
+                if (bodyParams) {
+                    queryString = '?' + bodyParams
+                }
+                bodyParams = null
+            }
         }
 
-        return fetch(options.url + options.path, {
+        return fetch(options.url + options.path + queryString, {
             method: method,
             headers: headers,
             body: bodyParams
@@ -380,11 +386,11 @@ export class Api {
      * Used for object retrieval by multiple search criteria.
      * @memberOf Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
-     * @param {Object} query    An object with search criteria
+     * @param {Object} [query]    An object with search criteria
      * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with search results if everything went ok and rejected otherwise
      */
-    search(objCode: string, query: object, fields?: TFields) {
+    search(objCode: string, query?: object, fields?: TFields) {
         return this.request(objCode + '/search', query, fields, Api.Methods.GET)
     }
 
@@ -423,22 +429,17 @@ export class Api {
      * @param {String} filename Override the filename
      */
     uploadFromStream(stream: stream.Readable, filename: string) {
-        let data = new NodeFormData()
+        const data = new NodeFormData()
         data.append('uploadedFile', stream, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
 
     uploadFileContent(fileContent, filename: string) {
-        let data = new GlobalScope.FormData()
+        const data = new GlobalScope.FormData()
         data.append('uploadedFile', fileContent, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
 }
-
-// if (typeof(window) === 'undefined') {
-// These plugins only work in node
-// require('./plugins/upload')(Api)
-// }
 
 const ResponseHandler = {
     success: (response) => {

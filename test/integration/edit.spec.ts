@@ -21,21 +21,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Edit', function () {
+describe('Edit', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    beforeEach(function () {
+    beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api/`,
             require('../../fixtures/edit.json'),
@@ -45,18 +45,18 @@ describe('Edit', function () {
         )
     })
 
-    it('makes a PUT request with proper params and return the edited object', function () {
-        let params = {
+    it('makes a PUT request with proper params and return the edited object', function() {
+        const params = {
             name: 'api test 2'
         }
-        let objCode = 'PROJ',
+        const objCode = 'PROJ',
             objID = 'foobar'
 
-        return this.api.edit(objCode, objID, params).then(function (data) {
-            let [url, opts] = fetchMock.lastCall('edit')
-            should(url).endWith(objCode + '/' + objID)
+        return this.api.edit(objCode, objID, params).then(function(data) {
+            const [url, opts] = fetchMock.lastCall('edit')
             should(opts.method).equal('PUT')
-            should(opts.body).containEql('name=' + encodeURIComponent('api test 2'))
+            should(url).endWith(objCode + '/' + objID + '?name=' + encodeURIComponent('api test 2'))
+            should(opts.body).be.null()
 
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)

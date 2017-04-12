@@ -21,21 +21,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Login', function () {
+describe('Login', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    describe('success', function () {
+    describe('success', function() {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
@@ -46,12 +46,12 @@ describe('Login', function () {
                 }
             )
         })
-        it('should return user data', function () {
-            return this.api.login('foo', 'bar').then(function (data) {
+        it('should return user data', function() {
+            return this.api.login('foo', 'bar').then(function(data) {
                 should(data).have.properties(['userID', 'sessionID'])
             })
         })
-        it('sets sessionID in header', function () {
+        it('sets sessionID in header', function() {
             let opts
             return this.api.login('foo', 'bar').then(() => {
                 opts = fetchMock.lastOptions('login')
@@ -62,15 +62,15 @@ describe('Login', function () {
                 })
             })
         })
-        it('calls with proper params', function () {
+        it('calls with proper params', function() {
             this.api.login('foo', 'bar')
-            let [url, opts] = fetchMock.lastCall('login')
+            const [url, opts] = fetchMock.lastCall('login')
             should(url).endWith('login')
             should(opts.body).containEql('username=foo')
             should(opts.body).containEql('password=bar')
         })
     })
-    describe('authentication exception', function () {
+    describe('authentication exception', function() {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
@@ -81,8 +81,8 @@ describe('Login', function () {
                 }
             )
         })
-        it('should reject with error message', function () {
-            return this.api.login('foo', 'foo').catch(function (data) {
+        it('should reject with error message', function() {
+            return this.api.login('foo', 'foo').catch(function(data) {
                 should(data).have.property('message')
             })
         })

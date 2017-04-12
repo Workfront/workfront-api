@@ -12,7 +12,7 @@ function generateChangelog() {
     // get most recent two tags
     getVersionTags()
         .then(function (tags) {
-            return tags.length > 0 ? 'HEAD..' + tags.pop() : ''
+            return tags.length > 0 ? tags.pop() + '..HEAD' : ''
         })
         .then(function (tagRange) {
             // get log statements

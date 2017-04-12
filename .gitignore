@@ -12,3 +12,5 @@ coverage
 
 # dist
 dist
+typings
+es

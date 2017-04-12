@@ -22,21 +22,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Search', function () {
+describe('Search', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    beforeEach(function () {
+    beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api/`,
             require('../../fixtures/search.json'),
@@ -45,16 +45,16 @@ describe('Search', function () {
             }
         )
     })
-    it('makes a search request with proper params', function () {
-        let objCode = 'ROLE'
+    it('makes a search request with proper params', function() {
+        const objCode = 'ROLE'
         this.api.search(objCode)
-        let [url, opts] = fetchMock.lastCall('search')
-        should(url).endWith(objCode + '/search')
+        const [url, opts] = fetchMock.lastCall('search')
         should(opts.method).equal('GET')
-        should(opts.body).equal('')
+        should(url).endWith(objCode + '/search')
+        should(opts.body).be.null()
     })
-    it('makes a request with search criteria', function () {
-        let objCode = 'ROLE',
+    it('makes a request with search criteria', function() {
+        const objCode = 'ROLE',
             criteriaField = 'maxUsers',
             criteriaValue = 5,
             query = {
@@ -62,7 +62,8 @@ describe('Search', function () {
                 [criteriaField]: criteriaValue
             }
         this.api.search(objCode, query)
-        let opts = fetchMock.lastOptions('search')
-        should(opts.body).equal(`${criteriaField}${MOD}=${Operators.GREATERTHAN}&${criteriaField}=${criteriaValue}`)
+        const [url, opts] = fetchMock.lastCall('search')
+        should(url).endWith(`${objCode}/search?${criteriaField}${MOD}=${Operators.GREATERTHAN}&${criteriaField}=${criteriaValue}`)
+        should(opts.body).be.null()
     })
 })

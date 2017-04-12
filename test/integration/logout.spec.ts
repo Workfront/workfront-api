@@ -21,21 +21,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Logout', function () {
+describe('Logout', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    describe('success', function () {
+    describe('success', function() {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/logout`,
@@ -54,14 +54,14 @@ describe('Logout', function () {
                 }
             )
         })
-        it('should call with proper params', function () {
+        it('should call with proper params', function() {
             this.api.logout()
-            let [url, opts] = fetchMock.lastCall('logout')
+            const [url, opts] = fetchMock.lastCall('logout')
             should(url).endWith('logout')
             should(opts.method).equal('GET')
-            should(opts.body).equal('')
+            should(opts.body).be.null()
         })
-        it('removes sessionID from header for later calls', function () {
+        it('removes sessionID from header for later calls', function() {
             let opts
             return this.api.login('foo', 'bar').then(() => {
                 return this.api.logout('foo', 'bar').then(() => {

@@ -22,21 +22,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Report', function () {
+describe('Report', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    beforeEach(function () {
+    beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api/`,
             require('../../fixtures/report.json'),
@@ -45,16 +45,16 @@ describe('Report', function () {
             }
         )
     })
-    it('makes a request with proper params, url and method', function () {
-        let objCode = 'TASK',
+    it('makes a request with proper params, url and method', function() {
+        const objCode = 'TASK',
             query = {
                 ['status' + GROUPBY]: true
             }
-        return this.api.report(objCode, query).then(function (data) {
-            let [url, opts] = fetchMock.lastCall('report')
-            should(url).endWith(`${objCode}/report`)
+        return this.api.report(objCode, query).then(function(data) {
+            const [url, opts] = fetchMock.lastCall('report')
             should(opts.method).equal('GET')
-            should(opts.body).containEql(`status${GROUPBY}=true`)
+            should(opts.body).be.null()
+            should(url).endWith(`${objCode}/report?status${GROUPBY}=true`)
             should(data).have.propertyByPath('CPL', 'dcount_ID').be.Number()
             should(data.CPL).have.property('status').be.equal('CPL')
         })

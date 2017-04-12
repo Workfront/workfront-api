@@ -16,8 +16,8 @@
     "node_modules/typescript/lib/lib.es6.d.ts"
   ],
   "include": [
-    "**/*.ts",
-    "**/*.d.ts"
+    "src/*.ts",
+    "src/*.d.ts"
   ],
   "exclude": [
     "node_modules",

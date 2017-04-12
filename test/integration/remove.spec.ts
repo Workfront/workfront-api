@@ -21,21 +21,21 @@ import * as Workfront from '../../src/index'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Remove', function () {
+describe('Remove', function() {
 
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL
         })
     })
-    afterEach(function () {
+    afterEach(function() {
         this.api = undefined
     })
 
-    beforeEach(function () {
+    beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api/`,
             require('../../fixtures/create.json'),
@@ -46,8 +46,8 @@ describe('Remove', function () {
         )
     })
 
-    describe('successfully removes task', function () {
-        beforeEach(function () {
+    describe('successfully removes task', function() {
+        beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
                 require('../../fixtures/remove.json'),
@@ -58,7 +58,7 @@ describe('Remove', function () {
             )
         })
 
-        it('creates and deletes task with proper params', function () {
+        it('creates and deletes task with proper params', function() {
             let objCode, objID
             return this.api.create('TASK', {projectID: 'foo'}).then( (createData) => {
                 objCode = createData.objCode
@@ -66,8 +66,8 @@ describe('Remove', function () {
 
                 should(createData.objCode).equal('TASK')
 
-                return this.api.remove(objCode, objID).then(function (removeData) {
-                    let [url, opts] = fetchMock.lastCall('remove')
+                return this.api.remove(objCode, objID).then(function(removeData) {
+                    const [url, opts] = fetchMock.lastCall('remove')
                     should(url).endWith(`${objCode}/${objID}`)
                     should(opts.method).equal('DELETE')
                     should(removeData)
@@ -75,8 +75,8 @@ describe('Remove', function () {
             })
         })
     })
-    describe('unsuccessfully removes task', function () {
-        beforeEach(function () {
+    describe('unsuccessfully removes task', function() {
+        beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api/`,
                 require('../../fixtures/removeFailure.json'),
@@ -87,7 +87,7 @@ describe('Remove', function () {
             )
         })
 
-        it('creates and attempts to delete task', function () {
+        it('creates and attempts to delete task', function() {
             let objCode, objID
             return this.api.create('TASK', {projectID: 'foo'}).then( (createData) => {
                 objCode = createData.objCode
@@ -95,10 +95,10 @@ describe('Remove', function () {
 
                 should(createData.objCode).equal('TASK')
 
-                return this.api.remove(objCode, objID).catch(function (error) {
+                return this.api.remove(objCode, objID).catch(function(error) {
                     should(error).have.properties('message', 'status')
                     should(error).not.have.property('success')
-                    let [url, opts] = fetchMock.lastCall('remove')
+                    const [url, opts] = fetchMock.lastCall('remove')
                     should(url).endWith(`${objCode}/${objID}`)
                     should(opts.method).equal('DELETE')
                 })
