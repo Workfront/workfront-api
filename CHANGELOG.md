@@ -1,3 +1,7 @@
+2.0.4 - April 12, 2017
+
+* chore: add @types/node as dependency (Sassoun Derderian)
+
 2.0.3 - April 12, 2017
 
 * fix (regression): GET and PUT requests should send params in URI query string (Sassoun Derderian)
