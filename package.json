@@ -48,7 +48,7 @@
     "tslint-loader": "3.5.3",
     "typedoc": "0.5.10",
     "typescript": "2.2.2",
-    "webpack": "2.3.3"
+    "webpack": "2.4.0"
   },
   "scripts": {
     "test": "karma start karma.conf.js",
