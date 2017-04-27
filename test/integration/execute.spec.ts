@@ -49,35 +49,36 @@ describe('Execute', function() {
         return this.api.execute('foo', 'bar', 'baz').then(function(data) {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo/bar/baz')
-            should(opts.method).equal('PUT')
+            should(opts.method).equal('POST')
         })
     })
 
     it('should call request() with proper params (with args)', function() {
         return this.api.execute('foo', 'bar', 'baz', {foo: 'barbaz'}).then(function(data) {
             const [url, opts] = fetchMock.lastCall('execute')
-            should(url).containEql('foo/bar/baz')
-            should(url).containEql('foo=barbaz')
-            should(opts.body).be.null()
-            should(opts.method).equal('PUT')
+            should(url).endWith('foo/bar/baz')
+            should(opts.body).containEql(`updates=${encodeURIComponent(JSON.stringify({foo: 'barbaz'}))}`)
+            should(opts.method).equal('POST')
         })
     })
 
     it('should call request() with proper params (with args) when objID is omitted', function() {
         return this.api.execute('foo', null, 'baz', {foo: 'barbaz'}).then(function(data) {
             const [url, opts] = fetchMock.lastCall('execute')
-            should(url).endWith('foo?foo=barbaz&action=baz')
-            should(opts.body).be.null()
-            should(opts.method).equal('PUT')
+            should(url).containEql('method=PUT')
+            should(url).containEql('action=baz')
+            should(opts.body).containEql(`updates=${encodeURIComponent(JSON.stringify({foo: 'barbaz'}))}`)
+            should(opts.method).equal('POST')
         })
     })
 
     it('should call request() with proper params (without args) when objID is omitted', function() {
         return this.api.execute('foo', null, 'baz').then(function(data) {
             const [url, opts] = fetchMock.lastCall('execute')
-            should(url).endWith('foo?action=baz')
-            should(opts.body).be.null()
-            should(opts.method).equal('PUT')
+            should(url).containEql('action=baz')
+            should(url).containEql('method=PUT')
+            should(opts.body).not.be.ok()
+            should(opts.method).equal('POST')
         })
     })
 })

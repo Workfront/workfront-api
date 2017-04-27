@@ -194,10 +194,16 @@ export class Api {
             endPoint += '/' + objID + '/' + action
         }
         else {
-            actionArgs = actionArgs || {}
-            actionArgs['action'] = action
+            endPoint += '?method='+ Api.Methods.PUT +'&action=' + action
         }
-        return this.request(endPoint, actionArgs, null, Api.Methods.PUT)
+        const JSONstringifiedArgs = JSON.stringify(actionArgs)
+        let params = null
+        if (JSONstringifiedArgs) {
+            params = {
+                updates: JSONstringifiedArgs
+            }
+        }
+        return this.request(endPoint, params, null, Api.Methods.POST)
     }
 
     /**
@@ -364,7 +370,7 @@ export class Api {
                 a.push(k + '=' + encodeURIComponent(params[k]))
                 return a
             }, []).join('&')
-            if (method === Api.Methods.GET || method === Api.Methods.PUT) {
+            if (method === Api.Methods.GET) {
                 if (bodyParams) {
                     queryString = '?' + bodyParams
                 }
