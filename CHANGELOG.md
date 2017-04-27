@@ -1,3 +1,15 @@
+2.0.5 - April 27, 2017
+
+* fix: Api.execute method for namedAction should make request with POST instead of PUT (Sassoun Derderian)
+* chore(package): update typedoc to version 0.6.0 (greenkeeper[bot])
+* fix(package): update @types/node to version 7.0.14 (greenkeeper[bot])
+* chore(package): update mocha to version 3.3.0 (greenkeeper[bot])
+* chore(package): update tslint-loader to version 3.5.3 (greenkeeper[bot])
+* chore(package): update tslib to version 1.6.1 (greenkeeper[bot])
+* chore(package): update @types/should to version 8.3.0 (greenkeeper[bot])
+* chore(package): update webpack to version 2.4.0 (greenkeeper[bot])
+* chore(package): update fetch-mock to version 5.10.0 (greenkeeper[bot])
+
 2.0.4 - April 12, 2017
 
 * chore: add @types/node as dependency (Sassoun Derderian)
