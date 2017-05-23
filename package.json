@@ -11,7 +11,7 @@
   ],
   "typings": "typings/index.d.ts",
   "dependencies": {
-    "@types/node": "7.0.21",
+    "@types/node": "7.0.22",
     "es6-promise": "4.1.0",
     "form-data": "2.1.4",
     "isomorphic-fetch": "2.2.1",
