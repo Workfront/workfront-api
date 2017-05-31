@@ -88,14 +88,17 @@ export class Api {
                 resolve(this._httpParams.apiKey)
             }
             else {
-                this.request('USER', {
-                    method: Api.Methods.PUT,
-                    action: 'getApiKey',
-                    username: username,
-                    password: password
-                }).then((data) => {
-                    this._httpParams.apiKey = data.result
-                    resolve(this._httpParams.apiKey)
+                this.execute('USER', null, 'getApiKey', {username, password}).then((getApiKeyData) => {
+                    if (getApiKeyData.result === '') {
+                        this.execute('USER', null, 'generateApiKey', {username, password}).then((generateApiKeyData) => {
+                            this._httpParams.apiKey = generateApiKeyData.result
+                            resolve(this._httpParams.apiKey)
+                        }, reject)
+                    }
+                    else {
+                        this._httpParams.apiKey = getApiKeyData.result
+                        resolve(this._httpParams.apiKey)
+                    }
                 }, reject)
             }
         })
@@ -192,18 +195,18 @@ export class Api {
      */
     execute(objCode: string, objID: string | null, action: string, actionArgs?: object) {
         let endPoint = objCode
+        let params = {}
         if (objID) {
             endPoint += '/' + objID + '/' + action
         }
         else {
-            endPoint += '?method=' + Api.Methods.PUT + '&action=' + action
-        }
-        const JSONstringifiedArgs = JSON.stringify(actionArgs)
-        let params = null
-        if (JSONstringifiedArgs) {
             params = {
-                updates: JSONstringifiedArgs
+                method: Api.Methods.PUT,
+                action: action
             }
+        }
+        if (actionArgs) {
+            params = Object.assign(params, actionArgs)
         }
         return this.request(endPoint, params, null, Api.Methods.POST)
     }

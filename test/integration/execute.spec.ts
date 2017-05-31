@@ -46,39 +46,41 @@ describe('Execute', function() {
     })
 
     it('should call request() with proper params (without args)', function() {
-        return this.api.execute('foo', 'bar', 'baz').then(function(data) {
+        return this.api.execute('foo', 'bar', 'baz').then(function() {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo/bar/baz')
+            should(opts.body).equal('')
             should(opts.method).equal('POST')
         })
     })
 
     it('should call request() with proper params (with args)', function() {
-        return this.api.execute('foo', 'bar', 'baz', {foo: 'barbaz'}).then(function(data) {
+        return this.api.execute('foo', 'bar', 'baz', {foo: 'barbaz'}).then(function() {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo/bar/baz')
-            should(opts.body).containEql(`updates=${encodeURIComponent(JSON.stringify({foo: 'barbaz'}))}`)
+            should(opts.body).containEql('foo=barbaz')
             should(opts.method).equal('POST')
         })
     })
 
     it('should call request() with proper params (with args) when objID is omitted', function() {
-        return this.api.execute('foo', null, 'baz', {foo: 'barbaz'}).then(function(data) {
+        return this.api.execute('foo', null, 'baz', {foo: 'barbaz'}).then(function() {
             const [url, opts] = fetchMock.lastCall('execute')
-            should(url).containEql('method=PUT')
-            should(url).containEql('action=baz')
-            should(opts.body).containEql(`updates=${encodeURIComponent(JSON.stringify({foo: 'barbaz'}))}`)
+            should(url).endWith('foo')
+            should(opts.body).containEql('action=baz')
+            should(opts.body).containEql('foo=barbaz')
+            should(opts.body).containEql('method=PUT')
             should(opts.method).equal('POST')
         })
     })
 
     it('should call request() with proper params (without args) when objID is omitted', function() {
-        return this.api.execute('foo', null, 'baz').then(function(data) {
+        return this.api.execute('foo', null, 'baz').then(function() {
             const [url, opts] = fetchMock.lastCall('execute')
-            should(url).containEql('action=baz')
-            should(url).containEql('method=PUT')
-            should(opts.body).not.be.ok()
+            should(url).endWith('foo')
+            should(opts.body).containEql('action=baz')
             should(opts.method).equal('POST')
+            should(opts.body).containEql('method=PUT')
         })
     })
 })
