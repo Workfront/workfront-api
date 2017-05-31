@@ -54,7 +54,7 @@ export class Api {
     }
 
     _httpOptions: IHttpOptions
-    _httpParams: THttpParams
+    _httpParams: THttpParams = {}
 
     constructor(config) {
         this._httpOptions = {
@@ -88,12 +88,17 @@ export class Api {
                 resolve(this._httpParams.apiKey)
             }
             else {
-                this.execute('USER', null, 'getApiKey', {
-                    username: username,
-                    password: password
-                }).then((data) => {
-                    this._httpParams.apiKey = data.result
-                    resolve(this._httpParams.apiKey)
+                this.execute('USER', null, 'getApiKey', {username, password}).then((getApiKeyData) => {
+                    if (getApiKeyData.result === '') {
+                        this.execute('USER', null, 'generateApiKey', {username, password}).then((generateApiKeyData) => {
+                            this._httpParams.apiKey = generateApiKeyData.result
+                            resolve(this._httpParams.apiKey)
+                        }, reject)
+                    }
+                    else {
+                        this._httpParams.apiKey = getApiKeyData.result
+                        resolve(this._httpParams.apiKey)
+                    }
                 }, reject)
             }
         })
@@ -143,7 +148,7 @@ export class Api {
      */
     clearApiKey() {
         return new Promise((resolve, reject) => {
-            this.execute('USER', null, 'clearApiKey').then(function(result) {
+            this.execute('USER', null, 'clearApiKey').then((result) => {
                 if (result) {
                     delete this._httpParams.apiKey
                     resolve()
@@ -188,20 +193,20 @@ export class Api {
      * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
-    execute(objCode: string, objID: string|null, action: string, actionArgs?: object) {
+    execute(objCode: string, objID: string | null, action: string, actionArgs?: object) {
         let endPoint = objCode
+        let params = {}
         if (objID) {
             endPoint += '/' + objID + '/' + action
         }
         else {
-            endPoint += '?method='+ Api.Methods.PUT +'&action=' + action
-        }
-        const JSONstringifiedArgs = JSON.stringify(actionArgs)
-        let params = null
-        if (JSONstringifiedArgs) {
             params = {
-                updates: JSONstringifiedArgs
+                method: Api.Methods.PUT,
+                action: action
             }
+        }
+        if (actionArgs) {
+            params = Object.assign(params, actionArgs)
         }
         return this.request(endPoint, params, null, Api.Methods.POST)
     }
@@ -214,7 +219,7 @@ export class Api {
      * @param {String|String[]} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    get(objCode: string, objIDs: string|string[], fields?: TFields) {
+    get(objCode: string, objIDs: string | string[], fields?: TFields) {
         if (typeof objIDs === 'string') {
             objIDs = [objIDs]
         }

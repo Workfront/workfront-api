@@ -10,6 +10,9 @@
     "typings"
   ],
   "typings": "typings/index.d.ts",
+  "peerDependencies": {
+    "workfront-api-constants": "2.0.0"
+  },
   "dependencies": {
     "@types/node": "7.0.22",
     "es6-promise": "4.1.0",
