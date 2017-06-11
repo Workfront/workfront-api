@@ -16,7 +16,7 @@
   "dependencies": {
     "@types/node": "7.0.28",
     "es6-promise": "4.1.0",
-    "form-data": "2.1.4",
+    "form-data": "2.2.0",
     "isomorphic-fetch": "2.2.1",
     "workfront-api-constants": "2.0.0"
   },
