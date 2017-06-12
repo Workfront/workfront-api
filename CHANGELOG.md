@@ -1,3 +1,10 @@
+3.0.1 - June 12, 2017
+
+* chore: using npm@5 new feature (Sassoun Derderian)
+* fix: Object.assign polyfill for IE browsers (Sassoun Derderian)
+* fix(package): update @types/node to version 7.0.28 (greenkeeper[bot])
+* fix(package): update @types/node to version 7.0.24 (greenkeeper[bot])
+
 3.0.0 - May 31, 2017
 
 * chore: tests for getApiKey method (Sassoun Derderian)
