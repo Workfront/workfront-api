@@ -21,6 +21,7 @@
 
 import * as NodeFormData from 'form-data'
 import 'isomorphic-fetch'
+import * as objectAssign from 'object-assign'
 import * as stream from 'stream'
 import {INTERNAL_PREFIX} from 'workfront-api-constants'
 
@@ -206,7 +207,7 @@ export class Api {
             }
         }
         if (actionArgs) {
-            params = Object.assign(params, actionArgs)
+            params = objectAssign(params, actionArgs)
         }
         return this.request(endPoint, params, null, Api.Methods.POST)
     }
@@ -331,11 +332,11 @@ export class Api {
     }
 
     request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
-        params = Object.assign(params || {}, this._httpParams)
+        params = objectAssign(params || {}, this._httpParams)
 
         const alwaysUseGet = this._httpOptions.alwaysUseGet
 
-        const options = Object.assign({}, this._httpOptions)
+        const options = objectAssign({}, this._httpOptions)
         if (alwaysUseGet) {
             params.method = method
         } else {
