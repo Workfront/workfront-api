@@ -1,3 +1,8 @@
+3.0.2 - June 13, 2017
+
+* fix: send credentials (cookie, session, etc.) with the request for same origin host (Sassoun Derderian)
+* chore: object-assign npm package is used as polyfill (Sassoun Derderian)
+
 3.0.1 - June 12, 2017
 
 * chore: using npm@5 new feature (Sassoun Derderian)
