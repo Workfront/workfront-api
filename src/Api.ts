@@ -387,7 +387,8 @@ export class Api {
         return fetch(options.url + options.path + queryString, {
             method: method,
             headers: headers,
-            body: bodyParams
+            body: bodyParams,
+            credentials: 'same-origin'
         }).then(
             ResponseHandler.success,
             ResponseHandler.failure
