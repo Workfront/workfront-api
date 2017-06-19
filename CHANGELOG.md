@@ -1,3 +1,15 @@
+3.0.2 - June 13, 2017
+
+* fix: send credentials (cookie, session, etc.) with the request for same origin host (Sassoun Derderian)
+* chore: object-assign npm package is used as polyfill (Sassoun Derderian)
+
+3.0.1 - June 12, 2017
+
+* chore: using npm@5 new feature (Sassoun Derderian)
+* fix: Object.assign polyfill for IE browsers (Sassoun Derderian)
+* fix(package): update @types/node to version 7.0.28 (greenkeeper[bot])
+* fix(package): update @types/node to version 7.0.24 (greenkeeper[bot])
+
 3.0.0 - May 31, 2017
 
 * chore: tests for getApiKey method (Sassoun Derderian)
