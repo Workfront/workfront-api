@@ -19,7 +19,6 @@ module.exports = function (config) {
         files: [
             'node_modules/es6-promise/dist/es6-promise.auto.min.js',
             'node_modules/whatwg-fetch/fetch.js',
-            'node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
             'test/test-bundle.js'
         ],
 
