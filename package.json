@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@types/node": "8.0.1",
-    "es6-promise": "4.1.0",
+    "es6-promise": "4.1.1",
     "form-data": "2.2.0",
     "isomorphic-fetch": "2.2.1",
     "object-assign": "4.1.1",
