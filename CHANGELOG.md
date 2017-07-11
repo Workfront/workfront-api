@@ -1,3 +1,19 @@
+3.0.3 - July 11, 2017
+
+* chore: reverting version change (Sassoun Derderian)
+* Bug fixes for problems experienced using apiKey and edit calls (#99) (jwiggins78)
+* chore(package): update fetch-mock to version 5.12.1 (greenkeeper[bot])
+* chore(package): update ts-loader to version 2.2.2 (greenkeeper[bot])
+* fix(package): update @types/node to version 8.0.6 (greenkeeper[bot])
+* chore(package): update ts-loader to version 2.2.1 (greenkeeper[bot])
+* fix(package): update es6-promise to version 4.1.1 (greenkeeper[bot])
+* chore(package): update typescript to version 2.4.1 (greenkeeper[bot])
+* chore(package): update fetch-mock to version 5.12.0 (greenkeeper[bot])
+* chore(package): update karma-chrome-launcher to version 2.2.0 (greenkeeper[bot])
+* fix(package): update @types/node to version 8.0.1 (greenkeeper[bot])
+* fix(package): update form-data to version 2.2.0 (greenkeeper[bot])
+* chore(package): update execa to version 0.7.0 (greenkeeper[bot])
+
 3.0.2 - June 13, 2017
 
 * fix: send credentials (cookie, session, etc.) with the request for same origin host (Sassoun Derderian)
