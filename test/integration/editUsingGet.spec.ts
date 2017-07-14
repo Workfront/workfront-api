@@ -29,7 +29,8 @@ describe('Edit', function() {
     beforeEach(function() {
         this.api = new Workfront.Api({
             url: API_URL,
-            apiKey: 'testapikey'
+            apiKey: 'testapikey',
+            alwaysUseGet: true
         })
     })
     afterEach(function() {
@@ -46,7 +47,7 @@ describe('Edit', function() {
         )
     })
 
-    it('makes a PUT request with proper params and return the edited object', function() {
+    it('makes a GET request with method=PUT and with proper params and return the edited object', function() {
         const params = {
             name: 'api test 2'
         }
@@ -55,10 +56,11 @@ describe('Edit', function() {
 
         return this.api.edit(objCode, objID, params).then(function(data) {
             const [url, opts] = fetchMock.lastCall('edit')
-            should(opts.method).equal('PUT')
+            should(opts.method).equal('GET')
             should(url).endWith(objCode + '/' + objID)
             should(opts.headers.get('apiKey')).equal('testapikey')
             should(opts.body).containEql('name=' + encodeURIComponent('api test 2'))
+            should(opts.body).containEql('method=PUT')
 
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)
