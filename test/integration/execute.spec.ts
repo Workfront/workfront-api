@@ -49,7 +49,7 @@ describe('Execute', function() {
         return this.api.execute('foo', 'bar', 'baz').then(function() {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo/bar/baz')
-            should(opts.body).equal('')
+            should(opts.body).equal('{}')
             should(opts.method).equal('POST')
         })
     })
@@ -58,7 +58,7 @@ describe('Execute', function() {
         return this.api.execute('foo', 'bar', 'baz', {foo: 'barbaz'}).then(function() {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo/bar/baz')
-            should(opts.body).containEql('foo=barbaz')
+            should(opts.body).containEql('{"foo":"barbaz"}')
             should(opts.method).equal('POST')
         })
     })
@@ -67,9 +67,9 @@ describe('Execute', function() {
         return this.api.execute('foo', null, 'baz', {foo: 'barbaz'}).then(function() {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo')
-            should(opts.body).containEql('action=baz')
-            should(opts.body).containEql('foo=barbaz')
-            should(opts.body).containEql('method=PUT')
+            should(opts.body).containEql('"action":"baz"')
+            should(opts.body).containEql('"foo":"barbaz"')
+            should(opts.body).containEql('"method":"PUT"')
             should(opts.method).equal('POST')
         })
     })
@@ -78,9 +78,9 @@ describe('Execute', function() {
         return this.api.execute('foo', null, 'baz').then(function() {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo')
-            should(opts.body).containEql('action=baz')
+            should(opts.body).containEql('"action":"baz"')
             should(opts.method).equal('POST')
-            should(opts.body).containEql('method=PUT')
+            should(opts.body).containEql('"method":"PUT"')
         })
     })
 })

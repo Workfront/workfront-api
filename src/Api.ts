@@ -385,7 +385,7 @@ export class Api {
             headers.append('Content-Type', 'application/json')
             bodyParams = JSON.stringify(params)
             if (options.method === Api.Methods.GET) {
-                if (bodyParams) {
+                if (bodyParams && Object.keys(params).length > 0) {
                     queryString = '?' + Object.keys(params).reduce(function(a, k) {
                             a.push(k + '=' + encodeURIComponent(params[k]))
                             return a
