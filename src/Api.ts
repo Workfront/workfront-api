@@ -382,7 +382,12 @@ export class Api {
             bodyParams = params
         }
         else {
-            headers.append('Content-Type', 'application/json')
+            if (options.method === Api.Methods.PUT || options.method === Api.Methods.POST) {
+                headers.append('Content-Type', 'application/json')
+            } else {
+                headers.append('Content-Type', 'application/x-www-form-urlencoded')
+            }
+
             bodyParams = JSON.stringify(params)
             if (options.method === Api.Methods.GET) {
                 if (bodyParams && Object.keys(params).length > 0) {
