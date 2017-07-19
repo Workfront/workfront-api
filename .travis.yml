@@ -8,11 +8,6 @@ node_js:
   - '6'
   - '4'
 
-env:
-  global:
-    - secure: Zmndw3YPp7JUPHRWfzF6ieqwDqWs4GnKMqXNaPNCcY1D76rH2CGTe6YQHhvNEgIm5UItH39x306TMWjqZfCFUVpAks8AQEigADAMPbgqLg8JG4QVIb1sQiZPiVHJA5Ho6YNB4hqv3fp+D9DWRDIMiLYmWiRD8/hFaow/xkfMyiA=
-    - secure: jdw+OA04vF8+t+iOkWRfDWexKGVxrjpt8iwkY/CBnmANFQckseLwVrDJyHrjcxQlY7SlkSudMNXizINKJDldPx4BBlt1I6n7441CYQ2KpRqzAQXgLPWy+Ea/lM2QcSfihG/xC8Q30CVfMUTZTZx/6nUlIoeB2eItzy9+KsE9UaU=
-
 matrix:
   include:
     - node_js: '6'
