@@ -107,15 +107,18 @@ module.exports = function (config) {
         config.set({
             reporters: ['progress', 'saucelabs'],
             sauceLabs: {
-                testName: 'workfront-api',
-                recordScreenshots: false,
-                recordVideo: false,
+                build: 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')',
                 connectOptions: {
                     port: 5757
                 },
-                public: 'public'
+                public: 'public',
+                recordScreenshots: false,
+                recordVideo: false,
+                startConnect: false,
+                testName: 'workfront-api',
+                tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
             },
-            captureTimeout: 120000,
+            captureTimeout: 0,
             customLaunchers: customLaunchers,
 
             // start these browsers
