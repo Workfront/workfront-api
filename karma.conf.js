@@ -114,6 +114,7 @@ module.exports = function (config) {
                 public: 'public',
                 recordScreenshots: false,
                 recordVideo: false,
+                startConnect: false,
                 testName: 'workfront-api',
                 tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
             },
