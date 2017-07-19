@@ -16,10 +16,7 @@ env:
 matrix:
   include:
     - node_js: '6'
-      env:
-        - CI_MODE=saucelabs
-        - SAUCE_USERNAME=citizensas
-        - SAUCE_ACCESS_KEY=647f45b4-3dda-4830-a43a-3b447a60afef
+      env: CI_MODE=saucelabs
       addons:
         sauce_connect: true
 
