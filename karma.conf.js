@@ -111,7 +111,8 @@ module.exports = function (config) {
                 recordScreenshots: false,
                 recordVideo: false,
                 connectOptions: {
-                    port: 5757
+                    port: 5757,
+                    tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
                 },
                 public: 'public'
             },
