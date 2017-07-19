@@ -31,7 +31,10 @@ export interface IHttpOptions {
     method?: string
     url: string
     alwaysUseGet?: boolean
-    headers: {sessionID?: string}
+    headers: {
+        sessionID?: string,
+        apiKey?: string
+    }
 }
 export type TFields = string | string[]
 
@@ -60,7 +63,11 @@ export class Api {
     constructor(config) {
         this._httpOptions = {
             url: config.url,
+            alwaysUseGet: config.alwaysUseGet,
             headers: {}
+        }
+        if (config.apiKey) {
+            this._httpOptions.headers.apiKey = config.apiKey
         }
         // Append version to path if provided
         let path
@@ -85,20 +92,20 @@ export class Api {
      */
     getApiKey(username: string, password: string): Promise<string> {
         return new Promise((resolve, reject) => {
-            if (typeof this._httpParams.apiKey !== 'undefined') {
-                resolve(this._httpParams.apiKey)
+            if (typeof this._httpOptions.headers.apiKey !== 'undefined') {
+                resolve(this._httpOptions.headers.apiKey)
             }
             else {
                 this.execute('USER', null, 'getApiKey', {username, password}).then((getApiKeyData) => {
                     if (getApiKeyData.result === '') {
                         this.execute('USER', null, 'generateApiKey', {username, password}).then((generateApiKeyData) => {
-                            this._httpParams.apiKey = generateApiKeyData.result
-                            resolve(this._httpParams.apiKey)
+                            this._httpOptions.headers.apiKey = generateApiKeyData.result
+                            resolve(this._httpOptions.headers.apiKey)
                         }, reject)
                     }
                     else {
-                        this._httpParams.apiKey = getApiKeyData.result
-                        resolve(this._httpParams.apiKey)
+                        this._httpOptions.headers.apiKey = getApiKeyData.result
+                        resolve(this._httpOptions.headers.apiKey)
                     }
                 }, reject)
             }
@@ -151,7 +158,7 @@ export class Api {
         return new Promise((resolve, reject) => {
             this.execute('USER', null, 'clearApiKey').then((result) => {
                 if (result) {
-                    delete this._httpParams.apiKey
+                    delete this._httpOptions.headers.apiKey
                     resolve()
                 } else {
                     reject()
@@ -362,6 +369,9 @@ export class Api {
         if (this._httpOptions.headers.sessionID) {
             headers.append('sessionID', this._httpOptions.headers.sessionID)
         }
+        else if (this._httpOptions.headers.apiKey) {
+            headers.append('apiKey', this._httpOptions.headers.apiKey)
+        }
 
         let bodyParams = null, queryString = ''
         if (NodeFormData && params instanceof NodeFormData) {
@@ -385,7 +395,7 @@ export class Api {
         }
 
         return fetch(options.url + options.path + queryString, {
-            method: method,
+            method: alwaysUseGet ? 'GET' : method,
             headers: headers,
             body: bodyParams,
             credentials: 'same-origin'
@@ -413,7 +423,7 @@ export class Api {
      * @return {string} returns the given api key value
      */
     setApiKey(apiKey) {
-        return this._httpParams.apiKey = apiKey
+        return this._httpOptions.headers.apiKey = apiKey
     }
 
     /**
