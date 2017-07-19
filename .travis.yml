@@ -10,8 +10,10 @@ node_js:
 
 env:
   global:
-    - secure: Zmndw3YPp7JUPHRWfzF6ieqwDqWs4GnKMqXNaPNCcY1D76rH2CGTe6YQHhvNEgIm5UItH39x306TMWjqZfCFUVpAks8AQEigADAMPbgqLg8JG4QVIb1sQiZPiVHJA5Ho6YNB4hqv3fp+D9DWRDIMiLYmWiRD8/hFaow/xkfMyiA=
-    - secure: jdw+OA04vF8+t+iOkWRfDWexKGVxrjpt8iwkY/CBnmANFQckseLwVrDJyHrjcxQlY7SlkSudMNXizINKJDldPx4BBlt1I6n7441CYQ2KpRqzAQXgLPWy+Ea/lM2QcSfihG/xC8Q30CVfMUTZTZx/6nUlIoeB2eItzy9+KsE9UaU=
+    # encrypted SAUCE_USERNAME
+    - secure: "kxUn0SMg1VEyZqjLoz3JnZXp2JBnyq4rSjRFSXOmw3M0Ujr5nBTczpQ0ro8DQPiKxcdvHKgVudY4EY31PLG3T5Gr2DB0D2GpRuEJOn7qSZj3aMqYygi4uF58cwlMULKWNgaaSqk8I1JeKxRzq0l7jKgFbgLFhXWalgzX4z+boxI="
+    # encrypted SAUCE_ACCESS_KEY
+    - secure: "kQyUTxtseSHjEPMCiZpLqwk/ISloNHpYfN1jh7suz6SsjPw9VYJNMin3w+j48fnYlDhW94ZyFy5NO+NcBXBminP9+x31TDwC5yFexmFxyRwQDnLkrKY+1fZt6VJOiGJQAZr+J43DUl9+F9UYjdA13C3iMiB5v0P/YikvTNPdSBA="
 
 matrix:
   include:
