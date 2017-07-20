@@ -367,6 +367,7 @@ export class Api {
         }
 
         const headers = new Headers()
+        headers.append('X-Requested-With', 'XMLHttpRequest')
         if (this._httpOptions.headers.sessionID) {
             headers.append('sessionID', this._httpOptions.headers.sessionID)
         }
