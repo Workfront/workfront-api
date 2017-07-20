@@ -346,6 +346,7 @@ export class Api {
         const options = objectAssign({}, this._httpOptions)
         if (alwaysUseGet) {
             params.method = method
+            options.method = Api.Methods.GET
         } else {
             options.method = method
         }
@@ -381,21 +382,26 @@ export class Api {
             bodyParams = params
         }
         else {
-            headers.append('Content-Type', 'application/x-www-form-urlencoded')
-            bodyParams = Object.keys(params).reduce(function(a, k) {
-                a.push(k + '=' + encodeURIComponent(params[k]))
-                return a
-            }, []).join('&')
-            if (method === Api.Methods.GET) {
-                if (bodyParams) {
-                    queryString = '?' + bodyParams
+            if (options.method === Api.Methods.PUT || options.method === Api.Methods.POST) {
+                headers.append('Content-Type', 'application/json')
+            } else {
+                headers.append('Content-Type', 'application/x-www-form-urlencoded')
+            }
+
+            bodyParams = JSON.stringify(params)
+            if (options.method === Api.Methods.GET) {
+                if (bodyParams && Object.keys(params).length > 0) {
+                    queryString = '?' + Object.keys(params).reduce(function(a, k) {
+                            a.push(k + '=' + encodeURIComponent(params[k]))
+                            return a
+                        }, []).join('&')
                 }
                 bodyParams = null
             }
         }
 
         return fetch(options.url + options.path + queryString, {
-            method: alwaysUseGet ? 'GET' : method,
+            method: options.method,
             headers: headers,
             body: bodyParams,
             credentials: 'same-origin'

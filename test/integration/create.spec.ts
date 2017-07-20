@@ -56,8 +56,7 @@ describe('Create', function() {
             const [url, opts] = fetchMock.lastCall('create')
             should(url).endWith(objCode)
             should(opts.method).equal('POST')
-            should(opts.body).containEql('foo=bar')
-            should(opts.body).containEql(encodeURIComponent(fields.join(',')))
+            should(opts.body).containEql('{"foo":"bar","fields":"*,zzz:*"}')
         })
     })
     it('should return the new created object', function() {

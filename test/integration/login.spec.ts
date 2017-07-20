@@ -66,8 +66,8 @@ describe('Login', function() {
             this.api.login('foo', 'bar')
             const [url, opts] = fetchMock.lastCall('login')
             should(url).endWith('login')
-            should(opts.body).containEql('username=foo')
-            should(opts.body).containEql('password=bar')
+            should(opts.body).containEql('"username":"foo"')
+            should(opts.body).containEql('"password":"bar"')
         })
     })
     describe('authentication exception', function() {
