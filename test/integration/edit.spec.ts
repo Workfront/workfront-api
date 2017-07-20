@@ -58,7 +58,7 @@ describe('Edit', function() {
             should(opts.method).equal('PUT')
             should(url).endWith(objCode + '/' + objID)
             should(opts.headers.get('apiKey')).equal('testapikey')
-            should(opts.body).containEql('name=' + encodeURIComponent('api test 2'))
+            should(opts.body).containEql(JSON.stringify(params))
 
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)

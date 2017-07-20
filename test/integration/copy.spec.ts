@@ -50,7 +50,7 @@ describe('Copy', function() {
                 const [url, opts] = fetchMock.lastCall('copy')
                 should(url).endWith('foo')
                 should(opts.method).equal('POST')
-                should(opts.body).containEql('copySourceID=bar')
+                should(opts.body).containEql('{"copySourceID":"bar"}')
             })
         })
         it('returns data with a new ID', function() {

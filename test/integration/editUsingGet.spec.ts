@@ -57,10 +57,10 @@ describe('Edit', function() {
         return this.api.edit(objCode, objID, params).then(function(data) {
             const [url, opts] = fetchMock.lastCall('edit')
             should(opts.method).equal('GET')
-            should(url).endWith(objCode + '/' + objID)
+            should(url).containEql(objCode + '/' + objID)
             should(opts.headers.get('apiKey')).equal('testapikey')
-            should(opts.body).containEql('name=' + encodeURIComponent('api test 2'))
-            should(opts.body).containEql('method=PUT')
+            should(opts.body).equal(null)
+            should(url).containEql('name=' + encodeURIComponent('api test 2') + '&method=PUT')
 
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)
