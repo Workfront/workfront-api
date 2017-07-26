@@ -175,8 +175,11 @@ export class Api {
      * @param {String|String[]} [fields]    Which fields of newly created object to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
-    create(objCode: string, params: object, fields?: TFields) {
-        return this.request(objCode, params, fields, Api.Methods.POST)
+    create(objCode: string, params: any, fields?: TFields) {
+        if (params.hasOwnProperty('updates') && typeof params.updates === 'string') {
+            return this.request(objCode, params.updates, fields, Api.Methods.POST, true)
+        }
+        return this.request(objCode, params, fields, Api.Methods.POST, true)
     }
 
     /**
@@ -188,8 +191,11 @@ export class Api {
      * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    edit(objCode: string, objID: string, updates: object, fields?: TFields) {
-        return this.request(objCode + '/' + objID, updates, fields, Api.Methods.PUT)
+    edit(objCode: string, objID: string, updates: any, fields?: TFields) {
+        if (updates.hasOwnProperty('updates') && typeof updates.updates === 'string') {
+            return this.request(objCode + '/' + objID, updates.updates, fields, Api.Methods.PUT, true)
+        }
+        return this.request(objCode + '/' + objID, updates, fields, Api.Methods.PUT, false)
     }
 
     /**
@@ -338,7 +344,17 @@ export class Api {
         return this.request(objCode + '/report', query, null, Api.Methods.GET)
     }
 
-    request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
+    /**
+     * Do the request using Fetch API.
+     * @memberOf Api
+     * @param {String} path     URI path where the request calls
+     * @param {Object} params   An object with params
+     * @param {Object} [fields] Fields to query for the request
+     * @param {String} [method=GET] The method which the request will do (GET|POST|PUT|DELETE)
+     * @param {String} [sendJSONBody=false] Whether the params payload is sent as JSON.stringify in the request body
+     * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
+     */
+    request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET, sendJSONBody = false): Promise<any> {
         params = objectAssign(params || {}, this._httpParams)
 
         const alwaysUseGet = this._httpOptions.alwaysUseGet
@@ -383,21 +399,21 @@ export class Api {
             bodyParams = params
         }
         else {
-            if (options.method === Api.Methods.PUT || options.method === Api.Methods.POST) {
+            if (sendJSONBody && (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)) {
                 headers.append('Content-Type', 'application/json')
+                bodyParams = JSON.stringify(params)
             } else {
                 headers.append('Content-Type', 'application/x-www-form-urlencoded')
-            }
-
-            bodyParams = JSON.stringify(params)
-            if (options.method === Api.Methods.GET) {
-                if (bodyParams && Object.keys(params).length > 0) {
-                    queryString = '?' + Object.keys(params).reduce(function(a, k) {
-                            a.push(k + '=' + encodeURIComponent(params[k]))
-                            return a
-                        }, []).join('&')
+                bodyParams = Object.keys(params).reduce(function(a, k) {
+                    a.push(k + '=' + encodeURIComponent(params[k]))
+                    return a
+                }, []).join('&')
+                if (options.method === Api.Methods.GET) {
+                    if (bodyParams) {
+                        queryString = '?' + bodyParams
+                    }
+                    bodyParams = null
                 }
-                bodyParams = null
             }
         }
 
