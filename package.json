@@ -30,7 +30,7 @@
     "execa": "0.7.0",
     "fetch-mock": "5.12.1",
     "http-server": "0.10.0",
-    "istanbul-instrumenter-loader": "2.0.0",
+    "istanbul-instrumenter-loader": "3.0.0",
     "karma": "1.7.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-cli": "1.0.1",
