@@ -176,10 +176,10 @@ export class Api {
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
     create(objCode: string, params: any, fields?: TFields) {
-        if (params.hasOwnProperty('updates') && typeof params.updates === 'string') {
-            return this.request(objCode, params.updates, fields, Api.Methods.POST, true)
+        if (params.hasOwnProperty('updates') && !(params.updates instanceof Array)) {
+            return this.request(objCode, params, fields, Api.Methods.POST)
         }
-        return this.request(objCode, params, fields, Api.Methods.POST, true)
+        return this.request(objCode, {updates: params}, fields, Api.Methods.POST)
     }
 
     /**
@@ -192,10 +192,10 @@ export class Api {
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     edit(objCode: string, objID: string, updates: any, fields?: TFields) {
-        if (updates.hasOwnProperty('updates') && typeof updates.updates === 'string') {
-            return this.request(objCode + '/' + objID, updates.updates, fields, Api.Methods.PUT, true)
+        if (updates.hasOwnProperty('updates') && !(updates.updates instanceof Array)) {
+            return this.request(objCode + '/' + objID, updates, fields, Api.Methods.PUT)
         }
-        return this.request(objCode + '/' + objID, updates, fields, Api.Methods.PUT, false)
+        return this.request(objCode + '/' + objID, {updates: updates}, fields, Api.Methods.PUT)
     }
 
     /**
@@ -209,15 +209,12 @@ export class Api {
      */
     execute(objCode: string, objID: string | null, action: string, actionArgs?: object) {
         let endPoint = objCode
-        let params = {}
+        let params: any  = { method: Api.Methods.PUT }
         if (objID) {
             endPoint += '/' + objID + '/' + action
         }
         else {
-            params = {
-                method: Api.Methods.PUT,
-                action: action
-            }
+            params.action = action
         }
         if (actionArgs) {
             params = objectAssign(params, actionArgs)
@@ -351,17 +348,16 @@ export class Api {
      * @param {Object} params   An object with params
      * @param {Object} [fields] Fields to query for the request
      * @param {String} [method=GET] The method which the request will do (GET|POST|PUT|DELETE)
-     * @param {String} [sendJSONBody=false] Whether the params payload is sent as JSON.stringify in the request body
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET, sendJSONBody = false): Promise<any> {
-        params = objectAssign(params || {}, this._httpParams)
+    request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
+        const clonedParams = objectAssign({}, params || {}, this._httpParams)
 
         const alwaysUseGet = this._httpOptions.alwaysUseGet
 
         const options = objectAssign({}, this._httpOptions)
-        if (alwaysUseGet) {
-            params.method = method
+        if (alwaysUseGet && path !== 'login') {
+            clonedParams.method = method
             options.method = Api.Methods.GET
         } else {
             options.method = method
@@ -379,7 +375,7 @@ export class Api {
             fields = [fields]
         }
         if (fields.length !== 0) {
-            params.fields = fields.join()
+            clonedParams.fields = fields.join()
         }
 
         const headers = new Headers()
@@ -392,23 +388,33 @@ export class Api {
         }
 
         let bodyParams = null, queryString = ''
-        if (NodeFormData && params instanceof NodeFormData) {
-            bodyParams = params
+        if (NodeFormData && clonedParams instanceof NodeFormData) {
+            bodyParams = clonedParams
         }
-        else if (GlobalScope.FormData && params instanceof GlobalScope.FormData) {
-            bodyParams = params
+        else if (GlobalScope.FormData && clonedParams instanceof GlobalScope.FormData) {
+            bodyParams = clonedParams
         }
         else {
-            if (sendJSONBody && (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)) {
+            if (clonedParams.hasOwnProperty('updates') && (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)) {
                 headers.append('Content-Type', 'application/json')
-                bodyParams = JSON.stringify(params)
+                if (typeof clonedParams.updates === 'string') {
+                    bodyParams = clonedParams.updates
+                } else {
+                    bodyParams = JSON.stringify(clonedParams.updates)
+                }
+
+                delete clonedParams.updates
+                const qs = queryStringify(clonedParams)
+                if (qs) {
+                    queryString = '?' + qs
+                }
             } else {
                 headers.append('Content-Type', 'application/x-www-form-urlencoded')
-                bodyParams = Object.keys(params).reduce(function(a, k) {
-                    a.push(k + '=' + encodeURIComponent(params[k]))
-                    return a
-                }, []).join('&')
-                if (options.method === Api.Methods.GET) {
+                if (clonedParams.hasOwnProperty('updates') && typeof clonedParams.updates !== 'string') {
+                    clonedParams.updates = JSON.stringify(clonedParams.updates)
+                }
+                bodyParams = queryStringify(clonedParams)
+                if (options.method === Api.Methods.GET || options.method === Api.Methods.DELETE) {
                     if (bodyParams) {
                         queryString = '?' + bodyParams
                     }
@@ -485,6 +491,13 @@ export class Api {
         data.append('uploadedFile', fileContent, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
+}
+
+const queryStringify = function(params) {
+    return Object.keys(params).reduce(function(a, k) {
+        a.push(k + '=' + encodeURIComponent(params[k]))
+        return a
+    }, []).join('&')
 }
 
 const ResponseHandler = {

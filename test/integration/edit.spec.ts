@@ -65,4 +65,23 @@ describe('Edit', function() {
             should(data.name).equal(params.name)
         })
     })
+    it('should edit an object using the old api (passing updates property)', function() {
+        const params = {
+            updates: JSON.stringify({name: 'api test 2'})
+        }
+        const objCode = 'PROJ',
+            objID = 'foobar'
+
+        return this.api.edit(objCode, objID, params).then(function(data) {
+            const [url, opts] = fetchMock.lastCall('edit')
+            should(opts.method).equal('PUT')
+            should(url).endWith(objCode + '/' + objID)
+            should(opts.headers.get('apiKey')).equal('testapikey')
+            should(opts.body).containEql(params.updates)
+
+            should(data.name).equal('api test 2')
+            should(data).have.properties(['ID', 'name', 'objCode'])
+            should(data.objCode).equal(objCode)
+        })
+    })
 })
