@@ -51,10 +51,12 @@
     "tslint-loader": "3.5.3",
     "typedoc": "0.8.0",
     "typescript": "2.4.2",
+    "uuid": "3.1.0",
     "webpack": "3.4.1"
   },
   "scripts": {
     "test": "karma start karma.conf.js",
+    "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
     "debug": "npm run test -- --auto-watch --browsers Chrome --no-single-run",
     "build": "webpack -p --bail && tsc -p ./tsconfig.json -d --declarationDir ./typings",
     "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\"",
