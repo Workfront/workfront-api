@@ -22,7 +22,7 @@
     "workfront-api-constants": "2.0.0"
   },
   "devDependencies": {
-    "@types/form-data": "0.0.33",
+    "@types/form-data": "2.2.0",
     "@types/mocha": "2.2.41",
     "@types/should": "8.3.0",
     "codecov": "2.2.0",
