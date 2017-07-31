@@ -39,7 +39,7 @@ describe('Edit', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/edit.json'),
             {
                 name: 'edit'

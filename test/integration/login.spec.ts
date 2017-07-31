@@ -38,7 +38,7 @@ describe('Login', function() {
     describe('success', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/login.json'),
                 {
                     name: 'login',
@@ -73,7 +73,7 @@ describe('Login', function() {
     describe('authentication exception', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/exception.json'),
                 {
                     name: 'login',

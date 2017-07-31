@@ -38,7 +38,7 @@ describe('Copy', function() {
     describe('success', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/copy.json'),
                 {
                     name: 'copy'
