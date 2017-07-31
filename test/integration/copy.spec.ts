@@ -38,7 +38,7 @@ describe('Copy', function() {
     describe('success', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/copy.json'),
                 {
                     name: 'copy'
@@ -50,7 +50,15 @@ describe('Copy', function() {
                 const [url, opts] = fetchMock.lastCall('copy')
                 should(url).endWith('foo')
                 should(opts.method).equal('POST')
-                should(opts.body).containEql('{"copySourceID":"bar"}')
+                should(opts.body).equal('copySourceID=bar')
+            })
+        })
+        it('makes request to objCode with copySourceID in the params with some edits to the object', function() {
+            return this.api.copy('foo', 'bar', {name: 'Copy of bar'}).then(function() {
+                const [url, opts] = fetchMock.lastCall('copy')
+                should(url).endWith('foo?copySourceID=bar')
+                should(opts.method).equal('POST')
+                should(opts.body).equal('{"name":"Copy of bar"}')
             })
         })
         it('returns data with a new ID', function() {

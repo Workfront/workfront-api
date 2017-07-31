@@ -37,7 +37,7 @@ describe('Remove', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/create.json'),
             {
                 method: 'POST',
@@ -49,7 +49,7 @@ describe('Remove', function() {
     describe('successfully removes task', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/remove.json'),
                 {
                     method: 'DELETE',
@@ -78,7 +78,7 @@ describe('Remove', function() {
     describe('unsuccessfully removes task', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/removeFailure.json'),
                 {
                     method: 'DELETE',
