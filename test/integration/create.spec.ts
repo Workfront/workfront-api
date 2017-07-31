@@ -37,7 +37,7 @@ describe('Create', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/create.json'),
             {
                 name: 'create'
@@ -73,16 +73,20 @@ describe('Create', function() {
         })
     })
     it('should create an object using the old api (passing updates property)', function() {
+        const api = new Workfront.Api({
+            url: API_URL,
+            version: '4.0'
+        })
         const params = {
             updates: JSON.stringify({name: 'test'})
         }
         const objCode = 'TASK'
 
-        return this.api.create(objCode, params).then(function(data) {
+        return api.create(objCode, params).then(function(data) {
             const [url, opts] = fetchMock.lastCall('create')
             should(url).endWith(objCode)
             should(opts.method).equal('POST')
-            should(opts.body).equal(params.updates)
+            should(opts.body).equal('updates=' + encodeURIComponent(params.updates))
 
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)

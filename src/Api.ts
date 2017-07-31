@@ -56,8 +56,10 @@ export class Api {
         POST: 'POST'
     }
     _httpOptions: IHttpOptions
+    serverAcceptsJSON: boolean
 
     constructor(config) {
+        this.serverAcceptsJSON = true
         this._httpOptions = {
             url: config.url,
             alwaysUseGet: config.alwaysUseGet,
@@ -68,13 +70,16 @@ export class Api {
         }
         // Append version to path if provided
         let path
-        if (['internal', 'unsupported', 'asp'].indexOf(config.version) >= 0) {
-            path = '/attask/api-' + config.version
+        const {version = 'internal'}: {
+            version: string
+        } = config
+        if (['internal', 'unsupported', 'asp'].indexOf(version) >= 0) {
+            path = '/attask/api-' + version
         }
         else {
-            path = '/attask/api'
-            if (config.version) {
-                path = path + '/v' + config.version
+            path = '/attask/api/v' + version
+            if (version === '2.0' || version === '3.0' || version === '4.0') {
+                this.serverAcceptsJSON = false
             }
         }
         this._httpOptions.path = path
@@ -173,7 +178,7 @@ export class Api {
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
     create(objCode: string, params: any, fields?: TFields) {
-        if (params.hasOwnProperty('updates') && !(params.updates instanceof Array)) {
+        if (params.hasOwnProperty('updates')) {
             return this.request(objCode, params, fields, Api.Methods.POST)
         }
         return this.request(objCode, {updates: params}, fields, Api.Methods.POST)
@@ -189,7 +194,7 @@ export class Api {
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     edit(objCode: string, objID: string, updates: any, fields?: TFields) {
-        if (updates.hasOwnProperty('updates') && !(updates.updates instanceof Array)) {
+        if (updates.hasOwnProperty('updates')) {
             return this.request(objCode + '/' + objID, updates, fields, Api.Methods.PUT)
         }
         return this.request(objCode + '/' + objID, {updates: updates}, fields, Api.Methods.PUT)
@@ -392,13 +397,9 @@ export class Api {
             bodyParams = clonedParams
         }
         else {
-            if (clonedParams.hasOwnProperty('updates') && (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)) {
+            if (this.serverAcceptsJSON && typeof clonedParams.updates === 'object' && (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)) {
                 headers.append('Content-Type', 'application/json')
-                if (typeof clonedParams.updates === 'string') {
-                    bodyParams = clonedParams.updates
-                } else {
-                    bodyParams = JSON.stringify(clonedParams.updates)
-                }
+                bodyParams = JSON.stringify(clonedParams.updates)
 
                 delete clonedParams.updates
                 const qs = queryStringify(clonedParams)
