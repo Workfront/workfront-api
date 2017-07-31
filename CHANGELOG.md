@@ -1,3 +1,8 @@
+4.0.0 - July 31, 2017
+
+* fix: preserving backward compatibility breaking: version is set to internal if omitted (Sassoun Derderian)
+* fix: cloning params forgets about its instance, failing upload file test (Sassoun Derderian)
+
 4.0.0-0 - July 29, 2017
 
 * chore: add E2E tests `npm run e2e` connects to http://localhost:8080, creates a customer and runs multiple API scenarios (Sassoun Derderian)
