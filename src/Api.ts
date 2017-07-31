@@ -22,10 +22,9 @@
 import * as NodeFormData from 'form-data'
 import 'isomorphic-fetch'
 import * as objectAssign from 'object-assign'
-import * as stream from 'stream'
+import {Readable} from 'stream'
 import {INTERNAL_PREFIX} from 'workfront-api-constants'
 
-export type THttpParams = any
 export interface IHttpOptions {
     path?: string
     method?: string
@@ -56,9 +55,7 @@ export class Api {
         DELETE: 'DELETE',
         POST: 'POST'
     }
-
     _httpOptions: IHttpOptions
-    _httpParams: THttpParams = {}
 
     constructor(config) {
         this._httpOptions = {
@@ -350,8 +347,8 @@ export class Api {
      * @param {String} [method=GET] The method which the request will do (GET|POST|PUT|DELETE)
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
-        const clonedParams = objectAssign({}, params || {}, this._httpParams)
+    request(path: string, params, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
+        const clonedParams = objectAssign({}, params)
 
         const alwaysUseGet = this._httpOptions.alwaysUseGet
 
@@ -388,8 +385,8 @@ export class Api {
         }
 
         let bodyParams = null, queryString = ''
-        if (NodeFormData && clonedParams instanceof NodeFormData) {
-            bodyParams = clonedParams
+        if (NodeFormData && params instanceof NodeFormData) {
+            bodyParams = params
         }
         else if (GlobalScope.FormData && clonedParams instanceof GlobalScope.FormData) {
             bodyParams = clonedParams
@@ -480,7 +477,7 @@ export class Api {
      * @param {fs.ReadStream} stream    A readable stream with file contents
      * @param {String} filename Override the filename
      */
-    uploadFromStream(stream: stream.Readable, filename: string) {
+    uploadFromStream(stream: Readable, filename: string) {
         const data = new NodeFormData()
         data.append('uploadedFile', stream, filename)
         return this.request('upload', data, null, Api.Methods.POST)
