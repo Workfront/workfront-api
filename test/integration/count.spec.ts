@@ -37,7 +37,7 @@ describe('Count', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/count.json'),
             {
                 name: 'count'
