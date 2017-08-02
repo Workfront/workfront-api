@@ -43,7 +43,7 @@
     "karma-webpack": "2.0.4",
     "mocha": "3.5.0",
     "phantomjs-prebuilt": "2.1.14",
-    "semver": "5.3.0",
+    "semver": "5.4.1",
     "should": "11.2.1",
     "ts-loader": "2.3.1",
     "tslib": "1.7.1",
