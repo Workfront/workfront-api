@@ -14,7 +14,6 @@
     "workfront-api-constants": "2.0.0"
   },
   "dependencies": {
-    "@types/node": "8.0.14",
     "es6-promise": "4.1.1",
     "form-data": "2.2.0",
     "isomorphic-fetch": "2.2.1",
@@ -24,6 +23,7 @@
   "devDependencies": {
     "@types/form-data": "2.2.0",
     "@types/mocha": "2.2.41",
+    "@types/node": "8.0.14",
     "@types/should": "8.3.0",
     "codecov": "2.2.0",
     "dateformat": "2.0.0",
@@ -59,7 +59,7 @@
     "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
     "debug": "npm run test -- --auto-watch --browsers Chrome --no-single-run",
     "build": "webpack -p --bail && tsc -p ./tsconfig.json -d --declarationDir ./typings",
-    "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\"",
+    "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\" && touch ./docs/.nojekyll",
     "prepublish": "npm run build",
     "version": "npm run docs && node ./generate-changelog.js && git add docs CHANGELOG.md",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"
