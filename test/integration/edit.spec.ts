@@ -38,7 +38,7 @@ describe('Edit', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/edit.json'),
             {
                 name: 'edit'
@@ -63,6 +63,28 @@ describe('Edit', function() {
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)
             should(data.name).equal(params.name)
+        })
+    })
+    it('should edit an object using the old api (passing updates property)', function() {
+        const api = new Workfront.Api({
+            url: API_URL,
+            version: '4.0'
+        })
+        const params = {
+            updates: JSON.stringify({name: 'api test 2'})
+        }
+        const objCode = 'PROJ',
+            objID = 'foobar'
+
+        return api.edit(objCode, objID, params).then(function(data) {
+            const [url, opts] = fetchMock.lastCall('edit')
+            should(opts.method).equal('PUT')
+            should(url).endWith(objCode + '/' + objID)
+            should(opts.body).equal('updates=' + encodeURIComponent(params.updates))
+
+            should(data.name).equal('api test 2')
+            should(data).have.properties(['ID', 'name', 'objCode'])
+            should(data.objCode).equal(objCode)
         })
     })
 })

@@ -37,7 +37,7 @@ describe('Create', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/create.json'),
             {
                 name: 'create'
@@ -54,21 +54,54 @@ describe('Create', function() {
 
         return this.api.create(objCode, params, fields).then(function() {
             const [url, opts] = fetchMock.lastCall('create')
-            should(url).endWith(objCode)
+            should(url).endWith(objCode + '?fields=' + encodeURIComponent('*,zzz:*'))
             should(opts.method).equal('POST')
-            should(opts.body).containEql('{"foo":"bar","fields":"*,zzz:*"}')
+            should(opts.body).equal('{"foo":"bar"}')
         })
     })
     it('should return the new created object', function() {
         const params = {
             name: 'test'
         }
+        const fields = 'customerID'
         const objCode = 'TASK'
 
-        return this.api.create(objCode, params).then(function(data) {
+        return this.api.create(objCode, params, fields).then(function(data) {
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)
             should(data.name).equal(params.name)
         })
+    })
+    it('should create an object using the old api (passing updates property)', function() {
+        const api = new Workfront.Api({
+            url: API_URL,
+            version: '4.0'
+        })
+        const params = {
+            updates: JSON.stringify({name: 'test'})
+        }
+        const objCode = 'TASK'
+
+        return api.create(objCode, params).then(function(data) {
+            const [url, opts] = fetchMock.lastCall('create')
+            should(url).endWith(objCode)
+            should(opts.method).equal('POST')
+            should(opts.body).equal('updates=' + encodeURIComponent(params.updates))
+
+            should(data).have.properties(['ID', 'name', 'objCode'])
+            should(data.objCode).equal(objCode)
+            should(data.name).equal('test')
+        })
+    })
+    it('should not do changes on the given parameter object', function() {
+        const params = {
+            updates: JSON.stringify({name: 'test'})
+        }
+        const objCode = 'TASK'
+
+        Object.freeze(params)
+        should(() => {
+            this.api.create(objCode, params)
+        }).not.throw()
     })
 })

@@ -37,7 +37,7 @@ describe('Named Query', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/namedQuery.json'),
             {
                 name: 'namedQuery'
