@@ -38,7 +38,7 @@ describe('Get', function() {
     describe('Call with single objId (String)', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/get.json'),
                 {
                     name: 'get'
@@ -89,7 +89,7 @@ describe('Get', function() {
     describe('Call with single objId (String)', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/get_multiple.json'),
                 {
                     name: 'get'

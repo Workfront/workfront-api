@@ -28,7 +28,7 @@ var stream = fs.createReadStream(__dirname + '/image.jpg');
 
 var instance = new Workfront.Api({
     url: 'http://localhost:8080',
-    version: '4.0'
+    version: '7.0'
 });
 
 

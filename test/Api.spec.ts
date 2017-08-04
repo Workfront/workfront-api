@@ -48,11 +48,11 @@ describe('Create new instance for API', function() {
 
     it('should set correct API path based on passed configuration (version is not passed)', function() {
         const api = new Api({url: 'http://localhost'})
-        should(api._httpOptions.path).equal('/attask/api')
+        should(api._httpOptions.path).equal('/attask/api-internal')
     })
 
-    it('should set correct API path based on passed configuration (version="internal")', function() {
-        const api = new Api({url: 'http://localhost', version: 'internal'})
-        should(api._httpOptions.path).equal('/attask/api-internal')
+    it('should set correct API path based on passed configuration (version="asp")', function() {
+        const api = new Api({url: 'http://localhost', version: 'asp'})
+        should(api._httpOptions.path).equal('/attask/api-asp')
     })
 })
