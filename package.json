@@ -1,6 +1,6 @@
 {
   "name": "workfront-api",
-  "version": "3.0.3",
+  "version": "4.0.0",
   "description": "A Workfront API for the Node.js and the Web",
   "main": "dist/workfront.js",
   "module": "es/index.js",
@@ -14,7 +14,6 @@
     "workfront-api-constants": "2.0.0"
   },
   "dependencies": {
-    "@types/node": "8.0.14",
     "es6-promise": "4.1.1",
     "form-data": "2.2.0",
     "isomorphic-fetch": "2.2.1",
@@ -22,10 +21,11 @@
     "workfront-api-constants": "2.0.0"
   },
   "devDependencies": {
-    "@types/form-data": "0.0.33",
+    "@types/form-data": "2.2.0",
     "@types/mocha": "2.2.41",
+    "@types/node": "8.0.14",
     "@types/should": "8.3.0",
-    "codecov": "2.2.0",
+    "codecov": "2.3.0",
     "dateformat": "2.0.0",
     "execa": "0.7.0",
     "fetch-mock": "5.12.1",
@@ -41,23 +41,25 @@
     "karma-sauce-launcher": "1.1.0",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "2.0.4",
-    "mocha": "3.4.2",
+    "mocha": "3.5.0",
     "phantomjs-prebuilt": "2.1.14",
-    "semver": "5.3.0",
+    "semver": "5.4.1",
     "should": "11.2.1",
     "ts-loader": "2.3.2",
     "tslib": "1.7.1",
     "tslint": "5.5.0",
     "tslint-loader": "3.5.3",
-    "typedoc": "0.7.1",
+    "typedoc": "0.8.0",
     "typescript": "2.4.2",
+    "uuid": "3.1.0",
     "webpack": "3.4.1"
   },
   "scripts": {
     "test": "karma start karma.conf.js",
+    "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
     "debug": "npm run test -- --auto-watch --browsers Chrome --no-single-run",
     "build": "webpack -p --bail && tsc -p ./tsconfig.json -d --declarationDir ./typings",
-    "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\"",
+    "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\" && touch ./docs/.nojekyll",
     "prepublish": "npm run build",
     "version": "npm run docs && node ./generate-changelog.js && git add docs CHANGELOG.md",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"

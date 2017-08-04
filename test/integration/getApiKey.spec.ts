@@ -66,10 +66,37 @@ describe('getApiKey', function() {
             {name: 'generateApiKey'}
         )
 
-        this.api.getApiKey('foo', 'bar').then(function(apiKey) {
+        this.api.getApiKey('foo', 'bar').then((apiKey) => {
             should(apiKey).equal('baz')
             should(fetchMock.called('getApiKey')).be.true()
             should(fetchMock.called('generateApiKey')).be.false()
+            should(fetchMock.calls('getApiKey')).length(1)
+            this.api.getApiKey('foo', 'bar').then(function() {
+                should(fetchMock.calls('getApiKey')).length(1)
+                done()
+            })
+        })
+    })
+    it('should get and then clear the apiKey', function(done) {
+        fetchMock.mock(
+            (url, opts) => opts.body.indexOf('getApiKey') !== -1,
+            '{"data": {"result": "baz"}}',
+            {name: 'getApiKey'}
+        )
+        fetchMock.mock(
+            (url, opts) => opts.body.indexOf('clearApiKey') !== -1,
+            '{"data": {"success": true}}',
+            {name: 'clearApiKey'}
+        )
+
+        this.api.getApiKey('foo', 'bar').then((apiKey) => {
+            should(apiKey).equal('baz')
+            should(fetchMock.calls('getApiKey')).length(1)
+            should(this.api._httpOptions.headers).have.property('apiKey').eql('baz')
+            this.api.clearApiKey().then(() => {
+                should(this.api._httpOptions.headers).not.have.property('apiKey')
+                done()
+            })
             done()
         })
     })
