@@ -37,7 +37,7 @@ describe('Metadata', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/metadata.json'),
             {
                 name: 'metadata'

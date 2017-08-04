@@ -24,7 +24,7 @@ var util = require('util');
 
 var instance = new Workfront.Api({
     url: 'http://localhost:8080',
-    version: '4.0'
+    version: '7.0'
 });
 
 

@@ -22,10 +22,9 @@
 import * as NodeFormData from 'form-data'
 import 'isomorphic-fetch'
 import * as objectAssign from 'object-assign'
-import * as stream from 'stream'
+import {Readable} from 'stream'
 import {INTERNAL_PREFIX} from 'workfront-api-constants'
 
-export type THttpParams = any
 export interface IHttpOptions {
     path?: string
     method?: string
@@ -56,11 +55,11 @@ export class Api {
         DELETE: 'DELETE',
         POST: 'POST'
     }
-
     _httpOptions: IHttpOptions
-    _httpParams: THttpParams = {}
+    serverAcceptsJSON: boolean
 
     constructor(config) {
+        this.serverAcceptsJSON = true
         this._httpOptions = {
             url: config.url,
             alwaysUseGet: config.alwaysUseGet,
@@ -71,13 +70,16 @@ export class Api {
         }
         // Append version to path if provided
         let path
-        if (['internal', 'unsupported', 'asp'].indexOf(config.version) >= 0) {
-            path = '/attask/api-' + config.version
+        const {version = 'internal'}: {
+            version: string
+        } = config
+        if (['internal', 'unsupported', 'asp'].indexOf(version) >= 0) {
+            path = '/attask/api-' + version
         }
         else {
-            path = '/attask/api'
-            if (config.version) {
-                path = path + '/v' + config.version
+            path = '/attask/api/v' + version
+            if (version === '2.0' || version === '3.0' || version === '4.0') {
+                this.serverAcceptsJSON = false
             }
         }
         this._httpOptions.path = path
@@ -175,8 +177,11 @@ export class Api {
      * @param {String|String[]} [fields]    Which fields of newly created object to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
-    create(objCode: string, params: object, fields?: TFields) {
-        return this.request(objCode, params, fields, Api.Methods.POST)
+    create(objCode: string, params: any, fields?: TFields) {
+        if (params.hasOwnProperty('updates')) {
+            return this.request(objCode, params, fields, Api.Methods.POST)
+        }
+        return this.request(objCode, {updates: params}, fields, Api.Methods.POST)
     }
 
     /**
@@ -188,8 +193,11 @@ export class Api {
      * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    edit(objCode: string, objID: string, updates: object, fields?: TFields) {
-        return this.request(objCode + '/' + objID, updates, fields, Api.Methods.PUT)
+    edit(objCode: string, objID: string, updates: any, fields?: TFields) {
+        if (updates.hasOwnProperty('updates')) {
+            return this.request(objCode + '/' + objID, updates, fields, Api.Methods.PUT)
+        }
+        return this.request(objCode + '/' + objID, {updates: updates}, fields, Api.Methods.PUT)
     }
 
     /**
@@ -203,15 +211,12 @@ export class Api {
      */
     execute(objCode: string, objID: string | null, action: string, actionArgs?: object) {
         let endPoint = objCode
-        let params = {}
+        let params: any  = { method: Api.Methods.PUT }
         if (objID) {
             endPoint += '/' + objID + '/' + action
         }
         else {
-            params = {
-                method: Api.Methods.PUT,
-                action: action
-            }
+            params.action = action
         }
         if (actionArgs) {
             params = objectAssign(params, actionArgs)
@@ -338,14 +343,23 @@ export class Api {
         return this.request(objCode + '/report', query, null, Api.Methods.GET)
     }
 
-    request(path: string, params: THttpParams, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
-        params = objectAssign(params || {}, this._httpParams)
+    /**
+     * Do the request using Fetch API.
+     * @memberOf Api
+     * @param {String} path     URI path where the request calls
+     * @param {Object} params   An object with params
+     * @param {Object} [fields] Fields to query for the request
+     * @param {String} [method=GET] The method which the request will do (GET|POST|PUT|DELETE)
+     * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
+     */
+    request(path: string, params, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
+        const clonedParams = objectAssign({}, params)
 
         const alwaysUseGet = this._httpOptions.alwaysUseGet
 
         const options = objectAssign({}, this._httpOptions)
-        if (alwaysUseGet) {
-            params.method = method
+        if (alwaysUseGet && path !== 'login') {
+            clonedParams.method = method
             options.method = Api.Methods.GET
         } else {
             options.method = method
@@ -363,7 +377,7 @@ export class Api {
             fields = [fields]
         }
         if (fields.length !== 0) {
-            params.fields = fields.join()
+            clonedParams.fields = fields.join()
         }
 
         const headers = new Headers()
@@ -379,25 +393,31 @@ export class Api {
         if (NodeFormData && params instanceof NodeFormData) {
             bodyParams = params
         }
-        else if (GlobalScope.FormData && params instanceof GlobalScope.FormData) {
-            bodyParams = params
+        else if (GlobalScope.FormData && clonedParams instanceof GlobalScope.FormData) {
+            bodyParams = clonedParams
         }
         else {
-            if (options.method === Api.Methods.PUT || options.method === Api.Methods.POST) {
+            if (this.serverAcceptsJSON && typeof clonedParams.updates === 'object' && (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)) {
                 headers.append('Content-Type', 'application/json')
+                bodyParams = JSON.stringify(clonedParams.updates)
+
+                delete clonedParams.updates
+                const qs = queryStringify(clonedParams)
+                if (qs) {
+                    queryString = '?' + qs
+                }
             } else {
                 headers.append('Content-Type', 'application/x-www-form-urlencoded')
-            }
-
-            bodyParams = JSON.stringify(params)
-            if (options.method === Api.Methods.GET) {
-                if (bodyParams && Object.keys(params).length > 0) {
-                    queryString = '?' + Object.keys(params).reduce(function(a, k) {
-                            a.push(k + '=' + encodeURIComponent(params[k]))
-                            return a
-                        }, []).join('&')
+                if (clonedParams.hasOwnProperty('updates') && typeof clonedParams.updates !== 'string') {
+                    clonedParams.updates = JSON.stringify(clonedParams.updates)
                 }
-                bodyParams = null
+                bodyParams = queryStringify(clonedParams)
+                if (options.method === Api.Methods.GET || options.method === Api.Methods.DELETE) {
+                    if (bodyParams) {
+                        queryString = '?' + bodyParams
+                    }
+                    bodyParams = null
+                }
             }
         }
 
@@ -458,7 +478,7 @@ export class Api {
      * @param {fs.ReadStream} stream    A readable stream with file contents
      * @param {String} filename Override the filename
      */
-    uploadFromStream(stream: stream.Readable, filename: string) {
+    uploadFromStream(stream: Readable, filename: string) {
         const data = new NodeFormData()
         data.append('uploadedFile', stream, filename)
         return this.request('upload', data, null, Api.Methods.POST)
@@ -469,6 +489,13 @@ export class Api {
         data.append('uploadedFile', fileContent, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
+}
+
+const queryStringify = function(params) {
+    return Object.keys(params).reduce(function(a, k) {
+        a.push(k + '=' + encodeURIComponent(params[k]))
+        return a
+    }, []).join('&')
 }
 
 const ResponseHandler = {

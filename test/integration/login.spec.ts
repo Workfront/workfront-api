@@ -38,7 +38,7 @@ describe('Login', function() {
     describe('success', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/login.json'),
                 {
                     name: 'login',
@@ -66,14 +66,14 @@ describe('Login', function() {
             this.api.login('foo', 'bar')
             const [url, opts] = fetchMock.lastCall('login')
             should(url).endWith('login')
-            should(opts.body).containEql('"username":"foo"')
-            should(opts.body).containEql('"password":"bar"')
+            should(opts.body).containEql('username=foo')
+            should(opts.body).containEql('password=bar')
         })
     })
     describe('authentication exception', function() {
         beforeEach(function() {
             fetchMock.mock(
-                `begin:${API_URL}/attask/api/`,
+                `begin:${API_URL}/attask/api`,
                 require('../../fixtures/exception.json'),
                 {
                     name: 'login',

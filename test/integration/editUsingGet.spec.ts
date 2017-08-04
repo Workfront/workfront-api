@@ -39,7 +39,7 @@ describe('Edit', function() {
 
     beforeEach(function() {
         fetchMock.mock(
-            `begin:${API_URL}/attask/api/`,
+            `begin:${API_URL}/attask/api`,
             require('../../fixtures/edit.json'),
             {
                 name: 'edit'
@@ -60,7 +60,8 @@ describe('Edit', function() {
             should(url).containEql(objCode + '/' + objID)
             should(opts.headers.get('apiKey')).equal('testapikey')
             should(opts.body).equal(null)
-            should(url).containEql('name=' + encodeURIComponent('api test 2') + '&method=PUT')
+            should(url).containEql('updates=' + encodeURIComponent(JSON.stringify(params)))
+            should(url).containEql('method=PUT')
 
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)
