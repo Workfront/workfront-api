@@ -28,7 +28,7 @@
     "codecov": "2.3.0",
     "dateformat": "2.0.0",
     "execa": "0.8.0",
-    "fetch-mock": "5.12.1",
+    "fetch-mock": "5.12.2",
     "http-server": "0.10.0",
     "istanbul-instrumenter-loader": "3.0.0",
     "karma": "1.7.0",
