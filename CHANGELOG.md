@@ -1,3 +1,28 @@
+4.1.0 - August 22, 2017
+
+* feat: ability to pass options with the copy api method (Sassoun Derderian)
+* chore(package): update @types/should to version 11.2.0 (greenkeeper[bot])
+* chore(package): update @types/mocha to version 2.2.42 (greenkeeper[bot])
+* chore(package): update @types/node to version 8.0.24 (greenkeeper[bot])
+* chore(package): update ts-loader to version 2.3.3 (greenkeeper[bot])
+* chore(package): update @types/node to version 8.0.23 (greenkeeper[bot])
+* chore(package): update webpack to version 3.5.5 (greenkeeper[bot])
+* chore(package): update @types/node to version 8.0.22 (greenkeeper[bot])
+* chore(package): update phantomjs-prebuilt to version 2.1.15 (greenkeeper[bot])
+* chore(package): update webpack to version 3.5.4 (greenkeeper[bot])
+* chore(package): update fetch-mock to version 5.12.2 (greenkeeper[bot])
+* chore(package): update webpack to version 3.5.2 (greenkeeper[bot])
+* chore(package): update @types/node to version 8.0.20 (greenkeeper[bot])
+* chore(package): update webpack to version 3.5.1 (greenkeeper[bot])
+* chore(package): update tslint to version 5.6.0 (greenkeeper[bot])
+* chore(package): update execa to version 0.8.0 (greenkeeper[bot])
+* chore(package): update codecov to version 2.3.0 (greenkeeper[bot])
+* docs: add .nojekyll file to render Github pages as it is (Sassoun Derderian)
+* chore(package): update mocha to version 3.5.0 (greenkeeper[bot])
+* chore(package): update ts-loader to version 2.3.2 (greenkeeper[bot])
+* chore(package): update istanbul-instrumenter-loader to version 3.0.0 (greenkeeper[bot])
+* chore(package): update semver to version 5.4.1 (greenkeeper[bot])
+
 4.0.0 - July 31, 2017
 
 * fix: preserving backward compatibility breaking: version is set to internal if omitted (Sassoun Derderian)
