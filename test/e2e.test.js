@@ -208,7 +208,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Creates a new project with name "API Project", then copies it', function () {
+        it('Creates a new project with name "API Project", then copies it without any option', function () {
             const name = 'API Project'
             const copyName = 'API Project Copy'
             const description = 'This project has been created using API'
@@ -216,6 +216,24 @@ describe('E2E Tests', function () {
             return this.instance.create(objCode, {name, description}).then(putObjToRemoveQueue).then((data) => {
                 const originalProjectID = data.ID
                 return this.instance.copy(objCode, originalProjectID, {name: copyName})
+                    .then(putObjToRemoveQueue)
+                    .then((data) => {
+                        should(data).have.property('ID').not.eql(originalProjectID)
+                    })
+            })
+        })
+        it('Copies a project with options', function () {
+            const name = 'API Project'
+            const copyName = 'API Project Copy'
+            const description = 'This project has been created using API'
+            const objCode = 'PROJ'
+            const copyOptions = [
+                'clearApprovers',
+                'clearProgress'
+            ]
+            return this.instance.create(objCode, {name, description}).then(putObjToRemoveQueue).then((data) => {
+                const originalProjectID = data.ID
+                return this.instance.copy(objCode, originalProjectID, {name: copyName}, null, copyOptions)
                     .then(putObjToRemoveQueue)
                     .then((data) => {
                         should(data).have.property('ID').not.eql(originalProjectID)

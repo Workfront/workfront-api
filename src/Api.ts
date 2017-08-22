@@ -122,17 +122,22 @@ export class Api {
      * @param {String} objID    ID of object to copy
      * @param {Object} updates    Which fields to set on copied object. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String[]} options    A list of options that are attached to the copy request (object specific)
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    copy(objCode: string, objID: string, updates: object, fields?: TFields) {
+    copy(objCode: string, objID: string, updates: object, fields?: TFields, options?: string[]) {
         const params: {
             copySourceID: string,
-            updates?: object
+            updates?: string,
+            options?: string
         } = {
             copySourceID: objID
         }
         if (updates) {
-            params.updates = updates
+            params.updates = JSON.stringify(updates)
+        }
+        if (options) {
+            params.options = JSON.stringify(options)
         }
         return this.request(objCode, params, fields, Api.Methods.POST)
     }
