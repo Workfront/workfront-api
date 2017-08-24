@@ -1,3 +1,7 @@
+4.1.1 - August 24, 2017
+
+* fix: typings dependency for Node (Sassoun Derderian)
+
 4.1.0 - August 22, 2017
 
 * feat: ability to pass options with the copy api method (Sassoun Derderian)
