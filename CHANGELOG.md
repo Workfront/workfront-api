@@ -1,3 +1,9 @@
+4.2.0 - August 25, 2017
+
+* feat: export ResponseHandler helper to use from outside of workfront-api (Sassoun Derderian)
+* fix(package): update form-data to version 2.3.1 (greenkeeper[bot])
+* fix(package): update @types/node to version 8.0.25 (greenkeeper[bot])
+
 4.1.1 - August 24, 2017
 
 * fix: typings dependency for Node (Sassoun Derderian)
