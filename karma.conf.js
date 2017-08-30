@@ -109,8 +109,13 @@ module.exports = function (config) {
             sauceLabs: {
                 build: 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')',
                 connectOptions: {
-                    port: 5757
+                    connectRetries: 1,
+                    doctor: true,
+                    verbose: true
                 },
+                commandTimeout: 300,
+                idleTimeout: 600,
+                maxDuration: 1800,
                 public: 'public',
                 recordScreenshots: false,
                 recordVideo: false,
