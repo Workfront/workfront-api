@@ -108,9 +108,6 @@ module.exports = function (config) {
             reporters: ['progress', 'saucelabs'],
             sauceLabs: {
                 build: 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')',
-                connectOptions: {
-                    port: 5757
-                },
                 public: 'public',
                 recordScreenshots: false,
                 recordVideo: false,
