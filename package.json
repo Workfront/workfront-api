@@ -31,7 +31,7 @@
     "fetch-mock": "5.12.2",
     "http-server": "0.10.0",
     "istanbul-instrumenter-loader": "3.0.0",
-    "karma": "1.7.0",
+    "karma": "1.7.1",
     "karma-chrome-launcher": "2.2.0",
     "karma-cli": "1.0.1",
     "karma-coverage": "1.1.1",
