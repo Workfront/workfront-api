@@ -113,9 +113,9 @@ module.exports = function (config) {
                     doctor: true,
                     verbose: true
                 },
-                commandTimeout: 600,
-                idleTimeout: 180,
-                maxDuration: 3600,
+                commandTimeout: 300,
+                idleTimeout: 600,
+                maxDuration: 1800,
                 public: 'public',
                 recordScreenshots: false,
                 recordVideo: false,
