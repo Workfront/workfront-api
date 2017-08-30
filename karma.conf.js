@@ -108,6 +108,10 @@ module.exports = function (config) {
             reporters: ['progress', 'saucelabs'],
             sauceLabs: {
                 build: 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')',
+                connectOptions: {
+                    connectRetries: 1,
+                    doctor: true
+                },
                 public: 'public',
                 recordScreenshots: false,
                 recordVideo: false,
