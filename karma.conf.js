@@ -110,8 +110,12 @@ module.exports = function (config) {
                 build: 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')',
                 connectOptions: {
                     connectRetries: 1,
-                    doctor: true
+                    doctor: true,
+                    verbose: true
                 },
+                commandTimeout: 600,
+                idleTimeout: 180,
+                maxDuration: 3600,
                 public: 'public',
                 recordScreenshots: false,
                 recordVideo: false,
