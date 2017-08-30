@@ -503,7 +503,13 @@ const queryStringify = function(params) {
     }, []).join('&')
 }
 
-const ResponseHandler = {
+export type TSuccessHandler<T = any> = (response: any) => Promise<T>
+export type TFailureHandler = (err: any) => never
+
+export const ResponseHandler: {
+    success: TSuccessHandler<any>,
+    failure: TFailureHandler
+} = {
     success: (response) => {
         if (response.ok) {
             return response.json().then(
