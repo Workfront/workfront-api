@@ -40,7 +40,7 @@ export interface IApiConfig {
     version?: string
     alwaysUseGet?: boolean
     apiKey?: string
-    headers?: Record<string, string>
+    headers?: {[key: string]: string}
 }
 export type TFields = string | string[]
 
