@@ -31,21 +31,34 @@ export interface IHttpOptions {
     url: string
     alwaysUseGet?: boolean
     headers: {
-        sessionID?: string,
+        sessionID?: string
         apiKey?: string
     }
+}
+export interface IApiConfig {
+    url: string
+    version?: string
+    alwaysUseGet?: boolean
+    apiKey?: string
+    headers?: Record<string, string>
 }
 export type TFields = string | string[]
 
 const GlobalScope = Function('return this')()
 
 /**
+ * Configuration for the Api constructor
+ * @typedef {Object} config
+ * @property {String} url - Required. A url to Workfront server (for example: http://localhost:8080)
+ * @property {String} [version=internal] - Which version of api to use. At the moment of writing can be 2.0, 3.0, ..., 8.0. Pass 'unsupported' to use Workfront latest API (maybe unstable)
+ * @property {Boolean} [alwaysUseGet=false] - Will cause the api to make every request as a GET with params in the query string and add method=DESIRED_METHOD_TYPE in the query string. Some Workfront urls will have issues with PUT and DELETE calls if this value is false
+ * @property {String} [apiKey] - It is used to pass apiKey with every api request headers
+ * @property {Object} [headers] - An key-value object that sets custom headers (for example: {'user-agent': DESIRED_USER_AGENT_NAME})
+ */
+
+/**
  * Creates new Api instance.
  * @param {Object} config   An object with the following keys:<br/>
- *     <code>url</code> {String} - Required. A url to Workfront server (for example: http://localhost:8080)<br/>
- *     <code>version</code> {String} - Optional. Which version of api to use. At the moment of writing can be 1.0, 2.0, 3.0, 4.0. Pass 'unsupported' to use Workfront latest API (maybe unstable).<br/>
- *     <code>alwaysUseGet</code> {Boolean} - Optional. Defaults to false. Will cause the api to make every request as a GET with params in the query string and add method=DESIRED_METHOD_TYPE in the query string. Some Workfront urls will have issues with PUT and DELETE calls if this value is false.<br/>
- *     <code>secureProtocol</code> {String} - Optional. Used only in https. The SSL method to use, e.g. TLSv1_method to force TLS version 1. The possible values depend on your installation of OpenSSL and are defined in the constant {@link http://www.openssl.org/docs/ssl/ssl.html#DEALING_WITH_PROTOCOL_METHODS|SSL_METHODS}.
  * @constructor
  */
 export class Api {
@@ -58,12 +71,12 @@ export class Api {
     _httpOptions: IHttpOptions
     serverAcceptsJSON: boolean
 
-    constructor(config) {
+    constructor(config: IApiConfig) {
         this.serverAcceptsJSON = true
         this._httpOptions = {
             url: config.url,
             alwaysUseGet: config.alwaysUseGet,
-            headers: {}
+            headers: config.headers || {}
         }
         if (config.apiKey) {
             this._httpOptions.headers.apiKey = config.apiKey
@@ -71,7 +84,7 @@ export class Api {
         // Append version to path if provided
         let path
         const {version = 'internal'}: {
-            version: string
+            version?: string
         } = config
         if (['internal', 'unsupported', 'asp'].indexOf(version) >= 0) {
             path = '/attask/api-' + version
