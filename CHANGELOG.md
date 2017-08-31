@@ -1,3 +1,18 @@
+4.3.0 - August 31, 2017
+
+* typings: fix headers key-value type (Sassoun Derderian)
+* feat: add support of passing custom headers (Sassoun Derderian)
+* augment saucelabs idle timeout (Sassoun Derderian)
+* chore(package): update karma to version 1.7.1 (greenkeeper[bot])
+* augment timeout durations (Sassoun Derderian)
+* if connect fails retry one more time (Sassoun Derderian)
+* remove connectOptions (Sassoun Derderian)
+* fix(package): update @types/node to version 8.0.26 (greenkeeper[bot])
+* chore(package): update should to version 12.0.0 (greenkeeper[bot])
+* chore(package): update ts-loader to version 2.3.4 (greenkeeper[bot])
+* chore(package): update tslint to version 5.7.0 (greenkeeper[bot])
+* chore(package): update karma-sauce-launcher to version 1.2.0 (greenkeeper[bot])
+
 4.2.0 - August 25, 2017
 
 * feat: export ResponseHandler helper to use from outside of workfront-api (Sassoun Derderian)

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IHttpOptions | workfront-api</title>
+	<title>IApiConfig | workfront-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/_api_.html">&quot;Api&quot;</a>
 				</li>
 				<li>
-					<a href="_api_.ihttpoptions.html">IHttpOptions</a>
+					<a href="_api_.iapiconfig.html">IApiConfig</a>
 				</li>
 			</ul>
-			<h1>Interface IHttpOptions</h1>
+			<h1>Interface IApiConfig</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IHttpOptions</span>
+						<span class="target">IApiConfig</span>
 					</li>
 				</ul>
 			</section>
@@ -82,11 +82,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.ihttpoptions.html#alwaysuseget" class="tsd-kind-icon">always<wbr>Use<wbr>Get</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.ihttpoptions.html#headers" class="tsd-kind-icon">headers</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.ihttpoptions.html#method" class="tsd-kind-icon">method</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.ihttpoptions.html#path" class="tsd-kind-icon">path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.ihttpoptions.html#url" class="tsd-kind-icon">url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.iapiconfig.html#alwaysuseget" class="tsd-kind-icon">always<wbr>Use<wbr>Get</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.iapiconfig.html#apikey" class="tsd-kind-icon">api<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.iapiconfig.html#headers" class="tsd-kind-icon">headers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.iapiconfig.html#url" class="tsd-kind-icon">url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.iapiconfig.html#version" class="tsd-kind-icon">version</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,50 +100,37 @@
 					<div class="tsd-signature tsd-kind-icon">always<wbr>Use<wbr>Get<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L32">Api.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L41">Api.ts:41</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="apikey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> api<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">api<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L42">Api.ts:42</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="headers" class="tsd-anchor"></a>
-					<h3>headers</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> headers</h3>
 					<div class="tsd-signature tsd-kind-icon">headers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L33">Api.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L43">Api.ts:43</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> api<wbr>Key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> sessionID<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
 					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="method" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> method</h3>
-					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L30">Api.ts:30</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="path" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> path</h3>
-					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L29">Api.ts:29</a></li>
-						</ul>
-					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="url" class="tsd-anchor"></a>
@@ -151,7 +138,17 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L31">Api.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L39">Api.ts:39</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="version" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> version</h3>
+					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/ede38ea/src/Api.ts#L40">Api.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,33 +173,33 @@
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="../classes/_api_.api.html" class="tsd-kind-icon">Api</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.iapiconfig.html" class="tsd-kind-icon">IApi<wbr>Config</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.ihttpoptions.html" class="tsd-kind-icon">IHttp<wbr>Options</a>
+						<a href="_api_.iapiconfig.html" class="tsd-kind-icon">IApi<wbr>Config</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.ihttpoptions.html#alwaysuseget" class="tsd-kind-icon">always<wbr>Use<wbr>Get</a>
+								<a href="_api_.iapiconfig.html#alwaysuseget" class="tsd-kind-icon">always<wbr>Use<wbr>Get</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.ihttpoptions.html#headers" class="tsd-kind-icon">headers</a>
+								<a href="_api_.iapiconfig.html#apikey" class="tsd-kind-icon">api<wbr>Key</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.ihttpoptions.html#method" class="tsd-kind-icon">method</a>
+								<a href="_api_.iapiconfig.html#headers" class="tsd-kind-icon">headers</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.ihttpoptions.html#path" class="tsd-kind-icon">path</a>
+								<a href="_api_.iapiconfig.html#url" class="tsd-kind-icon">url</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.ihttpoptions.html#url" class="tsd-kind-icon">url</a>
+								<a href="_api_.iapiconfig.html#version" class="tsd-kind-icon">version</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_api_.ihttpoptions.html" class="tsd-kind-icon">IHttp<wbr>Options</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/_api_.html#tfailurehandler" class="tsd-kind-icon">TFailure<wbr>Handler</a>
 					</li>
