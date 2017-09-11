@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/form-data": "2.2.0",
-    "@types/mocha": "2.2.42",
+    "@types/mocha": "2.2.43",
     "@types/should": "11.2.0",
     "codecov": "2.3.0",
     "dateformat": "2.0.0",
