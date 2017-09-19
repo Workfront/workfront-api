@@ -26,7 +26,7 @@
     "@types/mocha": "2.2.43",
     "@types/should": "11.2.0",
     "codecov": "2.3.0",
-    "dateformat": "2.0.0",
+    "dateformat": "2.1.0",
     "execa": "0.8.0",
     "fetch-mock": "5.12.2",
     "http-server": "0.10.0",
