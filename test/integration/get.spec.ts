@@ -103,7 +103,8 @@ describe('Get', function() {
             return this.api.get(objCode, objID).then(function(data) {
                 const [url, opts] = fetchMock.lastCall('get')
                 should(opts.method).equal('GET')
-                should(url).endWith(objCode + '?id=' + encodeURIComponent(objID.join(',')))
+                should(url).endWith(`${objCode}?id=${objID[0]}&id=${objID[1]}`)
+
                 should(opts.body).be.null()
 
                 should(data).be.Array().and.have.length(2)

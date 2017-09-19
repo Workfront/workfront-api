@@ -456,10 +456,20 @@ export class Api {
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} [query]    An object with search criteria
      * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {Boolean} [useHttpPost=false] Whenever to use POST to send query params
      * @return {Promise}    A promise which will resolved with search results if everything went ok and rejected otherwise
      */
-    search(objCode: string, query?: object, fields?: TFields) {
-        return this.request(objCode + '/search', query, fields, Api.Methods.GET)
+    search(objCode: string, query?: object, fields?: TFields, useHttpPost = false) {
+        let searchQuery, method
+        if (useHttpPost) {
+            searchQuery = objectAssign({}, query, {method: Api.Methods.GET})
+            method = Api.Methods.POST
+        }
+        else {
+            searchQuery = query
+            method = Api.Methods.GET
+        }
+        return this.request(objCode + '/search', searchQuery, fields, method)
     }
 
     /**
@@ -511,7 +521,13 @@ export class Api {
 
 const queryStringify = function(params) {
     return Object.keys(params).reduce(function(a, k) {
-        a.push(k + '=' + encodeURIComponent(params[k]))
+        if (Array.isArray(params[k])) {
+            params[k].forEach(function(param) {
+                a.push(k + '=' + encodeURIComponent(param))
+            })
+        } else {
+            a.push(k + '=' + encodeURIComponent(params[k]))
+        }
         return a
     }, []).join('&')
 }
