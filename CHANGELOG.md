@@ -1,3 +1,15 @@
+4.4.0 - September 19, 2017
+
+* feat: ability to send Search query params in HTTP POST feat: encode array values in params as id=foo&id=bar instead of id=foo,bar (Sassoun Derderian)
+* chore(package): update mocha to version 3.5.3 (greenkeeper[bot])
+* chore(package): update ts-loader to version 2.3.7 (greenkeeper[bot])
+* chore(package): update mocha to version 3.5.1 (greenkeeper[bot])
+* fix(package): update @types/node to version 8.0.28 (greenkeeper[bot])
+* chore(package): update @types/mocha to version 2.2.43 (greenkeeper[bot])
+* chore(package): update ts-loader to version 2.3.5 (greenkeeper[bot])
+* chore(package): update webpack to version 3.5.6 (greenkeeper[bot])
+* chore(package): update typescript to version 2.5.2 (greenkeeper[bot])
+
 4.3.0 - August 31, 2017
 
 * typings: fix headers key-value type (Sassoun Derderian)
