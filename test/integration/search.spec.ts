@@ -15,7 +15,7 @@
  */
 
 import * as fetchMock from 'fetch-mock'
-import * as should from 'should'
+import should from 'should'
 
 import {MOD, Operators} from 'workfront-api-constants'
 import * as Workfront from '../../src/index'
