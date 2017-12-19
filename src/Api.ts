@@ -219,6 +219,18 @@ export class Api {
     }
 
     /**
+     * Edit multiple existing objects
+     * @memberOf Api
+     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {Array} updates    Array of fields for each object to be edited. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
+     */
+    editMultiple(objCode: string, updates: any[], fields?: TFields) {
+        return this.request(objCode, {updates: updates}, fields, Api.Methods.PUT)
+    }
+
+    /**
      * Executes an action for the given object
      * @memberOf Api
      * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
