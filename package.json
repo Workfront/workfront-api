@@ -22,8 +22,8 @@
     "workfront-api-constants": "2.0.0"
   },
   "devDependencies": {
-    "@types/form-data": "2.2.1",
-    "@types/mocha": "2.2.45",
+    "@types/form-data": "^2.2.1",
+    "@types/mocha": "^2.2.45",
     "codecov": "3.0.0",
     "dateformat": "3.0.1",
     "execa": "0.8.0",
@@ -48,7 +48,7 @@
     "tslib": "1.8.1",
     "tslint": "5.7.0",
     "tslint-loader": "3.5.3",
-    "typedoc": "0.9.0",
+    "typedoc": "0.8.0",
     "typescript": "2.6.2",
     "uuid": "3.1.0",
     "webpack": "3.10.0"
