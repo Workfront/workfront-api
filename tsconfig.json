@@ -5,16 +5,13 @@
     "moduleResolution": "node",
     "noEmitHelpers": true,
     "noImplicitAny": false,
-    "noLib": true,
+    "lib": ["ES6", "DOM"],
     "noUnusedLocals": true,
     "outDir": "./es",
     "target": "es5"
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "files": [
-    "node_modules/typescript/lib/lib.es6.d.ts"
-  ],
   "include": [
     "src/*.ts",
     "src/*.d.ts"
