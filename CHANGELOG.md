@@ -1,3 +1,14 @@
+4.6.0 - February 20, 2018
+
+* chore: upgrade packages typescript@2.7.2 ts-loader@3.5.0 (Sassoun Derderian)
+* feat: add ability to send 'X-XSRF-TOKEN' header in requests (Vardan Hakobyan)
+* fix(package): update form-data to version 2.3.2 (greenkeeper[bot])
+* chore(package): update webpack to version 3.11.0 (greenkeeper[bot])
+* chore(package): update dateformat to version 3.0.3 (greenkeeper[bot])
+* chore: downgrade mocha (Sassoun Derderian)
+* chore: update dependencies (Sassoun Derderian)
+* chore(package): update execa to version 0.9.0 (greenkeeper[bot])
+
 4.5.0 - December 28, 2017
 
 * chore: downgrade typedoc to generate docs without warnings (Sassoun Derderian)
