@@ -31,7 +31,8 @@ export interface IHttpOptions {
     url: string
     alwaysUseGet?: boolean
     headers: {
-        sessionID?: string
+        sessionID?: string,
+        'X-XSRF-TOKEN'?: string,
         apiKey?: string
     }
 }
@@ -305,6 +306,7 @@ export class Api {
         return new Promise((resolve, reject) => {
             this.request('logout', null, null, Api.Methods.GET).then((result) => {
                 if (result && result.success) {
+                    delete this._httpOptions.headers['X-XSRF-TOKEN']
                     delete this._httpOptions.headers.sessionID
                     resolve()
                 } else {
@@ -414,8 +416,9 @@ export class Api {
         headers.append('X-Requested-With', 'XMLHttpRequest')
         if (this._httpOptions.headers.sessionID) {
             headers.append('sessionID', this._httpOptions.headers.sessionID)
-        }
-        else if (this._httpOptions.headers.apiKey) {
+        } else if (this._httpOptions.headers['X-XSRF-TOKEN']) {
+            headers.append('X-XSRF-TOKEN', this._httpOptions.headers['X-XSRF-TOKEN'])
+        } else if (this._httpOptions.headers.apiKey) {
             headers.append('apiKey', this._httpOptions.headers.apiKey)
         }
 
@@ -504,6 +507,20 @@ export class Api {
         }
         else {
             delete this._httpOptions.headers.sessionID
+        }
+    }
+
+    /**
+     * Sets a 'X-XSRF-TOKEN' in the headers or removes 'X-XSRF-TOKEN' if passed argument is undefined
+     * @memberOf Api
+     * @param {String|undefined} X-XSRF-TOKEN   X-XSRF-TOKEN to set
+     */
+    setXSRFToken(xsrfToken) {
+        if (xsrfToken) {
+            this._httpOptions.headers['X-XSRF-TOKEN'] = xsrfToken
+        }
+        else {
+            delete this._httpOptions.headers['X-XSRF-TOKEN']
         }
     }
 
