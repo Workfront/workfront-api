@@ -26,7 +26,7 @@
     "@types/mocha": "^2.2.45",
     "codecov": "3.0.0",
     "dateformat": "3.0.3",
-    "execa": "0.9.0",
+    "execa": "0.10.0",
     "fetch-mock": "5.13.1",
     "http-server": "0.11.1",
     "istanbul-instrumenter-loader": "3.0.0",
@@ -48,7 +48,7 @@
     "tslib": "1.9.0",
     "tslint": "5.9.1",
     "tslint-loader": "3.6.0",
-    "typedoc": "0.10.0",
+    "typedoc": "0.11.0",
     "typescript": "2.7.2",
     "uuid": "3.2.1",
     "webpack": "3.11.0"
