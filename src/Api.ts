@@ -320,14 +320,15 @@ export class Api {
      * Retrieves API metadata for an object.
      * @memberOf Api
      * @param {String} [objCode]    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}. If omitted will return list of objects available in API.
+     * @param {String|String[]} fields    Which fields to return.
      * @return {Promise}    A promise which will resolved with object metadata if everything went ok and rejected otherwise
      */
-    metadata(objCode?: string) {
+    metadata(objCode?: string, fields?: TFields) {
         let path = '/metadata'
         if (objCode) {
             path = objCode + path
         }
-        return this.request(path, null, null, Api.Methods.GET)
+        return this.request(path, null, fields, Api.Methods.GET)
     }
 
     /**
