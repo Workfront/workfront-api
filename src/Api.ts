@@ -110,10 +110,7 @@ export class Api {
      * @return {Promise}    A promise which will resolved with API key if everything went ok and rejected otherwise
      */
     getApiKey(username: string, password: string): Promise<string> {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
-        return new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
             if (typeof this._httpOptions.headers.apiKey !== 'undefined') {
                 resolve(this._httpOptions.headers.apiKey)
             }
@@ -188,10 +185,7 @@ export class Api {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     clearApiKey() {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
-        return new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
             const req = this.execute('USER', null, 'clearApiKey') as Promise<any>
             req.then((result) => {
                 if (result) {
@@ -307,9 +301,6 @@ export class Api {
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */
     login(username: string, password: string) {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
 		const req = this.request('login', {username: username, password: password}, null, Api.Methods.POST)
         return (req as Promise<any>).then((data) => {
             this.setSessionID(data.sessionID)
@@ -323,10 +314,7 @@ export class Api {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     logout(): Promise<undefined> {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
-        return new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
             const req = this.request('logout', null, null, Api.Methods.GET);
             (req as Promise<any>).then((result) => {
                 if (result && result.success) {
@@ -512,9 +500,6 @@ export class Api {
     search(objCode: string, query?: object, fields?: TFields, useHttpPost = false) {
         let searchQuery, method
         if (useHttpPost) {
-			if (this._uriGenerationMode) {
-				throw new Error('Using useHttpPost=true is not supported in batch mode for this method')
-			}
             searchQuery = objectAssign({}, query, {method: Api.Methods.GET})
             method = Api.Methods.POST
         }
@@ -543,9 +528,6 @@ export class Api {
 	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: false): Promise<any[]>
 	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: true): Promise<undefined>
 	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: boolean): Promise<any[] | undefined> {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
 		const batchApi = batchApiFactory(this)
         const uris = uriCollector(batchApi)
         if (uris.length === 0) {
@@ -574,9 +556,6 @@ export class Api {
      * @return {string} returns the given api key value
      */
     setApiKey(apiKey) {
-        if (this._uriGenerationMode) {
-            throw new Error('This method is not supported in batch mode')
-        }
         return this._httpOptions.headers.apiKey = apiKey
     }
 
@@ -586,10 +565,7 @@ export class Api {
      * @param {String|undefined} sessionID   sessionID to set
      */
     setSessionID(sessionID) {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
-        if (sessionID) {
+		if (sessionID) {
             this._httpOptions.headers.sessionID = sessionID
         }
         else {
@@ -603,10 +579,7 @@ export class Api {
      * @param {String|undefined} xsrfToken   X-XSRF-TOKEN to set
      */
     setXSRFToken(xsrfToken?: string) {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
-        if (xsrfToken) {
+		if (xsrfToken) {
             this._httpOptions.headers['X-XSRF-TOKEN'] = xsrfToken
         }
         else {
@@ -626,19 +599,13 @@ export class Api {
      * @param {String} filename Override the filename
      */
     uploadFromStream(stream: Readable, filename: string) {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
-        const data = new NodeFormData()
+		const data = new NodeFormData()
         data.append('uploadedFile', stream, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
 
     uploadFileContent(fileContent, filename: string) {
-		if (this._uriGenerationMode) {
-			throw new Error('This method is not supported in batch mode')
-		}
-        const data = new GlobalScope.FormData()
+		const data = new GlobalScope.FormData()
         data.append('uploadedFile', fileContent, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
