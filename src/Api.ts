@@ -721,22 +721,6 @@ function batchApiFactory(api: Api): IBatchApi {
 	}
 }
 
-//
-// export type IBatchApi = Pick<Api, 
-// 	'copy' |
-// 	'count' | 
-// 	'create' |
-// 	'edit' | 
-// 	'editMultiple' | 
-// 	'execute' | 
-// 	'get' | 
-// 	'metadata' | 
-// 	'namedQuery' | 
-// 	'remove' | 
-// 	'report' | 
-// 	'request' | 
-// 	'search' 
-// >
 
 export type TSuccessHandler<T = any> = (response: any) => Promise<T>
 export type TFailureHandler = (err: any) => never
