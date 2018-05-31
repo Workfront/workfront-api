@@ -540,9 +540,9 @@ export class Api {
      *     
 	 * @returns {Promise<any[] | undefined>}    
 	 */
-	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic: false): Promise<any[]>
-	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic: true): Promise<undefined>
-	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic: boolean): Promise<any[] | undefined> {
+	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: false): Promise<any[]>
+	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: true): Promise<undefined>
+	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: boolean): Promise<any[] | undefined> {
 		if (this._uriGenerationMode) {
 			throw new Error('This method is not supported in batch mode')
 		}
