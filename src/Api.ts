@@ -72,8 +72,11 @@ export class Api {
     _httpOptions: IHttpOptions
     serverAcceptsJSON: boolean
 
+	_uriGenerationMode: boolean
+	
     constructor(config: IApiConfig) {
         this.serverAcceptsJSON = true
+        this._uriGenerationMode = false
         this._httpOptions = {
             url: config.url,
             alwaysUseGet: config.alwaysUseGet,
@@ -107,14 +110,19 @@ export class Api {
      * @return {Promise}    A promise which will resolved with API key if everything went ok and rejected otherwise
      */
     getApiKey(username: string, password: string): Promise<string> {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
         return new Promise((resolve, reject) => {
             if (typeof this._httpOptions.headers.apiKey !== 'undefined') {
                 resolve(this._httpOptions.headers.apiKey)
             }
             else {
-                this.execute('USER', null, 'getApiKey', {username, password}).then((getApiKeyData) => {
+                const req = this.execute('USER', null, 'getApiKey', {username, password});
+                (req as Promise<any>).then((getApiKeyData) => {
                     if (getApiKeyData.result === '') {
-                        this.execute('USER', null, 'generateApiKey', {username, password}).then((generateApiKeyData) => {
+                        const req2 = this.execute('USER', null, 'generateApiKey', {username, password});
+                        (req2 as Promise<any>).then((generateApiKeyData) => {
                             this._httpOptions.headers.apiKey = generateApiKeyData.result
                             resolve(this._httpOptions.headers.apiKey)
                         }, reject)
@@ -164,7 +172,11 @@ export class Api {
      * @return {Promise}
      */
     count(objCode: string, query?: object): Promise<number> {
-        return this.request(objCode + '/count', query, null, Api.Methods.GET).then(function(data) {
+		const req = this.request(objCode + '/count', query, null, Api.Methods.GET)
+        if (this._uriGenerationMode) {
+			return req
+		}
+        return (req as Promise<any>).then(function(data) {
             return data.count
         })
     }
@@ -176,8 +188,12 @@ export class Api {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     clearApiKey() {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
         return new Promise((resolve, reject) => {
-            this.execute('USER', null, 'clearApiKey').then((result) => {
+            const req = this.execute('USER', null, 'clearApiKey') as Promise<any>
+            req.then((result) => {
                 if (result) {
                     delete this._httpOptions.headers.apiKey
                     resolve()
@@ -291,7 +307,11 @@ export class Api {
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */
     login(username: string, password: string) {
-        return this.request('login', {username: username, password: password}, null, Api.Methods.POST).then((data) => {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
+		const req = this.request('login', {username: username, password: password}, null, Api.Methods.POST)
+        return (req as Promise<any>).then((data) => {
             this.setSessionID(data.sessionID)
             return data
         })
@@ -303,8 +323,12 @@ export class Api {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     logout(): Promise<undefined> {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
         return new Promise((resolve, reject) => {
-            this.request('logout', null, null, Api.Methods.GET).then((result) => {
+            const req = this.request('logout', null, null, Api.Methods.GET);
+            (req as Promise<any>).then((result) => {
                 if (result && result.success) {
                     delete this._httpOptions.headers['X-XSRF-TOKEN']
                     delete this._httpOptions.headers.sessionID
@@ -353,16 +377,23 @@ export class Api {
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     remove(objCode: string, objID: string, bForce?: boolean): Promise<undefined> {
-        return new Promise((resolve, reject) => {
-            const params = bForce ? {force: true} : null
-            this.request(objCode + '/' + objID, params, null, Api.Methods.DELETE).then((result) => {
-                if (result && result.success) {
-                    resolve()
-                } else {
-                    reject()
-                }
-            }, reject)
-        })
+		const params = bForce ? {force: true} : null
+		const req = this.request(objCode + '/' + objID, params, null, Api.Methods.DELETE)
+        
+		if (this._uriGenerationMode) {
+			return req
+		}
+		else {
+			return new Promise((resolve, reject) => {
+                (req as Promise<any>).then((result) => {
+					if (result && result.success) {
+						resolve()
+					} else {
+						reject()
+					}
+				}, reject)
+			})
+        }
     }
 
     /**
@@ -383,6 +414,7 @@ export class Api {
      * @param {Object} params   An object with params
      * @param {Object} [fields] Fields to query for the request
      * @param {String} [method=GET] The method which the request will do (GET|POST|PUT|DELETE)
+     * @param {Boolean} [generateUrl] Whenever to generate url without sending actual request
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     request(path: string, params, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
@@ -398,12 +430,10 @@ export class Api {
             options.method = method
         }
 
-        if (path.indexOf('/') === 0) {
-            options.path = this._httpOptions.path + path
+        if (path.indexOf('/') !== 0) {
+            path = '/' + path
         }
-        else {
-            options.path = this._httpOptions.path + '/' + path
-        }
+        options.path = this._httpOptions.path + path
 
         fields = fields || []
         if (typeof fields === 'string') {
@@ -455,6 +485,10 @@ export class Api {
             }
         }
 
+		if (this._uriGenerationMode) {
+			//@ts-ignore-line
+            return path + queryString
+        }
         return fetch(options.url + options.path + queryString, {
             method: options.method,
             headers: headers,
@@ -478,6 +512,9 @@ export class Api {
     search(objCode: string, query?: object, fields?: TFields, useHttpPost = false) {
         let searchQuery, method
         if (useHttpPost) {
+			if (this._uriGenerationMode) {
+				throw new Error('Using useHttpPost=true is not supported in batch mode for this method')
+			}
             searchQuery = objectAssign({}, query, {method: Api.Methods.GET})
             method = Api.Methods.POST
         }
@@ -488,12 +525,58 @@ export class Api {
         return this.request(objCode + '/search', searchQuery, fields, method)
     }
 
+	/**
+     * Performs batch call to the API.
+     * @memberOf Api
+     * 
+	 * @param {(batchApi: IBatchApi) => string[]} uriCollector   A function which will be invoked with api instance. 
+     *     This instance is special, as all methods there return a url string instead of making a backend call. 
+     *     `uriCollector` should return an array of uris to be executed in batch.
+     *     So, for example, one may return `[IBatchApi.metadata(), IBatchApi.count(...)]` from `uriCollector`.
+     *     That will mean `call metadata() method` and then `call count() method`. 
+     *     
+	 * @param {boolean} isAtomic    Pass true if you want all operations to happen in the same transaction.
+     *     There is a limitation, however. Atomic batch operations can only return success or error.
+     *     
+	 * @returns {Promise<any[] | undefined>}    
+	 */
+	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic: false): Promise<any[]>
+	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic: true): Promise<undefined>
+	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic: boolean): Promise<any[] | undefined> {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
+		const batchApi = batchApiFactory(this)
+        const uris = uriCollector(batchApi)
+        if (uris.length === 0) {
+		    return Promise.resolve(isAtomic ? undefined : [])
+        }
+        const req = this.request('/batch', {
+            atomic: isAtomic,
+            uri: uris
+        })
+        if (isAtomic) {
+			return req.then((result) => {
+                if (result && result.success) {
+				    return undefined
+				}
+                throw new Error()
+            })
+        }
+        return req.then((results) => {
+			return results.map(resultItem => resultItem.data)
+		})
+    }
+
     /**
      * Sets a current API key for future requests
      * @memberOf Api
      * @return {string} returns the given api key value
      */
     setApiKey(apiKey) {
+        if (this._uriGenerationMode) {
+            throw new Error('This method is not supported in batch mode')
+        }
         return this._httpOptions.headers.apiKey = apiKey
     }
 
@@ -503,6 +586,9 @@ export class Api {
      * @param {String|undefined} sessionID   sessionID to set
      */
     setSessionID(sessionID) {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
         if (sessionID) {
             this._httpOptions.headers.sessionID = sessionID
         }
@@ -514,9 +600,12 @@ export class Api {
     /**
      * Sets a 'X-XSRF-TOKEN' in the headers or removes 'X-XSRF-TOKEN' if passed argument is undefined
      * @memberOf Api
-     * @param {String|undefined} X-XSRF-TOKEN   X-XSRF-TOKEN to set
+     * @param {String|undefined} xsrfToken   X-XSRF-TOKEN to set
      */
-    setXSRFToken(xsrfToken) {
+    setXSRFToken(xsrfToken?: string) {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
         if (xsrfToken) {
             this._httpOptions.headers['X-XSRF-TOKEN'] = xsrfToken
         }
@@ -537,12 +626,18 @@ export class Api {
      * @param {String} filename Override the filename
      */
     uploadFromStream(stream: Readable, filename: string) {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
         const data = new NodeFormData()
         data.append('uploadedFile', stream, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
 
     uploadFileContent(fileContent, filename: string) {
+		if (this._uriGenerationMode) {
+			throw new Error('This method is not supported in batch mode')
+		}
         const data = new GlobalScope.FormData()
         data.append('uploadedFile', fileContent, filename)
         return this.request('upload', data, null, Api.Methods.POST)
@@ -561,6 +656,87 @@ const queryStringify = function(params) {
         return a
     }, []).join('&')
 }
+
+
+export interface IBatchApi {
+	copy: (objCode: string, objID: string, updates: object, fields?: TFields, options?: string[]) => string
+	count: (objCode: string, query?: object) => string
+	create: (objCode: string, params: any, fields?: TFields) => string
+	edit: (objCode: string, objID: string, updates: any, fields?: TFields) => string
+	editMultiple: (objCode: string, updates: any[], fields?: TFields) => string
+	execute: (objCode: string, objID: string | null, action: string, actionArgs?: object) => string
+	get: (objCode: string, objIDs: string | string[], fields?: TFields) => string
+	metadata: (objCode?: string, fields?: TFields) => string
+	namedQuery: (objCode: string, query: string, queryArgs?: object, fields?: TFields) => string
+	remove: (objCode: string, objID: string, bForce?: boolean) => string
+	report: (objCode: string, query: object) => string
+	request: (path: string, params, fields?: TFields, method?: string) => string
+	search: (objCode: string, query?: object, fields?: TFields) => string
+}
+
+
+function batchApiFactory(api: Api): IBatchApi {
+	const apiClone = Object.create(api) as Api
+	apiClone._uriGenerationMode = true
+	return {
+		copy: (objCode: string, objID: string, updates: object, fields?: TFields, options?: string[]) => {
+			return apiClone.copy(objCode, objID, updates, fields, options) as any as string
+		},
+		count: (objCode: string, query?: object) => {
+			return apiClone.count(objCode, query) as any as string
+		},
+		create: (objCode: string, params: any, fields?: TFields) => {
+			return apiClone.create(objCode, params, fields) as any as string
+		},
+		edit: (objCode: string, objID: string, updates: any, fields?: TFields) => {
+			return apiClone.edit(objCode, objID, updates, fields) as any as string
+		},
+		editMultiple: (objCode: string, updates: any[], fields?: TFields) => {
+			return apiClone.editMultiple(objCode, updates, fields) as any as string
+		},
+		execute: (objCode: string, objID: string | null, action: string, actionArgs?: object) => {
+			return apiClone.execute(objCode, objID, action, actionArgs) as any as string
+		},
+		get: (objCode: string, objIDs: string | string[], fields?: TFields) => {
+			return apiClone.get(objCode, objIDs, fields) as any as string
+		},
+		metadata: (objCode?: string, fields?: TFields) => {
+			return apiClone.metadata(objCode, fields) as any as string
+		},
+		namedQuery: (objCode: string, query: string, queryArgs?: object, fields?: TFields) => {
+			return apiClone.namedQuery(objCode, query, queryArgs, fields) as any as string
+		},
+		remove: (objCode: string, objID: string, bForce?: boolean) => {
+			return apiClone.remove(objCode, objID, bForce) as any as string
+		},
+		report: (objCode: string, query: object) => {
+			return apiClone.report(objCode, query) as any as string
+		},
+		request: (path: string, params, fields?: TFields, method: string = Api.Methods.GET) => {
+			return apiClone.request(path, params, fields, method) as any as string
+		},
+		search: (objCode: string, query?: object, fields?: TFields) => {
+			return apiClone.search(objCode, query, fields, false) as any as string
+		}
+	}
+}
+
+//
+// export type IBatchApi = Pick<Api, 
+// 	'copy' |
+// 	'count' | 
+// 	'create' |
+// 	'edit' | 
+// 	'editMultiple' | 
+// 	'execute' | 
+// 	'get' | 
+// 	'metadata' | 
+// 	'namedQuery' | 
+// 	'remove' | 
+// 	'report' | 
+// 	'request' | 
+// 	'search' 
+// >
 
 export type TSuccessHandler<T = any> = (response: any) => Promise<T>
 export type TFailureHandler = (err: any) => never
