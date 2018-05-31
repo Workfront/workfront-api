@@ -532,7 +532,7 @@ export class Api {
 	 * @param {(batchApi: IBatchApi) => string[]} uriCollector   A function which will be invoked with api instance. 
      *     This instance is special, as all methods there return a url string instead of making a backend call. 
      *     `uriCollector` should return an array of uris to be executed in batch.
-     *     So, for example, one may return `[IBatchApi.metadata(), IBatchApi.count(...)]` from `uriCollector`.
+     *     So, for example, one may return `[batchApi.metadata(), batchApi.count(...)]` from `uriCollector`.
      *     That will mean `call metadata() method` and then `call count() method`. 
      *     
 	 * @param {boolean} isAtomic    Pass true if you want all operations to happen in the same transaction.
