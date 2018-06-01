@@ -1,6 +1,6 @@
 {
   "name": "workfront-api",
-  "version": "4.7.0",
+  "version": "4.8.0",
   "description": "A Workfront API for the Node.js and the Web",
   "main": "dist/workfront.js",
   "module": "es/index.js",
