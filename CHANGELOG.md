@@ -1,3 +1,12 @@
+4.8.0 - June 1, 2018
+
+* chore: add tests (Hovhannes Babayan)
+* refactor: remove unneeded checks (Hovhannes Babayan)
+* chore: update comment (Hovhannes Babayan)
+* feat: make `isAtomic` parameter for `batch()` method optional (Hovhannes Babayan)
+* chore: remove comment (Hovhannes Babayan)
+* feat: add `batch()` method (Hovhannes Babayan)
+
 4.7.0 - May 31, 2018
 
 * chore: fix test (Hovhannes Babayan)
