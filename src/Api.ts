@@ -21,7 +21,6 @@
 
 import * as NodeFormData from 'form-data'
 import 'isomorphic-fetch'
-import * as objectAssign from 'object-assign'
 import {Readable} from 'stream'
 import {INTERNAL_PREFIX} from 'workfront-api-constants'
 
@@ -261,7 +260,7 @@ export class Api {
             params.action = action
         }
         if (actionArgs) {
-            params = objectAssign(params, actionArgs)
+            params = {...params, ...actionArgs}
         }
         return this.request(endPoint, params, null, Api.Methods.POST)
     }
@@ -415,11 +414,11 @@ export class Api {
         fields?: TFields,
         method: string = Api.Methods.GET
     ): Promise<any> {
-        const clonedParams = objectAssign({}, params)
+        const clonedParams = {...params}
 
         const alwaysUseGet = this._httpOptions.alwaysUseGet
 
-        const options = objectAssign({}, this._httpOptions)
+        const options = {...this._httpOptions}
         if (alwaysUseGet && path !== 'login') {
             clonedParams.method = method
             options.method = Api.Methods.GET
@@ -512,7 +511,7 @@ export class Api {
     search(objCode: string, query?: object, fields?: TFields, useHttpPost = false) {
         let searchQuery, method
         if (useHttpPost) {
-            searchQuery = objectAssign({}, query, {method: Api.Methods.GET})
+            searchQuery = {...query, method: Api.Methods.GET}
             method = Api.Methods.POST
         } else {
             searchQuery = query

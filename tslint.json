@@ -6,10 +6,6 @@
     "member-access": false,
     "no-string-literal": false,
     "no-var-requires": false,
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ],
     "object-literal-shorthand": false,
     "object-literal-sort-keys": false,
     "one-variable-per-declaration": false,
