@@ -38,7 +38,7 @@ describe('Batch', function() {
 	beforeEach(function() {
 		fetchMock.mock(
 			`begin:${API_URL}/attask/api`,
-			200,
+            require('../../fixtures/batch.json'),
 			{
 				name: 'any'
 			}
@@ -70,6 +70,6 @@ describe('Batch', function() {
 			],
             false
         )
-        should(fetchMock.calls().matched.length).equal(1)
+        should(fetchMock.calls().length).equal(1)
 	})
 })
