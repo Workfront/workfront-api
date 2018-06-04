@@ -18,7 +18,7 @@
     "es6-promise": "4.2.4",
     "form-data": "2.3.2",
     "isomorphic-fetch": "2.2.1",
-    "object-assign": "4.1.1",
+    "tslib": "1.9.2",
     "workfront-api-constants": "2.0.0"
   },
   "devDependencies": {
@@ -47,7 +47,6 @@
     "semver": "5.5.0",
     "should": "13.2.1",
     "ts-loader": "4.3.1",
-    "tslib": "1.9.2",
     "tslint": "5.10.0",
     "tslint-config-prettier": "1.13.0",
     "tslint-loader": "3.6.0",
