@@ -23,8 +23,8 @@
   },
   "devDependencies": {
     "@types/form-data": "^2.2.1",
-    "@types/mocha": "^5.2.1",
-    "codecov": "3.0.0",
+    "@types/mocha": "^2.2.45",
+    "codecov": "3.0.1",
     "dateformat": "3.0.3",
     "execa": "0.10.0",
     "fetch-mock": "5.13.1",
