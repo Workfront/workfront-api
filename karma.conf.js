@@ -88,7 +88,6 @@ module.exports = function (config) {
         const ie = {
             'SL_InternetExplorer_11': {version: '11.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
             'SL_InternetExplorer_10': {version: '10.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
-            'SL_InternetExplorer_9': {version: '9.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'}
         }
         const edge = {
             'SL_Edge_Latest': {version: 'latest', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'},
