@@ -47,7 +47,7 @@
     "ts-loader": "3.5.0",
     "tslib": "1.9.2",
     "tslint": "5.9.1",
-    "tslint-loader": "3.5.3",
+    "tslint-loader": "3.6.0",
     "typedoc": "0.11.0",
     "typescript": "2.7.2",
     "uuid": "3.2.1",
