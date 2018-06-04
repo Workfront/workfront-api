@@ -31,8 +31,8 @@ export interface IHttpOptions {
     url: string
     alwaysUseGet?: boolean
     headers: {
-        sessionID?: string,
-        'X-XSRF-TOKEN'?: string,
+        sessionID?: string
+        'X-XSRF-TOKEN'?: string
         apiKey?: string
     }
 }
@@ -72,8 +72,8 @@ export class Api {
     _httpOptions: IHttpOptions
     serverAcceptsJSON: boolean
 
-	_uriGenerationMode: boolean
-	
+    _uriGenerationMode: boolean
+
     constructor(config: IApiConfig) {
         this.serverAcceptsJSON = true
         this._uriGenerationMode = false
@@ -87,13 +87,14 @@ export class Api {
         }
         // Append version to path if provided
         let path
-        const {version = 'internal'}: {
+        const {
+            version = 'internal'
+        }: {
             version?: string
         } = config
         if (['internal', 'unsupported', 'asp'].indexOf(version) >= 0) {
             path = '/attask/api-' + version
-        }
-        else {
+        } else {
             path = '/attask/api/v' + version
             if (version === '2.0' || version === '3.0' || version === '4.0') {
                 this.serverAcceptsJSON = false
@@ -110,21 +111,22 @@ export class Api {
      * @return {Promise}    A promise which will resolved with API key if everything went ok and rejected otherwise
      */
     getApiKey(username: string, password: string): Promise<string> {
-		return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             if (typeof this._httpOptions.headers.apiKey !== 'undefined') {
                 resolve(this._httpOptions.headers.apiKey)
-            }
-            else {
-                const req = this.execute('USER', null, 'getApiKey', {username, password});
-                (req as Promise<any>).then((getApiKeyData) => {
+            } else {
+                const req = this.execute('USER', null, 'getApiKey', {username, password})
+                ;(req as Promise<any>).then(getApiKeyData => {
                     if (getApiKeyData.result === '') {
-                        const req2 = this.execute('USER', null, 'generateApiKey', {username, password});
-                        (req2 as Promise<any>).then((generateApiKeyData) => {
+                        const req2 = this.execute('USER', null, 'generateApiKey', {
+                            username,
+                            password
+                        })
+                        ;(req2 as Promise<any>).then(generateApiKeyData => {
                             this._httpOptions.headers.apiKey = generateApiKeyData.result
                             resolve(this._httpOptions.headers.apiKey)
                         }, reject)
-                    }
-                    else {
+                    } else {
                         this._httpOptions.headers.apiKey = getApiKeyData.result
                         resolve(this._httpOptions.headers.apiKey)
                     }
@@ -146,8 +148,8 @@ export class Api {
      */
     copy(objCode: string, objID: string, updates: object, fields?: TFields, options?: string[]) {
         const params: {
-            copySourceID: string,
-            updates?: string,
+            copySourceID: string
+            updates?: string
             options?: string
         } = {
             copySourceID: objID
@@ -169,10 +171,10 @@ export class Api {
      * @return {Promise}
      */
     count(objCode: string, query?: object): Promise<number> {
-		const req = this.request(objCode + '/count', query, null, Api.Methods.GET)
+        const req = this.request(objCode + '/count', query, null, Api.Methods.GET)
         if (this._uriGenerationMode) {
-			return req
-		}
+            return req
+        }
         return (req as Promise<any>).then(function(data) {
             return data.count
         })
@@ -185,9 +187,9 @@ export class Api {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     clearApiKey() {
-		return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             const req = this.execute('USER', null, 'clearApiKey') as Promise<any>
-            req.then((result) => {
+            req.then(result => {
                 if (result) {
                     delete this._httpOptions.headers.apiKey
                     resolve()
@@ -252,11 +254,10 @@ export class Api {
      */
     execute(objCode: string, objID: string | null, action: string, actionArgs?: object) {
         let endPoint = objCode
-        let params: any  = { method: Api.Methods.PUT }
+        let params: any = {method: Api.Methods.PUT}
         if (objID) {
             endPoint += '/' + objID + '/' + action
-        }
-        else {
+        } else {
             params.action = action
         }
         if (actionArgs) {
@@ -282,8 +283,7 @@ export class Api {
         if (objIDs.length === 1) {
             if (objIDs[0].indexOf(INTERNAL_PREFIX) === 0) {
                 params = {id: objIDs[0]}
-            }
-            else {
+            } else {
                 endPoint += '/' + objIDs[0]
             }
         } else {
@@ -301,8 +301,13 @@ export class Api {
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */
     login(username: string, password: string) {
-		const req = this.request('login', {username: username, password: password}, null, Api.Methods.POST)
-        return (req as Promise<any>).then((data) => {
+        const req = this.request(
+            'login',
+            {username: username, password: password},
+            null,
+            Api.Methods.POST
+        )
+        return (req as Promise<any>).then(data => {
             this.setSessionID(data.sessionID)
             return data
         })
@@ -314,9 +319,9 @@ export class Api {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     logout(): Promise<undefined> {
-		return new Promise((resolve, reject) => {
-            const req = this.request('logout', null, null, Api.Methods.GET);
-            (req as Promise<any>).then((result) => {
+        return new Promise((resolve, reject) => {
+            const req = this.request('logout', null, null, Api.Methods.GET)
+            ;(req as Promise<any>).then(result => {
                 if (result && result.success) {
                     delete this._httpOptions.headers['X-XSRF-TOKEN']
                     delete this._httpOptions.headers.sessionID
@@ -365,22 +370,21 @@ export class Api {
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     remove(objCode: string, objID: string, bForce?: boolean): Promise<undefined> {
-		const params = bForce ? {force: true} : null
-		const req = this.request(objCode + '/' + objID, params, null, Api.Methods.DELETE)
-        
-		if (this._uriGenerationMode) {
-			return req
-		}
-		else {
-			return new Promise((resolve, reject) => {
-                (req as Promise<any>).then((result) => {
-					if (result && result.success) {
-						resolve()
-					} else {
-						reject()
-					}
-				}, reject)
-			})
+        const params = bForce ? {force: true} : null
+        const req = this.request(objCode + '/' + objID, params, null, Api.Methods.DELETE)
+
+        if (this._uriGenerationMode) {
+            return req
+        } else {
+            return new Promise((resolve, reject) => {
+                ;(req as Promise<any>).then(result => {
+                    if (result && result.success) {
+                        resolve()
+                    } else {
+                        reject()
+                    }
+                }, reject)
+            })
         }
     }
 
@@ -405,7 +409,12 @@ export class Api {
      * @param {Boolean} [generateUrl] Whenever to generate url without sending actual request
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    request(path: string, params, fields?: TFields, method: string = Api.Methods.GET): Promise<any> {
+    request(
+        path: string,
+        params,
+        fields?: TFields,
+        method: string = Api.Methods.GET
+    ): Promise<any> {
         const clonedParams = objectAssign({}, params)
 
         const alwaysUseGet = this._httpOptions.alwaysUseGet
@@ -441,15 +450,18 @@ export class Api {
             headers.append('apiKey', this._httpOptions.headers.apiKey)
         }
 
-        let bodyParams = null, queryString = ''
+        let bodyParams = null,
+            queryString = ''
         if (NodeFormData && params instanceof NodeFormData) {
             bodyParams = params
-        }
-        else if (GlobalScope.FormData && clonedParams instanceof GlobalScope.FormData) {
+        } else if (GlobalScope.FormData && clonedParams instanceof GlobalScope.FormData) {
             bodyParams = clonedParams
-        }
-        else {
-            if (this.serverAcceptsJSON && typeof clonedParams.updates === 'object' && (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)) {
+        } else {
+            if (
+                this.serverAcceptsJSON &&
+                typeof clonedParams.updates === 'object' &&
+                (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)
+            ) {
                 headers.append('Content-Type', 'application/json')
                 bodyParams = JSON.stringify(clonedParams.updates)
 
@@ -460,7 +472,10 @@ export class Api {
                 }
             } else {
                 headers.append('Content-Type', 'application/x-www-form-urlencoded')
-                if (clonedParams.hasOwnProperty('updates') && typeof clonedParams.updates !== 'string') {
+                if (
+                    clonedParams.hasOwnProperty('updates') &&
+                    typeof clonedParams.updates !== 'string'
+                ) {
                     clonedParams.updates = JSON.stringify(clonedParams.updates)
                 }
                 bodyParams = queryStringify(clonedParams)
@@ -473,8 +488,8 @@ export class Api {
             }
         }
 
-		if (this._uriGenerationMode) {
-			//@ts-ignore-line
+        if (this._uriGenerationMode) {
+            // @ts-ignore-line
             return path + queryString
         }
         return fetch(options.url + options.path + queryString, {
@@ -482,10 +497,7 @@ export class Api {
             headers: headers,
             body: bodyParams,
             credentials: 'same-origin'
-        }).then(
-            ResponseHandler.success,
-            ResponseHandler.failure
-        )
+        }).then(ResponseHandler.success, ResponseHandler.failure)
     }
 
     /**
@@ -502,52 +514,54 @@ export class Api {
         if (useHttpPost) {
             searchQuery = objectAssign({}, query, {method: Api.Methods.GET})
             method = Api.Methods.POST
-        }
-        else {
+        } else {
             searchQuery = query
             method = Api.Methods.GET
         }
         return this.request(objCode + '/search', searchQuery, fields, method)
     }
 
-	/**
+    /**
      * Performs batch call to the API.
      * @memberOf Api
-     * 
-	 * @param {(batchApi: IBatchApi) => string[]} uriCollector   A function which will be invoked with api instance. 
-     *     This instance is special, as all methods there return a url string instead of making a backend call. 
+     *
+     * @param {(batchApi: IBatchApi) => string[]} uriCollector   A function which will be invoked with api instance.
+     *     This instance is special, as all methods there return a url string instead of making a backend call.
      *     `uriCollector` should return an array of uris to be executed in batch.
      *     So, for example, one may return `[batchApi.metadata(), batchApi.count(...)]` from `uriCollector`.
-     *     That will mean `call metadata() method` and then `call count() method`. 
-     *     
-	 * @param {boolean} isAtomic    Pass true if you want all operations to happen in the same transaction.
+     *     That will mean `call metadata() method` and then `call count() method`.
+     *
+     * @param {boolean} isAtomic    Pass true if you want all operations to happen in the same transaction.
      *     There is a limitation, however. Atomic batch operations can only return success or error.
-     *     
-	 * @returns {Promise<any[] | undefined>}    
-	 */
-	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: false): Promise<any[]>
-	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: true): Promise<undefined>
-	batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: boolean): Promise<any[] | undefined> {
-		const batchApi = batchApiFactory(this)
+     *
+     * @returns {Promise<any[] | undefined>}
+     */
+    batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: false): Promise<any[]>
+    batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: true): Promise<undefined>
+    batch(
+        uriCollector: (batchApi: IBatchApi) => string[],
+        isAtomic?: boolean
+    ): Promise<any[] | undefined> {
+        const batchApi = batchApiFactory(this)
         const uris = uriCollector(batchApi)
         if (uris.length === 0) {
-		    return Promise.resolve(isAtomic ? undefined : [])
+            return Promise.resolve(isAtomic ? undefined : [])
         }
         const req = this.request('/batch', {
             atomic: isAtomic,
             uri: uris
         })
         if (isAtomic) {
-			return req.then((result) => {
+            return req.then(result => {
                 if (result && result.success) {
-				    return undefined
-				}
+                    return undefined
+                }
                 throw new Error()
             })
         }
-        return req.then((results) => {
-			return results.map(resultItem => resultItem.data)
-		})
+        return req.then(results => {
+            return results.map(resultItem => resultItem.data)
+        })
     }
 
     /**
@@ -556,7 +570,7 @@ export class Api {
      * @return {string} returns the given api key value
      */
     setApiKey(apiKey) {
-        return this._httpOptions.headers.apiKey = apiKey
+        return (this._httpOptions.headers.apiKey = apiKey)
     }
 
     /**
@@ -565,10 +579,9 @@ export class Api {
      * @param {String|undefined} sessionID   sessionID to set
      */
     setSessionID(sessionID) {
-		if (sessionID) {
+        if (sessionID) {
             this._httpOptions.headers.sessionID = sessionID
-        }
-        else {
+        } else {
             delete this._httpOptions.headers.sessionID
         }
     }
@@ -579,10 +592,9 @@ export class Api {
      * @param {String|undefined} xsrfToken   X-XSRF-TOKEN to set
      */
     setXSRFToken(xsrfToken?: string) {
-		if (xsrfToken) {
+        if (xsrfToken) {
             this._httpOptions.headers['X-XSRF-TOKEN'] = xsrfToken
-        }
-        else {
+        } else {
             delete this._httpOptions.headers['X-XSRF-TOKEN']
         }
     }
@@ -599,120 +611,128 @@ export class Api {
      * @param {String} filename Override the filename
      */
     uploadFromStream(stream: Readable, filename: string) {
-		const data = new NodeFormData()
+        const data = new NodeFormData()
         data.append('uploadedFile', stream, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
 
     uploadFileContent(fileContent, filename: string) {
-		const data = new GlobalScope.FormData()
+        const data = new GlobalScope.FormData()
         data.append('uploadedFile', fileContent, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
 }
 
 const queryStringify = function(params) {
-    return Object.keys(params).reduce(function(a, k) {
-        if (Array.isArray(params[k])) {
-            params[k].forEach(function(param) {
-                a.push(k + '=' + encodeURIComponent(param))
-            })
-        } else {
-            a.push(k + '=' + encodeURIComponent(params[k]))
-        }
-        return a
-    }, []).join('&')
+    return Object.keys(params)
+        .reduce(function(a, k) {
+            if (Array.isArray(params[k])) {
+                params[k].forEach(function(param) {
+                    a.push(k + '=' + encodeURIComponent(param))
+                })
+            } else {
+                a.push(k + '=' + encodeURIComponent(params[k]))
+            }
+            return a
+        }, [])
+        .join('&')
 }
-
 
 export interface IBatchApi {
-	copy: (objCode: string, objID: string, updates: object, fields?: TFields, options?: string[]) => string
-	count: (objCode: string, query?: object) => string
-	create: (objCode: string, params: any, fields?: TFields) => string
-	edit: (objCode: string, objID: string, updates: any, fields?: TFields) => string
-	editMultiple: (objCode: string, updates: any[], fields?: TFields) => string
-	execute: (objCode: string, objID: string | null, action: string, actionArgs?: object) => string
-	get: (objCode: string, objIDs: string | string[], fields?: TFields) => string
-	metadata: (objCode?: string, fields?: TFields) => string
-	namedQuery: (objCode: string, query: string, queryArgs?: object, fields?: TFields) => string
-	remove: (objCode: string, objID: string, bForce?: boolean) => string
-	report: (objCode: string, query: object) => string
-	request: (path: string, params, fields?: TFields, method?: string) => string
-	search: (objCode: string, query?: object, fields?: TFields) => string
+    copy: (
+        objCode: string,
+        objID: string,
+        updates: object,
+        fields?: TFields,
+        options?: string[]
+    ) => string
+    count: (objCode: string, query?: object) => string
+    create: (objCode: string, params: any, fields?: TFields) => string
+    edit: (objCode: string, objID: string, updates: any, fields?: TFields) => string
+    editMultiple: (objCode: string, updates: any[], fields?: TFields) => string
+    execute: (objCode: string, objID: string | null, action: string, actionArgs?: object) => string
+    get: (objCode: string, objIDs: string | string[], fields?: TFields) => string
+    metadata: (objCode?: string, fields?: TFields) => string
+    namedQuery: (objCode: string, query: string, queryArgs?: object, fields?: TFields) => string
+    remove: (objCode: string, objID: string, bForce?: boolean) => string
+    report: (objCode: string, query: object) => string
+    request: (path: string, params, fields?: TFields, method?: string) => string
+    search: (objCode: string, query?: object, fields?: TFields) => string
 }
-
 
 function batchApiFactory(api: Api): IBatchApi {
-	const apiClone = Object.create(api) as Api
-	apiClone._uriGenerationMode = true
-	return {
-		copy: (objCode: string, objID: string, updates: object, fields?: TFields, options?: string[]) => {
-			return apiClone.copy(objCode, objID, updates, fields, options) as any as string
-		},
-		count: (objCode: string, query?: object) => {
-			return apiClone.count(objCode, query) as any as string
-		},
-		create: (objCode: string, params: any, fields?: TFields) => {
-			return apiClone.create(objCode, params, fields) as any as string
-		},
-		edit: (objCode: string, objID: string, updates: any, fields?: TFields) => {
-			return apiClone.edit(objCode, objID, updates, fields) as any as string
-		},
-		editMultiple: (objCode: string, updates: any[], fields?: TFields) => {
-			return apiClone.editMultiple(objCode, updates, fields) as any as string
-		},
-		execute: (objCode: string, objID: string | null, action: string, actionArgs?: object) => {
-			return apiClone.execute(objCode, objID, action, actionArgs) as any as string
-		},
-		get: (objCode: string, objIDs: string | string[], fields?: TFields) => {
-			return apiClone.get(objCode, objIDs, fields) as any as string
-		},
-		metadata: (objCode?: string, fields?: TFields) => {
-			return apiClone.metadata(objCode, fields) as any as string
-		},
-		namedQuery: (objCode: string, query: string, queryArgs?: object, fields?: TFields) => {
-			return apiClone.namedQuery(objCode, query, queryArgs, fields) as any as string
-		},
-		remove: (objCode: string, objID: string, bForce?: boolean) => {
-			return apiClone.remove(objCode, objID, bForce) as any as string
-		},
-		report: (objCode: string, query: object) => {
-			return apiClone.report(objCode, query) as any as string
-		},
-		request: (path: string, params, fields?: TFields, method: string = Api.Methods.GET) => {
-			return apiClone.request(path, params, fields, method) as any as string
-		},
-		search: (objCode: string, query?: object, fields?: TFields) => {
-			return apiClone.search(objCode, query, fields, false) as any as string
-		}
-	}
+    const apiClone = Object.create(api) as Api
+    apiClone._uriGenerationMode = true
+    return {
+        copy: (
+            objCode: string,
+            objID: string,
+            updates: object,
+            fields?: TFields,
+            options?: string[]
+        ) => {
+            return (apiClone.copy(objCode, objID, updates, fields, options) as any) as string
+        },
+        count: (objCode: string, query?: object) => {
+            return (apiClone.count(objCode, query) as any) as string
+        },
+        create: (objCode: string, params: any, fields?: TFields) => {
+            return (apiClone.create(objCode, params, fields) as any) as string
+        },
+        edit: (objCode: string, objID: string, updates: any, fields?: TFields) => {
+            return (apiClone.edit(objCode, objID, updates, fields) as any) as string
+        },
+        editMultiple: (objCode: string, updates: any[], fields?: TFields) => {
+            return (apiClone.editMultiple(objCode, updates, fields) as any) as string
+        },
+        execute: (objCode: string, objID: string | null, action: string, actionArgs?: object) => {
+            return (apiClone.execute(objCode, objID, action, actionArgs) as any) as string
+        },
+        get: (objCode: string, objIDs: string | string[], fields?: TFields) => {
+            return (apiClone.get(objCode, objIDs, fields) as any) as string
+        },
+        metadata: (objCode?: string, fields?: TFields) => {
+            return (apiClone.metadata(objCode, fields) as any) as string
+        },
+        namedQuery: (objCode: string, query: string, queryArgs?: object, fields?: TFields) => {
+            return (apiClone.namedQuery(objCode, query, queryArgs, fields) as any) as string
+        },
+        remove: (objCode: string, objID: string, bForce?: boolean) => {
+            return (apiClone.remove(objCode, objID, bForce) as any) as string
+        },
+        report: (objCode: string, query: object) => {
+            return (apiClone.report(objCode, query) as any) as string
+        },
+        request: (path: string, params, fields?: TFields, method: string = Api.Methods.GET) => {
+            return (apiClone.request(path, params, fields, method) as any) as string
+        },
+        search: (objCode: string, query?: object, fields?: TFields) => {
+            return (apiClone.search(objCode, query, fields, false) as any) as string
+        }
+    }
 }
-
 
 export type TSuccessHandler<T = any> = (response: any) => Promise<T>
 export type TFailureHandler = (err: any) => never
 
 export const ResponseHandler: {
-    success: TSuccessHandler<any>,
+    success: TSuccessHandler<any>
     failure: TFailureHandler
 } = {
-    success: (response) => {
+    success: response => {
         if (response.ok) {
-            return response.json().then(
-                (data) => {
-                    if (data.error) {
-                        throw {
-                            status: response.status,
-                            message: data.error.message
-                        }
+            return response.json().then(data => {
+                if (data.error) {
+                    throw {
+                        status: response.status,
+                        message: data.error.message
                     }
-                    return data.data
                 }
-            )
-        }
-        else {
+                return data.data
+            })
+        } else {
             return response.json().then(
-                (data) => {
+                data => {
                     throw {
                         status: response.status,
                         message: data.error.message
@@ -727,7 +747,7 @@ export const ResponseHandler: {
             )
         }
     },
-    failure: (err) => {
+    failure: err => {
         throw {
             message: err.message || err.statusText
         }
