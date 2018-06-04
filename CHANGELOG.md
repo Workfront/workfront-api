@@ -1,3 +1,21 @@
+4.8.0 - June 1, 2018
+
+* chore: add tests (Hovhannes Babayan)
+* refactor: remove unneeded checks (Hovhannes Babayan)
+* chore: update comment (Hovhannes Babayan)
+* feat: make `isAtomic` parameter for `batch()` method optional (Hovhannes Babayan)
+* chore: remove comment (Hovhannes Babayan)
+* feat: add `batch()` method (Hovhannes Babayan)
+
+4.7.0 - May 31, 2018
+
+* chore: fix test (Hovhannes Babayan)
+* feat: add `fields` parameter to metadata() method (Hovhannes Babayan)
+* Update to node 10 in .travis.yml (greenkeeper[bot])
+* chore(package): update istanbul-instrumenter-loader to version 3.0.1 (greenkeeper[bot])
+* chore(package): update execa to version 0.10.0 (greenkeeper[bot])
+* chore(package): update typedoc to version 0.11.0 (greenkeeper[bot])
+
 4.6.0 - February 20, 2018
 
 * chore: upgrade packages typescript@2.7.2 ts-loader@3.5.0 (Sassoun Derderian)
