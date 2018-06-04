@@ -30,7 +30,7 @@ describe('Create new instance for API', function() {
         should(api.getApiKey).be.a.Function().and.has.lengthOf(2)
         should(api.login).be.a.Function().and.has.lengthOf(2)
         should(api.logout).be.a.Function().and.has.lengthOf(0)
-        should(api.metadata).be.a.Function().and.has.lengthOf(1)
+        should(api.metadata).be.a.Function().and.has.lengthOf(2)
         should(api.namedQuery).be.a.Function().and.has.lengthOf(4)
         should(api.remove).be.a.Function().and.has.lengthOf(3)
         should(api.report).be.a.Function().and.has.lengthOf(2)
