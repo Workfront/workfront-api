@@ -7,7 +7,7 @@ module.exports = {
     entry: {
 		'./dist/workfront': './src/Api.ts'
     },
-    mode: 'development',
+    mode: 'production',
     output: {
         path: __dirname,
         filename: '[name].js',
