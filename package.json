@@ -54,7 +54,7 @@
     "typescript": "2.9.1",
     "uuid": "3.2.1",
     "webpack": "4.11.1",
-    "webpack-cli": "3.0.2"
+    "webpack-cli": "3.0.3"
   },
   "scripts": {
     "precommit": "lint-staged",
