@@ -26,7 +26,7 @@
     "@types/mocha": "5.2.5",
     "codecov": "3.0.4",
     "dateformat": "3.0.3",
-    "execa": "0.10.0",
+    "execa": "0.11.0",
     "fetch-mock": "6.5.2",
     "http-server": "0.11.1",
     "istanbul-instrumenter-loader": "3.0.1",
