@@ -46,7 +46,7 @@
     "prettier": "1.14.2",
     "semver": "5.5.1",
     "should": "13.2.3",
-    "ts-loader": "4.5.0",
+    "ts-loader": "5.0.0",
     "tslint": "5.11.0",
     "tslint-config-prettier": "1.15.0",
     "tslint-loader": "3.6.0",
