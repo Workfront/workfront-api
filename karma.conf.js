@@ -18,7 +18,6 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'node_modules/es6-promise/dist/es6-promise.auto.min.js',
-            'node_modules/whatwg-fetch/fetch.js',
             'test/test-bundle.js'
         ],
 
