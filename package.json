@@ -15,22 +15,23 @@
   },
   "dependencies": {
     "@types/node": "^10.3.0",
-    "es6-promise": "4.2.4",
+    "es6-promise": "4.2.5",
     "form-data": "2.3.2",
     "isomorphic-fetch": "2.2.1",
-    "object-assign": "4.1.1",
+    "whatwg-fetch": "^2.0.4",
+    "tslib": "1.9.3",
     "workfront-api-constants": "2.0.0"
   },
   "devDependencies": {
-    "@types/form-data": "^2.2.1",
-    "@types/mocha": "^2.2.45",
-    "codecov": "3.0.1",
+    "@types/form-data": "2.2.1",
+    "@types/mocha": "5.2.5",
+    "codecov": "3.1.0",
     "dateformat": "3.0.3",
-    "execa": "0.10.0",
-    "fetch-mock": "5.13.1",
+    "execa": "1.0.0",
+    "fetch-mock": "6.5.2",
     "http-server": "0.11.1",
     "istanbul-instrumenter-loader": "3.0.1",
-    "karma": "2.0.0",
+    "karma": "3.0.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-cli": "1.0.1",
     "karma-coverage": "1.1.2",
@@ -39,21 +40,26 @@
     "karma-remap-coverage": "0.1.5",
     "karma-sauce-launcher": "1.2.0",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-webpack": "2.0.9",
-    "mocha": "4.1.0",
+    "karma-webpack": "3.0.4",
+    "lint-staged": "7.2.2",
+    "mocha": "5.2.0",
     "phantomjs-prebuilt": "2.1.16",
-    "semver": "5.5.0",
-    "should": "13.1.1",
-    "ts-loader": "3.5.0",
-    "tslib": "1.9.2",
-    "tslint": "5.9.1",
-    "tslint-loader": "3.5.3",
-    "typedoc": "0.11.0",
-    "typescript": "2.7.2",
-    "uuid": "3.2.1",
-    "webpack": "3.11.0"
+    "prettier": "1.14.2",
+    "semver": "5.5.1",
+    "should": "13.2.3",
+    "ts-loader": "5.1.0",
+    "tslint": "5.11.0",
+    "tslint-config-prettier": "1.15.0",
+    "tslint-loader": "3.6.0",
+    "typedoc": "0.12.0",
+    "typescript": "3.0.3",
+    "uuid": "3.3.2",
+    "webpack": "4.17.2",
+    "webpack-cli": "3.1.0"
   },
   "scripts": {
+    "precommit": "lint-staged",
+    "prettier": "prettier --write **/*.{ts,tsx,js,css,md}",
     "test": "karma start karma.conf.js",
     "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
     "debug": "npm run test -- --auto-watch --browsers Chrome --no-single-run",
@@ -79,6 +85,17 @@
     "Hovhannes Babayan <bhovhannes@gmail.com>",
     "Sassoun Derderian <citizen.sas@gmail.com>"
   ],
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint:fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/Workfront/workfront-api/issues"
