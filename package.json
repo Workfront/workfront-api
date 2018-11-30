@@ -43,7 +43,7 @@
     "lint-staged": "8.1.0",
     "mocha": "5.2.0",
     "phantomjs-prebuilt": "2.1.16",
-    "prettier": "1.15.2",
+    "prettier": "1.15.3",
     "semver": "5.6.0",
     "should": "13.2.3",
     "ts-loader": "5.3.1",
