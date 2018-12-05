@@ -53,7 +53,7 @@
     "typedoc": "0.13.0",
     "typescript": "3.2.1",
     "uuid": "3.3.2",
-    "webpack": "4.27.0",
+    "webpack": "4.27.1",
     "webpack-cli": "3.1.2"
   },
   "scripts": {
