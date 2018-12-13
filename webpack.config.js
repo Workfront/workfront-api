@@ -12,7 +12,8 @@ module.exports = {
         path: __dirname,
         filename: '[name].js',
         library: 'Workfront',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
+        globalObject: "typeof self !== 'undefined' ? self : this"
     },
 
     // Enable sourcemaps for debugging webpack's output.
