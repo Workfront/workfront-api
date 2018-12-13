@@ -67,39 +67,34 @@
 				<a href="https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14"><img src="https://saucelabs.com/buildstatus/citizensas" alt="Build Status"></a></p>
 				<p><a href="https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14"><img src="https://saucelabs.com/browser-matrix/citizensas.svg" alt="Build Status"></a></p>
 				<p>A client for Workfront API which can be used in both server (NodeJS) and client (browsers).</p>
-				<p>If used in browser environment you may need to polyfill Promises (see ES6 Promise for polyfills) and fetch (<a href="https://github.com/fis-components/whatwg-fetch">whatwg-fetch</a>). </p>
+				<p>If used in browser environment you may need to polyfill Promises (see ES6 Promise for polyfills) and fetch (<a href="https://github.com/fis-components/whatwg-fetch">whatwg-fetch</a>).</p>
 				<h2 id="usage">Usage</h2>
 				<h4 id="server-side">Server-side</h4>
-				<p>Install as a dependency:</p>
-				<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save workfront-api</span>
-</code></pre><p>Then <code>require(&#39;workfront-api&#39;)</code> in your code. For example:</p>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> Workfront = <span class="hljs-built_in">require</span>(<span class="hljs-string">'workfront-api'</span>),
-    util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);
+				<p>Install as a dependency:
+					npm install --save workfront-api
+				Then <code>require(&#39;workfront-api&#39;)</code> in your code. For example:</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> Workfront = <span class="hljs-built_in">require</span>(<span class="hljs-string">'workfront-api'</span>),
+    util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>)
 
 <span class="hljs-comment">/**
  * The console.log statement below will output the following:
- * { 
+ * {
  *    Api: [Function: Api]
  * }
  */</span>
-<span class="hljs-built_in">console</span>.log(util.inspect(Workfront, {<span class="hljs-attr">depth</span>:<span class="hljs-number">0</span>}));
-</code></pre>
+<span class="hljs-built_in">console</span>.log(util.inspect(Workfront, {<span class="hljs-attr">depth</span>: <span class="hljs-number">0</span>}))</code></pre>
 				<h2 id="documentation">Documentation</h2>
 				<p>API documentation is available at <a href="http://workfront.github.io/workfront-api/">http://workfront.github.io/workfront-api/</a>.</p>
 				<h2 id="examples">Examples</h2>
 				<p>A number of examples can be found under <a href="examples">examples</a> directory. It includes examples for both <a href="examples/node">node</a> and <a href="examples/browser">browser</a> environments.<br>In order to run these examples clone a copy of workfront-api repository:</p>
-				<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>://github.com/Workfront/workfront-api.git
-</code></pre><h4 id="running-node-examples">Running <a href="examples/node">node</a> examples</h4>
+				<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>://github.com/Workfront/workfront-api.git</code></pre><h4 id="running-node-examples">Running <a href="examples/node">node</a> examples</h4>
 				<p>First enter into <code>workfront-api</code> directory and install all the dependencies:</p>
-				<pre><code><span class="hljs-built_in">cd</span> workfront-api
-npm install
-</code></pre><p>Use <code>node</code> to run the examples. For examples:</p>
-				<pre><code><span class="hljs-keyword">node</span> <span class="hljs-title">examples</span>/<span class="hljs-keyword">node</span><span class="hljs-title">/get-user-count</span>.js
-</code></pre><p>Each example script outputs all its results into console and contains comments in the source code explaining what is happening in more details.</p>
+				<pre><code><span class="hljs-attr">cd</span> <span class="hljs-string">workfront-api</span>
+<span class="hljs-attr">npm</span> <span class="hljs-string">install</span></code></pre><p>Use <code>node</code> to run the examples. For examples:</p>
+				<pre><code><span class="hljs-keyword">node</span> <span class="hljs-title">examples</span>/<span class="hljs-keyword">node</span><span class="hljs-title">/get-user-count</span>.js</code></pre><p>Each example script outputs all its results into console and contains comments in the source code explaining what is happening in more details.</p>
 				<h4 id="running-browser-examples">Running <a href="examples/browser">browser</a> examples</h4>
 				<p>To start supplied webserver type:</p>
-				<pre><code><span class="hljs-built_in">npm</span> start
-</code></pre><p>Visit <a href="http://localhost:8000/examples/browser/">http://localhost:8000/examples/browser/</a> to see list of all examples available for browser.</p>
+				<pre><code><span class="hljs-built_in">npm</span> start</code></pre><p>Visit <a href="http://localhost:8000/examples/browser/">http://localhost:8000/examples/browser/</a> to see list of all examples available for browser.</p>
 				<h2 id="contributing">Contributing</h2>
 				<p>We welcome contributions of all kinds from anyone. It can be either new example or fix or documentation improvement. Please read these guidelines:</p>
 				<h3 id="bug-reports">Bug Reports</h3>
