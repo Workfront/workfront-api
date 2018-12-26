@@ -489,7 +489,7 @@ export class Api {
 
         if (this._uriGenerationMode) {
             // @ts-ignore-line
-            return path + queryString
+            return path + queryString + (queryString === '' ? '?' : '&') + 'method=' + Api.Methods.GET
         }
         return fetch(options.url + options.path + queryString, {
             method: options.method,
@@ -547,9 +547,9 @@ export class Api {
             return Promise.resolve(isAtomic ? undefined : [])
         }
         const req = this.request('/batch', {
-            atomic: isAtomic,
+            atomic: !!isAtomic,
             uri: uris
-        })
+        }, undefined, Api.Methods.POST)
         if (isAtomic) {
             return req.then(result => {
                 if (result && result.success) {
