@@ -72,4 +72,35 @@ describe('Batch', function() {
         )
         should(fetchMock.calls().length).equal(1)
 	})
+
+	describe('batch header and body', function () {
+		beforeEach(function () {
+			this.api.batch(
+				batchApi => [
+					batchApi.search('user'),
+					batchApi.search('team'),
+					batchApi.search('role')
+				]
+			)
+		})
+
+		it('should make a http call with post method', function() {
+			should(fetchMock.lastUrl()).equal(API_URL + '/attask/api-internal/batch')
+			should(fetchMock.lastOptions()).have.property('method', 'POST')
+		})
+
+		it('should contain 3 uri params in its body', function() {
+			const {body} = fetchMock.lastOptions()
+			const match = decodeURIComponent(body).match(/uri/ig)
+			should(match).not.empty()
+			should(match).has.length(3, 'should have 3 uri params')
+		})
+
+		it('should contain 3 method=GET params in its body', function() {
+			const {body} = fetchMock.lastOptions()
+			const match = decodeURIComponent(body).match(/method=GET/ig)
+			should(match).not.empty()
+			should(match).has.length(3, 'should have 3 method=GET params')
+		})
+	})
 })
