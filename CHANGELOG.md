@@ -1,3 +1,13 @@
+4.8.2 - December 26, 2018
+
+* fix: make batch requests with HTTP POST method (Sassoun Derderian)
+* chore(deps): update dependency webpack to v4.28.2 (Renovate Bot)
+* chore(deps): update dependency ts-loader to v5.3.2 (Renovate Bot)
+* chore(deps): update dependency webpack to v4.28.1 (Renovate Bot)
+* chore(deps): update dependency webpack to v4.28.0 (Renovate Bot)
+* chore(deps): update dependency tslint to v5.12.0 (Renovate Bot)
+* chore(deps): update dependency karma to v3.1.4 (Renovate Bot)
+
 4.8.1 - December 13, 2018
 
 * fix: windows is undefined error if workfront-api is required in NodeJS (Sassoun Derderian)
