@@ -96,7 +96,7 @@ See the top-level file `LICENSE` and
 [npm-url]: https://www.npmjs.org/package/workfront-api
 [npm-version-image]: https://img.shields.io/npm/v/workfront-api.svg?style=flat
 [npm-downloads-image]: https://img.shields.io/npm/dm/workfront-api.svg?style=flat
-[travis-url]: https://travis-ci.org/Workfront/workfront-api
+[travis-url]: https://travis-ci.com/Workfront/workfront-api
 [travis-image]: https://img.shields.io/travis/Workfront/workfront-api.svg?style=flat
 [codecov-url]: https://codecov.io/gh/Workfront/workfront-api
 [codecov-image]: https://codecov.io/gh/Workfront/workfront-api/branch/master/graph/badge.svg
