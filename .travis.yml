@@ -5,9 +5,8 @@ notifications:
     on_failure: always
     on_success: change
 node_js:
-  - '6'
-  - '8'
-  - '10'
+  - "node"
+  - "lts/*"
 
 env:
   global:
@@ -18,7 +17,7 @@ env:
 
 matrix:
   include:
-    - node_js: '8'
+    - node_js: "lts/*"
       env: CI_MODE=saucelabs
       addons:
         sauce_connect: true
