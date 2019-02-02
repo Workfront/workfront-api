@@ -13,8 +13,7 @@ If used in browser environment you may need to polyfill Promises (see ES6 Promis
 
 #### Server-side
 
-Install as a dependency:  
-`npm install --save workfront-api`  
+Install as a dependency: `npm install --save workfront-api`.  
 Then `require('workfront-api')` in your code. For example:
 
 ```javascript
