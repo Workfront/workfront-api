@@ -16,7 +16,7 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/index.es'
+import {Api} from '../../dist/workfront-api.es'
 import fixture from '../../fixtures/execute.json'
 
 const API_URL = 'http://foobar:8080'

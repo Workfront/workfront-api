@@ -15,11 +15,11 @@
  */
 import * as should from 'should'
 
-import {Api} from '../src/node'
+import {NodeApi} from '../src/node'
 
 describe('Create new instance for API', function() {
     it('should have methods', function() {
-        const api = new Api({url: 'http://localhost'})
+        const api = new NodeApi({url: 'http://localhost'})
         should(api.copy)
             .be.a.Function()
             .and.has.lengthOf(5)
@@ -77,17 +77,17 @@ describe('Create new instance for API', function() {
     })
 
     it('should set correct API path based on passed configuration (version is passed)', function() {
-        const api = new Api({url: 'http://localhost', version: '2.0'})
+        const api = new NodeApi({url: 'http://localhost', version: '2.0'})
         should(api._httpOptions.path).equal('/attask/api/v2.0')
     })
 
     it('should set correct API path based on passed configuration (version is not passed)', function() {
-        const api = new Api({url: 'http://localhost'})
+        const api = new NodeApi({url: 'http://localhost'})
         should(api._httpOptions.path).equal('/attask/api-internal')
     })
 
     it('should set correct API path based on passed configuration (version="asp")', function() {
-        const api = new Api({url: 'http://localhost', version: 'asp'})
+        const api = new NodeApi({url: 'http://localhost', version: 'asp'})
         should(api._httpOptions.path).equal('/attask/api-asp')
     })
 })
