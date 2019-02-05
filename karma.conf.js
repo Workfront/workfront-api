@@ -18,7 +18,13 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'node_modules/es6-promise/dist/es6-promise.auto.min.js',
-            'test/test-bundle.js'
+            'node_modules/whatwg-fetch/dist/fetch.umd.js',
+            'node_modules/fetch-mock/dist/es5/client-bundle.js',
+            'node_modules/should/should.js',
+            {
+                pattern: 'test/integration/*.spec.ts',
+                watched: false
+            }
         ],
 
         proxies: {
@@ -29,10 +35,35 @@ module.exports = function (config) {
         },
 
         preprocessors: {
-            'test/test-bundle.js': ['webpack', 'sourcemap']
+            'test/integration/*.spec.ts': ['rollup', 'sourcemap']
         },
 
-        webpack: require('./webpack.config'),
+        mime: {
+            'text/x-typescript': ['ts']
+        },
+
+        rollupPreprocessor: {
+            output: {
+                format: 'iife',
+                name: 'Workfront',
+                sourcemap: 'inline',
+                globals: {
+                    'isomorphic-fetch': 'fetch',
+                    'fetch-mock': 'fetchMock',
+                    'should': 'should',
+                }
+            },
+            plugins: [
+                require('rollup-plugin-node-resolve')(),
+                require('rollup-plugin-json')(),
+                require('rollup-plugin-typescript')(),
+            ],
+            external: [
+                'fetch-mock',
+                'should',
+                'isomorphic-fetch'
+            ],
+        },
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG

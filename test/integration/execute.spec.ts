@@ -16,8 +16,8 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-
-import * as Workfront from '../../src/index'
+import {Api} from '../../dist/index.es'
+import fixture from '../../fixtures/execute.json'
 
 const API_URL = 'http://foobar:8080'
 
@@ -27,7 +27,7 @@ describe('Execute', function() {
     afterEach(fetchMock.restore)
 
     beforeEach(function() {
-        this.api = new Workfront.Api({
+        this.api = new Api({
             url: API_URL
         })
     })
@@ -38,7 +38,7 @@ describe('Execute', function() {
     beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api`,
-            require('../../fixtures/execute.json'),
+            fixture,
             {
                 name: 'execute'
             }

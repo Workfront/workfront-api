@@ -19,9 +19,6 @@
  * @author Sassoun Derderian <citizen.sas at gmail dot com>
  */
 
-import * as NodeFormData from 'form-data'
-import 'isomorphic-fetch'
-import {Readable} from 'stream'
 import {INTERNAL_PREFIX} from 'workfront-api-constants'
 
 export interface IHttpOptions {
@@ -43,8 +40,6 @@ export interface IApiConfig {
     headers?: {[key: string]: string}
 }
 export type TFields = string | string[]
-
-const GlobalScope = Function('return this')()
 
 /**
  * Configuration for the Api constructor
@@ -405,98 +400,44 @@ export class Api {
      * @param {Object} params   An object with params
      * @param {Object} [fields] Fields to query for the request
      * @param {String} [method=GET] The method which the request will do (GET|POST|PUT|DELETE)
-     * @param {Boolean} [generateUrl] Whenever to generate url without sending actual request
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     request(
         path: string,
         params,
-        fields?: TFields,
+        fields: TFields = [],
         method: string = Api.Methods.GET
     ): Promise<any> {
         const clonedParams = {...params}
 
-        const alwaysUseGet = this._httpOptions.alwaysUseGet
+        const options = this.getOptions(path, clonedParams, method)
 
-        const options = {...this._httpOptions}
-        if (alwaysUseGet && path !== 'login') {
-            clonedParams.method = method
-            options.method = Api.Methods.GET
-        } else {
-            options.method = method
+        const stringifiedFields = this.getFields(fields)
+        if (stringifiedFields) {
+            clonedParams.fields = stringifiedFields
         }
 
-        if (path.indexOf('/') !== 0) {
-            path = '/' + path
-        }
-        options.path = this._httpOptions.path + path
+        const headers = this.getHeaders()
 
-        fields = fields || []
-        if (typeof fields === 'string') {
-            fields = [fields]
-        }
-        if (fields.length !== 0) {
-            clonedParams.fields = fields.join()
-        }
-
-        const headers = new Headers()
-        headers.append('X-Requested-With', 'XMLHttpRequest')
-        if (this._httpOptions.headers.sessionID) {
-            headers.append('sessionID', this._httpOptions.headers.sessionID)
-        } else if (this._httpOptions.headers['X-XSRF-TOKEN']) {
-            headers.append('X-XSRF-TOKEN', this._httpOptions.headers['X-XSRF-TOKEN'])
-        } else if (this._httpOptions.headers.apiKey) {
-            headers.append('apiKey', this._httpOptions.headers.apiKey)
-        }
-
-        let bodyParams = null,
-            queryString = ''
-        if (NodeFormData && params instanceof NodeFormData) {
-            bodyParams = params
-        } else if (GlobalScope.FormData && clonedParams instanceof GlobalScope.FormData) {
-            bodyParams = clonedParams
-        } else {
-            if (
-                this.serverAcceptsJSON &&
-                typeof clonedParams.updates === 'object' &&
-                (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)
-            ) {
-                headers.append('Content-Type', 'application/json')
-                bodyParams = JSON.stringify(clonedParams.updates)
-
-                delete clonedParams.updates
-                const qs = queryStringify(clonedParams)
-                if (qs) {
-                    queryString = '?' + qs
-                }
-            } else {
-                headers.append('Content-Type', 'application/x-www-form-urlencoded')
-                if (
-                    clonedParams.hasOwnProperty('updates') &&
-                    typeof clonedParams.updates !== 'string'
-                ) {
-                    clonedParams.updates = JSON.stringify(clonedParams.updates)
-                }
-                bodyParams = queryStringify(clonedParams)
-                if (options.method === Api.Methods.GET || options.method === Api.Methods.DELETE) {
-                    if (bodyParams) {
-                        queryString = '?' + bodyParams
-                    }
-                    bodyParams = null
-                }
-            }
+        const {bodyParams, queryString, contentType} = this.populateQueryStringAndBodyParams(
+            clonedParams,
+            options
+        )
+        if (contentType) {
+            headers.append('Content-Type', contentType)
         }
 
         if (this._uriGenerationMode) {
             // @ts-ignore-line
-            return path + queryString + (queryString === '' ? '?' : '&') + 'method=' + Api.Methods.GET
+            return (
+                path + queryString + (queryString === '' ? '?' : '&') + 'method=' + Api.Methods.GET
+            )
         }
-        return fetch(options.url + options.path + queryString, {
-            method: options.method,
-            headers: headers,
+        return makeFetchCall(options.url + options.path + queryString, {
+            headers,
             body: bodyParams,
-            credentials: 'same-origin'
-        }).then(ResponseHandler.success, ResponseHandler.failure)
+            method: options.method
+        })
     }
 
     /**
@@ -546,10 +487,15 @@ export class Api {
         if (uris.length === 0) {
             return Promise.resolve(isAtomic ? undefined : [])
         }
-        const req = this.request('/batch', {
-            atomic: !!isAtomic,
-            uri: uris
-        }, undefined, Api.Methods.POST)
+        const req = this.request(
+            '/batch',
+            {
+                atomic: !!isAtomic,
+                uri: uris
+            },
+            undefined,
+            Api.Methods.POST
+        )
         if (isAtomic) {
             return req.then(result => {
                 if (result && result.success) {
@@ -598,27 +544,91 @@ export class Api {
         }
     }
 
-    /**
-     * Starting from version 2.0 API allows users to upload files.
-     * The server will return the JSON data which includes 'handle' of uploaded file.
-     * Returned 'handle' can be passed to create() method to create a new document.
-     * This method is not available for browser execution environments and it is available only for Node.
-     * @author Hovhannes Babayan <bhovhannes at gmail dot com>
-     * @author Matt Winchester <mwinche at gmail dot com>
-     * @memberOf Api
-     * @param {fs.ReadStream} stream    A readable stream with file contents
-     * @param {String} filename Override the filename
-     */
-    uploadFromStream(stream: Readable, filename: string) {
-        const data = new NodeFormData()
-        data.append('uploadedFile', stream, filename)
+    uploadFileContent(fileContent, filename: string) {
+        const data = new FormData()
+        data.append('uploadedFile', fileContent, filename)
         return this.request('upload', data, null, Api.Methods.POST)
     }
 
-    uploadFileContent(fileContent, filename: string) {
-        const data = new GlobalScope.FormData()
-        data.append('uploadedFile', fileContent, filename)
-        return this.request('upload', data, null, Api.Methods.POST)
+    protected getHeaders() {
+        const headers = new Headers()
+        headers.append('X-Requested-With', 'XMLHttpRequest')
+        if (this._httpOptions.headers.sessionID) {
+            headers.append('sessionID', this._httpOptions.headers.sessionID)
+        } else if (this._httpOptions.headers['X-XSRF-TOKEN']) {
+            headers.append('X-XSRF-TOKEN', this._httpOptions.headers['X-XSRF-TOKEN'])
+        } else if (this._httpOptions.headers.apiKey) {
+            headers.append('apiKey', this._httpOptions.headers.apiKey)
+        }
+        return headers
+    }
+
+    private getFields(fields: TFields): string | undefined {
+        if (typeof fields === 'string') {
+            return fields
+        }
+        if (Array.isArray(fields)) {
+            return fields.join(',')
+        }
+    }
+
+    private getOptions(path, clonedParams, method) {
+        const options = {...this._httpOptions}
+
+        if (options.alwaysUseGet && path !== 'login') {
+            clonedParams.method = method
+            options.method = Api.Methods.GET
+        } else {
+            options.method = method
+        }
+
+        if (path.indexOf('/') !== 0) {
+            path = '/' + path
+        }
+        options.path = this._httpOptions.path + path
+        return options
+    }
+
+    private populateQueryStringAndBodyParams(clonedParams, options) {
+        let bodyParams = null,
+            queryString = '',
+            contentType = null
+        if (typeof FormData !== 'undefined' && clonedParams instanceof FormData) {
+            bodyParams = clonedParams
+        } else if (
+            this.serverAcceptsJSON &&
+            typeof clonedParams.updates === 'object' &&
+            (options.method === Api.Methods.POST || options.method === Api.Methods.PUT)
+        ) {
+            contentType = 'application/json'
+            bodyParams = JSON.stringify(clonedParams.updates)
+
+            delete clonedParams.updates
+            const qs = queryStringify(clonedParams)
+            if (qs) {
+                queryString = '?' + qs
+            }
+        } else {
+            contentType = 'application/x-www-form-urlencoded'
+            if (
+                clonedParams.hasOwnProperty('updates') &&
+                typeof clonedParams.updates !== 'string'
+            ) {
+                clonedParams.updates = JSON.stringify(clonedParams.updates)
+            }
+            bodyParams = queryStringify(clonedParams)
+            if (options.method === Api.Methods.GET || options.method === Api.Methods.DELETE) {
+                if (bodyParams) {
+                    queryString = '?' + bodyParams
+                }
+                bodyParams = null
+            }
+        }
+        return {
+            bodyParams,
+            queryString,
+            contentType
+        }
     }
 }
 
@@ -713,6 +723,13 @@ function batchApiFactory(api: Api): IBatchApi {
 
 export type TSuccessHandler<T = any> = (response: any) => Promise<T>
 export type TFailureHandler = (err: any) => never
+
+export function makeFetchCall(url: string, fetchOptions: RequestInit) {
+    return fetch(url, {...fetchOptions, credentials: 'same-origin'}).then(
+        ResponseHandler.success,
+        ResponseHandler.failure
+    )
+}
 
 export const ResponseHandler: {
     success: TSuccessHandler<any>
