@@ -16,8 +16,9 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-
-import * as Workfront from '../../src/index'
+import {Api} from '../../dist/workfront-api.es'
+import exceptionFixture from '../../fixtures/exception.json'
+import loginFixture from '../../fixtures/login.json'
 
 const API_URL = 'http://foobar:8080'
 
@@ -27,7 +28,7 @@ describe('Login', function() {
     afterEach(fetchMock.restore)
 
     beforeEach(function() {
-        this.api = new Workfront.Api({
+        this.api = new Api({
             url: API_URL
         })
     })
@@ -39,7 +40,7 @@ describe('Login', function() {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api`,
-                require('../../fixtures/login.json'),
+                loginFixture,
                 {
                     name: 'login',
                     method: 'POST'
@@ -74,7 +75,7 @@ describe('Login', function() {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api`,
-                require('../../fixtures/exception.json'),
+                exceptionFixture,
                 {
                     name: 'login',
                     method: 'POST'
