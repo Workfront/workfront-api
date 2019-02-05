@@ -20,8 +20,7 @@
     "@types/form-data": "2.2.1",
     "@types/mocha": "5.2.5",
     "codecov": "3.1.0",
-    "dateformat": "3.0.3",
-    "execa": "1.0.0",
+    "conventional-changelog-cli": "2.0.11",
     "fetch-mock": "6.5.2",
     "http-server": "0.11.1",
     "istanbul-instrumenter-loader": "3.0.1",
@@ -46,7 +45,6 @@
     "rollup-plugin-node-resolve": "4.0.0",
     "rollup-plugin-terser": "4.0.3",
     "rollup-plugin-typescript": "1.0.0",
-    "semver": "5.6.0",
     "should": "13.2.3",
     "ts-node": "8.0.2",
     "tslint": "5.12.1",
@@ -66,7 +64,7 @@
     "build": "rollup -c && tsc --emitDeclarationOnly -p ./tsconfig.json -d --declarationDir ./typings",
     "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\" && touch ./docs/.nojekyll",
     "prepublish": "npm run build",
-    "version": "npm run docs && node ./generate-changelog.js && git add docs CHANGELOG.md",
+    "version": "npm run docs && conventional-changelog-cli -i CHANGELOG.md -s && git add docs CHANGELOG.md",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"
   },
   "repository": {
