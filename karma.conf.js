@@ -3,8 +3,6 @@
 const CI = process.env.CI
 const CI_MODE = process.env.CI_MODE
 
-process.env.WEBPACK_ENV = 'test'
-
 module.exports = function (config) {
     config.set({
 
