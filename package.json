@@ -78,7 +78,7 @@
     "AtTask",
     "Workfront",
     "TypeScript",
-    "Webpack"
+    "rollup"
   ],
   "author": "Workfront",
   "contributors": [

@@ -16,7 +16,7 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/index.es'
+import {Api} from '../../dist/workfront-api.es'
 import getFixture from '../../fixtures/get.json'
 import getMultipleFixture from '../../fixtures/get_multiple.json'
 

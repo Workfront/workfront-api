@@ -16,7 +16,7 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/index.es'
+import {Api} from '../../dist/workfront-api.es'
 import loginFixture from '../../fixtures/login.json'
 import logoutFixture from '../../fixtures/logout.json'
 
