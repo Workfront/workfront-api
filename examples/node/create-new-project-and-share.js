@@ -22,7 +22,7 @@
 var Workfront = require('./../../');
 var util = require('util');
 
-var instance = new Workfront.Api({
+var instance = new Workfront.NodeApi({
     url: 'http://localhost:8080',
     version: '5.0'
 });

@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import should from 'should'
+import * as should from 'should'
 
-import {Api} from '../src/index'
+import {Api} from '../src/node'
 
 describe('Create new instance for API', function() {
     it('should have methods', function() {

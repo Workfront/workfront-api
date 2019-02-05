@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
 
 import {MOD, Operators} from 'workfront-api-constants'
-import * as Workfront from '../../src/index'
+import {Api} from '../../dist/index.es'
+import fixture from '../../fixtures/search.json'
 
 const API_URL = 'http://foobar:8080'
 
@@ -28,7 +29,7 @@ describe('Search', function() {
     afterEach(fetchMock.restore)
 
     beforeEach(function() {
-        this.api = new Workfront.Api({
+        this.api = new Api({
             url: API_URL
         })
     })
@@ -39,7 +40,7 @@ describe('Search', function() {
     beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api`,
-            require('../../fixtures/search.json'),
+            fixture,
             {
                 name: 'search'
             }

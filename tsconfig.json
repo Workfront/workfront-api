@@ -2,14 +2,14 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noEmitHelpers": true,
     "noImplicitAny": false,
-    "lib": ["ES6", "DOM"],
+    "lib": ["es6", "dom"],
     "noUnusedLocals": true,
-    "outDir": "./es",
-    "target": "es5"
+    "target": "es5",
+    "resolveJsonModule": true
   },
   "compileOnSave": false,
   "buildOnSave": false,

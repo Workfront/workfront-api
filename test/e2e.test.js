@@ -5,96 +5,94 @@ const uuidv1 = require('uuid/v1')
 
 const Workfront = require('./../')
 
-describe('E2E Tests', function () {
+describe('E2E Tests', function() {
     const objToRemove = []
     const rootTestTitle = this.title
     let customerID, resellerID, accountRepID
     let USERNAME = 'new@user.attask',
         PASSWORD = 'user'
 
-    if (process.env.CI) {
-        before('Create Test Customer', function () {
-            this.aspInstance = new Workfront.Api({
-                url: 'http://localhost:8080',
-                version: 'asp'
-            })
-            const testName = this.currentTest ? this.currentTest.title : rootTestTitle
-            const uuid = uuidv1()
-            return this.aspInstance.login('asproot', 'user').then(() => {
-                return this.aspInstance
-                    .create('Reseller', {
-                        name: 'TestAdmin_' + uuid
-                    })
-                    .then(data => {
-                        resellerID = data.ID
-                        USERNAME = uuid + '@test.attask'
-                        return this.aspInstance
-                            .create('AccountRep', {
-                                adminLevel: 'A', // ADMIN
-                                resellerID,
-                                firstName: 'Test',
-                                lastName: 'Test',
-                                username: 'Test' + uuid,
-                                password: 'aHardPasswordW!7hSymb0ls'
-                            })
-                            .then(data => {
-                                accountRepID = data.ID
-                                return this.aspInstance
-                                    .create('Customer', {
-                                        accountRepID,
-                                        adminAcctName: USERNAME,
-                                        allowAPIKey: true,
-                                        currency: 'USD',
-                                        description: 'This is a test customer!',
-                                        domain: uuid,
-                                        isAPIEnabled: true,
-                                        journalFieldLimit: 300,
-                                        locale: 'US',
-                                        name: 'Test_' + testName + '_' + uuid,
-                                        needLicenseAgreement: false,
-                                        onDemandOptions: 'PWDDISAB', // PASSWORD_COMPLEXITY_DISABLE
-                                        securityModelType: 'D', // Lucid
-                                        status: 'A', // ACTIVE
-                                        timeZone: 'UTC'
-                                    })
-                                    .then(data => {
-                                        customerID = data.ID
-                                        return this.aspInstance.create('LicenseOrder', {
-                                            isEnterprise: true,
-                                            isSOAPEnabled: true,
-                                            isAPIEnabled: true,
-                                            fullUsers: 1000,
-                                            teamUsers: 1000,
-                                            limitedUsers: 1000,
-                                            requestorUsers: 1000,
-                                            reviewUsers: 1000,
-                                            customerID
-                                        })
-                                    })
-                            })
-                    })
-            })
+    before('Create Test Customer', function() {
+        this.aspInstance = new Workfront.Api({
+            url: 'http://localhost:8080',
+            version: 'asp'
         })
-        after('Delete Test Customer', function () {
+        const testName = this.currentTest ? this.currentTest.title : rootTestTitle
+        const uuid = uuidv1()
+        return this.aspInstance.login('asproot', 'user').then(() => {
             return this.aspInstance
-                .edit('Customer', customerID, {
-                    isDisabled: true,
-                    domain: null
+                .create('Reseller', {
+                    name: 'TestAdmin_' + uuid
                 })
-                .then(() =>
-                    this.aspInstance
-                        .remove('Customer', customerID)
-                        .then(() =>
-                            Promise.all([
-                                this.aspInstance.remove('Reseller', resellerID),
-                                this.aspInstance.remove('AccountRep', accountRepID)
-                            ])
-                        )
-                )
+                .then(data => {
+                    resellerID = data.ID
+                    USERNAME = uuid + '@test.attask'
+                    return this.aspInstance
+                        .create('AccountRep', {
+                            adminLevel: 'A', // ADMIN
+                            resellerID,
+                            firstName: 'Test',
+                            lastName: 'Test',
+                            username: 'Test' + uuid,
+                            password: 'aHardPasswordW!7hSymb0ls'
+                        })
+                        .then(data => {
+                            accountRepID = data.ID
+                            return this.aspInstance
+                                .create('Customer', {
+                                    accountRepID,
+                                    adminAcctName: USERNAME,
+                                    allowAPIKey: true,
+                                    currency: 'USD',
+                                    description: 'This is a test customer!',
+                                    domain: uuid,
+                                    isAPIEnabled: true,
+                                    journalFieldLimit: 300,
+                                    locale: 'US',
+                                    name: 'Test_' + testName + '_' + uuid,
+                                    needLicenseAgreement: false,
+                                    onDemandOptions: 'PWDDISAB', // PASSWORD_COMPLEXITY_DISABLE
+                                    securityModelType: 'D', // Lucid
+                                    status: 'A', // ACTIVE
+                                    timeZone: 'UTC'
+                                })
+                                .then(data => {
+                                    customerID = data.ID
+                                    return this.aspInstance.create('LicenseOrder', {
+                                        isEnterprise: true,
+                                        isSOAPEnabled: true,
+                                        isAPIEnabled: true,
+                                        fullUsers: 1000,
+                                        teamUsers: 1000,
+                                        limitedUsers: 1000,
+                                        requestorUsers: 1000,
+                                        reviewUsers: 1000,
+                                        customerID
+                                    })
+                                })
+                        })
+                })
         })
-    }
+    })
+    after('Delete Test Customer', function() {
+        return this.aspInstance
+            .edit('Customer', customerID, {
+                isDisabled: true,
+                domain: null
+            })
+            .then(() =>
+                this.aspInstance
+                    .remove('Customer', customerID)
+                    .then(() =>
+                        Promise.all([
+                            this.aspInstance.remove('Reseller', resellerID),
+                            this.aspInstance.remove('AccountRep', accountRepID)
+                        ])
+                    )
+            )
+    })
 
-    beforeEach(function () {
+    beforeEach(function() {
         this.instance = new Workfront.Api({
             url: 'http://localhost:8080',
             version: '8.0'
@@ -106,10 +104,10 @@ describe('E2E Tests', function () {
         return obj
     }
 
-    beforeEach(function () {
+    beforeEach(function() {
         objToRemove.length = 0
     })
-    afterEach(function () {
+    afterEach(function() {
         let queue = Promise.resolve()
         objToRemove.reverse().forEach(([objCode, objID]) => {
             queue = queue.then(() => this.instance.remove(objCode, objID, true))
@@ -117,8 +115,8 @@ describe('E2E Tests', function () {
         return queue
     })
 
-    describe('Login with username and password', function () {
-        beforeEach(function () {
+    describe('Login with username and password', function() {
+        beforeEach(function() {
             return this.instance
                 .login(USERNAME, PASSWORD)
                 .then(data => {
@@ -128,7 +126,7 @@ describe('E2E Tests', function () {
                 .catch(err => console.error(err.message))
         })
 
-        it.skip('Loads list of user notes, then calls acknowledge action for the one', function () {
+        it.skip('Loads list of user notes, then calls acknowledge action for the one', function() {
             const query = {}
             query[ApiConstants.LIMIT] = 1
             return this.instance.search('USRNOT', query).then(data => {
@@ -145,7 +143,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Loads list of active users, then calls assignUserToken action for the first user', function () {
+        it('Loads list of active users, then calls assignUserToken action for the first user', function() {
             const query = {}
             query['isActive'] = true
             query[ApiConstants.LIMIT] = 1
@@ -158,7 +156,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Creates a new template with name "API Template", then removes it', function () {
+        it('Creates a new template with name "API Template", then removes it', function() {
             return this.instance
                 .create('tmpl', {
                     name: 'API Template',
@@ -172,7 +170,7 @@ describe('E2E Tests', function () {
                 })
         })
 
-        it('Creates a group "Api Group", edits the name to read "Api Group 2", then deletes it', function () {
+        it('Creates a group "Api Group", edits the name to read "Api Group 2", then deletes it', function() {
             return this.instance.create('group', {name: 'Api Group'}).then(data => {
                 return this.instance
                     .edit('group', data.ID, {name: 'Api Group 2'}, ['ID'])
@@ -180,7 +178,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Creates a new project with name "API Project"', function () {
+        it('Creates a new project with name "API Project"', function() {
             const name = 'API Project'
             const description = 'This project has been created using API'
             const objCode = 'PROJ'
@@ -193,7 +191,7 @@ describe('E2E Tests', function () {
                 })
         })
 
-        it('Creates a new project with name "API Project Shared" and then shares it', function () {
+        it('Creates a new project with name "API Project Shared" and then shares it', function() {
             const name = 'API Project'
             const description = 'This project has been created using API'
             const objCode = 'PROJ'
@@ -237,7 +235,7 @@ describe('E2E Tests', function () {
                 })
         })
 
-        it('Creates a new project with name "API Project", then copies it without any option', function () {
+        it('Creates a new project with name "API Project", then copies it without any option', function() {
             const name = 'API Project'
             const copyName = 'API Project Copy'
             const description = 'This project has been created using API'
@@ -257,7 +255,7 @@ describe('E2E Tests', function () {
                         })
                 })
         })
-        it('Copies a project with options', function () {
+        it('Copies a project with options', function() {
             const name = 'API Project'
             const copyName = 'API Project Copy'
             const description = 'This project has been created using API'
@@ -279,7 +277,7 @@ describe('E2E Tests', function () {
                 })
         })
 
-        it('Deletes all projects with name containing "API Project', function () {
+        it('Deletes all projects with name containing "API Project', function() {
             const query = {}
             query['name'] = 'API Project'
             query['name' + ApiConstants.MOD] = ApiConstants.Operators.CONTAINS
@@ -309,7 +307,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Returns metadata about available API resources', function () {
+        it('Returns metadata about available API resources', function() {
             return this.instance.metadata().then(data => {
                 should(data).have.propertyByPath('objects', 'Project')
                 should(data).have.propertyByPath('objects', 'User')
@@ -317,7 +315,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Queries details of multiple tasks', function () {
+        it('Queries details of multiple tasks', function() {
             return this.instance
                 .create('PROJ', {name: 'baz'})
                 .then(putObjToRemoveQueue)
@@ -357,7 +355,7 @@ describe('E2E Tests', function () {
                 })
         })
 
-        it('Queries project and project owner details by project id', function () {
+        it('Queries project and project owner details by project id', function() {
             return this.instance
                 .create('PROJ', {name: 'baz'})
                 .then(putObjToRemoveQueue)
@@ -372,7 +370,7 @@ describe('E2E Tests', function () {
                 })
         })
 
-        it('Queries metadata for the task object (objCode: TASK)', function () {
+        it('Queries metadata for the task object (objCode: TASK)', function() {
             return this.instance.metadata('TASK').then(data => {
                 should(data)
                     .have.property('name')
@@ -386,7 +384,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Returns number of active users', function () {
+        it('Returns number of active users', function() {
             const query = {}
             query['isActive'] = true
             query['isActive' + ApiConstants.MOD] = ApiConstants.Operators.EQUAL
@@ -395,13 +393,13 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Calls myWork named query for Work object (Items in My Work)', function () {
+        it('Calls myWork named query for Work object (Items in My Work)', function() {
             return this.instance.namedQuery('work', 'myWork').then(data => {
                 should(data).be.Array()
             })
         })
 
-        it('Returns list of hours grouped by project names', function () {
+        it('Returns list of hours grouped by project names', function() {
             const query = {}
             query['project:name_1' + ApiConstants.GROUPBY] = true
             query['hours' + ApiConstants.AGGFUNC] = ApiConstants.Functions.SUM
@@ -410,7 +408,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Search for projects with percentComplete > 0', function () {
+        it('Search for projects with percentComplete > 0', function() {
             this.instance
                 .search('PROJ', {percentComplete: 0, percentComplete_Mod: 'gt'})
                 .then(data => {
@@ -418,7 +416,7 @@ describe('E2E Tests', function () {
                 })
         })
 
-        it('Uploads an image and delete it afterwards', function () {
+        it('Uploads an image and delete it afterwards', function() {
             const stream = fs.createReadStream(__dirname + '/../examples/node/image.jpg')
             return this.instance
                 .create('PROJ', {
@@ -451,7 +449,7 @@ describe('E2E Tests', function () {
                 })
         })
 
-        it('Creates Rate executing setRatesForRole action', function () {
+        it('Creates Rate executing setRatesForRole action', function() {
             return Promise.all([
                 this.instance
                     .create('PROJ', {name: 'BillingRate Project'})
@@ -486,8 +484,8 @@ describe('E2E Tests', function () {
         })
     })
 
-    describe('With no auto-login in beforeEach', function () {
-        it("Gets apiKey for the User, gets user's details, clear the apiKey", function () {
+    describe('With no auto-login in beforeEach', function() {
+        it("Gets apiKey for the User, gets user's details, clear the apiKey", function() {
             return this.instance.getApiKey(USERNAME, PASSWORD).then(data => {
                 should(data)
                     .be.String()
@@ -502,7 +500,7 @@ describe('E2E Tests', function () {
             })
         })
 
-        it('Creates a new project with name "API Project" using a GET request', function () {
+        it('Creates a new project with name "API Project" using a GET request', function() {
             const instance = new Workfront.Api({
                 url: 'http://localhost:8080',
                 version: '7.0',
@@ -521,7 +519,7 @@ describe('E2E Tests', function () {
             )
         })
 
-        it('Creates a group "Api Group", edits the name to read "Api Group 2", then deletes it -- Chained', function () {
+        it('Creates a group "Api Group", edits the name to read "Api Group 2", then deletes it -- Chained', function() {
             const login = () => this.instance.login(USERNAME, PASSWORD)
             const createGroup = () => this.instance.create('group', {name: 'Api Group'})
             const editGroup = data =>
@@ -534,7 +532,7 @@ describe('E2E Tests', function () {
                 .then(deleteGroup)
         })
 
-        it('Logs in and logs out', function () {
+        it('Logs in and logs out', function() {
             return this.instance.login(USERNAME, PASSWORD).then(data => {
                 should(data).have.properties('userID', 'sessionID')
                 return this.instance.logout()
