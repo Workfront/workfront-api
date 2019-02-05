@@ -1,3 +1,54 @@
+## 6.0.0 (2019-02-05)
+
+* chore: make CI run only under LTS and 8th versions of node ([f3ae9c0](https://github.com/Workfront/workfront-api/commit/f3ae9c0))
+* chore: make CI run under latest and LTS versions of node ([26f7b8d](https://github.com/Workfront/workfront-api/commit/26f7b8d))
+* chore: remove all webpack related deps ([392ac54](https://github.com/Workfront/workfront-api/commit/392ac54))
+* chore: sync package.json and package-lock.json ([e35c5ef](https://github.com/Workfront/workfront-api/commit/e35c5ef))
+* chore: update readme ([0b324cd](https://github.com/Workfront/workfront-api/commit/0b324cd))
+* chore: update readme ([f15620c](https://github.com/Workfront/workfront-api/commit/f15620c))
+* chore: updated travis url ([0c9a02b](https://github.com/Workfront/workfront-api/commit/0c9a02b))
+* chore: write CHANGELOG.md first ([4edeb2a](https://github.com/Workfront/workfront-api/commit/4edeb2a))
+* chore(deps): update dependency karma to v4 ([e523904](https://github.com/Workfront/workfront-api/commit/e523904))
+* chore(deps): update dependency karma-sauce-launcher to v2 ([ddb3c54](https://github.com/Workfront/workfront-api/commit/ddb3c54))
+* chore(deps): update dependency lint-staged to v8.1.1 ([e5e90a5](https://github.com/Workfront/workfront-api/commit/e5e90a5))
+* chore(deps): update dependency lint-staged to v8.1.2 ([8077948](https://github.com/Workfront/workfront-api/commit/8077948))
+* chore(deps): update dependency lint-staged to v8.1.3 ([6952418](https://github.com/Workfront/workfront-api/commit/6952418))
+* chore(deps): update dependency prettier to v1.16.0 ([cb83e01](https://github.com/Workfront/workfront-api/commit/cb83e01))
+* chore(deps): update dependency prettier to v1.16.1 ([ae09855](https://github.com/Workfront/workfront-api/commit/ae09855))
+* chore(deps): update dependency prettier to v1.16.2 ([553c6ba](https://github.com/Workfront/workfront-api/commit/553c6ba))
+* chore(deps): update dependency prettier to v1.16.3 ([500d9f9](https://github.com/Workfront/workfront-api/commit/500d9f9))
+* chore(deps): update dependency prettier to v1.16.4 ([3b6fc41](https://github.com/Workfront/workfront-api/commit/3b6fc41))
+* chore(deps): update dependency ts-loader to v5.3.3 ([3d01bd7](https://github.com/Workfront/workfront-api/commit/3d01bd7))
+* chore(deps): update dependency tslint to v5.12.1 ([e202c6a](https://github.com/Workfront/workfront-api/commit/e202c6a))
+* chore(deps): update dependency tslint-config-prettier to v1.18.0 ([a8ca3f6](https://github.com/Workfront/workfront-api/commit/a8ca3f6))
+* chore(deps): update dependency typedoc to v0.14.0 ([0725e0b](https://github.com/Workfront/workfront-api/commit/0725e0b))
+* chore(deps): update dependency typedoc to v0.14.1 ([6fac303](https://github.com/Workfront/workfront-api/commit/6fac303))
+* chore(deps): update dependency typedoc to v0.14.2 ([c74d1fe](https://github.com/Workfront/workfront-api/commit/c74d1fe))
+* chore(deps): update dependency typescript to v3.2.4 ([377392e](https://github.com/Workfront/workfront-api/commit/377392e))
+* chore(deps): update dependency typescript to v3.3.1 ([e61c35d](https://github.com/Workfront/workfront-api/commit/e61c35d))
+* chore(deps): update dependency webpack to v4.28.3 ([ed17717](https://github.com/Workfront/workfront-api/commit/ed17717))
+* chore(deps): update dependency webpack to v4.28.4 ([e37e3c6](https://github.com/Workfront/workfront-api/commit/e37e3c6))
+* chore(deps): update dependency webpack to v4.29.0 ([4394a93](https://github.com/Workfront/workfront-api/commit/4394a93))
+* chore(deps): update dependency webpack to v4.29.1 ([89f248d](https://github.com/Workfront/workfront-api/commit/89f248d))
+* chore(deps): update dependency webpack-cli to v3.2.0 ([26037ff](https://github.com/Workfront/workfront-api/commit/26037ff))
+* chore(deps): update dependency webpack-cli to v3.2.1 ([5eb5933](https://github.com/Workfront/workfront-api/commit/5eb5933))
+* chore(deps): update dependency webpack-cli to v3.2.3 ([9462a78](https://github.com/Workfront/workfront-api/commit/9462a78))
+* docs: use conventional-changelog to generate CHANGELOG.md ([cbba7f4](https://github.com/Workfront/workfront-api/commit/cbba7f4))
+* docs: use conventional-changelog to generate CHANGELOG.md ([6f168b1](https://github.com/Workfront/workfront-api/commit/6f168b1))
+* test: read Api from the right bundle file ([2fa7db8](https://github.com/Workfront/workfront-api/commit/2fa7db8))
+* refactor: separate CJS and ES bundles to reduce bundle size ([9b7649a](https://github.com/Workfront/workfront-api/commit/9b7649a))
+
+
+### BREAKING CHANGE
+
+* * Entry points have changed. This will affect UMD consumers. Now the file name is `workfront-api.umd.js` and `workfront-api.umd.min.js` respectfully.
+* For Node users, the api class name has been changed to `NodeApi`. This is to prevent typing ambiguities.
+```
+const Workfront = require('workfront-api')
+const api = new Workfront.NodeApi({/*...*/})
+```
+
+
 ## <small>4.8.2 (2018-12-26)</small>
 
 * 4.8.2 ([62bb5ae](https://github.com/Workfront/workfront-api/commit/62bb5ae))

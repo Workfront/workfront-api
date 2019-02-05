@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Api | workfront-api</title>
+	<title>NodeApi | workfront-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_api_.html">&quot;Api&quot;</a>
+					<a href="../modules/_node_.html">&quot;node&quot;</a>
 				</li>
 				<li>
-					<a href="_api_.api.html">Api</a>
+					<a href="_node_.nodeapi.html">NodeApi</a>
 				</li>
 			</ul>
-			<h1>Class Api</h1>
+			<h1>Class NodeApi</h1>
 		</div>
 	</div>
 </header>
@@ -70,14 +70,27 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Creates new Api instance.</p>
+						<p>Starting from version 2.0 API allows users to upload files.
+							The server will return the JSON data which includes &#39;handle&#39; of uploaded file.
+							Returned &#39;handle&#39; can be passed to create() method to create a new document.
+						This method is not available for browser execution environments and it is available only for Node.</p>
 					</div>
 					<dl class="tsd-comment-tags">
-						<dt>param</dt>
-						<dd><p>An object with the following keys:<br/></p>
+						<dt>author</dt>
+						<dd><p>Hovhannes Babayan <bhovhannes at gmail dot com></p>
 						</dd>
-						<dt>constructor</dt>
-						<dd></dd>
+						<dt>author</dt>
+						<dd><p>Sassoun Derderian <citizen dot sas at gmail dot com></p>
+						</dd>
+						<dt>memberof</dt>
+						<dd><p>Api</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>A readable stream with file contents</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>Override the filename</p>
+						</dd>
 					</dl>
 				</div>
 			</section>
@@ -85,10 +98,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Api</span>
+						<a href="_api_.api.html" class="tsd-signature-type">Api</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<a href="_node_.nodeapi.html" class="tsd-signature-type">NodeApi</a>
+								<span class="target">NodeApi</span>
 							</li>
 						</ul>
 					</li>
@@ -101,49 +114,50 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_api_.api.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_node_.nodeapi.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_api_.api.html#_httpoptions" class="tsd-kind-icon">_http<wbr>Options</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_api_.api.html#_urigenerationmode" class="tsd-kind-icon">_uri<wbr>Generation<wbr>Mode</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_api_.api.html#serveracceptsjson" class="tsd-kind-icon">server<wbr>AcceptsJSON</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#_httpoptions" class="tsd-kind-icon">_http<wbr>Options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#_urigenerationmode" class="tsd-kind-icon">_uri<wbr>Generation<wbr>Mode</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#serveracceptsjson" class="tsd-kind-icon">server<wbr>AcceptsJSON</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#batch" class="tsd-kind-icon">batch</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#clearapikey" class="tsd-kind-icon">clear<wbr>Api<wbr>Key</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#copy" class="tsd-kind-icon">copy</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#count" class="tsd-kind-icon">count</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#create" class="tsd-kind-icon">create</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#edit" class="tsd-kind-icon">edit</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#editmultiple" class="tsd-kind-icon">edit<wbr>Multiple</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#execute" class="tsd-kind-icon">execute</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#getapikey" class="tsd-kind-icon">get<wbr>Api<wbr>Key</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_api_.api.html#getheaders" class="tsd-kind-icon">get<wbr>Headers</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#login" class="tsd-kind-icon">login</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#logout" class="tsd-kind-icon">logout</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#metadata" class="tsd-kind-icon">metadata</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#namedquery" class="tsd-kind-icon">named<wbr>Query</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#remove" class="tsd-kind-icon">remove</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#report" class="tsd-kind-icon">report</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#request" class="tsd-kind-icon">request</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#search" class="tsd-kind-icon">search</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#setapikey" class="tsd-kind-icon">set<wbr>Api<wbr>Key</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#setsessionid" class="tsd-kind-icon">set<wbr>SessionID</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#setxsrftoken" class="tsd-kind-icon">setXSRFToken</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_api_.api.html#uploadfilecontent" class="tsd-kind-icon">upload<wbr>File<wbr>Content</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#batch" class="tsd-kind-icon">batch</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#clearapikey" class="tsd-kind-icon">clear<wbr>Api<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#copy" class="tsd-kind-icon">copy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#count" class="tsd-kind-icon">count</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#edit" class="tsd-kind-icon">edit</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#editmultiple" class="tsd-kind-icon">edit<wbr>Multiple</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#execute" class="tsd-kind-icon">execute</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#getapikey" class="tsd-kind-icon">get<wbr>Api<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_node_.nodeapi.html#getheaders" class="tsd-kind-icon">get<wbr>Headers</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#login" class="tsd-kind-icon">login</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#logout" class="tsd-kind-icon">logout</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#metadata" class="tsd-kind-icon">metadata</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#namedquery" class="tsd-kind-icon">named<wbr>Query</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#report" class="tsd-kind-icon">report</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#request" class="tsd-kind-icon">request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#search" class="tsd-kind-icon">search</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#setapikey" class="tsd-kind-icon">set<wbr>Api<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#setsessionid" class="tsd-kind-icon">set<wbr>SessionID</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#setxsrftoken" class="tsd-kind-icon">setXSRFToken</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_node_.nodeapi.html#uploadfilecontent" class="tsd-kind-icon">upload<wbr>File<wbr>Content</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.nodeapi.html#uploadfromstream" class="tsd-kind-icon">upload<wbr>From<wbr>Stream</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Object literals</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-static"><a href="_api_.api.html#methods" class="tsd-kind-icon">Methods</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_node_.nodeapi.html#methods" class="tsd-kind-icon">Methods</a></li>
 							</ul>
 						</section>
 					</div>
@@ -151,57 +165,61 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Api<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.iapiconfig.html" class="tsd-signature-type">IApiConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_api_.api.html" class="tsd-signature-type">Api</a></li>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Node<wbr>Api<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_node_.nodeapi.html" class="tsd-signature-type">NodeApi</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Overrides <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L69">Api.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/node.ts#L32">node.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>config: <a href="../interfaces/_api_.iapiconfig.html" class="tsd-signature-type">IApiConfig</a></h5>
+									<h5>options: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_api_.api.html" class="tsd-signature-type">Api</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_node_.nodeapi.html" class="tsd-signature-type">NodeApi</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="_httpoptions" class="tsd-anchor"></a>
 					<h3>_http<wbr>Options</h3>
 					<div class="tsd-signature tsd-kind-icon">_http<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_api_.ihttpoptions.html" class="tsd-signature-type">IHttpOptions</a></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#_httpoptions">_httpOptions</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L66">Api.ts:66</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="_urigenerationmode" class="tsd-anchor"></a>
 					<h3>_uri<wbr>Generation<wbr>Mode</h3>
 					<div class="tsd-signature tsd-kind-icon">_uri<wbr>Generation<wbr>Mode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#_urigenerationmode">_uriGenerationMode</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L69">Api.ts:69</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="serveracceptsjson" class="tsd-anchor"></a>
 					<h3>server<wbr>AcceptsJSON</h3>
 					<div class="tsd-signature tsd-kind-icon">server<wbr>AcceptsJSON<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#serveracceptsjson">serverAcceptsJSON</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L67">Api.ts:67</a></li>
 						</ul>
@@ -210,16 +228,17 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="batch" class="tsd-anchor"></a>
 					<h3>batch</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#batch">batch</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L479">Api.ts:479</a></li>
 								</ul>
@@ -276,6 +295,7 @@
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#batch">batch</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L480">Api.ts:480</a></li>
 								</ul>
@@ -311,15 +331,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="clearapikey" class="tsd-anchor"></a>
 					<h3>clear<wbr>Api<wbr>Key</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">clear<wbr>Api<wbr>Key<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#clearapikey">clearApiKey</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L183">Api.ts:183</a></li>
 								</ul>
@@ -340,15 +361,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="copy" class="tsd-anchor"></a>
 					<h3>copy</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">copy<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, objID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, updates<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#copy">copy</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L143">Api.ts:143</a></li>
 								</ul>
@@ -399,15 +421,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="count" class="tsd-anchor"></a>
 					<h3>count</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, query<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#count">count</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L167">Api.ts:167</a></li>
 								</ul>
@@ -438,15 +461,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="create" class="tsd-anchor"></a>
 					<h3>create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#create">create</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L205">Api.ts:205</a></li>
 								</ul>
@@ -484,15 +508,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="edit" class="tsd-anchor"></a>
 					<h3>edit</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">edit<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, objID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, updates<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#edit">edit</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L221">Api.ts:221</a></li>
 								</ul>
@@ -536,15 +561,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="editmultiple" class="tsd-anchor"></a>
 					<h3>edit<wbr>Multiple</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">edit<wbr>Multiple<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, updates<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#editmultiple">editMultiple</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L236">Api.ts:236</a></li>
 								</ul>
@@ -582,15 +608,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="execute" class="tsd-anchor"></a>
 					<h3>execute</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, objID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span>, action<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, actionArgs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#execute">execute</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L249">Api.ts:249</a></li>
 								</ul>
@@ -634,15 +661,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="get" class="tsd-anchor"></a>
 					<h3>get</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, objIDs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#get">get</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L271">Api.ts:271</a></li>
 								</ul>
@@ -683,15 +711,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="getapikey" class="tsd-anchor"></a>
 					<h3>get<wbr>Api<wbr>Key</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Api<wbr>Key<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#getapikey">getApiKey</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L107">Api.ts:107</a></li>
 								</ul>
@@ -726,15 +755,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="getheaders" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Headers</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Headers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Headers</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#getheaders">getHeaders</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L553">Api.ts:553</a></li>
 								</ul>
@@ -743,15 +773,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="login" class="tsd-anchor"></a>
 					<h3>login</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#login">login</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L297">Api.ts:297</a></li>
 								</ul>
@@ -787,15 +818,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="logout" class="tsd-anchor"></a>
 					<h3>logout</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">logout<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#logout">logout</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L315">Api.ts:315</a></li>
 								</ul>
@@ -815,15 +847,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="metadata" class="tsd-anchor"></a>
 					<h3>metadata</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">metadata<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#metadata">metadata</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L337">Api.ts:337</a></li>
 								</ul>
@@ -855,15 +888,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="namedquery" class="tsd-anchor"></a>
 					<h3>named<wbr>Query</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">named<wbr>Query<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, queryArgs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#namedquery">namedQuery</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L354">Api.ts:354</a></li>
 								</ul>
@@ -907,15 +941,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="remove" class="tsd-anchor"></a>
 					<h3>remove</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, objID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, bForce<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#remove">remove</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L366">Api.ts:366</a></li>
 								</ul>
@@ -953,15 +988,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="report" class="tsd-anchor"></a>
 					<h3>report</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">report<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#report">report</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L392">Api.ts:392</a></li>
 								</ul>
@@ -996,15 +1032,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="request" class="tsd-anchor"></a>
 					<h3>request</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a>, method<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#request">request</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L405">Api.ts:405</a></li>
 								</ul>
@@ -1045,15 +1082,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="search" class="tsd-anchor"></a>
 					<h3>search</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">search<span class="tsd-signature-symbol">(</span>objCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, query<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, fields<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a>, useHttpPost<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#search">search</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L452">Api.ts:452</a></li>
 								</ul>
@@ -1091,15 +1129,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="setapikey" class="tsd-anchor"></a>
 					<h3>set<wbr>Api<wbr>Key</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">set<wbr>Api<wbr>Key<span class="tsd-signature-symbol">(</span>apiKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#setapikey">setApiKey</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L517">Api.ts:517</a></li>
 								</ul>
@@ -1125,15 +1164,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="setsessionid" class="tsd-anchor"></a>
 					<h3>set<wbr>SessionID</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">set<wbr>SessionID<span class="tsd-signature-symbol">(</span>sessionID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#setsessionid">setSessionID</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L526">Api.ts:526</a></li>
 								</ul>
@@ -1161,15 +1201,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="setxsrftoken" class="tsd-anchor"></a>
 					<h3>setXSRFToken</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">setXSRFToken<span class="tsd-signature-symbol">(</span>xsrfToken<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#setxsrftoken">setXSRFToken</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L539">Api.ts:539</a></li>
 								</ul>
@@ -1197,15 +1238,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="uploadfilecontent" class="tsd-anchor"></a>
 					<h3>upload<wbr>File<wbr>Content</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">upload<wbr>File<wbr>Content<span class="tsd-signature-symbol">(</span>fileContent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#uploadfilecontent">uploadFileContent</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L547">Api.ts:547</a></li>
 								</ul>
@@ -1223,14 +1265,41 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="uploadfromstream" class="tsd-anchor"></a>
+					<h3>upload<wbr>From<wbr>Stream</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">upload<wbr>From<wbr>Stream<span class="tsd-signature-symbol">(</span>stream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/node.ts#L37">node.ts:37</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>stream: <span class="tsd-signature-type">Readable</span></h5>
+								</li>
+								<li>
+									<h5>filename: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Object literals</h2>
-				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 					<a name="methods" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> Methods</h3>
 					<div class="tsd-signature tsd-kind-icon">Methods<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#methods">Methods</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/4edeb2a/src/Api.ts#L60">Api.ts:60</a></li>
 						</ul>
@@ -1284,13 +1353,13 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_api_.html">"<wbr>Api"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_main_.html">"main"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_node_.html">"node"</a>
 					</li>
 				</ul>
@@ -1300,126 +1369,99 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_api_.api.html" class="tsd-kind-icon">Api</a>
+						<a href="_node_.nodeapi.html" class="tsd-kind-icon">Node<wbr>Api</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_api_.api.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_node_.nodeapi.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_api_.api.html#_httpoptions" class="tsd-kind-icon">_http<wbr>Options</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#_httpoptions" class="tsd-kind-icon">_http<wbr>Options</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_api_.api.html#_urigenerationmode" class="tsd-kind-icon">_uri<wbr>Generation<wbr>Mode</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#_urigenerationmode" class="tsd-kind-icon">_uri<wbr>Generation<wbr>Mode</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_api_.api.html#serveracceptsjson" class="tsd-kind-icon">server<wbr>AcceptsJSON</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#serveracceptsjson" class="tsd-kind-icon">server<wbr>AcceptsJSON</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#batch" class="tsd-kind-icon">batch</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#clearapikey" class="tsd-kind-icon">clear<wbr>Api<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#copy" class="tsd-kind-icon">copy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#count" class="tsd-kind-icon">count</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#create" class="tsd-kind-icon">create</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#edit" class="tsd-kind-icon">edit</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#editmultiple" class="tsd-kind-icon">edit<wbr>Multiple</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#execute" class="tsd-kind-icon">execute</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#get" class="tsd-kind-icon">get</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#getapikey" class="tsd-kind-icon">get<wbr>Api<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_node_.nodeapi.html#getheaders" class="tsd-kind-icon">get<wbr>Headers</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#login" class="tsd-kind-icon">login</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#logout" class="tsd-kind-icon">logout</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#metadata" class="tsd-kind-icon">metadata</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#namedquery" class="tsd-kind-icon">named<wbr>Query</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#remove" class="tsd-kind-icon">remove</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#report" class="tsd-kind-icon">report</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#request" class="tsd-kind-icon">request</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#search" class="tsd-kind-icon">search</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#setapikey" class="tsd-kind-icon">set<wbr>Api<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#setsessionid" class="tsd-kind-icon">set<wbr>SessionID</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#setxsrftoken" class="tsd-kind-icon">setXSRFToken</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_node_.nodeapi.html#uploadfilecontent" class="tsd-kind-icon">upload<wbr>File<wbr>Content</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#batch" class="tsd-kind-icon">batch</a>
+								<a href="_node_.nodeapi.html#uploadfromstream" class="tsd-kind-icon">upload<wbr>From<wbr>Stream</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#clearapikey" class="tsd-kind-icon">clear<wbr>Api<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#copy" class="tsd-kind-icon">copy</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#count" class="tsd-kind-icon">count</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#create" class="tsd-kind-icon">create</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#edit" class="tsd-kind-icon">edit</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#editmultiple" class="tsd-kind-icon">edit<wbr>Multiple</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#execute" class="tsd-kind-icon">execute</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#get" class="tsd-kind-icon">get</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#getapikey" class="tsd-kind-icon">get<wbr>Api<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_api_.api.html#getheaders" class="tsd-kind-icon">get<wbr>Headers</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#login" class="tsd-kind-icon">login</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#logout" class="tsd-kind-icon">logout</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#metadata" class="tsd-kind-icon">metadata</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#namedquery" class="tsd-kind-icon">named<wbr>Query</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#remove" class="tsd-kind-icon">remove</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#report" class="tsd-kind-icon">report</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#request" class="tsd-kind-icon">request</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#search" class="tsd-kind-icon">search</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#setapikey" class="tsd-kind-icon">set<wbr>Api<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#setsessionid" class="tsd-kind-icon">set<wbr>SessionID</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#setxsrftoken" class="tsd-kind-icon">setXSRFToken</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_api_.api.html#uploadfilecontent" class="tsd-kind-icon">upload<wbr>File<wbr>Content</a>
-							</li>
-							<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
-								<a href="_api_.api.html#methods" class="tsd-kind-icon">Methods</a>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="_node_.nodeapi.html#methods" class="tsd-kind-icon">Methods</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_api_.iapiconfig.html" class="tsd-kind-icon">IApi<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_api_.ibatchapi.html" class="tsd-kind-icon">IBatch<wbr>Api</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_api_.ihttpoptions.html" class="tsd-kind-icon">IHttp<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_api_.html#tfailurehandler" class="tsd-kind-icon">TFailure<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_api_.html#tfields" class="tsd-kind-icon">TFields</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_api_.html#tsuccesshandler" class="tsd-kind-icon">TSuccess<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_api_.html#batchapifactory" class="tsd-kind-icon">batch<wbr>Api<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_api_.html#makefetchcall" class="tsd-kind-icon">make<wbr>Fetch<wbr>Call</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_api_.html#querystringify" class="tsd-kind-icon">query<wbr>Stringify</a>
-					</li>
-					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
-						<a href="../modules/_api_.html#responsehandler" class="tsd-kind-icon">Response<wbr>Handler</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
