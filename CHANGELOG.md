@@ -1,658 +1,774 @@
-4.8.2 - December 26, 2018
-
-* fix: make batch requests with HTTP POST method (Sassoun Derderian)
-* chore(deps): update dependency webpack to v4.28.2 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v5.3.2 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.28.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.28.0 (Renovate Bot)
-* chore(deps): update dependency tslint to v5.12.0 (Renovate Bot)
-* chore(deps): update dependency karma to v3.1.4 (Renovate Bot)
-
-4.8.1 - December 13, 2018
-
-* fix: windows is undefined error if workfront-api is required in NodeJS (Sassoun Derderian)
-* test: error on AccountRep creation in e2e tests (Sassoun Derderian)
-* chore(deps): update dependency typescript to v3.2.2 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.27.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.27.0 (Renovate Bot)
-* chore(deps): update dependency karma-cli to v2 (Renovate Bot)
-* chore(deps): update dependency karma to v3.1.3 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.15.3 (Renovate Bot)
-* chore(deps): update dependency typescript to v3.2.1 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v5.3.1 (Renovate Bot)
-* chore(deps): update dependency tslint-config-prettier to v1.17.0 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.26.1 (Renovate Bot)
-* chore(deps): update dependency lint-staged to v8.1.0 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.26.0 (Renovate Bot)
-* chore(deps): update dependency lint-staged to v8.0.5 (Renovate Bot)
-* chore(deps): update dependency tslint-config-prettier to v1.16.0 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.15.2 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.15.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.25.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.25.0 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.24.0 (Renovate Bot)
-* chore(deps): update dependency typescript to v3.1.6 (Renovate Bot)
-* chore(deps): update dependency typescript to v3.1.5 (Renovate Bot)
-* chore(deps): update dependency lint-staged to v8.0.4 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v5.3.0 (Renovate Bot)
-* chore(deps): update dependency lint-staged to v8.0.3 (Renovate Bot)
-* chore(deps): update dependency typescript to v3.1.4 (Renovate Bot)
-* chore(deps): update dependency lint-staged to v8.0.2 (Renovate Bot)
-* chore(deps): update dependency lint-staged to v8 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.23.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.23.0 (Renovate Bot)
-* chore(deps): update dependency karma to v3.1.1 (Renovate Bot)
-* chore(deps): update dependency karma to v3.1.0 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.22.0 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.21.0 (Renovate Bot)
-* fix(deps): update dependency form-data to v2.3.3 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v5.2.2 (Renovate Bot)
-* chore(deps): update dependency typescript to v3.1.3 (Renovate Bot)
-* chore(deps): update dependency typedoc to v0.13.0 (Renovate Bot)
-* chore(deps): update dependency semver to v5.6.0 (Renovate Bot)
-* chore(deps): update dependency typescript to v3.1.2 (Renovate Bot)
-* chore(deps): update dependency typescript to v3.1.1 (Renovate Bot)
-* chore(deps): update dependency webpack-cli to v3.1.2 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v5.2.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.20.2 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.20.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.20.0 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v5.2.0 (Renovate Bot)
-* chore(deps): update dependency webpack-cli to v3.1.1 (Renovate Bot)
-* chore: remove dependency from whatwg-fetch because it is brought by isomorphic-fetch (Hovhannes Babayan)
-* chore: added dependency from `whatwg-fetch` to fix broken build (Hovhannes Babayan)
-* fix(deps): update dependency es6-promise to v4.2.5 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v5.1.0 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v5 (Renovate Bot)
-* chore(deps): update dependency karma-webpack to v3.0.4 (Renovate Bot)
-* chore(deps): update dependency codecov to v3.1.0 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.17.2 (Renovate Bot)
-* chore(deps): update dependency karma-webpack to v3.0.2 (Renovate Bot)
-* chore(deps): update dependency typescript to v3.0.3 (Renovate Bot)
-* chore(deps): update dependency execa to v1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.17.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.17.0 (Renovate Bot)
-* chore(deps): update dependency tslint-config-prettier to v1.15.0 (Renovate Bot)
-* chore(deps): update dependency execa to v0.11.0 (Renovate Bot)
-* chore(deps): update dependency typedoc to v0.12.0 (Renovate Bot)
-* chore(deps): update dependency semver to v5.5.1 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v4.5.0 (Renovate Bot)
-* chore(deps): update dependency lint-staged to v7.2.2 (Renovate Bot)
-* chore(deps): update dependency karma to v3 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.14.2 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.14.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.16.5 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.16.4 (Renovate Bot)
-* chore(deps): update dependency should to v13.2.3 (Renovate Bot)
-* chore(deps): update dependency typescript to v3 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.14.0 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.16.3 (Renovate Bot)
-* chore(deps): update dependency should to v13.2.2 (Renovate Bot)
-* chore(deps): update dependency karma to v2.0.5 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.16.2 (Renovate Bot)
-* chore(deps): update dependency fetch-mock to v6.5.2 (Renovate Bot)
-* chore(deps): update dependency tslint-config-prettier to v1.14.0 (Renovate Bot)
-* chore(deps): update dependency webpack-cli to v3.1.0 (Renovate Bot)
-* chore(deps): update dependency fetch-mock to v6.5.1 (Renovate Bot)
-* chore(deps): update dependency tslint to v5.11.0 (Renovate Bot)
-* chore(deps): update dependency @types/mocha to v5.2.5 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.16.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.16.0 (Renovate Bot)
-* chore(deps): update dependency codecov to v3.0.4 (Renovate Bot)
-* chore(deps): update dependency codecov to v3.0.3 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.15.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.15.0 (Renovate Bot)
-* chore(deps): update dependency fetch-mock to v6.5.0 (Renovate Bot)
-* chore(deps): update dependency @types/mocha to v5.2.4 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.14.0 (Renovate Bot)
-* chore(deps): update dependency uuid to v3.3.2 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.13.7 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.13.0 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v4.4.2 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.12.2 (Renovate Bot)
-* chore(deps): update dependency uuid to v3.3.0 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.13.6 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.12.1 (Renovate Bot)
-* fix(deps): update dependency tslib to v1.9.3 (Renovate Bot)
-* chore(deps): update dependency karma to v2.0.4 (Renovate Bot)
-* chore(deps): update dependency @types/mocha to v5.2.3 (Renovate Bot)
-* chore(deps): update dependency webpack-cli to v3.0.8 (Renovate Bot)
-* chore(deps): update dependency karma to v2.0.3 (Renovate Bot)
-* Delete renovate.json (Hovhannes Babayan)
-* Create .renovaterc (Hovhannes Babayan)
-* chore(deps): update dependency webpack-cli to v3.0.7 (Renovate Bot)
-* chore(deps): update dependency typescript to v2.9.2 (Renovate Bot)
-* chore(deps): update dependency webpack-cli to v3.0.6 (Renovate Bot)
-* chore(deps): update dependency webpack-cli to v3.0.4 (Renovate Bot)
-* chore(deps): update dependency @types/mocha to v5.2.2 (Renovate Bot)
-* chore(deps): update dependency lint-staged to v7.2.0 (Renovate Bot)
-* chore(deps): update dependency fetch-mock to v6.4.4 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v4.4.1 (Renovate Bot)
-* chore(deps): update dependency prettier to v1.13.5 (Renovate Bot)
-* chore(deps): update dependency ts-loader to v4.4.0 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.12.0 (Renovate Bot)
-* chore(deps): update dependency webpack-cli to v3.0.3 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.11.1 (Renovate Bot)
-* chore(deps): update dependency webpack to v4.11.0 (Renovate Bot)
-* Update renovate.json (Hovhannes Babayan)
-* chore(deps): update dependency webpack-cli to v3.0.2 (Renovate Bot)
-* chore(deps): pin dependencies (Renovate Bot)
-* Add renovate.json (Renovate Bot)
-* chore: remove IE9 from soucelabs browser list (Hovhannes Babayan)
-* chore: attempt to fix soucelabs errors (Hovhannes Babayan)
-* refactor: use ES6 construct instead of object-assign (Hovhannes Babayan)
-* chore: upgrade fetch-mock (Hovhannes Babayan)
-* chore: upgrade should and codecov (Hovhannes Babayan)
-* chore: remove Node 4 from the build matrix, add Node 10 (Hovhannes Babayan)
-* chore: prettier and linter fixes (Hovhannes Babayan)
-* chore: upgrade dependencies (Hovhannes Babayan)
-* chore(package): update @types/mocha to version 5.2.1 (greenkeeper[bot])
-* fix(package): update @types/node to version 10.3.0 (greenkeeper[bot])
-* chore(package): update tslib to version 1.9.2 (greenkeeper[bot])
-* chore(package): update karma-coverage to version 1.1.2 (greenkeeper[bot])
-* chore(package): update codecov to version 3.0.1 (greenkeeper[bot])
-
-4.8.0 - June 1, 2018
-
--   chore: add tests (Hovhannes Babayan)
--   refactor: remove unneeded checks (Hovhannes Babayan)
--   chore: update comment (Hovhannes Babayan)
--   feat: make `isAtomic` parameter for `batch()` method optional (Hovhannes Babayan)
--   chore: remove comment (Hovhannes Babayan)
--   feat: add `batch()` method (Hovhannes Babayan)
-
-    4.7.0 - May 31, 2018
-
--   chore: fix test (Hovhannes Babayan)
--   feat: add `fields` parameter to metadata() method (Hovhannes Babayan)
--   Update to node 10 in .travis.yml (greenkeeper[bot])
--   chore(package): update istanbul-instrumenter-loader to version 3.0.1 (greenkeeper[bot])
--   chore(package): update execa to version 0.10.0 (greenkeeper[bot])
--   chore(package): update typedoc to version 0.11.0 (greenkeeper[bot])
-
-    4.6.0 - February 20, 2018
-
--   chore: upgrade packages typescript@2.7.2 ts-loader@3.5.0 (Sassoun Derderian)
--   feat: add ability to send 'X-XSRF-TOKEN' header in requests (Vardan Hakobyan)
--   fix(package): update form-data to version 2.3.2 (greenkeeper[bot])
--   chore(package): update webpack to version 3.11.0 (greenkeeper[bot])
--   chore(package): update dateformat to version 3.0.3 (greenkeeper[bot])
--   chore: downgrade mocha (Sassoun Derderian)
--   chore: update dependencies (Sassoun Derderian)
--   chore(package): update execa to version 0.9.0 (greenkeeper[bot])
-
-    4.5.0 - December 28, 2017
-
--   chore: downgrade typedoc to generate docs without warnings (Sassoun Derderian)
--   chore(package): update @types/mocha to version 2.2.45 (greenkeeper[bot])
--   fix(package): update es6-promise to version 4.2.2 (greenkeeper[bot])
--   feat: added `editMultiple` method (Hovhannes Babayan)
--   chore(package): update karma-webpack to version 2.0.9 (greenkeeper[bot])
--   chore(package): update karma-webpack to version 2.0.8 (greenkeeper[bot])
--   chore(package): update tslib to version 1.8.1 (greenkeeper[bot])
--   chore(package): update webpack to version 3.10.0 (greenkeeper[bot])
--   chore: update @types/node dependency range (Sassoun Derderian)
--   chore(package): update webpack to version 3.9.1 (greenkeeper[bot])
--   chore(package): update ts-loader to version 3.2.0 (greenkeeper[bot])
--   chore(package): update typescript to version 2.6.2 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.53 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.52 (greenkeeper[bot])
--   chore(package): update karma-webpack to version 2.0.6 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.51 (greenkeeper[bot])
--   chore(package): update @types/form-data to version 2.2.1 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.50 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.49 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.48 (greenkeeper[bot])
--   chore(package): update phantomjs-prebuilt to version 2.1.16 (greenkeeper[bot])
--   chore(package): update typescript to version 2.6.1 (greenkeeper[bot])
--   chore(package): update ts-loader to version 3.1.1 (greenkeeper[bot])
--   chore(package): update @types/mocha to version 2.2.44 (greenkeeper[bot])
--   chore(package): update ts-loader to version 3.1.0 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.47 (greenkeeper[bot])
--   chore(package): update codecov to version 3.0.0 (greenkeeper[bot])
--   chore(package): update ts-loader to version 3.0.5 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.46 (greenkeeper[bot])
--   chore(package): update ts-loader to version 3.0.3 (greenkeeper[bot])
--   chore(package): update webpack to version 3.8.1 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.38 (greenkeeper[bot])
--   chore(package): update ts-loader to version 3.0.2 (greenkeeper[bot])
--   chore(package): update codecov to version 2.3.1 (greenkeeper[bot])
--   chore(package): update tslib to version 1.8.0 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.34 (greenkeeper[bot])
--   chore(package): update fetch-mock to version 5.13.1 (greenkeeper[bot])
--   chore(package): update karma-webpack to version 2.0.5 (greenkeeper[bot])
--   chore(package): update fetch-mock to version 5.13.0 (greenkeeper[bot])
--   chore(package): update should to version 13.1.1 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.33 (greenkeeper[bot])
--   chore(package): update typedoc to version 0.9.0 (greenkeeper[bot])
--   chore(package): update mocha to version 4.0.1 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.32 (greenkeeper[bot])
--   chore(package): update mocha to version 4.0.0 (greenkeeper[bot])
--   chore(package): update typescript to version 2.5.3 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.31 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.30 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.29 (greenkeeper[bot])
--   chore(package): update dateformat to version 3.0.1 (greenkeeper[bot])
--   chore: fix breaking change of should (Sassoun Derderian)
--   chore: @types/should no longer needed (Sassoun Derderian)
--   chore(package): update should to version 13.1.0 (greenkeeper[bot])
--   chore(package): update dateformat to version 3.0.0 (greenkeeper[bot])
--   chore(package): update webpack to version 3.6.0 (greenkeeper[bot])
-
-    4.4.0 - September 19, 2017
-
--   feat: ability to send Search query params in HTTP POST feat: encode array values in params as id=foo&id=bar instead of id=foo,bar (Sassoun Derderian)
--   chore(package): update mocha to version 3.5.3 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.3.7 (greenkeeper[bot])
--   chore(package): update mocha to version 3.5.1 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.28 (greenkeeper[bot])
--   chore(package): update @types/mocha to version 2.2.43 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.3.5 (greenkeeper[bot])
--   chore(package): update webpack to version 3.5.6 (greenkeeper[bot])
--   chore(package): update typescript to version 2.5.2 (greenkeeper[bot])
-
-    4.3.0 - August 31, 2017
-
--   typings: fix headers key-value type (Sassoun Derderian)
--   feat: add support of passing custom headers (Sassoun Derderian)
--   augment saucelabs idle timeout (Sassoun Derderian)
--   chore(package): update karma to version 1.7.1 (greenkeeper[bot])
--   augment timeout durations (Sassoun Derderian)
--   if connect fails retry one more time (Sassoun Derderian)
--   remove connectOptions (Sassoun Derderian)
--   fix(package): update @types/node to version 8.0.26 (greenkeeper[bot])
--   chore(package): update should to version 12.0.0 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.3.4 (greenkeeper[bot])
--   chore(package): update tslint to version 5.7.0 (greenkeeper[bot])
--   chore(package): update karma-sauce-launcher to version 1.2.0 (greenkeeper[bot])
-
-    4.2.0 - August 25, 2017
-
--   feat: export ResponseHandler helper to use from outside of workfront-api (Sassoun Derderian)
--   fix(package): update form-data to version 2.3.1 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.25 (greenkeeper[bot])
-
-    4.1.1 - August 24, 2017
-
--   fix: typings dependency for Node (Sassoun Derderian)
-
-    4.1.0 - August 22, 2017
-
--   feat: ability to pass options with the copy api method (Sassoun Derderian)
--   chore(package): update @types/should to version 11.2.0 (greenkeeper[bot])
--   chore(package): update @types/mocha to version 2.2.42 (greenkeeper[bot])
--   chore(package): update @types/node to version 8.0.24 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.3.3 (greenkeeper[bot])
--   chore(package): update @types/node to version 8.0.23 (greenkeeper[bot])
--   chore(package): update webpack to version 3.5.5 (greenkeeper[bot])
--   chore(package): update @types/node to version 8.0.22 (greenkeeper[bot])
--   chore(package): update phantomjs-prebuilt to version 2.1.15 (greenkeeper[bot])
--   chore(package): update webpack to version 3.5.4 (greenkeeper[bot])
--   chore(package): update fetch-mock to version 5.12.2 (greenkeeper[bot])
--   chore(package): update webpack to version 3.5.2 (greenkeeper[bot])
--   chore(package): update @types/node to version 8.0.20 (greenkeeper[bot])
--   chore(package): update webpack to version 3.5.1 (greenkeeper[bot])
--   chore(package): update tslint to version 5.6.0 (greenkeeper[bot])
--   chore(package): update execa to version 0.8.0 (greenkeeper[bot])
--   chore(package): update codecov to version 2.3.0 (greenkeeper[bot])
--   docs: add .nojekyll file to render Github pages as it is (Sassoun Derderian)
--   chore(package): update mocha to version 3.5.0 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.3.2 (greenkeeper[bot])
--   chore(package): update istanbul-instrumenter-loader to version 3.0.0 (greenkeeper[bot])
--   chore(package): update semver to version 5.4.1 (greenkeeper[bot])
-
-    4.0.0 - July 31, 2017
-
--   fix: preserving backward compatibility breaking: version is set to internal if omitted (Sassoun Derderian)
--   fix: cloning params forgets about its instance, failing upload file test (Sassoun Derderian)
-
-    4.0.0-0 - July 29, 2017
-
--   chore: add E2E tests `npm run e2e` connects to http://localhost:8080, creates a customer and runs multiple API scenarios (Sassoun Derderian)
--   fix: request gets JSON as body When an object is created or edited the payload can be either an object or an object with `updates` property (Sassoun Derderian)
--   chore(package): update typedoc to version 0.8.0 (greenkeeper[bot])
--   chore(package): update webpack to version 3.4.1 (greenkeeper[bot])
--   fix: make send JSON body optional (Sassoun Derderian)
--   fix: update examples api version to >v5.0 (Sassoun Derderian)
--   chore(package): update @types/form-data to version 2.2.0 (greenkeeper[bot])
--   fix #103: All response from server should be in JSON format (Sassoun Derderian)
--   chore: disable SauceLabs test if the PR is from fork TravisCI doesn't set encrypted environment variables for Pull Requests that are not from the same repository https://docs.travis-ci.com/user/pull-requests#Pull-Requests-and-Security-Restrictions (Sassoun Derderian)
--   chore: remove package-lock.json from .gitignore (Sassoun Derderian)
--   chore(package): update typescript to version 2.4.2 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.3.1 (greenkeeper[bot])
--   generate new encrypted SAUCE_ACCESS_KEY and SAUCE_USERNAME (Sassoun Derderian)
--   encrypt username and access token (Sassoun Derderian)
--   fix: set env in .travis.yml (Sassoun Derderian)
--   fix: sauce access_key and username set as env variables (Sassoun Derderian)
--   fix: set startConnect to false in karma-sauce-launcher (Sassoun Derderian)
--   fix: configure karma-sauce-launcher the way angular did it (Sassoun Derderian)
--   fix: set TRAVIS_JOB_NUMBER as tunnelIdentifier in karma-sauce-launcher (Sassoun Derderian)
--   fix(package): update @types/node to version 8.0.14 (greenkeeper[bot])
--   Only using json encoding on put and post (Joe Wiggins)
--   Fixing tests around changing to JSON bodies (Joe Wiggins)
--   Removing package lock from git. Removing support for form encoded requests and moving to straight json. (Joe Wiggins)
--   chore(package): update webpack to version 3.3.0 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.3.0 (greenkeeper[bot])
--   Forgot to update the version for bug fix (Joe Wiggins)
--   Fixing alwaysUseGet feature and adding a test for it. Moving apiKey into headers for all requests when apiKey is used and adding to edit test (Joe Wiggins)
--   chore(package): update karma-webpack to version 2.0.4 (greenkeeper[bot])
--   chore(package): update tslint to version 5.5.0 (greenkeeper[bot])
-
-    3.0.3 - July 11, 2017
-
--   chore: reverting version change (Sassoun Derderian)
--   Bug fixes for problems experienced using apiKey and edit calls (#99) (jwiggins78)
--   chore(package): update fetch-mock to version 5.12.1 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.2.2 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.6 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.2.1 (greenkeeper[bot])
--   fix(package): update es6-promise to version 4.1.1 (greenkeeper[bot])
--   chore(package): update typescript to version 2.4.1 (greenkeeper[bot])
--   chore(package): update fetch-mock to version 5.12.0 (greenkeeper[bot])
--   chore(package): update karma-chrome-launcher to version 2.2.0 (greenkeeper[bot])
--   fix(package): update @types/node to version 8.0.1 (greenkeeper[bot])
--   fix(package): update form-data to version 2.2.0 (greenkeeper[bot])
--   chore(package): update execa to version 0.7.0 (greenkeeper[bot])
-
-    3.0.2 - June 13, 2017
-
--   fix: send credentials (cookie, session, etc.) with the request for same origin host (Sassoun Derderian)
--   chore: object-assign npm package is used as polyfill (Sassoun Derderian)
-
-    3.0.1 - June 12, 2017
-
--   chore: using npm@5 new feature (Sassoun Derderian)
--   fix: Object.assign polyfill for IE browsers (Sassoun Derderian)
--   fix(package): update @types/node to version 7.0.28 (greenkeeper[bot])
--   fix(package): update @types/node to version 7.0.24 (greenkeeper[bot])
-
-    3.0.0 - May 31, 2017
-
--   chore: tests for getApiKey method (Sassoun Derderian)
--   fix: getApiKey returns blank string The `getApiKey` method in some cases returns `''`, so we execute `generateApiKey` action to generate one and be sure we receive a working api key. (Sassoun Derderian)
--   chore: set workfront-api-constants package as peerDependency for ES build (Sassoun Derderian)
--   fix #73: getApiKey method not working (Sassoun Derderian)
--   chore(package): update typescript to version 2.3.4 (greenkeeper[bot])
--   chore(package): update webpack to version 2.6.1 (greenkeeper[bot])
--   chore(package): update mocha to version 3.4.2 (greenkeeper[bot])
--   chore(package): update tslint to version 5.3.2 (greenkeeper[bot])
--   chore(package): update typescript to version 2.3.3 (greenkeeper[bot])
--   chore(package): update webpack to version 2.6.0 (greenkeeper[bot])
--   fix(package): update @types/node to version 7.0.22 (greenkeeper[bot])
--   chore(package): update ts-loader to version 2.1.0 (greenkeeper[bot])
--   chore(package): update fetch-mock to version 5.11.0 (greenkeeper[bot])
--   fix(package): update @types/node to version 7.0.21 (greenkeeper[bot])
--   chore(package): update typedoc to version 0.7.1 (greenkeeper[bot])
--   chore(package): update fetch-mock to version 5.10.1 (greenkeeper[bot])
--   chore(package): update tslib to version 1.7.1 (greenkeeper[bot])
--   chore(package): update mocha to version 3.4.1 (greenkeeper[bot])
--   chore(package): update typedoc to version 0.7.0 (greenkeeper[bot])
--   chore(package): update codecov to version 2.2.0 (greenkeeper[bot])
--   chore(package): update webpack to version 2.5.1 (greenkeeper[bot])
--   chore(package): update karma to version 1.7.0 (greenkeeper[bot])
--   chore(package): update karma-chrome-launcher to version 2.1.1 (greenkeeper[bot])
--   fix(package): update @types/node to version 7.0.17 (greenkeeper[bot])
--   chore(package): update tslib to version 1.7.0 (greenkeeper[bot])
--   chore(package): update webpack to version 2.5.0 (greenkeeper[bot])
--   chore(package): update tslint to version 5.2.0 (greenkeeper[bot])
--   fix(package): update @types/node to version 7.0.16 (greenkeeper[bot])
--   chore(package): update karma-chrome-launcher to version 2.1.0 (greenkeeper[bot])
--   fix(package): update @types/node to version 7.0.15 (greenkeeper[bot])
--   chore(package): update http-server to version 0.10.0 (greenkeeper[bot])
--   chore(package): update typescript to version 2.3.2 (greenkeeper[bot])
--   chore(package): update @types/mocha to version 2.2.41 (greenkeeper[bot])
--   chore(package): update typescript to version 2.3.1 (greenkeeper[bot])
-
-    2.0.5 - April 27, 2017
-
--   fix: Api.execute method for namedAction should make request with POST instead of PUT (Sassoun Derderian)
--   chore(package): update typedoc to version 0.6.0 (greenkeeper[bot])
--   fix(package): update @types/node to version 7.0.14 (greenkeeper[bot])
--   chore(package): update mocha to version 3.3.0 (greenkeeper[bot])
--   chore(package): update tslint-loader to version 3.5.3 (greenkeeper[bot])
--   chore(package): update tslib to version 1.6.1 (greenkeeper[bot])
--   chore(package): update @types/should to version 8.3.0 (greenkeeper[bot])
--   chore(package): update webpack to version 2.4.0 (greenkeeper[bot])
--   chore(package): update fetch-mock to version 5.10.0 (greenkeeper[bot])
-
-    2.0.4 - April 12, 2017
-
--   chore: add @types/node as dependency (Sassoun Derderian)
-
-    2.0.3 - April 12, 2017
-
--   fix (regression): GET and PUT requests should send params in URI query string (Sassoun Derderian)
--   fix: CHANGELOG.md generation (Sassoun Derderian)
-
-    2.0.2 - April 12, 2017
-
--   2.0.2 (Sassoun Derderian)
--   chore: update package keywords (Sassoun Derderian)
--   fix: adding dist/ folder in npm package (Sassoun Derderian)
--   chore(package): update tslint to version 5.1.0 (greenkeeper[bot])
--   fix(package): update form-data to version 2.1.4 (greenkeeper[bot])
--   chore(package): update tslint-loader to version 3.5.2 (greenkeeper[bot])
--   chore(package): update tslint-loader to version 3.5.1 (greenkeeper[bot])
--   chore(package): update karma to version 1.6.0 (greenkeeper[bot])
--   chore: greenkeeper initial PR (Sassoun Derderian)
--   docs(readme): add Greenkeeper badge (greenkeeper[bot])
--   chore(package): update dependencies (greenkeeper[bot])
--   2.0.1 (Sassoun Derderian)
-
-v2.0.0 - April 4, 2017
-
--   2.0.0 (Sassoun Derderian)
--   chore: remove docs/ before re-generating it (Sassoun Derderian)
--   fix: typo in package.json (Sassoun Derderian)
--   feat: setApiKey, clearApiKey fix: setSessionID chore: codecov badge (Sassoun Derderian)
--   fix: corrected lcov file name (Hovhannes Babayan)
--   chore: config tweak (Hovhannes Babayan)
--   separate upload methods for browser and node env (Sassoun Derderian)
--   no need for gulp tasks, use `np` instead (Sassoun Derderian)
--   get rid of ApiFactory (Sassoun Derderian)
--   Saucelabs integration (#21) (Sassoun Derderian)
--   chore: thank browserstack (Sassoun Derderian)
--   chore: matrix (Sassoun Derderian)
--   chore: global env (Sassoun Derderian)
--   chore: set CI variable (Sassoun Derderian)
--   chore: travis.yaml set CI env variable (Sassoun Derderian)
--   chore: set BrowserStack username and accesskey (Sassoun Derderian)
--   chore: set BrowserStack username and accesskey (Sassoun Derderian)
--   chore: setup BrowserStack (Sassoun Derderian)
--   chore: set sourceMap=true in ts-loader compilerOptions (Sassoun Derderian)
--   chore: set sourceMap=true in ts-loader compilerOptions (Sassoun Derderian)
--   chore: include karma coverageReporter lcov type (Sassoun Derderian)
--   chore: npm-run-all shorthands (Sassoun Derderian)
--   chore: run tests on PhantomJS (Sassoun Derderian)
--   fix: handle fetch response chore: add login tests (Sassoun Derderian)
--   remove dist/ (Sassoun Derderian)
--   try another config for karma-sauce-launcher (Sassoun Derderian)
--   fix: TRAVIS_JOB_NUMBER as tunnelIdentifier (Sassoun Derderian)
--   fix: wrong version of should-sinon (Sassoun Derderian)
--   fix: should-sinon not installed (Sassoun Derderian)
--   fix: build with webpack (Sassoun Derderian)
--   refactor: Replace Browserify to Webpack, code in Typescript (Sassoun Derderian)
--   refactor: Replace Browserify to Webpack, code in Typescript (Sassoun Derderian)
--   feat: set sessionID in headers via setSessionID method (Sassoun Derderian)
-
-v1.4.1 - March 7, 2017
-
--   1.4.1 (Sassoun Derderian)
--   Build dist/ files (Sassoun Derderian)
--   fix (closes #18): Added setAPIKey method (Zack Boman)
-
-v1.3.4 - June 13, 2016
-
--   1.3.4 (Hovhannes Babayan)
-
-v1.3.3 - June 13, 2016
-
--   1.3.3 (Hovhannes Babayan)
--   chore: workfront-api-constants should be a dep instead of devDep, deps upgrade (Hovhannes Babayan)
-
-v1.3.0 - June 3, 2016
-
--   1.3.0 (Hovhannes Babayan)
--   chore: updated browser bundle (Hovhannes Babayan)
--   fix: switched to use workfront-api-constants (Hovhannes Babayan)
-
-v1.2.3 - March 29, 2016
-
--   1.2.3 (Hovhannes Babayan)
--   chore: updated browser bundle (Hovhannes Babayan)
--   fix: removed console.log (Hovhannes Babayan)
-
-v1.2.2 - March 29, 2016
-
--   1.2.2 (Hovhannes Babayan)
--   chore: rebuild browser bundle (Hovhannes Babayan)
--   fix: shorter promise chains and better bind syntax (Hovhannes Babayan)
--   chore: Added Node 4.2 to travis config (Hovhannes Babayan)
-
-v1.2.1 - October 20, 2015
-
--   1.2.1 (Hovhannes Babayan)
--   fix: improved docs (Hovhannes Babayan)
-
-v1.2.0 - October 20, 2015
-
--   1.2.0 (Hovhannes Babayan)
--   feat: adding upload support (Matt Winchester)
--   fix: issue with login example (Hovhannes Babayan)
--   chore: use new Travis CI infrastructure (Hovhannes Babayan)
--   fix: broken link (Hovhannes Babayan)
--   Update README.md (kishmiryan-karlen)
-
-v1.1.1 - July 11, 2015
-
--   1.1.1 (Hovhannes Babayan)
--   Fixes #8 (Hovhannes Babayan)
-
-v1.1.0 - June 19, 2015
-
--   1.1.0 (Hovhannes Babayan)
--   ran gulp build (ryan miller)
--   change querey to query and added back in Optional to the comment (ryan miller)
--   {String} to {Boolean}, Optional to Defaults to false, query to querey (ryan miller)
--   forgot a . (ryan miller)
--   Added a comment and example for alwaysUseGet (ryan miller)
--   Made the always use get test have a param that would normally show up in the body (ryan miller)
--   adding support to make every call a get so this project will work with the nodebalancer (ryan miller)
--   Update bower.json (citizensas)
--   rebuilt to include latest changes (Hovhannes Babayan)
--   Feature: add support for API keys (Hovhannes Babayan)
--   single field can now be passed as string (i.e. '_' is now the same as ['_']) (Hovhannes Babayan)
--   added support for ids beginning with internal prefix, such as $$USER (Hovhannes Babayan)
-
-v1.0.3 - February 23, 2015
-
--   1.0.3 (Hovhannes Babayan)
--   rebuilt before release (Hovhannes Babayan)
--   Feature: Add support for API actions with 'null' IDs (Hovhannes Babayan)
--   Doc improvement: describe available usage scenarios for browsers (Hovhannes Babayan)
--   Replaced obsolete util.print with console.log (Hovhannes Babayan)
-
-v1.0.2 - February 16, 2015
-
--   1.0.2 (Hovhannes Babayan)
--   Added some node-related files into ignore list of bower.json (Hovhannes Babayan)
-
-v1.0.1 - February 16, 2015
-
--   1.0.1 (Hovhannes Babayan)
--   Added node 0.12 to travis runs (Hovhannes Babayan)
--   fixed typo in license name (Hovhannes Babayan)
-
-v1.0.0 - February 16, 2015
-
--   1.0.0 (Hovhannes Babayan)
--   using latest gulp now (Hovhannes Babayan)
--   added Contributing guidelines (Hovhannes Babayan)
--   removed obsolete .npmignore (Hovhannes Babayan)
--   Added bower.json and replaced gulp-webserver with http-server (Hovhannes Babayan)
--   documentation improvements (Hovhannes Babayan)
--   removed all temporary tags. preparing for the first release. (Hovhannes Babayan)
--   AtTask is now Workfront! (Hovhannes Babayan)
--   removed unused definition (Hovhannes Babayan)
--   licensing (Hovhannes Babayan)
--   fixed bug in execHandlingErrors when options were not being passed properly to shell.exec (Hovhannes Babayan)
--   uncommented "npm publish" in release task (Hovhannes Babayan)
--   shortened syntax (Hovhannes Babayan)
--   0.4.0 (Hovhannes Babayan)
--   added release task. minor fixes (Hovhannes Babayan)
--   0.3.0 (Hovhannes Babayan)
--   added release task. minor fixes (Hovhannes Babayan)
--   0.2.0 (Hovhannes Babayan)
--   added release task. minor fixes (Hovhannes Babayan)
--   0.1.0 (Hovhannes Babayan)
--   added release task. minor fixes (Hovhannes Babayan)
--   added release task. minor fixes (Hovhannes Babayan)
--   added release task. minor fixes (Hovhannes Babayan)
--   added release task (Hovhannes Babayan)
--   added release task (Hovhannes Babayan)
--   Moved gh-pages generation to Gulp (Hovhannes Babayan)
--   added example of sharing a project (Hovhannes Babayan)
--   added 'api-unsupported' version support (Hovhannes Babayan)
--   SSL support. Add secureProtocol option in constructor config. (Sassoun Derderian)
--   Add protocol from parsed url (Sassoun Derderian)
--   No need for Buffer.byteLength anymore (Sassoun Derderian)
--   added report() method (Hovhannes Babayan)
--   using Api.Methods.XXX constants for http methods (Hovhannes Babayan)
--   added generation on non-minified version in dist/ folder (Hovhannes Babayan)
--   implemented copy() and edit() methods. Renamed post() to read create(). Added more examples. (Hovhannes Babayan)
--   implemented execute() and namedQuery() methods (Hovhannes Babayan)
--   implemented remove() method (Hovhannes Babayan)
--   added test for logout (Hovhannes Babayan)
--   Update README.md (Hovhannes Babayan)
--   added tests for login and logout (Hovhannes Babayan)
--   added tests for login and logout (Hovhannes Babayan)
--   test files now end with .spec.js (Hovhannes Babayan)
--   changing file name to lowercase (Hovhannes Babayan)
--   request() method now sends params via request body for non-GET requests (Hovhannes Babayan)
--   added plugin tests (Hovhannes Babayan)
--   changed API version to 4.0 (Hovhannes Babayan)
--   more tests (Hovhannes Babayan)
--   added https support and more tests (Hovhannes Babayan)
--   fixing code-climate issues (Hovhannes Babayan)
--   added code-climate badge (Hovhannes Babayan)
--   added comments, implemented metadata method (Hovhannes Babayan)
--   corrected header text (Hovhannes Babayan)
--   Added shell script to generate gh-pages (Hovhannes Babayan)
--   Update README.md (citizensas)
--   added documentation (Hovhannes Babayan)
--   added example to get users count (Hovhannes Babayan)
--   trying to get wicked to work (Hovhannes Babayan)
--   just making tests pass (Hovhannes Babayan)
--   Now printing description in each example (Hovhannes Babayan)
--   generated latest version (Hovhannes Babayan)
--   Added tests for Api constructor, moved non-exported methods into plugins/ folder (Hovhannes Babayan)
--   added comments, minification of dist/attask.js and ApiConstants.js (Hovhannes Babayan)
--   improved promise polyfill usage under node.js (Hovhannes Babayan)
--   added withCredentials: false (Hovhannes Babayan)
--   fixed login.html (Hovhannes Babayan)
--   Remove Promise requirement the lib and require Promise in examples (Sassoun Derderian)
--   Test for all available methods (Sassoun Derderian)
--   Added ApiUtil - a place for adding utility methods for work with API (Hovhannes Babayan)
--   Fix fields issue (Sassoun Derderian)
--   refactor (Hovhannes Babayan)
--   refactor (Hovhannes Babayan)
--   run test-ci tasks in sequence (Hovhannes Babayan)
--   added coverage badge (Hovhannes Babayan)
--   added coverage badge (Hovhannes Babayan)
--   added coverage and reporting to coveralls.io (Hovhannes Babayan)
--   added tests for getInstance() method (Hovhannes Babayan)
--   updated readme (Hovhannes Babayan)
--   added login test page (Hovhannes Babayan)
--   added license badge (Hovhannes Babayan)
--   added license badge (Hovhannes Babayan)
--   added gulp tasks (Hovhannes Babayan)
--   dropped travis runs for node 0.6 and 0.8 (Hovhannes Babayan)
--   removed dependency from lodash (Hovhannes Babayan)
--   instancees, singleton (Sassoun Derderian)
--   email notifications (Hovhannes Babayan)
--   email notifications (Hovhannes Babayan)
--   put api.js in src (Sassoun Derderian)
--   organizing things (Hovhannes Babayan)
--   added gitignore (Hovhannes Babayan)
--   initial api class (Sassoun Derderian)
--   Initial commit (Hovhannes Babayan)
+## <small>4.8.2 (2018-12-26)</small>
+
+* 4.8.2 ([62bb5ae](https://github.com/Workfront/workfront-api/commit/62bb5ae))
+* fix: make batch requests with HTTP POST method ([34a4e41](https://github.com/Workfront/workfront-api/commit/34a4e41))
+* chore(deps): update dependency karma to v3.1.4 ([33c7a56](https://github.com/Workfront/workfront-api/commit/33c7a56))
+* chore(deps): update dependency ts-loader to v5.3.2 ([6c5afc5](https://github.com/Workfront/workfront-api/commit/6c5afc5))
+* chore(deps): update dependency tslint to v5.12.0 ([0e27ec6](https://github.com/Workfront/workfront-api/commit/0e27ec6))
+* chore(deps): update dependency webpack to v4.28.0 ([703872a](https://github.com/Workfront/workfront-api/commit/703872a))
+* chore(deps): update dependency webpack to v4.28.1 ([bc606ce](https://github.com/Workfront/workfront-api/commit/bc606ce))
+* chore(deps): update dependency webpack to v4.28.2 ([db881bb](https://github.com/Workfront/workfront-api/commit/db881bb))
+
+
+
+## <small>4.8.1 (2018-12-13)</small>
+
+* 4.8.1 ([86250cb](https://github.com/Workfront/workfront-api/commit/86250cb))
+* Add renovate.json ([555bc2c](https://github.com/Workfront/workfront-api/commit/555bc2c))
+* Create .renovaterc ([6151bab](https://github.com/Workfront/workfront-api/commit/6151bab))
+* Delete renovate.json ([0c353e8](https://github.com/Workfront/workfront-api/commit/0c353e8))
+* Update renovate.json ([49f332f](https://github.com/Workfront/workfront-api/commit/49f332f))
+* fix: windows is undefined error if workfront-api is required in NodeJS ([32fb9d4](https://github.com/Workfront/workfront-api/commit/32fb9d4))
+* fix(deps): update dependency es6-promise to v4.2.5 ([a225528](https://github.com/Workfront/workfront-api/commit/a225528))
+* fix(deps): update dependency form-data to v2.3.3 ([1a671e0](https://github.com/Workfront/workfront-api/commit/1a671e0))
+* fix(deps): update dependency tslib to v1.9.3 ([61da371](https://github.com/Workfront/workfront-api/commit/61da371))
+* fix(package): update @types/node to version 10.3.0 ([ac878f7](https://github.com/Workfront/workfront-api/commit/ac878f7)), closes [#270](https://github.com/Workfront/workfront-api/issues/270)
+* test: error on AccountRep creation in e2e tests ([cc5cd6d](https://github.com/Workfront/workfront-api/commit/cc5cd6d))
+* chore: added dependency from `whatwg-fetch` to fix broken build ([ae8ed0f](https://github.com/Workfront/workfront-api/commit/ae8ed0f))
+* chore: attempt to fix soucelabs errors ([833ec5b](https://github.com/Workfront/workfront-api/commit/833ec5b))
+* chore: prettier and linter fixes ([6b6de7e](https://github.com/Workfront/workfront-api/commit/6b6de7e))
+* chore: remove dependency from whatwg-fetch because it is brought by isomorphic-fetch ([9707137](https://github.com/Workfront/workfront-api/commit/9707137))
+* chore: remove IE9 from soucelabs browser list ([44a2b7b](https://github.com/Workfront/workfront-api/commit/44a2b7b))
+* chore: remove Node 4 from the build matrix, add Node 10 ([edcff2a](https://github.com/Workfront/workfront-api/commit/edcff2a))
+* chore: upgrade dependencies ([5d2b8a4](https://github.com/Workfront/workfront-api/commit/5d2b8a4))
+* chore: upgrade fetch-mock ([1f9f800](https://github.com/Workfront/workfront-api/commit/1f9f800))
+* chore: upgrade should and codecov ([47ac8a8](https://github.com/Workfront/workfront-api/commit/47ac8a8))
+* chore(deps): pin dependencies ([54daa80](https://github.com/Workfront/workfront-api/commit/54daa80))
+* chore(deps): update dependency @types/mocha to v5.2.2 ([ba0d87f](https://github.com/Workfront/workfront-api/commit/ba0d87f))
+* chore(deps): update dependency @types/mocha to v5.2.3 ([d027f53](https://github.com/Workfront/workfront-api/commit/d027f53))
+* chore(deps): update dependency @types/mocha to v5.2.4 ([1390945](https://github.com/Workfront/workfront-api/commit/1390945))
+* chore(deps): update dependency @types/mocha to v5.2.5 ([09b1f91](https://github.com/Workfront/workfront-api/commit/09b1f91))
+* chore(deps): update dependency codecov to v3.0.3 ([4f10e22](https://github.com/Workfront/workfront-api/commit/4f10e22))
+* chore(deps): update dependency codecov to v3.0.4 ([4cf84fb](https://github.com/Workfront/workfront-api/commit/4cf84fb))
+* chore(deps): update dependency codecov to v3.1.0 ([2f04b00](https://github.com/Workfront/workfront-api/commit/2f04b00))
+* chore(deps): update dependency execa to v0.11.0 ([04375ef](https://github.com/Workfront/workfront-api/commit/04375ef))
+* chore(deps): update dependency execa to v1 ([7215c5d](https://github.com/Workfront/workfront-api/commit/7215c5d))
+* chore(deps): update dependency fetch-mock to v6.4.4 ([62c4038](https://github.com/Workfront/workfront-api/commit/62c4038))
+* chore(deps): update dependency fetch-mock to v6.5.0 ([31dee86](https://github.com/Workfront/workfront-api/commit/31dee86))
+* chore(deps): update dependency fetch-mock to v6.5.1 ([3bc8fd0](https://github.com/Workfront/workfront-api/commit/3bc8fd0))
+* chore(deps): update dependency fetch-mock to v6.5.2 ([cc682ed](https://github.com/Workfront/workfront-api/commit/cc682ed))
+* chore(deps): update dependency karma to v2.0.3 ([56a58c4](https://github.com/Workfront/workfront-api/commit/56a58c4))
+* chore(deps): update dependency karma to v2.0.4 ([c420b33](https://github.com/Workfront/workfront-api/commit/c420b33))
+* chore(deps): update dependency karma to v2.0.5 ([c5fe850](https://github.com/Workfront/workfront-api/commit/c5fe850))
+* chore(deps): update dependency karma to v3 ([4ba1b79](https://github.com/Workfront/workfront-api/commit/4ba1b79))
+* chore(deps): update dependency karma to v3.1.0 ([06fd298](https://github.com/Workfront/workfront-api/commit/06fd298))
+* chore(deps): update dependency karma to v3.1.1 ([bf8de92](https://github.com/Workfront/workfront-api/commit/bf8de92))
+* chore(deps): update dependency karma to v3.1.3 ([736cfbe](https://github.com/Workfront/workfront-api/commit/736cfbe))
+* chore(deps): update dependency karma-cli to v2 ([f1d96f3](https://github.com/Workfront/workfront-api/commit/f1d96f3))
+* chore(deps): update dependency karma-webpack to v3.0.2 ([a62e4f6](https://github.com/Workfront/workfront-api/commit/a62e4f6))
+* chore(deps): update dependency karma-webpack to v3.0.4 ([169864d](https://github.com/Workfront/workfront-api/commit/169864d))
+* chore(deps): update dependency lint-staged to v7.2.0 ([a561b6b](https://github.com/Workfront/workfront-api/commit/a561b6b))
+* chore(deps): update dependency lint-staged to v7.2.2 ([8e1dd3b](https://github.com/Workfront/workfront-api/commit/8e1dd3b))
+* chore(deps): update dependency lint-staged to v8 ([d383fdd](https://github.com/Workfront/workfront-api/commit/d383fdd))
+* chore(deps): update dependency lint-staged to v8.0.2 ([28b2bb0](https://github.com/Workfront/workfront-api/commit/28b2bb0))
+* chore(deps): update dependency lint-staged to v8.0.3 ([590a25b](https://github.com/Workfront/workfront-api/commit/590a25b))
+* chore(deps): update dependency lint-staged to v8.0.4 ([eda4bfe](https://github.com/Workfront/workfront-api/commit/eda4bfe))
+* chore(deps): update dependency lint-staged to v8.0.5 ([7c50193](https://github.com/Workfront/workfront-api/commit/7c50193))
+* chore(deps): update dependency lint-staged to v8.1.0 ([5fe2e92](https://github.com/Workfront/workfront-api/commit/5fe2e92))
+* chore(deps): update dependency prettier to v1.13.5 ([3280e77](https://github.com/Workfront/workfront-api/commit/3280e77))
+* chore(deps): update dependency prettier to v1.13.6 ([069fc64](https://github.com/Workfront/workfront-api/commit/069fc64))
+* chore(deps): update dependency prettier to v1.13.7 ([ef39df1](https://github.com/Workfront/workfront-api/commit/ef39df1))
+* chore(deps): update dependency prettier to v1.14.0 ([6e5a96e](https://github.com/Workfront/workfront-api/commit/6e5a96e))
+* chore(deps): update dependency prettier to v1.14.1 ([db90e24](https://github.com/Workfront/workfront-api/commit/db90e24))
+* chore(deps): update dependency prettier to v1.14.2 ([9ea83f9](https://github.com/Workfront/workfront-api/commit/9ea83f9))
+* chore(deps): update dependency prettier to v1.15.1 ([25927f1](https://github.com/Workfront/workfront-api/commit/25927f1))
+* chore(deps): update dependency prettier to v1.15.2 ([743b194](https://github.com/Workfront/workfront-api/commit/743b194))
+* chore(deps): update dependency prettier to v1.15.3 ([473f1e6](https://github.com/Workfront/workfront-api/commit/473f1e6))
+* chore(deps): update dependency semver to v5.5.1 ([b279efa](https://github.com/Workfront/workfront-api/commit/b279efa))
+* chore(deps): update dependency semver to v5.6.0 ([2b06685](https://github.com/Workfront/workfront-api/commit/2b06685))
+* chore(deps): update dependency should to v13.2.2 ([c082d2f](https://github.com/Workfront/workfront-api/commit/c082d2f))
+* chore(deps): update dependency should to v13.2.3 ([d5e6f46](https://github.com/Workfront/workfront-api/commit/d5e6f46))
+* chore(deps): update dependency ts-loader to v4.4.0 ([33d989f](https://github.com/Workfront/workfront-api/commit/33d989f))
+* chore(deps): update dependency ts-loader to v4.4.1 ([7ae5357](https://github.com/Workfront/workfront-api/commit/7ae5357))
+* chore(deps): update dependency ts-loader to v4.4.2 ([6e40b04](https://github.com/Workfront/workfront-api/commit/6e40b04))
+* chore(deps): update dependency ts-loader to v4.5.0 ([34dab6d](https://github.com/Workfront/workfront-api/commit/34dab6d))
+* chore(deps): update dependency ts-loader to v5 ([d3adbae](https://github.com/Workfront/workfront-api/commit/d3adbae))
+* chore(deps): update dependency ts-loader to v5.1.0 ([bd41360](https://github.com/Workfront/workfront-api/commit/bd41360))
+* chore(deps): update dependency ts-loader to v5.2.0 ([0ce3855](https://github.com/Workfront/workfront-api/commit/0ce3855))
+* chore(deps): update dependency ts-loader to v5.2.1 ([3008782](https://github.com/Workfront/workfront-api/commit/3008782))
+* chore(deps): update dependency ts-loader to v5.2.2 ([fd79aca](https://github.com/Workfront/workfront-api/commit/fd79aca))
+* chore(deps): update dependency ts-loader to v5.3.0 ([8751187](https://github.com/Workfront/workfront-api/commit/8751187))
+* chore(deps): update dependency ts-loader to v5.3.1 ([529b556](https://github.com/Workfront/workfront-api/commit/529b556))
+* chore(deps): update dependency tslint to v5.11.0 ([0cf2f54](https://github.com/Workfront/workfront-api/commit/0cf2f54))
+* chore(deps): update dependency tslint-config-prettier to v1.14.0 ([c1dca00](https://github.com/Workfront/workfront-api/commit/c1dca00))
+* chore(deps): update dependency tslint-config-prettier to v1.15.0 ([d4f415a](https://github.com/Workfront/workfront-api/commit/d4f415a))
+* chore(deps): update dependency tslint-config-prettier to v1.16.0 ([3ed339c](https://github.com/Workfront/workfront-api/commit/3ed339c))
+* chore(deps): update dependency tslint-config-prettier to v1.17.0 ([8f03887](https://github.com/Workfront/workfront-api/commit/8f03887))
+* chore(deps): update dependency typedoc to v0.12.0 ([a4b90eb](https://github.com/Workfront/workfront-api/commit/a4b90eb))
+* chore(deps): update dependency typedoc to v0.13.0 ([31d729b](https://github.com/Workfront/workfront-api/commit/31d729b))
+* chore(deps): update dependency typescript to v2.9.2 ([4045025](https://github.com/Workfront/workfront-api/commit/4045025))
+* chore(deps): update dependency typescript to v3 ([927c1b5](https://github.com/Workfront/workfront-api/commit/927c1b5))
+* chore(deps): update dependency typescript to v3.0.3 ([6eafa8c](https://github.com/Workfront/workfront-api/commit/6eafa8c))
+* chore(deps): update dependency typescript to v3.1.1 ([3d3a870](https://github.com/Workfront/workfront-api/commit/3d3a870))
+* chore(deps): update dependency typescript to v3.1.2 ([2c081b9](https://github.com/Workfront/workfront-api/commit/2c081b9))
+* chore(deps): update dependency typescript to v3.1.3 ([577946a](https://github.com/Workfront/workfront-api/commit/577946a))
+* chore(deps): update dependency typescript to v3.1.4 ([03fc607](https://github.com/Workfront/workfront-api/commit/03fc607))
+* chore(deps): update dependency typescript to v3.1.5 ([7c5e4a4](https://github.com/Workfront/workfront-api/commit/7c5e4a4))
+* chore(deps): update dependency typescript to v3.1.6 ([c427229](https://github.com/Workfront/workfront-api/commit/c427229))
+* chore(deps): update dependency typescript to v3.2.1 ([8a33128](https://github.com/Workfront/workfront-api/commit/8a33128))
+* chore(deps): update dependency typescript to v3.2.2 ([be88f8e](https://github.com/Workfront/workfront-api/commit/be88f8e))
+* chore(deps): update dependency uuid to v3.3.0 ([844167f](https://github.com/Workfront/workfront-api/commit/844167f))
+* chore(deps): update dependency uuid to v3.3.2 ([a692f7d](https://github.com/Workfront/workfront-api/commit/a692f7d))
+* chore(deps): update dependency webpack to v4.11.0 ([de1b960](https://github.com/Workfront/workfront-api/commit/de1b960))
+* chore(deps): update dependency webpack to v4.11.1 ([c154ce0](https://github.com/Workfront/workfront-api/commit/c154ce0))
+* chore(deps): update dependency webpack to v4.12.0 ([0895170](https://github.com/Workfront/workfront-api/commit/0895170))
+* chore(deps): update dependency webpack to v4.12.1 ([4f8a257](https://github.com/Workfront/workfront-api/commit/4f8a257))
+* chore(deps): update dependency webpack to v4.12.2 ([9f79d42](https://github.com/Workfront/workfront-api/commit/9f79d42))
+* chore(deps): update dependency webpack to v4.13.0 ([551bf5c](https://github.com/Workfront/workfront-api/commit/551bf5c))
+* chore(deps): update dependency webpack to v4.14.0 ([4e7d53d](https://github.com/Workfront/workfront-api/commit/4e7d53d))
+* chore(deps): update dependency webpack to v4.15.0 ([830cba1](https://github.com/Workfront/workfront-api/commit/830cba1))
+* chore(deps): update dependency webpack to v4.15.1 ([f60cb3b](https://github.com/Workfront/workfront-api/commit/f60cb3b))
+* chore(deps): update dependency webpack to v4.16.0 ([a1dbc42](https://github.com/Workfront/workfront-api/commit/a1dbc42))
+* chore(deps): update dependency webpack to v4.16.1 ([4965ce7](https://github.com/Workfront/workfront-api/commit/4965ce7))
+* chore(deps): update dependency webpack to v4.16.2 ([18a7e5e](https://github.com/Workfront/workfront-api/commit/18a7e5e))
+* chore(deps): update dependency webpack to v4.16.3 ([83e1706](https://github.com/Workfront/workfront-api/commit/83e1706))
+* chore(deps): update dependency webpack to v4.16.4 ([37dac4b](https://github.com/Workfront/workfront-api/commit/37dac4b))
+* chore(deps): update dependency webpack to v4.16.5 ([799099a](https://github.com/Workfront/workfront-api/commit/799099a))
+* chore(deps): update dependency webpack to v4.17.0 ([23a7765](https://github.com/Workfront/workfront-api/commit/23a7765))
+* chore(deps): update dependency webpack to v4.17.1 ([d47c510](https://github.com/Workfront/workfront-api/commit/d47c510))
+* chore(deps): update dependency webpack to v4.17.2 ([6cea7be](https://github.com/Workfront/workfront-api/commit/6cea7be))
+* chore(deps): update dependency webpack to v4.20.0 ([50bee3c](https://github.com/Workfront/workfront-api/commit/50bee3c))
+* chore(deps): update dependency webpack to v4.20.1 ([b417979](https://github.com/Workfront/workfront-api/commit/b417979))
+* chore(deps): update dependency webpack to v4.20.2 ([fb7574f](https://github.com/Workfront/workfront-api/commit/fb7574f))
+* chore(deps): update dependency webpack to v4.21.0 ([a64e045](https://github.com/Workfront/workfront-api/commit/a64e045))
+* chore(deps): update dependency webpack to v4.22.0 ([adcdc80](https://github.com/Workfront/workfront-api/commit/adcdc80))
+* chore(deps): update dependency webpack to v4.23.0 ([96498a6](https://github.com/Workfront/workfront-api/commit/96498a6))
+* chore(deps): update dependency webpack to v4.23.1 ([e6397d8](https://github.com/Workfront/workfront-api/commit/e6397d8))
+* chore(deps): update dependency webpack to v4.24.0 ([30c3cc7](https://github.com/Workfront/workfront-api/commit/30c3cc7))
+* chore(deps): update dependency webpack to v4.25.0 ([512903f](https://github.com/Workfront/workfront-api/commit/512903f))
+* chore(deps): update dependency webpack to v4.25.1 ([865e6b5](https://github.com/Workfront/workfront-api/commit/865e6b5))
+* chore(deps): update dependency webpack to v4.26.0 ([54a261d](https://github.com/Workfront/workfront-api/commit/54a261d))
+* chore(deps): update dependency webpack to v4.26.1 ([958746d](https://github.com/Workfront/workfront-api/commit/958746d))
+* chore(deps): update dependency webpack to v4.27.0 ([7007565](https://github.com/Workfront/workfront-api/commit/7007565))
+* chore(deps): update dependency webpack to v4.27.1 ([ab85f47](https://github.com/Workfront/workfront-api/commit/ab85f47))
+* chore(deps): update dependency webpack-cli to v3.0.2 ([cac6c35](https://github.com/Workfront/workfront-api/commit/cac6c35))
+* chore(deps): update dependency webpack-cli to v3.0.3 ([1920212](https://github.com/Workfront/workfront-api/commit/1920212))
+* chore(deps): update dependency webpack-cli to v3.0.4 ([1984493](https://github.com/Workfront/workfront-api/commit/1984493))
+* chore(deps): update dependency webpack-cli to v3.0.6 ([5ce8761](https://github.com/Workfront/workfront-api/commit/5ce8761))
+* chore(deps): update dependency webpack-cli to v3.0.7 ([8f14fad](https://github.com/Workfront/workfront-api/commit/8f14fad))
+* chore(deps): update dependency webpack-cli to v3.0.8 ([d80a42d](https://github.com/Workfront/workfront-api/commit/d80a42d))
+* chore(deps): update dependency webpack-cli to v3.1.0 ([00345a2](https://github.com/Workfront/workfront-api/commit/00345a2))
+* chore(deps): update dependency webpack-cli to v3.1.1 ([b6deb78](https://github.com/Workfront/workfront-api/commit/b6deb78))
+* chore(deps): update dependency webpack-cli to v3.1.2 ([9b18084](https://github.com/Workfront/workfront-api/commit/9b18084))
+* chore(package): update @types/mocha to version 5.2.1 ([b3f03cc](https://github.com/Workfront/workfront-api/commit/b3f03cc)), closes [#265](https://github.com/Workfront/workfront-api/issues/265)
+* chore(package): update tslib to version 1.9.2 ([1d1bac4](https://github.com/Workfront/workfront-api/commit/1d1bac4)), closes [#272](https://github.com/Workfront/workfront-api/issues/272)
+* refactor: use ES6 construct instead of object-assign ([f542e39](https://github.com/Workfront/workfront-api/commit/f542e39))
+
+
+### BREAKING CHANGE
+
+* `object-assign` dependency is replaced by `tslib`
+
+
+## 4.8.0 (2018-06-01)
+
+* 4.8.0 ([a5e25b9](https://github.com/Workfront/workfront-api/commit/a5e25b9))
+* chore: add tests ([557db74](https://github.com/Workfront/workfront-api/commit/557db74))
+* chore: remove comment ([4e16cbd](https://github.com/Workfront/workfront-api/commit/4e16cbd))
+* chore: update comment ([f6be34e](https://github.com/Workfront/workfront-api/commit/f6be34e))
+* refactor: remove unneeded checks ([7772427](https://github.com/Workfront/workfront-api/commit/7772427))
+* feat: add `batch()` method ([948238b](https://github.com/Workfront/workfront-api/commit/948238b))
+* feat: make `isAtomic` parameter for `batch()` method optional ([adfa0f1](https://github.com/Workfront/workfront-api/commit/adfa0f1))
+
+
+
+## 4.7.0 (2018-05-31)
+
+* 4.7.0 ([9646ac6](https://github.com/Workfront/workfront-api/commit/9646ac6))
+* Update to node 10 in .travis.yml ([6bb3571](https://github.com/Workfront/workfront-api/commit/6bb3571))
+* chore: fix test ([ac4d2c6](https://github.com/Workfront/workfront-api/commit/ac4d2c6))
+* chore(package): update codecov to version 3.0.1 ([f27db2a](https://github.com/Workfront/workfront-api/commit/f27db2a))
+* chore(package): update execa to version 0.10.0 ([c9cf283](https://github.com/Workfront/workfront-api/commit/c9cf283))
+* chore(package): update istanbul-instrumenter-loader to version 3.0.1 ([9dafea3](https://github.com/Workfront/workfront-api/commit/9dafea3))
+* chore(package): update karma-coverage to version 1.1.2 ([3e38623](https://github.com/Workfront/workfront-api/commit/3e38623))
+* chore(package): update typedoc to version 0.11.0 ([52e8ad6](https://github.com/Workfront/workfront-api/commit/52e8ad6))
+* feat: add `fields` parameter to metadata() method ([3d88b5a](https://github.com/Workfront/workfront-api/commit/3d88b5a))
+
+
+
+## 4.6.0 (2018-02-20)
+
+* 4.6.0 ([fe91623](https://github.com/Workfront/workfront-api/commit/fe91623))
+* chore: downgrade mocha ([e5b36f2](https://github.com/Workfront/workfront-api/commit/e5b36f2))
+* chore: update dependencies ([3dafb7a](https://github.com/Workfront/workfront-api/commit/3dafb7a))
+* chore: upgrade packages typescript@2.7.2 ts-loader@3.5.0 ([1e0ac84](https://github.com/Workfront/workfront-api/commit/1e0ac84))
+* chore(package): update dateformat to version 3.0.3 ([d831b8d](https://github.com/Workfront/workfront-api/commit/d831b8d))
+* chore(package): update execa to version 0.9.0 ([3652860](https://github.com/Workfront/workfront-api/commit/3652860))
+* chore(package): update webpack to version 3.11.0 ([7f4e4e8](https://github.com/Workfront/workfront-api/commit/7f4e4e8))
+* feat: add ability to send 'X-XSRF-TOKEN' header in requests ([bf87ed1](https://github.com/Workfront/workfront-api/commit/bf87ed1))
+* fix(package): update form-data to version 2.3.2 ([5abe5bf](https://github.com/Workfront/workfront-api/commit/5abe5bf))
+
+
+
+## 4.5.0 (2017-12-28)
+
+* 4.5.0 ([706a017](https://github.com/Workfront/workfront-api/commit/706a017))
+* chore: @types/should no longer needed ([6a8eb50](https://github.com/Workfront/workfront-api/commit/6a8eb50))
+* chore: downgrade typedoc to generate docs without warnings ([a737355](https://github.com/Workfront/workfront-api/commit/a737355))
+* chore: fix breaking change of should ([5b3ae5d](https://github.com/Workfront/workfront-api/commit/5b3ae5d))
+* chore: update @types/node dependency range ([2542ef3](https://github.com/Workfront/workfront-api/commit/2542ef3))
+* chore(package): update @types/form-data to version 2.2.1 ([b356ed3](https://github.com/Workfront/workfront-api/commit/b356ed3))
+* chore(package): update @types/mocha to version 2.2.44 ([44ec40e](https://github.com/Workfront/workfront-api/commit/44ec40e))
+* chore(package): update @types/mocha to version 2.2.45 ([a48970f](https://github.com/Workfront/workfront-api/commit/a48970f))
+* chore(package): update codecov to version 2.3.1 ([c8988a0](https://github.com/Workfront/workfront-api/commit/c8988a0))
+* chore(package): update codecov to version 3.0.0 ([31477af](https://github.com/Workfront/workfront-api/commit/31477af))
+* chore(package): update dateformat to version 3.0.0 ([fca0e67](https://github.com/Workfront/workfront-api/commit/fca0e67)), closes [#163](https://github.com/Workfront/workfront-api/issues/163)
+* chore(package): update dateformat to version 3.0.1 ([7fef8b4](https://github.com/Workfront/workfront-api/commit/7fef8b4))
+* chore(package): update fetch-mock to version 5.13.0 ([c1298b9](https://github.com/Workfront/workfront-api/commit/c1298b9))
+* chore(package): update fetch-mock to version 5.13.1 ([176f1cd](https://github.com/Workfront/workfront-api/commit/176f1cd))
+* chore(package): update karma-webpack to version 2.0.5 ([cd7195e](https://github.com/Workfront/workfront-api/commit/cd7195e))
+* chore(package): update karma-webpack to version 2.0.6 ([45c718c](https://github.com/Workfront/workfront-api/commit/45c718c))
+* chore(package): update karma-webpack to version 2.0.8 ([eaaca0d](https://github.com/Workfront/workfront-api/commit/eaaca0d)), closes [#219](https://github.com/Workfront/workfront-api/issues/219)
+* chore(package): update karma-webpack to version 2.0.9 ([eae8a8a](https://github.com/Workfront/workfront-api/commit/eae8a8a))
+* chore(package): update mocha to version 4.0.0 ([b4f8ee5](https://github.com/Workfront/workfront-api/commit/b4f8ee5))
+* chore(package): update mocha to version 4.0.1 ([1072fce](https://github.com/Workfront/workfront-api/commit/1072fce))
+* chore(package): update phantomjs-prebuilt to version 2.1.16 ([45b4a9b](https://github.com/Workfront/workfront-api/commit/45b4a9b))
+* chore(package): update should to version 13.1.0 ([b0c8e1c](https://github.com/Workfront/workfront-api/commit/b0c8e1c)), closes [#152](https://github.com/Workfront/workfront-api/issues/152)
+* chore(package): update should to version 13.1.1 ([b67e671](https://github.com/Workfront/workfront-api/commit/b67e671))
+* chore(package): update ts-loader to version 3.0.2 ([7a9906d](https://github.com/Workfront/workfront-api/commit/7a9906d)), closes [#185](https://github.com/Workfront/workfront-api/issues/185)
+* chore(package): update ts-loader to version 3.0.3 ([4e5bbef](https://github.com/Workfront/workfront-api/commit/4e5bbef))
+* chore(package): update ts-loader to version 3.0.5 ([9e57f28](https://github.com/Workfront/workfront-api/commit/9e57f28))
+* chore(package): update ts-loader to version 3.1.0 ([aef054f](https://github.com/Workfront/workfront-api/commit/aef054f))
+* chore(package): update ts-loader to version 3.1.1 ([4ef8928](https://github.com/Workfront/workfront-api/commit/4ef8928))
+* chore(package): update ts-loader to version 3.2.0 ([dfc9efe](https://github.com/Workfront/workfront-api/commit/dfc9efe))
+* chore(package): update tslib to version 1.8.0 ([3b04e51](https://github.com/Workfront/workfront-api/commit/3b04e51))
+* chore(package): update tslib to version 1.8.1 ([458dd0e](https://github.com/Workfront/workfront-api/commit/458dd0e))
+* chore(package): update typedoc to version 0.9.0 ([6e0cd05](https://github.com/Workfront/workfront-api/commit/6e0cd05))
+* chore(package): update typescript to version 2.5.3 ([40bc819](https://github.com/Workfront/workfront-api/commit/40bc819))
+* chore(package): update typescript to version 2.6.1 ([301b103](https://github.com/Workfront/workfront-api/commit/301b103))
+* chore(package): update typescript to version 2.6.2 ([a4141c0](https://github.com/Workfront/workfront-api/commit/a4141c0))
+* chore(package): update webpack to version 3.10.0 ([c0bede3](https://github.com/Workfront/workfront-api/commit/c0bede3))
+* chore(package): update webpack to version 3.8.1 ([a288d28](https://github.com/Workfront/workfront-api/commit/a288d28)), closes [#183](https://github.com/Workfront/workfront-api/issues/183)
+* chore(package): update webpack to version 3.9.1 ([54a0b30](https://github.com/Workfront/workfront-api/commit/54a0b30)), closes [#213](https://github.com/Workfront/workfront-api/issues/213)
+* fix(package): update @types/node to version 8.0.29 ([af0b413](https://github.com/Workfront/workfront-api/commit/af0b413))
+* fix(package): update @types/node to version 8.0.30 ([cbd7971](https://github.com/Workfront/workfront-api/commit/cbd7971))
+* fix(package): update @types/node to version 8.0.31 ([a80d6a9](https://github.com/Workfront/workfront-api/commit/a80d6a9))
+* fix(package): update @types/node to version 8.0.32 ([b7fb713](https://github.com/Workfront/workfront-api/commit/b7fb713))
+* fix(package): update @types/node to version 8.0.33 ([82bec6f](https://github.com/Workfront/workfront-api/commit/82bec6f))
+* fix(package): update @types/node to version 8.0.34 ([7ce9869](https://github.com/Workfront/workfront-api/commit/7ce9869))
+* fix(package): update @types/node to version 8.0.38 ([4623168](https://github.com/Workfront/workfront-api/commit/4623168)), closes [#186](https://github.com/Workfront/workfront-api/issues/186)
+* fix(package): update @types/node to version 8.0.46 ([e6d4e4f](https://github.com/Workfront/workfront-api/commit/e6d4e4f)), closes [#189](https://github.com/Workfront/workfront-api/issues/189)
+* fix(package): update @types/node to version 8.0.47 ([9da551e](https://github.com/Workfront/workfront-api/commit/9da551e))
+* fix(package): update @types/node to version 8.0.48 ([01217ad](https://github.com/Workfront/workfront-api/commit/01217ad))
+* fix(package): update @types/node to version 8.0.49 ([eae77d5](https://github.com/Workfront/workfront-api/commit/eae77d5))
+* fix(package): update @types/node to version 8.0.50 ([f8f1399](https://github.com/Workfront/workfront-api/commit/f8f1399))
+* fix(package): update @types/node to version 8.0.51 ([c92c564](https://github.com/Workfront/workfront-api/commit/c92c564))
+* fix(package): update @types/node to version 8.0.52 ([37654cd](https://github.com/Workfront/workfront-api/commit/37654cd))
+* fix(package): update @types/node to version 8.0.53 ([f875299](https://github.com/Workfront/workfront-api/commit/f875299))
+* fix(package): update es6-promise to version 4.2.2 ([89b50ba](https://github.com/Workfront/workfront-api/commit/89b50ba)), closes [#225](https://github.com/Workfront/workfront-api/issues/225)
+* feat: added `editMultiple` method ([494b47a](https://github.com/Workfront/workfront-api/commit/494b47a))
+
+
+
+## 4.4.0 (2017-09-19)
+
+* 4.4.0 ([2a90ebd](https://github.com/Workfront/workfront-api/commit/2a90ebd))
+* feat: ability to send Search query params in HTTP POST ([927a3e6](https://github.com/Workfront/workfront-api/commit/927a3e6))
+* chore(package): update @types/mocha to version 2.2.43 ([c2b6f4c](https://github.com/Workfront/workfront-api/commit/c2b6f4c))
+* chore(package): update mocha to version 3.5.1 ([66d1741](https://github.com/Workfront/workfront-api/commit/66d1741))
+* chore(package): update mocha to version 3.5.3 ([3f44f2d](https://github.com/Workfront/workfront-api/commit/3f44f2d))
+* chore(package): update ts-loader to version 2.3.5 ([8a0dc9e](https://github.com/Workfront/workfront-api/commit/8a0dc9e))
+* chore(package): update ts-loader to version 2.3.7 ([90cbafc](https://github.com/Workfront/workfront-api/commit/90cbafc))
+* chore(package): update typescript to version 2.5.2 ([6fcf2ba](https://github.com/Workfront/workfront-api/commit/6fcf2ba))
+* chore(package): update webpack to version 3.5.6 ([c0cf8cb](https://github.com/Workfront/workfront-api/commit/c0cf8cb))
+* chore(package): update webpack to version 3.6.0 ([43cdf0a](https://github.com/Workfront/workfront-api/commit/43cdf0a))
+* fix(package): update @types/node to version 8.0.28 ([3e6874f](https://github.com/Workfront/workfront-api/commit/3e6874f)), closes [#155](https://github.com/Workfront/workfront-api/issues/155)
+
+
+
+## 4.3.0 (2017-08-31)
+
+* 4.3.0 ([9115918](https://github.com/Workfront/workfront-api/commit/9115918))
+* augment saucelabs idle timeout ([58fd289](https://github.com/Workfront/workfront-api/commit/58fd289))
+* augment timeout durations ([04f66a3](https://github.com/Workfront/workfront-api/commit/04f66a3))
+* if connect fails retry one more time ([6d24f2e](https://github.com/Workfront/workfront-api/commit/6d24f2e))
+* remove connectOptions ([cb9da46](https://github.com/Workfront/workfront-api/commit/cb9da46))
+* typings: fix headers key-value type ([fea44d8](https://github.com/Workfront/workfront-api/commit/fea44d8))
+* feat: add support of passing custom headers ([7a15691](https://github.com/Workfront/workfront-api/commit/7a15691))
+* chore(package): update karma to version 1.7.1 ([68ce571](https://github.com/Workfront/workfront-api/commit/68ce571))
+* chore(package): update should to version 12.0.0 ([991e43a](https://github.com/Workfront/workfront-api/commit/991e43a))
+* chore(package): update ts-loader to version 2.3.4 ([667ef60](https://github.com/Workfront/workfront-api/commit/667ef60))
+* chore(package): update tslint to version 5.7.0 ([a674a11](https://github.com/Workfront/workfront-api/commit/a674a11)), closes [#30](https://github.com/Workfront/workfront-api/issues/30)
+* fix(package): update @types/node to version 8.0.26 ([42d488a](https://github.com/Workfront/workfront-api/commit/42d488a))
+
+
+
+## 4.2.0 (2017-08-25)
+
+* 4.2.0 ([630e9b1](https://github.com/Workfront/workfront-api/commit/630e9b1))
+* feat: export ResponseHandler helper to use from outside of workfront-api ([d887cda](https://github.com/Workfront/workfront-api/commit/d887cda))
+* fix(package): update @types/node to version 8.0.25 ([f22583e](https://github.com/Workfront/workfront-api/commit/f22583e))
+* fix(package): update form-data to version 2.3.1 ([ebb4df3](https://github.com/Workfront/workfront-api/commit/ebb4df3))
+
+
+
+## <small>4.1.1 (2017-08-24)</small>
+
+* 4.1.1 ([79abf81](https://github.com/Workfront/workfront-api/commit/79abf81))
+* fix: typings dependency for Node ([a32a254](https://github.com/Workfront/workfront-api/commit/a32a254))
+* chore(package): update karma-sauce-launcher to version 1.2.0 ([8ba221e](https://github.com/Workfront/workfront-api/commit/8ba221e))
+
+
+
+## 4.1.0 (2017-08-22)
+
+* 4.1.0 ([bbbf513](https://github.com/Workfront/workfront-api/commit/bbbf513))
+* feat: ability to pass options with the copy api method ([8b117a8](https://github.com/Workfront/workfront-api/commit/8b117a8))
+* chore(package): update @types/mocha to version 2.2.42 ([2a093e9](https://github.com/Workfront/workfront-api/commit/2a093e9))
+* chore(package): update @types/node to version 8.0.20 ([d4f7cf2](https://github.com/Workfront/workfront-api/commit/d4f7cf2))
+* chore(package): update @types/node to version 8.0.22 ([4de4fa3](https://github.com/Workfront/workfront-api/commit/4de4fa3)), closes [#133](https://github.com/Workfront/workfront-api/issues/133)
+* chore(package): update @types/node to version 8.0.23 ([b9950e2](https://github.com/Workfront/workfront-api/commit/b9950e2))
+* chore(package): update @types/node to version 8.0.24 ([c9ba1c1](https://github.com/Workfront/workfront-api/commit/c9ba1c1))
+* chore(package): update @types/should to version 11.2.0 ([a200a76](https://github.com/Workfront/workfront-api/commit/a200a76))
+* chore(package): update codecov to version 2.3.0 ([a53264e](https://github.com/Workfront/workfront-api/commit/a53264e))
+* chore(package): update execa to version 0.8.0 ([5052492](https://github.com/Workfront/workfront-api/commit/5052492))
+* chore(package): update fetch-mock to version 5.12.2 ([6f9cd04](https://github.com/Workfront/workfront-api/commit/6f9cd04))
+* chore(package): update mocha to version 3.5.0 ([091d6cb](https://github.com/Workfront/workfront-api/commit/091d6cb))
+* chore(package): update phantomjs-prebuilt to version 2.1.15 ([c473108](https://github.com/Workfront/workfront-api/commit/c473108))
+* chore(package): update ts-loader to version 2.3.3 ([3f79a21](https://github.com/Workfront/workfront-api/commit/3f79a21))
+* chore(package): update tslint to version 5.6.0 ([9466164](https://github.com/Workfront/workfront-api/commit/9466164)), closes [#30](https://github.com/Workfront/workfront-api/issues/30)
+* chore(package): update webpack to version 3.5.1 ([e312540](https://github.com/Workfront/workfront-api/commit/e312540)), closes [#125](https://github.com/Workfront/workfront-api/issues/125)
+* chore(package): update webpack to version 3.5.2 ([1426a95](https://github.com/Workfront/workfront-api/commit/1426a95))
+* chore(package): update webpack to version 3.5.4 ([822a844](https://github.com/Workfront/workfront-api/commit/822a844)), closes [#130](https://github.com/Workfront/workfront-api/issues/130)
+* chore(package): update webpack to version 3.5.5 ([c8f3c00](https://github.com/Workfront/workfront-api/commit/c8f3c00))
+* docs: add .nojekyll file to render Github pages as it is ([beb192c](https://github.com/Workfront/workfront-api/commit/beb192c))
+
+
+
+## 4.0.0 (2017-07-31)
+
+* 4.0.0 ([497f8ce](https://github.com/Workfront/workfront-api/commit/497f8ce))
+* fix: cloning params forgets about its instance, failing upload file test ([404f58f](https://github.com/Workfront/workfront-api/commit/404f58f))
+* fix: preserving backward compatibility ([497371f](https://github.com/Workfront/workfront-api/commit/497371f))
+
+
+
+## 4.0.0-0 (2017-07-29)
+
+* 4.0.0-0 ([212e8e5](https://github.com/Workfront/workfront-api/commit/212e8e5))
+* encrypt username and access token ([160b050](https://github.com/Workfront/workfront-api/commit/160b050))
+* fix #103: All response from server should be in JSON format ([1e6ebf5](https://github.com/Workfront/workfront-api/commit/1e6ebf5)), closes [#103](https://github.com/Workfront/workfront-api/issues/103)
+* Fixing tests around changing to JSON bodies ([32986c3](https://github.com/Workfront/workfront-api/commit/32986c3))
+* generate new encrypted SAUCE_ACCESS_KEY and SAUCE_USERNAME ([7e76976](https://github.com/Workfront/workfront-api/commit/7e76976))
+* Only using json encoding on put and post ([9ba4824](https://github.com/Workfront/workfront-api/commit/9ba4824))
+* Removing package lock from git.  Removing support for form encoded requests and moving to straight j ([7c58297](https://github.com/Workfront/workfront-api/commit/7c58297))
+* chore: add E2E tests ([ad481e6](https://github.com/Workfront/workfront-api/commit/ad481e6))
+* chore: disable SauceLabs test if the PR is from fork ([e082957](https://github.com/Workfront/workfront-api/commit/e082957))
+* chore: remove package-lock.json from .gitignore ([78827df](https://github.com/Workfront/workfront-api/commit/78827df))
+* chore(package): update @types/form-data to version 2.2.0 ([01179c5](https://github.com/Workfront/workfront-api/commit/01179c5))
+* chore(package): update istanbul-instrumenter-loader to version 3.0.0 ([412c642](https://github.com/Workfront/workfront-api/commit/412c642))
+* chore(package): update semver to version 5.4.1 ([01c3e04](https://github.com/Workfront/workfront-api/commit/01c3e04)), closes [#111](https://github.com/Workfront/workfront-api/issues/111)
+* chore(package): update ts-loader to version 2.3.0 ([2f3c233](https://github.com/Workfront/workfront-api/commit/2f3c233))
+* chore(package): update ts-loader to version 2.3.1 ([1cd4ef4](https://github.com/Workfront/workfront-api/commit/1cd4ef4))
+* chore(package): update ts-loader to version 2.3.2 ([3cab65c](https://github.com/Workfront/workfront-api/commit/3cab65c))
+* chore(package): update typedoc to version 0.8.0 ([33827dc](https://github.com/Workfront/workfront-api/commit/33827dc)), closes [#114](https://github.com/Workfront/workfront-api/issues/114)
+* chore(package): update typescript to version 2.4.2 ([eddbd3d](https://github.com/Workfront/workfront-api/commit/eddbd3d))
+* chore(package): update webpack to version 3.3.0 ([655a2c2](https://github.com/Workfront/workfront-api/commit/655a2c2)), closes [#78](https://github.com/Workfront/workfront-api/issues/78)
+* chore(package): update webpack to version 3.4.1 ([4438209](https://github.com/Workfront/workfront-api/commit/4438209)), closes [#113](https://github.com/Workfront/workfront-api/issues/113)
+* fix: configure karma-sauce-launcher the way angular did it ([c0192a4](https://github.com/Workfront/workfront-api/commit/c0192a4))
+* fix: make send JSON body optional ([3ecd1f2](https://github.com/Workfront/workfront-api/commit/3ecd1f2))
+* fix: request gets JSON as body ([13017b0](https://github.com/Workfront/workfront-api/commit/13017b0))
+* fix: sauce access_key and username set as env variables ([cd688d3](https://github.com/Workfront/workfront-api/commit/cd688d3))
+* fix: set env in .travis.yml ([f6405c0](https://github.com/Workfront/workfront-api/commit/f6405c0))
+* fix: set startConnect to false in karma-sauce-launcher ([8a8215d](https://github.com/Workfront/workfront-api/commit/8a8215d))
+* fix: set TRAVIS_JOB_NUMBER as tunnelIdentifier in karma-sauce-launcher ([4ac2908](https://github.com/Workfront/workfront-api/commit/4ac2908))
+* fix: update examples api version to >v5.0 ([8915f97](https://github.com/Workfront/workfront-api/commit/8915f97))
+* fix(package): update @types/node to version 8.0.14 ([1e44347](https://github.com/Workfront/workfront-api/commit/1e44347)), closes [#94](https://github.com/Workfront/workfront-api/issues/94)
+
+
+
+## <small>3.0.3 (2017-07-11)</small>
+
+* 3.0.3 ([75c8766](https://github.com/Workfront/workfront-api/commit/75c8766))
+* Bug fixes for problems experienced using apiKey and edit calls (#99) ([51183cd](https://github.com/Workfront/workfront-api/commit/51183cd)), closes [#99](https://github.com/Workfront/workfront-api/issues/99)
+* Fixing alwaysUseGet feature and adding a test for it.  Moving apiKey into headers for all requests w ([ec3e9d0](https://github.com/Workfront/workfront-api/commit/ec3e9d0))
+* Forgot to update the version for bug fix ([c5fdabb](https://github.com/Workfront/workfront-api/commit/c5fdabb))
+* chore: reverting version change ([9784808](https://github.com/Workfront/workfront-api/commit/9784808))
+* chore(package): update fetch-mock to version 5.12.0 ([b1d642a](https://github.com/Workfront/workfront-api/commit/b1d642a)), closes [#87](https://github.com/Workfront/workfront-api/issues/87)
+* chore(package): update fetch-mock to version 5.12.1 ([7b83471](https://github.com/Workfront/workfront-api/commit/7b83471))
+* chore(package): update karma-chrome-launcher to version 2.2.0 ([d9d4e3c](https://github.com/Workfront/workfront-api/commit/d9d4e3c))
+* chore(package): update karma-webpack to version 2.0.4 ([129e161](https://github.com/Workfront/workfront-api/commit/129e161))
+* chore(package): update ts-loader to version 2.2.1 ([c28f02e](https://github.com/Workfront/workfront-api/commit/c28f02e)), closes [#84](https://github.com/Workfront/workfront-api/issues/84)
+* chore(package): update ts-loader to version 2.2.2 ([1d29036](https://github.com/Workfront/workfront-api/commit/1d29036))
+* chore(package): update tslint to version 5.5.0 ([8550c0c](https://github.com/Workfront/workfront-api/commit/8550c0c)), closes [#30](https://github.com/Workfront/workfront-api/issues/30)
+* chore(package): update typescript to version 2.4.1 ([47183a6](https://github.com/Workfront/workfront-api/commit/47183a6))
+* fix(package): update @types/node to version 8.0.1 ([6416fab](https://github.com/Workfront/workfront-api/commit/6416fab)), closes [#79](https://github.com/Workfront/workfront-api/issues/79)
+* fix(package): update @types/node to version 8.0.6 ([a34a88d](https://github.com/Workfront/workfront-api/commit/a34a88d)), closes [#85](https://github.com/Workfront/workfront-api/issues/85)
+* fix(package): update es6-promise to version 4.1.1 ([3b71a29](https://github.com/Workfront/workfront-api/commit/3b71a29))
+
+
+
+## <small>3.0.2 (2017-06-13)</small>
+
+* 3.0.2 ([fb8dfea](https://github.com/Workfront/workfront-api/commit/fb8dfea))
+* fix: send credentials (cookie, session, etc.) with the request for same origin host ([7b9c568](https://github.com/Workfront/workfront-api/commit/7b9c568))
+* chore: object-assign npm package is used as polyfill ([f7a850b](https://github.com/Workfront/workfront-api/commit/f7a850b))
+
+
+
+## <small>3.0.1 (2017-06-12)</small>
+
+* 3.0.1 ([7f75c90](https://github.com/Workfront/workfront-api/commit/7f75c90))
+* chore: using npm@5 new feature ([93a2fea](https://github.com/Workfront/workfront-api/commit/93a2fea))
+* chore(package): update execa to version 0.7.0 ([b2cac02](https://github.com/Workfront/workfront-api/commit/b2cac02))
+* fix: Object.assign polyfill for IE browsers ([c622fe7](https://github.com/Workfront/workfront-api/commit/c622fe7))
+* fix(package): update @types/node to version 7.0.24 ([1ea3398](https://github.com/Workfront/workfront-api/commit/1ea3398))
+* fix(package): update @types/node to version 7.0.28 ([f568a1c](https://github.com/Workfront/workfront-api/commit/f568a1c)), closes [#76](https://github.com/Workfront/workfront-api/issues/76)
+* fix(package): update form-data to version 2.2.0 ([198611a](https://github.com/Workfront/workfront-api/commit/198611a))
+
+
+
+## 3.0.0 (2017-05-31)
+
+* 3.0.0 ([718fcda](https://github.com/Workfront/workfront-api/commit/718fcda))
+* fix #73: getApiKey method not working ([5539236](https://github.com/Workfront/workfront-api/commit/5539236)), closes [#73](https://github.com/Workfront/workfront-api/issues/73)
+* chore: set workfront-api-constants package as peerDependency for ES build ([9044b25](https://github.com/Workfront/workfront-api/commit/9044b25))
+* chore: tests for getApiKey method ([10fbdb3](https://github.com/Workfront/workfront-api/commit/10fbdb3))
+* chore(package): update @types/mocha to version 2.2.41 ([a6a4aed](https://github.com/Workfront/workfront-api/commit/a6a4aed))
+* chore(package): update codecov to version 2.2.0 ([aeab7a9](https://github.com/Workfront/workfront-api/commit/aeab7a9))
+* chore(package): update fetch-mock to version 5.10.1 ([a41ec5e](https://github.com/Workfront/workfront-api/commit/a41ec5e))
+* chore(package): update fetch-mock to version 5.11.0 ([111b486](https://github.com/Workfront/workfront-api/commit/111b486))
+* chore(package): update http-server to version 0.10.0 ([8dadc67](https://github.com/Workfront/workfront-api/commit/8dadc67))
+* chore(package): update karma to version 1.7.0 ([52feb93](https://github.com/Workfront/workfront-api/commit/52feb93))
+* chore(package): update karma-chrome-launcher to version 2.1.0 ([169b58a](https://github.com/Workfront/workfront-api/commit/169b58a))
+* chore(package): update karma-chrome-launcher to version 2.1.1 ([ed9448a](https://github.com/Workfront/workfront-api/commit/ed9448a))
+* chore(package): update mocha to version 3.4.1 ([e143d40](https://github.com/Workfront/workfront-api/commit/e143d40))
+* chore(package): update mocha to version 3.4.2 ([76b3bd4](https://github.com/Workfront/workfront-api/commit/76b3bd4))
+* chore(package): update ts-loader to version 2.1.0 ([85ba2f0](https://github.com/Workfront/workfront-api/commit/85ba2f0))
+* chore(package): update tslib to version 1.7.0 ([e76f594](https://github.com/Workfront/workfront-api/commit/e76f594))
+* chore(package): update tslib to version 1.7.1 ([811dcae](https://github.com/Workfront/workfront-api/commit/811dcae))
+* chore(package): update tslint to version 5.2.0 ([3089271](https://github.com/Workfront/workfront-api/commit/3089271)), closes [#30](https://github.com/Workfront/workfront-api/issues/30)
+* chore(package): update tslint to version 5.3.2 ([e3c1a97](https://github.com/Workfront/workfront-api/commit/e3c1a97)), closes [#30](https://github.com/Workfront/workfront-api/issues/30)
+* chore(package): update typedoc to version 0.7.0 ([ccb5356](https://github.com/Workfront/workfront-api/commit/ccb5356))
+* chore(package): update typedoc to version 0.7.1 ([2c871db](https://github.com/Workfront/workfront-api/commit/2c871db))
+* chore(package): update typescript to version 2.3.1 ([c853e80](https://github.com/Workfront/workfront-api/commit/c853e80))
+* chore(package): update typescript to version 2.3.2 ([ff2375b](https://github.com/Workfront/workfront-api/commit/ff2375b))
+* chore(package): update typescript to version 2.3.3 ([0f360a8](https://github.com/Workfront/workfront-api/commit/0f360a8))
+* chore(package): update typescript to version 2.3.4 ([3a25175](https://github.com/Workfront/workfront-api/commit/3a25175))
+* chore(package): update webpack to version 2.5.0 ([ef657f1](https://github.com/Workfront/workfront-api/commit/ef657f1))
+* chore(package): update webpack to version 2.5.1 ([b6c2e09](https://github.com/Workfront/workfront-api/commit/b6c2e09))
+* chore(package): update webpack to version 2.6.0 ([2ae08c6](https://github.com/Workfront/workfront-api/commit/2ae08c6))
+* chore(package): update webpack to version 2.6.1 ([05da360](https://github.com/Workfront/workfront-api/commit/05da360))
+* fix: getApiKey returns blank string ([7887305](https://github.com/Workfront/workfront-api/commit/7887305))
+* fix(package): update @types/node to version 7.0.15 ([f4a760e](https://github.com/Workfront/workfront-api/commit/f4a760e))
+* fix(package): update @types/node to version 7.0.16 ([4adf857](https://github.com/Workfront/workfront-api/commit/4adf857))
+* fix(package): update @types/node to version 7.0.17 ([36c01c3](https://github.com/Workfront/workfront-api/commit/36c01c3))
+* fix(package): update @types/node to version 7.0.21 ([efa06ef](https://github.com/Workfront/workfront-api/commit/efa06ef)), closes [#62](https://github.com/Workfront/workfront-api/issues/62)
+* fix(package): update @types/node to version 7.0.22 ([488ee61](https://github.com/Workfront/workfront-api/commit/488ee61))
+
+
+
+## <small>2.0.5 (2017-04-27)</small>
+
+* 2.0.5 ([c9e2db0](https://github.com/Workfront/workfront-api/commit/c9e2db0))
+* fix: Api.execute method for namedAction should make request with POST instead of PUT ([f14eeea](https://github.com/Workfront/workfront-api/commit/f14eeea))
+* fix(package): update @types/node to version 7.0.14 ([b652954](https://github.com/Workfront/workfront-api/commit/b652954))
+* chore(package): update @types/should to version 8.3.0 ([38355e0](https://github.com/Workfront/workfront-api/commit/38355e0))
+* chore(package): update fetch-mock to version 5.10.0 ([efedc4b](https://github.com/Workfront/workfront-api/commit/efedc4b))
+* chore(package): update mocha to version 3.3.0 ([350dd6b](https://github.com/Workfront/workfront-api/commit/350dd6b))
+* chore(package): update tslib to version 1.6.1 ([2ff2a60](https://github.com/Workfront/workfront-api/commit/2ff2a60))
+* chore(package): update tslint-loader to version 3.5.3 ([e728b7f](https://github.com/Workfront/workfront-api/commit/e728b7f))
+* chore(package): update typedoc to version 0.6.0 ([8c36e92](https://github.com/Workfront/workfront-api/commit/8c36e92))
+* chore(package): update webpack to version 2.4.0 ([a1f8943](https://github.com/Workfront/workfront-api/commit/a1f8943))
+
+
+
+## <small>2.0.4 (2017-04-12)</small>
+
+* 2.0.4 ([655f755](https://github.com/Workfront/workfront-api/commit/655f755))
+* chore: add @types/node as dependency ([27a2208](https://github.com/Workfront/workfront-api/commit/27a2208))
+
+
+
+## <small>2.0.3 (2017-04-12)</small>
+
+* 2.0.3 ([c29f60a](https://github.com/Workfront/workfront-api/commit/c29f60a))
+* fix (regression): GET and PUT requests should send params in URI query string ([f5ec9bd](https://github.com/Workfront/workfront-api/commit/f5ec9bd))
+* fix: CHANGELOG.md generation ([41a5edc](https://github.com/Workfront/workfront-api/commit/41a5edc))
+
+
+
+## <small>2.0.2 (2017-04-11)</small>
+
+* 2.0.2 ([4c5742f](https://github.com/Workfront/workfront-api/commit/4c5742f))
+* chore: greenkeeper initial PR ([a95a1e2](https://github.com/Workfront/workfront-api/commit/a95a1e2))
+* chore: update package keywords ([bb98297](https://github.com/Workfront/workfront-api/commit/bb98297))
+* chore(package): update dependencies ([76ac4a6](https://github.com/Workfront/workfront-api/commit/76ac4a6))
+* chore(package): update karma to version 1.6.0 ([2dad0b0](https://github.com/Workfront/workfront-api/commit/2dad0b0))
+* chore(package): update tslint to version 5.1.0 ([2881851](https://github.com/Workfront/workfront-api/commit/2881851))
+* chore(package): update tslint-loader to version 3.5.1 ([13464d6](https://github.com/Workfront/workfront-api/commit/13464d6))
+* chore(package): update tslint-loader to version 3.5.2 ([9a7f151](https://github.com/Workfront/workfront-api/commit/9a7f151))
+* fix: adding dist/ folder in npm package ([31b1d5b](https://github.com/Workfront/workfront-api/commit/31b1d5b))
+* fix(package): update form-data to version 2.1.4 ([c29c284](https://github.com/Workfront/workfront-api/commit/c29c284))
+* docs(readme): add Greenkeeper badge  ([b62d911](https://github.com/Workfront/workfront-api/commit/b62d911))
+
+
+
+## <small>2.0.1 (2017-04-04)</small>
+
+* 2.0.1 ([3d946ca](https://github.com/Workfront/workfront-api/commit/3d946ca))
+
+
+
+## 2.0.0 (2017-04-04)
+
+* 2.0.0 ([bc112d6](https://github.com/Workfront/workfront-api/commit/bc112d6))
+* get rid of ApiFactory ([cb4f168](https://github.com/Workfront/workfront-api/commit/cb4f168))
+* no need for gulp tasks, use `np` instead ([deaadb7](https://github.com/Workfront/workfront-api/commit/deaadb7))
+* remove dist/ ([6694213](https://github.com/Workfront/workfront-api/commit/6694213))
+* Saucelabs integration (#21) ([da6e4b7](https://github.com/Workfront/workfront-api/commit/da6e4b7)), closes [#21](https://github.com/Workfront/workfront-api/issues/21)
+* separate upload methods for browser and node env ([5793676](https://github.com/Workfront/workfront-api/commit/5793676))
+* try another config for karma-sauce-launcher ([c7e16e9](https://github.com/Workfront/workfront-api/commit/c7e16e9))
+* chore: config tweak ([3da34e3](https://github.com/Workfront/workfront-api/commit/3da34e3))
+* chore: global env ([f6905fa](https://github.com/Workfront/workfront-api/commit/f6905fa))
+* chore: include karma coverageReporter lcov type ([f8391be](https://github.com/Workfront/workfront-api/commit/f8391be))
+* chore: matrix ([a633793](https://github.com/Workfront/workfront-api/commit/a633793))
+* chore: npm-run-all shorthands ([f153475](https://github.com/Workfront/workfront-api/commit/f153475))
+* chore: remove docs/ before re-generating it ([1155871](https://github.com/Workfront/workfront-api/commit/1155871))
+* chore: run tests on PhantomJS ([ed44105](https://github.com/Workfront/workfront-api/commit/ed44105))
+* chore: set BrowserStack username and accesskey ([6097876](https://github.com/Workfront/workfront-api/commit/6097876))
+* chore: set BrowserStack username and accesskey ([af5e408](https://github.com/Workfront/workfront-api/commit/af5e408))
+* chore: set CI variable ([48de22f](https://github.com/Workfront/workfront-api/commit/48de22f))
+* chore: set sourceMap=true in ts-loader compilerOptions ([2a69f1b](https://github.com/Workfront/workfront-api/commit/2a69f1b))
+* chore: set sourceMap=true in ts-loader compilerOptions ([48747d4](https://github.com/Workfront/workfront-api/commit/48747d4))
+* chore: setup BrowserStack ([c365d25](https://github.com/Workfront/workfront-api/commit/c365d25))
+* chore: thank browserstack ([9f9331c](https://github.com/Workfront/workfront-api/commit/9f9331c))
+* chore: travis.yaml set CI env variable ([ebe3532](https://github.com/Workfront/workfront-api/commit/ebe3532))
+* fix: build with webpack ([f2aef6f](https://github.com/Workfront/workfront-api/commit/f2aef6f))
+* fix: corrected lcov file name ([b0b08b5](https://github.com/Workfront/workfront-api/commit/b0b08b5))
+* fix: handle fetch response ([572727f](https://github.com/Workfront/workfront-api/commit/572727f))
+* fix: should-sinon not installed ([6703f4c](https://github.com/Workfront/workfront-api/commit/6703f4c))
+* fix: TRAVIS_JOB_NUMBER as tunnelIdentifier ([58e85e7](https://github.com/Workfront/workfront-api/commit/58e85e7))
+* fix: typo in package.json ([3311ff0](https://github.com/Workfront/workfront-api/commit/3311ff0))
+* fix: wrong version of should-sinon ([767872c](https://github.com/Workfront/workfront-api/commit/767872c))
+* feat: setApiKey, clearApiKey ([ef49aad](https://github.com/Workfront/workfront-api/commit/ef49aad))
+* refactor: Replace Browserify to Webpack, code in Typescript ([680d009](https://github.com/Workfront/workfront-api/commit/680d009))
+
+
+
+## <small>1.4.1 (2017-03-07)</small>
+
+* 1.4.1 ([173a9ee](https://github.com/Workfront/workfront-api/commit/173a9ee))
+* Build dist/ files ([5fe79f6](https://github.com/Workfront/workfront-api/commit/5fe79f6))
+* fix (closes #18): Added setAPIKey method ([3571ee2](https://github.com/Workfront/workfront-api/commit/3571ee2)), closes [#18](https://github.com/Workfront/workfront-api/issues/18) [#18](https://github.com/Workfront/workfront-api/issues/18)
+* refactor: Replace Browserify to Webpack, code in Typescript ([9f0f60a](https://github.com/Workfront/workfront-api/commit/9f0f60a))
+* feat: set sessionID in headers via setSessionID method ([e4f2603](https://github.com/Workfront/workfront-api/commit/e4f2603))
+
+
+
+## 1.4.0 (2016-10-14)
+
+* Release 1.4.0 ([d7ff516](https://github.com/Workfront/workfront-api/commit/d7ff516))
+* feat: added support for 'asp' api version, which can be used for logging into backoffice ([06fe099](https://github.com/Workfront/workfront-api/commit/06fe099))
+
+
+
+## <small>1.3.4 (2016-06-13)</small>
+
+* 1.3.4 ([ba85c2b](https://github.com/Workfront/workfront-api/commit/ba85c2b))
+
+
+
+## <small>1.3.3 (2016-06-13)</small>
+
+* 1.3.3 ([91eb2c6](https://github.com/Workfront/workfront-api/commit/91eb2c6))
+* chore: workfront-api-constants should be a dep instead of devDep, deps upgrade ([2a18607](https://github.com/Workfront/workfront-api/commit/2a18607))
+
+
+
+## <small>1.3.1 (2016-06-13)</small>
+
+* 1.3.1 ([4caa583](https://github.com/Workfront/workfront-api/commit/4caa583))
+* chore: workfront-api-constants should be a dep instead of devDep, deps upgrade ([88d3754](https://github.com/Workfront/workfront-api/commit/88d3754))
+
+
+
+## 1.3.0 (2016-06-03)
+
+* 1.3.0 ([93f2155](https://github.com/Workfront/workfront-api/commit/93f2155))
+* chore: updated browser bundle ([8bfd1aa](https://github.com/Workfront/workfront-api/commit/8bfd1aa))
+* fix: switched to use workfront-api-constants ([f205910](https://github.com/Workfront/workfront-api/commit/f205910))
+
+
+
+## <small>1.2.3 (2016-03-29)</small>
+
+* 1.2.3 ([30be6c4](https://github.com/Workfront/workfront-api/commit/30be6c4))
+* chore: updated browser bundle ([445d496](https://github.com/Workfront/workfront-api/commit/445d496))
+* fix: removed console.log ([ded7515](https://github.com/Workfront/workfront-api/commit/ded7515))
+
+
+
+## <small>1.2.2 (2016-03-29)</small>
+
+* 1.2.2 ([1f9653a](https://github.com/Workfront/workfront-api/commit/1f9653a))
+* chore: Added Node 4.2 to travis config ([ea9dc67](https://github.com/Workfront/workfront-api/commit/ea9dc67))
+* chore: rebuild browser bundle ([9abfc6b](https://github.com/Workfront/workfront-api/commit/9abfc6b))
+* fix: shorter promise chains and better bind syntax ([037b2fb](https://github.com/Workfront/workfront-api/commit/037b2fb))
+
+
+
+## <small>1.2.1 (2015-10-20)</small>
+
+* 1.2.1 ([1b7f4c5](https://github.com/Workfront/workfront-api/commit/1b7f4c5))
+* fix: improved docs ([d854bba](https://github.com/Workfront/workfront-api/commit/d854bba))
+
+
+
+## 1.2.0 (2015-10-20)
+
+* 1.2.0 ([2265cf7](https://github.com/Workfront/workfront-api/commit/2265cf7))
+* Update README.md ([61a134d](https://github.com/Workfront/workfront-api/commit/61a134d))
+* feat: adding upload support ([467c1e4](https://github.com/Workfront/workfront-api/commit/467c1e4))
+* fix: broken link ([8b339c4](https://github.com/Workfront/workfront-api/commit/8b339c4))
+* fix: issue with login example ([4055e8f](https://github.com/Workfront/workfront-api/commit/4055e8f))
+* chore: use new Travis CI infrastructure ([1bfd6a5](https://github.com/Workfront/workfront-api/commit/1bfd6a5))
+
+
+
+## <small>1.1.1 (2015-07-11)</small>
+
+* 1.1.1 ([53e5b72](https://github.com/Workfront/workfront-api/commit/53e5b72))
+* Fixes #8 ([3842862](https://github.com/Workfront/workfront-api/commit/3842862)), closes [#8](https://github.com/Workfront/workfront-api/issues/8)
+
+
+
+## 1.1.0 (2015-06-19)
+
+* {String} to {Boolean}, Optional to Defaults to false, query to querey ([7cafc42](https://github.com/Workfront/workfront-api/commit/7cafc42))
+* 1.1.0 ([85ac77f](https://github.com/Workfront/workfront-api/commit/85ac77f))
+* Added a comment and example for alwaysUseGet ([c16b9ad](https://github.com/Workfront/workfront-api/commit/c16b9ad))
+* added support for ids beginning with internal prefix, such as $$USER ([d91c2fa](https://github.com/Workfront/workfront-api/commit/d91c2fa))
+* adding support to make every call a get so this project will work with the nodebalancer ([8aee674](https://github.com/Workfront/workfront-api/commit/8aee674))
+* change querey to query and added back in Optional to the comment ([8262ce2](https://github.com/Workfront/workfront-api/commit/8262ce2))
+* forgot a . ([1d9a4f6](https://github.com/Workfront/workfront-api/commit/1d9a4f6))
+* Made the always use get test have a param that would normally show up in the body ([a589c72](https://github.com/Workfront/workfront-api/commit/a589c72))
+* ran gulp build ([d075302](https://github.com/Workfront/workfront-api/commit/d075302))
+* rebuilt to include latest changes ([937b8ab](https://github.com/Workfront/workfront-api/commit/937b8ab))
+* single field can now be passed as string (i.e. '*' is now the same as ['*']) ([68ea1d1](https://github.com/Workfront/workfront-api/commit/68ea1d1))
+* Update bower.json ([5dd2f34](https://github.com/Workfront/workfront-api/commit/5dd2f34))
+* Feature: add support for API keys ([8851707](https://github.com/Workfront/workfront-api/commit/8851707))
+
+
+
+## <small>1.0.3 (2015-02-23)</small>
+
+* 1.0.3 ([56e8ca2](https://github.com/Workfront/workfront-api/commit/56e8ca2))
+* Doc improvement: describe available usage scenarios for browsers ([77eb0b5](https://github.com/Workfront/workfront-api/commit/77eb0b5))
+* rebuilt before release ([db3bd23](https://github.com/Workfront/workfront-api/commit/db3bd23))
+* Replaced obsolete util.print with console.log ([638e92e](https://github.com/Workfront/workfront-api/commit/638e92e))
+* Feature: Add support for API actions with 'null' IDs ([5ebe71d](https://github.com/Workfront/workfront-api/commit/5ebe71d))
+
+
+
+## <small>1.0.2 (2015-02-16)</small>
+
+* 1.0.2 ([3dfabb8](https://github.com/Workfront/workfront-api/commit/3dfabb8))
+* Added some node-related files into ignore list of bower.json ([e0eae0b](https://github.com/Workfront/workfront-api/commit/e0eae0b))
+
+
+
+## <small>1.0.1 (2015-02-16)</small>
+
+* 1.0.1 ([b0a71fa](https://github.com/Workfront/workfront-api/commit/b0a71fa))
+* Added node 0.12 to travis runs ([26a999b](https://github.com/Workfront/workfront-api/commit/26a999b))
+* fixed typo in license name ([b3a3043](https://github.com/Workfront/workfront-api/commit/b3a3043))
+
+
+
+## 1.0.0 (2015-02-16)
+
+* 0.1.0 ([8b4147b](https://github.com/Workfront/workfront-api/commit/8b4147b))
+* 0.2.0 ([658c9b3](https://github.com/Workfront/workfront-api/commit/658c9b3))
+* 0.3.0 ([37290cc](https://github.com/Workfront/workfront-api/commit/37290cc))
+* 0.4.0 ([90a4b61](https://github.com/Workfront/workfront-api/commit/90a4b61))
+* 1.0.0 ([46a1ce1](https://github.com/Workfront/workfront-api/commit/46a1ce1))
+* Add protocol from parsed url ([72a6ebf](https://github.com/Workfront/workfront-api/commit/72a6ebf))
+* added 'api-unsupported' version support ([0fa11b9](https://github.com/Workfront/workfront-api/commit/0fa11b9))
+* Added ApiUtil - a place for adding utility methods for work with API ([3353e39](https://github.com/Workfront/workfront-api/commit/3353e39))
+* Added bower.json and replaced gulp-webserver with http-server ([0486960](https://github.com/Workfront/workfront-api/commit/0486960))
+* added code-climate badge ([444a47e](https://github.com/Workfront/workfront-api/commit/444a47e))
+* added comments, implemented metadata method ([54c1245](https://github.com/Workfront/workfront-api/commit/54c1245))
+* added comments, minification of dist/attask.js and ApiConstants.js ([f51765a](https://github.com/Workfront/workfront-api/commit/f51765a))
+* added Contributing guidelines ([31fe692](https://github.com/Workfront/workfront-api/commit/31fe692))
+* added coverage and reporting to coveralls.io ([ac7128b](https://github.com/Workfront/workfront-api/commit/ac7128b))
+* added coverage badge ([cdf54a4](https://github.com/Workfront/workfront-api/commit/cdf54a4))
+* added coverage badge ([7197812](https://github.com/Workfront/workfront-api/commit/7197812))
+* added documentation ([966d863](https://github.com/Workfront/workfront-api/commit/966d863))
+* added example of sharing a project ([a05b28b](https://github.com/Workfront/workfront-api/commit/a05b28b))
+* added example to get users count ([945d0da](https://github.com/Workfront/workfront-api/commit/945d0da))
+* added generation on non-minified version in dist/ folder ([057fbe4](https://github.com/Workfront/workfront-api/commit/057fbe4))
+* added gitignore ([281b240](https://github.com/Workfront/workfront-api/commit/281b240))
+* added gulp tasks ([fdb2982](https://github.com/Workfront/workfront-api/commit/fdb2982))
+* added https support and more tests ([fd875fb](https://github.com/Workfront/workfront-api/commit/fd875fb))
+* added license badge ([17dcc7c](https://github.com/Workfront/workfront-api/commit/17dcc7c))
+* added license badge ([ea4184e](https://github.com/Workfront/workfront-api/commit/ea4184e))
+* added login test page ([829b35c](https://github.com/Workfront/workfront-api/commit/829b35c))
+* added plugin tests ([2ea38d6](https://github.com/Workfront/workfront-api/commit/2ea38d6))
+* added release task ([eb391c6](https://github.com/Workfront/workfront-api/commit/eb391c6))
+* added release task ([888c54f](https://github.com/Workfront/workfront-api/commit/888c54f))
+* added release task. minor fixes ([4fd632f](https://github.com/Workfront/workfront-api/commit/4fd632f))
+* added release task. minor fixes ([ebaa736](https://github.com/Workfront/workfront-api/commit/ebaa736))
+* added release task. minor fixes ([5819c23](https://github.com/Workfront/workfront-api/commit/5819c23))
+* added release task. minor fixes ([3befb74](https://github.com/Workfront/workfront-api/commit/3befb74))
+* added release task. minor fixes ([1fef235](https://github.com/Workfront/workfront-api/commit/1fef235))
+* added release task. minor fixes ([5b39016](https://github.com/Workfront/workfront-api/commit/5b39016))
+* added report() method ([bc8150e](https://github.com/Workfront/workfront-api/commit/bc8150e))
+* Added shell script to generate gh-pages ([e8250fd](https://github.com/Workfront/workfront-api/commit/e8250fd))
+* added test for logout ([a99773b](https://github.com/Workfront/workfront-api/commit/a99773b))
+* Added tests for Api constructor, moved non-exported methods into plugins/ folder ([91b404b](https://github.com/Workfront/workfront-api/commit/91b404b))
+* added tests for getInstance() method ([dc215c7](https://github.com/Workfront/workfront-api/commit/dc215c7))
+* added tests for login and logout ([053c14f](https://github.com/Workfront/workfront-api/commit/053c14f))
+* added tests for login and logout ([7f7ba2d](https://github.com/Workfront/workfront-api/commit/7f7ba2d))
+* added withCredentials: false ([5e1138d](https://github.com/Workfront/workfront-api/commit/5e1138d))
+* AtTask is now Workfront! ([bf47ad8](https://github.com/Workfront/workfront-api/commit/bf47ad8))
+* changed API version to 4.0 ([191a029](https://github.com/Workfront/workfront-api/commit/191a029))
+* changing file name to lowercase ([33af3b2](https://github.com/Workfront/workfront-api/commit/33af3b2))
+* corrected header text ([9c6aae5](https://github.com/Workfront/workfront-api/commit/9c6aae5))
+* documentation improvements ([fddd06b](https://github.com/Workfront/workfront-api/commit/fddd06b))
+* dropped travis runs for node 0.6 and 0.8 ([5347221](https://github.com/Workfront/workfront-api/commit/5347221))
+* email notifications ([aa97cf7](https://github.com/Workfront/workfront-api/commit/aa97cf7))
+* email notifications ([a412807](https://github.com/Workfront/workfront-api/commit/a412807))
+* Fix fields issue ([20cc2de](https://github.com/Workfront/workfront-api/commit/20cc2de))
+* fixed bug in execHandlingErrors when options were not being passed properly to shell.exec ([b645f4a](https://github.com/Workfront/workfront-api/commit/b645f4a))
+* fixed login.html ([0d57b0c](https://github.com/Workfront/workfront-api/commit/0d57b0c))
+* fixing code-climate issues ([680c3d0](https://github.com/Workfront/workfront-api/commit/680c3d0))
+* generated latest version ([31ff8e6](https://github.com/Workfront/workfront-api/commit/31ff8e6))
+* implemented copy() and edit() methods. Renamed post() to read create(). Added more examples. ([14868fc](https://github.com/Workfront/workfront-api/commit/14868fc))
+* implemented execute() and namedQuery() methods ([8f8099b](https://github.com/Workfront/workfront-api/commit/8f8099b))
+* implemented remove() method ([f47a461](https://github.com/Workfront/workfront-api/commit/f47a461))
+* improved promise polyfill usage under node.js ([6be94b6](https://github.com/Workfront/workfront-api/commit/6be94b6))
+* initial api class ([b56b74e](https://github.com/Workfront/workfront-api/commit/b56b74e))
+* Initial commit ([2adfee1](https://github.com/Workfront/workfront-api/commit/2adfee1))
+* instancees, singleton ([f3932c5](https://github.com/Workfront/workfront-api/commit/f3932c5))
+* just making tests pass ([6e740f7](https://github.com/Workfront/workfront-api/commit/6e740f7))
+* licensing ([dc9f175](https://github.com/Workfront/workfront-api/commit/dc9f175))
+* more tests ([beb92b5](https://github.com/Workfront/workfront-api/commit/beb92b5))
+* Moved gh-pages generation to Gulp ([3d6d268](https://github.com/Workfront/workfront-api/commit/3d6d268))
+* No need for Buffer.byteLength anymore ([47691d0](https://github.com/Workfront/workfront-api/commit/47691d0))
+* Now printing description in each example ([f094138](https://github.com/Workfront/workfront-api/commit/f094138))
+* organizing things ([69bfc07](https://github.com/Workfront/workfront-api/commit/69bfc07))
+* put api.js in src ([bea151c](https://github.com/Workfront/workfront-api/commit/bea151c))
+* refactor ([2a9b44f](https://github.com/Workfront/workfront-api/commit/2a9b44f))
+* refactor ([a4925a6](https://github.com/Workfront/workfront-api/commit/a4925a6))
+* Remove Promise requirement the lib and require Promise in examples ([a969fe5](https://github.com/Workfront/workfront-api/commit/a969fe5))
+* removed all temporary tags. preparing for the first release. ([5634696](https://github.com/Workfront/workfront-api/commit/5634696))
+* removed dependency from lodash ([fe8039a](https://github.com/Workfront/workfront-api/commit/fe8039a))
+* removed obsolete .npmignore ([6924c76](https://github.com/Workfront/workfront-api/commit/6924c76))
+* removed unused definition ([735f5c2](https://github.com/Workfront/workfront-api/commit/735f5c2))
+* request() method now sends params via request body for non-GET requests ([9640d31](https://github.com/Workfront/workfront-api/commit/9640d31))
+* run test-ci tasks in sequence ([69ce630](https://github.com/Workfront/workfront-api/commit/69ce630))
+* shortened syntax ([c8e0791](https://github.com/Workfront/workfront-api/commit/c8e0791))
+* SSL support. Add secureProtocol option in constructor config. ([494cbb0](https://github.com/Workfront/workfront-api/commit/494cbb0))
+* test files now end with .spec.js ([2395786](https://github.com/Workfront/workfront-api/commit/2395786))
+* Test for all available methods ([6334ac2](https://github.com/Workfront/workfront-api/commit/6334ac2))
+* trying to get wicked to work ([a4082ef](https://github.com/Workfront/workfront-api/commit/a4082ef))
+* uncommented "npm publish" in release task ([0cf90bd](https://github.com/Workfront/workfront-api/commit/0cf90bd))
+* Update README.md ([6a586be](https://github.com/Workfront/workfront-api/commit/6a586be))
+* Update README.md ([e4c2d78](https://github.com/Workfront/workfront-api/commit/e4c2d78))
+* updated readme ([b5ab14b](https://github.com/Workfront/workfront-api/commit/b5ab14b))
+* using Api.Methods.XXX constants for http methods ([a547ea2](https://github.com/Workfront/workfront-api/commit/a547ea2))
+* using latest gulp now ([86a9c67](https://github.com/Workfront/workfront-api/commit/86a9c67))
+
+
+
