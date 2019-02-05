@@ -16,8 +16,8 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-
-import * as Workfront from '../../src/index'
+import {Api} from '../../dist/workfront-api.es'
+import fixture from '../../fixtures/create.json'
 
 const API_URL = 'http://foobar:8080'
 
@@ -27,7 +27,7 @@ describe('Create', function() {
     afterEach(fetchMock.restore)
 
     beforeEach(function() {
-        this.api = new Workfront.Api({
+        this.api = new Api({
             url: API_URL
         })
     })
@@ -38,7 +38,7 @@ describe('Create', function() {
     beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api`,
-            require('../../fixtures/create.json'),
+            fixture,
             {
                 name: 'create'
             }
@@ -73,7 +73,7 @@ describe('Create', function() {
         })
     })
     it('should create an object using the old api (passing updates property)', function() {
-        const api = new Workfront.Api({
+        const api = new Api({
             url: API_URL,
             version: '4.0'
         })

@@ -16,8 +16,10 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-
-import * as Workfront from '../../src/index'
+import {Api} from '../../dist/workfront-api.es'
+import createFixture from '../../fixtures/create.json'
+import removeFixture from '../../fixtures/remove.json'
+import removeFailureFixture from '../../fixtures/removeFailure.json'
 
 const API_URL = 'http://foobar:8080'
 
@@ -27,7 +29,7 @@ describe('Remove', function() {
     afterEach(fetchMock.restore)
 
     beforeEach(function() {
-        this.api = new Workfront.Api({
+        this.api = new Api({
             url: API_URL
         })
     })
@@ -38,7 +40,7 @@ describe('Remove', function() {
     beforeEach(function() {
         fetchMock.mock(
             `begin:${API_URL}/attask/api`,
-            require('../../fixtures/create.json'),
+            createFixture,
             {
                 method: 'POST',
                 name: 'create'
@@ -50,7 +52,7 @@ describe('Remove', function() {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api`,
-                require('../../fixtures/remove.json'),
+                removeFixture,
                 {
                     method: 'DELETE',
                     name: 'remove'
@@ -79,7 +81,7 @@ describe('Remove', function() {
         beforeEach(function() {
             fetchMock.mock(
                 `begin:${API_URL}/attask/api`,
-                require('../../fixtures/removeFailure.json'),
+                removeFailureFixture,
                 {
                     method: 'DELETE',
                     name: 'remove'
