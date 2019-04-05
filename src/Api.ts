@@ -387,10 +387,20 @@ export class Api {
      * @memberOf Api
      * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} query    An object with search criteria and aggregate functions
+     * @param {Boolean} [useHttpPost=false] Whenever to use POST to send query params
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
-    report(objCode: string, query: object) {
-        return this.request(objCode + '/report', query, null, Api.Methods.GET)
+    report(objCode: string, query: object, useHttpPost = false) {
+        let reportQuery, method
+        if (useHttpPost) {
+            reportQuery = {...query, method: Api.Methods.GET}
+            method = Api.Methods.POST
+        }
+        else {
+            reportQuery = query
+            method = Api.Methods.GET
+        }
+        return this.request(objCode + '/report', reportQuery, null, method)
     }
 
     /**
