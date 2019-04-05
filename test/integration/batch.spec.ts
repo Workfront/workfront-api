@@ -103,4 +103,23 @@ describe('Batch', function() {
 			should(match).has.length(3, 'should have 3 method=GET params')
 		})
 	})
+	describe('Populate proper "uri" for "execute" method without objID', function() {
+		beforeEach(function () {
+			this.api.batch(
+				batchApi => [
+					batchApi.execute('user', null, 'activateUsers', {userIDs: ['foo', 'bar']})
+				]
+			)
+		})
+
+		it('should request POST /batch', function () {
+			should(fetchMock.lastUrl()).equal(API_URL + '/attask/api-internal/batch')
+			should(fetchMock.lastOptions()).have.property('method', 'POST')
+		})
+		it('has exact body params', function () {
+			const {body} = fetchMock.lastOptions()
+			const expectedString = 'atomic=false&uri=user%3Fmethod%3DPUT%26action%3DactivateUsers%26userIDs%3Dfoo%26userIDs%3Dbar'
+			should(body).equals(expectedString)
+		})
+	})
 })

@@ -410,7 +410,11 @@ export class Api {
     ): Promise<any> {
         const clonedParams = {...params}
 
-        const options = this.getOptions(path, clonedParams, method)
+        const options = this.getOptions(
+            path,
+            clonedParams,
+            this._uriGenerationMode ? Api.Methods.GET : method
+        )
 
         const stringifiedFields = this.getFields(fields)
         if (stringifiedFields) {
@@ -428,9 +432,13 @@ export class Api {
         }
 
         if (this._uriGenerationMode) {
+            let appendGetMethod = ''
+            if (queryString.indexOf('method=') === -1) {
+                appendGetMethod = (queryString === '' ? '?' : '&') + 'method=' + Api.Methods.GET
+            }
             // @ts-ignore-line
             return (
-                path + queryString + (queryString === '' ? '?' : '&') + 'method=' + Api.Methods.GET
+                path + queryString + appendGetMethod
             )
         }
         return makeFetchCall(options.url + options.path + queryString, {

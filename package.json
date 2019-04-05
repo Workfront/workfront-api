@@ -60,7 +60,7 @@
     "test:karma": "karma start karma.conf.js",
     "test:mocha": "mocha -r ts-node/register/transpile-only test/*.spec.ts",
     "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
-    "debug": "npm run test -- --auto-watch --browsers Chrome --no-single-run",
+    "debug": "npm run test:karma -- --auto-watch --browsers Chrome --no-single-run",
     "build": "rollup -c && tsc --emitDeclarationOnly -p ./tsconfig.json -d --declarationDir ./typings",
     "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\" && touch ./docs/.nojekyll",
     "prepublish": "npm run build",
