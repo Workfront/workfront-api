@@ -24,7 +24,6 @@ import fixture from '../../fixtures/report.json'
 const API_URL = 'http://foobar:8080'
 
 describe('Report', function() {
-
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
@@ -38,26 +37,34 @@ describe('Report', function() {
     })
 
     beforeEach(function() {
-        fetchMock.mock(
-            `begin:${API_URL}/attask/api`,
-            fixture,
-            {
-                name: 'report'
-            }
-        )
+        fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
+            name: 'report'
+        })
     })
+    const objCode = 'TASK',
+        query = {
+            ['status' + GROUPBY]: true
+        }
     it('makes a request with proper params, url and method', function() {
-        const objCode = 'TASK',
-            query = {
-                ['status' + GROUPBY]: true
-            }
         return this.api.report(objCode, query).then(function(data) {
             const [url, opts] = fetchMock.lastCall('report')
             should(opts.method).equal('GET')
             should(opts.body).be.null()
             should(url).endWith(`${objCode}/report?status${GROUPBY}=true`)
-            should(data).have.propertyByPath('CPL', 'dcount_ID').be.Number()
-            should(data.CPL).have.property('status').be.equal('CPL')
+            should(data)
+                .have.propertyByPath('CPL', 'dcount_ID')
+                .be.Number()
+            should(data.CPL)
+                .have.property('status')
+                .be.equal('CPL')
+        })
+    })
+    it('should do a request with POST method when the useHttpPost=true', function() {
+        return this.api.report(objCode, query, true).then(function() {
+            const [url, opts] = fetchMock.lastCall('report')
+            should(url).endWith(`${objCode}/report`)
+            should(opts.method).equal('POST')
+            should(opts.body).equals(`status${GROUPBY}=true&method=GET`)
         })
     })
 })
