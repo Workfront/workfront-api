@@ -71,16 +71,16 @@
 				<h2 id="usage">Usage</h2>
 				<h4 id="server-side">Server-side</h4>
 				<p>Install as a dependency: <code>npm install --save workfront-api</code>.<br>Then <code>require(&#39;workfront-api&#39;)</code> in your code. For example:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> Workfront = <span class="hljs-built_in">require</span>(<span class="hljs-string">'workfront-api'</span>),
-    util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>)
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Workfront = <span class="hljs-built_in">require</span>(<span class="hljs-string">'workfront-api'</span>)
 
 <span class="hljs-comment">/**
  * The console.log statement below will output the following:
  * {
- *    Api: [Function: Api]
+ *    NodeApi: [Function: Api],
+ *    ResponseHandler: { success: [Function: success], failure: [Function: failure] }
  * }
  */</span>
-<span class="hljs-built_in">console</span>.log(util.inspect(Workfront, {<span class="hljs-attr">depth</span>: <span class="hljs-number">0</span>}))</code></pre>
+<span class="hljs-built_in">console</span>.log(Workfront)</code></pre>
 				<h2 id="documentation">Documentation</h2>
 				<p>API documentation is available at <a href="http://workfront.github.io/workfront-api/">http://workfront.github.io/workfront-api/</a>.</p>
 				<h2 id="examples">Examples</h2>
