@@ -17,16 +17,16 @@ Install as a dependency: `npm install --save workfront-api`.
 Then `require('workfront-api')` in your code. For example:
 
 ```javascript
-var Workfront = require('workfront-api'),
-    util = require('util')
+const Workfront = require('workfront-api')
 
 /**
  * The console.log statement below will output the following:
  * {
- *    Api: [Function: Api]
+ *    NodeApi: [Function: Api],
+ *    ResponseHandler: { success: [Function: success], failure: [Function: failure] }
  * }
  */
-console.log(util.inspect(Workfront, {depth: 0}))
+console.log(Workfront)
 ```
 
 ## Documentation
@@ -43,6 +43,7 @@ In order to run these examples clone a copy of workfront-api repository:
 #### Running [node](examples/node) examples
 
 First enter into `workfront-api` directory and install all the dependencies:
+
 
     cd workfront-api
     npm install
