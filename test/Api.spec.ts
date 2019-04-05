@@ -58,7 +58,7 @@ describe('Create new instance for API', function() {
             .and.has.lengthOf(3)
         should(api.report)
             .be.a.Function()
-            .and.has.lengthOf(2)
+            .and.has.lengthOf(3)
         should(api.search)
             .be.a.Function()
             .and.has.lengthOf(4)
