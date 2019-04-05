@@ -131,12 +131,12 @@ export class Api {
 
     /**
      * Copies an existing object with making changes on a copy.
-     * Copying is supported only for some objects. The {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} page displays which objects support the Copy action.
+     * Copying is supported only for some objects. The {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} page displays which objects support the Copy action.
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object to copy
-     * @param {Object} updates    Which fields to set on copied object. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
-     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {Object} updates    Which fields to set on copied object. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @param {String[]} options    A list of options that are attached to the copy request (object specific)
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
@@ -197,9 +197,9 @@ export class Api {
     /**
      * Creates a new object.
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
-     * @param {Object} params    Values of fields to be set for the new object. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
-     * @param {String|String[]} [fields]    Which fields of newly created object to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {Object} params    Values of fields to be set for the new object. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields of newly created object to return. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @returns {Promise}    A promise which will resolved with the ID and any other specified fields of newly created object
      */
     create(objCode: string, params: any, fields?: TFields) {
@@ -212,10 +212,10 @@ export class Api {
     /**
      * Edits an existing object
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object to modify
-     * @param {Object} updates    Which fields to set. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
-     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {Object} updates    Which fields to set. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     edit(objCode: string, objID: string, updates: any, fields?: TFields) {
@@ -228,9 +228,9 @@ export class Api {
     /**
      * Edit multiple existing objects
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
-     * @param {Array} updates    Array of fields for each object to be edited. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
-     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {Array} updates    Array of fields for each object to be edited. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     editMultiple(objCode: string, updates: any[], fields?: TFields) {
@@ -240,10 +240,10 @@ export class Api {
     /**
      * Executes an action for the given object
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String|null} objID    ID of object. Optional, pass null or undefined to omit
-     * @param {String} action    An action to execute. A list of allowed actions are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
-     * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
+     * @param {String} action    An action to execute. A list of allowed actions are available within the {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
+     * @param {Object} [actionArgs]    Optional. Arguments for the action. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     execute(objCode: string, objID: string | null, action: string, actionArgs?: object) {
@@ -263,9 +263,9 @@ export class Api {
     /**
      * Used for retrieve an object or multiple objects.
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String|Array} objIDs    Either one or multiple object ids
-     * @param {String|String[]} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} fields    Which fields to return. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
     get(objCode: string, objIDs: string | string[], fields?: TFields) {
@@ -330,7 +330,7 @@ export class Api {
     /**
      * Retrieves API metadata for an object.
      * @memberOf Api
-     * @param {String} [objCode]    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}. If omitted will return list of objects available in API.
+     * @param {String} [objCode]    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}. If omitted will return list of objects available in API.
      * @param {String|String[]} fields    Which fields to return.
      * @return {Promise}    A promise which will resolved with object metadata if everything went ok and rejected otherwise
      */
@@ -345,10 +345,10 @@ export class Api {
     /**
      * Executes a named query for the given obj code
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
-     * @param {String} query    A query to execute. A list of allowed named queries are available within the {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
-     * @param {Object} [queryArgs]    Optional. Arguments for the action. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
-     * @param {String|String[]} fields    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {String} query    A query to execute. A list of allowed named queries are available within the {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} under "actions" for each object.
+     * @param {Object} [queryArgs]    Optional. Arguments for the action. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of valid arguments
+     * @param {String|String[]} fields    Which fields to return. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @returns {Promise}    A promise which will resolved with received data if everything went ok and rejected with error info otherwise
      */
     namedQuery(objCode: string, query: string, queryArgs?: object, fields?: TFields) {
@@ -358,7 +358,7 @@ export class Api {
     /**
      * Deletes an object
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {String} objID    ID of object
      * @param {Boolean} [bForce]    Pass true to cause the server to remove the specified data and its dependants
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
@@ -385,7 +385,7 @@ export class Api {
     /**
      * Performs report request, where only the aggregate of some field is desired, with one or more groupings.
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} query    An object with search criteria and aggregate functions
      * @return {Promise}    A promise which will resolved with results if everything went ok and rejected otherwise
      */
@@ -443,9 +443,9 @@ export class Api {
     /**
      * Used for object retrieval by multiple search criteria.
      * @memberOf Api
-     * @param {String} objCode    One of object codes from {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer}
+     * @param {String} objCode    One of object codes from {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer}
      * @param {Object} [query]    An object with search criteria
-     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.attask.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
+     * @param {String|String[]} [fields]    Which fields to return. See {@link https://developers.workfront.com/api-docs/api-explorer/|Workfront API Explorer} for the list of available fields for the given objCode.
      * @param {Boolean} [useHttpPost=false] Whenever to use POST to send query params
      * @return {Promise}    A promise which will resolved with search results if everything went ok and rejected otherwise
      */
