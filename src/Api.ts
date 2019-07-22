@@ -492,13 +492,16 @@ export class Api {
      * @param {boolean} isAtomic    Pass true if you want all operations to happen in the same transaction.
      *     There is a limitation, however. Atomic batch operations can only return success or error.
      *
+     * @param {boolean} isConcurrent  Requests to the DB are made asynchronously.
+     *
      * @returns {Promise<any[] | undefined>}
      */
-    batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: false): Promise<any[]>
-    batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: true): Promise<undefined>
+    batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: false, isConcurrent?: boolean): Promise<any[]>
+    batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: true, isConcurrent?: boolean): Promise<undefined>
     batch(
         uriCollector: (batchApi: IBatchApi) => string[],
-        isAtomic?: boolean
+        isAtomic?: boolean,
+        isConcurrent?: boolean
     ): Promise<any[] | undefined> {
         const batchApi = batchApiFactory(this)
         const uris = uriCollector(batchApi)
@@ -509,7 +512,8 @@ export class Api {
             '/batch',
             {
                 atomic: !!isAtomic,
-                uri: uris
+                uri: uris,
+                concurrent: !!isConcurrent
             },
             undefined,
             Api.Methods.POST
