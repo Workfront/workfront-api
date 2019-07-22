@@ -161,7 +161,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L69">Api.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L69">Api.ts:69</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -183,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">_http<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_api_.ihttpoptions.html" class="tsd-signature-type">IHttpOptions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L66">Api.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L66">Api.ts:66</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -193,7 +193,7 @@
 					<div class="tsd-signature tsd-kind-icon">_uri<wbr>Generation<wbr>Mode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L69">Api.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L69">Api.ts:69</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -203,7 +203,7 @@
 					<div class="tsd-signature tsd-kind-icon">server<wbr>AcceptsJSON<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L67">Api.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L67">Api.ts:67</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -214,14 +214,14 @@
 					<a name="batch" class="tsd-anchor"></a>
 					<h3>batch</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">false</span>, isConcurrent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">true</span>, isConcurrent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L497">Api.ts:497</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L499">Api.ts:499</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -271,13 +271,19 @@
 										There is a limitation, however. Atomic batch operations can only return success or error.</p>
 									</div>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isConcurrent: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Requests to the DB are made asynchronously.</p>
+									</div>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L498">Api.ts:498</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L500">Api.ts:500</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -306,6 +312,9 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isAtomic: <span class="tsd-signature-type">true</span></h5>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isConcurrent: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -321,7 +330,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L183">Api.ts:183</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L183">Api.ts:183</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,7 +359,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L143">Api.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L143">Api.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -409,7 +418,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L167">Api.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L167">Api.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -448,7 +457,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L205">Api.ts:205</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L205">Api.ts:205</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -494,7 +503,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L221">Api.ts:221</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L221">Api.ts:221</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -546,7 +555,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L236">Api.ts:236</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L236">Api.ts:236</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -592,7 +601,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L249">Api.ts:249</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L249">Api.ts:249</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -644,7 +653,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L271">Api.ts:271</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L271">Api.ts:271</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -693,7 +702,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L107">Api.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L107">Api.ts:107</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -736,7 +745,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L571">Api.ts:571</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L575">Api.ts:575</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Headers</span></h4>
@@ -753,7 +762,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L297">Api.ts:297</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L297">Api.ts:297</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -797,7 +806,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L315">Api.ts:315</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L315">Api.ts:315</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -825,7 +834,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L337">Api.ts:337</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L337">Api.ts:337</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -865,7 +874,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L354">Api.ts:354</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L354">Api.ts:354</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -917,7 +926,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L366">Api.ts:366</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L366">Api.ts:366</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -963,7 +972,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L393">Api.ts:393</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L393">Api.ts:393</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1009,7 +1018,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L415">Api.ts:415</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L415">Api.ts:415</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1058,7 +1067,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L470">Api.ts:470</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L470">Api.ts:470</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1104,7 +1113,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L535">Api.ts:535</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L539">Api.ts:539</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1138,7 +1147,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L544">Api.ts:544</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L548">Api.ts:548</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1174,7 +1183,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L557">Api.ts:557</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L561">Api.ts:561</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1210,7 +1219,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L565">Api.ts:565</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L569">Api.ts:569</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1235,7 +1244,7 @@
 					<div class="tsd-signature tsd-kind-icon">Methods<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L60">Api.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L60">Api.ts:60</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1244,7 +1253,7 @@
 						<div class="tsd-signature tsd-kind-icon">DELETE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DELETE&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L63">Api.ts:63</a></li>
+								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L63">Api.ts:63</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1254,7 +1263,7 @@
 						<div class="tsd-signature tsd-kind-icon">GET<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;GET&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L61">Api.ts:61</a></li>
+								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L61">Api.ts:61</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1264,7 +1273,7 @@
 						<div class="tsd-signature tsd-kind-icon">POST<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;POST&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L64">Api.ts:64</a></li>
+								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L64">Api.ts:64</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1274,7 +1283,7 @@
 						<div class="tsd-signature tsd-kind-icon">PUT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;PUT&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/3aca67c/src/Api.ts#L62">Api.ts:62</a></li>
+								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L62">Api.ts:62</a></li>
 							</ul>
 						</aside>
 					</section>
