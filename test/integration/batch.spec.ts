@@ -118,7 +118,7 @@ describe('Batch', function() {
 		})
 		it('has exact body params', function () {
 			const {body} = fetchMock.lastOptions()
-			const expectedString = 'atomic=false&uri=user%3Fmethod%3DPUT%26action%3DactivateUsers%26userIDs%3Dfoo%26userIDs%3Dbar'
+			const expectedString = 'atomic=false&uri=user%3Fmethod%3DPUT%26action%3DactivateUsers%26userIDs%3Dfoo%26userIDs%3Dbar&concurrent=false'
 			should(body).equals(expectedString)
 		})
 	})
