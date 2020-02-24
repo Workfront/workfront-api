@@ -102,19 +102,21 @@ export class Api {
      * @memberOf Api
      * @param {String} username    A username in Workfront
      * @param {String} password    Password to use
+     * @param {String} subdomain    Sub-domain to use
      * @return {Promise}    A promise which will resolved with API key if everything went ok and rejected otherwise
      */
-    getApiKey(username: string, password: string): Promise<string> {
+    getApiKey(username: string, password: string, subdomain: string): Promise<string> {
         return new Promise((resolve, reject) => {
             if (typeof this._httpOptions.headers.apiKey !== 'undefined') {
                 resolve(this._httpOptions.headers.apiKey)
             } else {
-                const req = this.execute('USER', null, 'getApiKey', {username, password})
+                const req = this.execute('USER', null, 'getApiKey', {username, password, subdomain})
                 ;(req as Promise<any>).then(getApiKeyData => {
                     if (getApiKeyData.result === '') {
                         const req2 = this.execute('USER', null, 'generateApiKey', {
                             username,
-                            password
+                            password,
+                            subdomain
                         })
                         ;(req2 as Promise<any>).then(generateApiKeyData => {
                             this._httpOptions.headers.apiKey = generateApiKeyData.result
@@ -292,12 +294,13 @@ export class Api {
      * @memberOf Api
      * @param {String} username    A username in Workfront
      * @param {String} password    Password to use
+     * @param {String} subdomain    Sub-domain to use
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */
-    login(username: string, password: string) {
+    login(username: string, password: string, subdomain: string) {
         const req = this.request(
             'login',
-            {username: username, password: password},
+            {username: username, password: password, subdomain: subdomain},
             null,
             Api.Methods.POST
         )
