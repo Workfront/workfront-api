@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@types/form-data": "2.2.1",
-    "@types/mocha": "7.0.1",
+    "@types/mocha": "7.0.2",
     "codecov": "3.6.5",
     "conventional-changelog-cli": "2.0.31",
     "fetch-mock": "6.5.2",
