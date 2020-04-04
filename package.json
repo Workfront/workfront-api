@@ -51,7 +51,7 @@
     "tslint-config-prettier": "1.18.0",
     "typedoc": "0.17.3",
     "typescript": "3.5.3",
-    "uuid": "7.0.2"
+    "uuid": "7.0.3"
   },
   "scripts": {
     "precommit": "lint-staged",
