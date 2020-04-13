@@ -61,7 +61,7 @@ export class Api {
         GET: 'GET',
         PUT: 'PUT',
         DELETE: 'DELETE',
-        POST: 'POST'
+        POST: 'POST',
     }
     _httpOptions: IHttpOptions
     serverAcceptsJSON: boolean
@@ -74,7 +74,7 @@ export class Api {
         this._httpOptions = {
             url: config.url,
             alwaysUseGet: config.alwaysUseGet,
-            headers: config.headers || {}
+            headers: config.headers || {},
         }
         if (config.apiKey) {
             this._httpOptions.headers.apiKey = config.apiKey
@@ -82,7 +82,7 @@ export class Api {
         // Append version to path if provided
         let path
         const {
-            version = 'internal'
+            version = 'internal',
         }: {
             version?: string
         } = config
@@ -105,20 +105,23 @@ export class Api {
      * @param {String} subdomain    Sub-domain to use
      * @return {Promise}    A promise which will resolved with API key if everything went ok and rejected otherwise
      */
-    getApiKey(username: string, password: string, subdomain: string): Promise<string> {
+    getApiKey(username: string, password: string, subdomain?: string): Promise<string> {
+        const loginParams = {
+            username,
+            password,
+        }
+        if (subdomain !== undefined) {
+            loginParams['subdomain'] = subdomain
+        }
         return new Promise((resolve, reject) => {
             if (typeof this._httpOptions.headers.apiKey !== 'undefined') {
                 resolve(this._httpOptions.headers.apiKey)
             } else {
-                const req = this.execute('USER', null, 'getApiKey', {username, password, subdomain})
-                ;(req as Promise<any>).then(getApiKeyData => {
+                const req = this.execute('USER', null, 'getApiKey', loginParams)
+                ;(req as Promise<any>).then((getApiKeyData) => {
                     if (getApiKeyData.result === '') {
-                        const req2 = this.execute('USER', null, 'generateApiKey', {
-                            username,
-                            password,
-                            subdomain
-                        })
-                        ;(req2 as Promise<any>).then(generateApiKeyData => {
+                        const req2 = this.execute('USER', null, 'generateApiKey', loginParams)
+                        ;(req2 as Promise<any>).then((generateApiKeyData) => {
                             this._httpOptions.headers.apiKey = generateApiKeyData.result
                             resolve(this._httpOptions.headers.apiKey)
                         }, reject)
@@ -148,7 +151,7 @@ export class Api {
             updates?: string
             options?: string
         } = {
-            copySourceID: objID
+            copySourceID: objID,
         }
         if (updates) {
             params.updates = JSON.stringify(updates)
@@ -171,7 +174,7 @@ export class Api {
         if (this._uriGenerationMode) {
             return req
         }
-        return (req as Promise<any>).then(function(data) {
+        return (req as Promise<any>).then(function (data) {
             return data.count
         })
     }
@@ -185,7 +188,7 @@ export class Api {
     clearApiKey() {
         return new Promise((resolve, reject) => {
             const req = this.execute('USER', null, 'clearApiKey') as Promise<any>
-            req.then(result => {
+            req.then((result) => {
                 if (result) {
                     delete this._httpOptions.headers.apiKey
                     resolve()
@@ -297,14 +300,13 @@ export class Api {
      * @param {String} subdomain    Sub-domain to use
      * @return {Promise}    A promise which will resolved with logged in user data if everything went ok and rejected otherwise
      */
-    login(username: string, password: string, subdomain: string) {
-        const req = this.request(
-            'login',
-            {username: username, password: password, subdomain: subdomain},
-            null,
-            Api.Methods.POST
-        )
-        return (req as Promise<any>).then(data => {
+    login(username: string, password: string, subdomain?: string) {
+        const params = {username, password}
+        if (subdomain !== undefined) {
+            params['subdomain'] = subdomain
+        }
+        const req = this.request('login', params, null, Api.Methods.POST)
+        return (req as Promise<any>).then((data) => {
             this.setSessionID(data.sessionID)
             return data
         })
@@ -318,7 +320,7 @@ export class Api {
     logout(): Promise<undefined> {
         return new Promise((resolve, reject) => {
             const req = this.request('logout', null, null, Api.Methods.GET)
-            ;(req as Promise<any>).then(result => {
+            ;(req as Promise<any>).then((result) => {
                 if (result && result.success) {
                     delete this._httpOptions.headers['X-XSRF-TOKEN']
                     delete this._httpOptions.headers.sessionID
@@ -374,7 +376,7 @@ export class Api {
             return req
         } else {
             return new Promise((resolve, reject) => {
-                ;(req as Promise<any>).then(result => {
+                ;(req as Promise<any>).then((result) => {
                     if (result && result.success) {
                         resolve()
                     } else {
@@ -398,8 +400,7 @@ export class Api {
         if (useHttpPost) {
             reportQuery = {...query, method: Api.Methods.GET}
             method = Api.Methods.POST
-        }
-        else {
+        } else {
             reportQuery = query
             method = Api.Methods.GET
         }
@@ -450,14 +451,12 @@ export class Api {
                 appendGetMethod = (queryString === '' ? '?' : '&') + 'method=' + Api.Methods.GET
             }
             // @ts-ignore-line
-            return (
-                path + queryString + appendGetMethod
-            )
+            return path + queryString + appendGetMethod
         }
         return makeFetchCall(options.url + options.path + queryString, {
             headers,
             body: bodyParams,
-            method: options.method
+            method: options.method,
         })
     }
 
@@ -499,8 +498,16 @@ export class Api {
      *
      * @returns {Promise<any[] | undefined>}
      */
-    batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: false, isConcurrent?: boolean): Promise<any[]>
-    batch(uriCollector: (batchApi: IBatchApi) => string[], isAtomic?: true, isConcurrent?: boolean): Promise<undefined>
+    batch(
+        uriCollector: (batchApi: IBatchApi) => string[],
+        isAtomic?: false,
+        isConcurrent?: boolean
+    ): Promise<any[]>
+    batch(
+        uriCollector: (batchApi: IBatchApi) => string[],
+        isAtomic?: true,
+        isConcurrent?: boolean
+    ): Promise<undefined>
     batch(
         uriCollector: (batchApi: IBatchApi) => string[],
         isAtomic?: boolean,
@@ -516,21 +523,21 @@ export class Api {
             {
                 atomic: !!isAtomic,
                 uri: uris,
-                concurrent: !!isConcurrent
+                concurrent: !!isConcurrent,
             },
             undefined,
             Api.Methods.POST
         )
         if (isAtomic) {
-            return req.then(result => {
+            return req.then((result) => {
                 if (result && result.success) {
                     return undefined
                 }
                 throw new Error()
             })
         }
-        return req.then(results => {
-            return results.map(resultItem => resultItem.data)
+        return req.then((results) => {
+            return results.map((resultItem) => resultItem.data)
         })
     }
 
@@ -652,16 +659,16 @@ export class Api {
         return {
             bodyParams,
             queryString,
-            contentType
+            contentType,
         }
     }
 }
 
-const queryStringify = function(params) {
+const queryStringify = function (params) {
     return Object.keys(params)
-        .reduce(function(a, k) {
+        .reduce(function (a, k) {
             if (Array.isArray(params[k])) {
-                params[k].forEach(function(param) {
+                params[k].forEach(function (param) {
                     a.push(k + '=' + encodeURIComponent(param))
                 })
             } else {
@@ -742,7 +749,7 @@ function batchApiFactory(api: Api): IBatchApi {
         },
         search: (objCode: string, query?: object, fields?: TFields) => {
             return (apiClone.search(objCode, query, fields, false) as any) as string
-        }
+        },
     }
 }
 
@@ -760,37 +767,37 @@ export const ResponseHandler: {
     success: TSuccessHandler<any>
     failure: TFailureHandler
 } = {
-    success: response => {
+    success: (response) => {
         if (response.ok) {
-            return response.json().then(data => {
+            return response.json().then((data) => {
                 if (data.error) {
                     throw {
                         status: response.status,
-                        message: data.error.message
+                        message: data.error.message,
                     }
                 }
                 return data.data
             })
         } else {
             return response.json().then(
-                data => {
+                (data) => {
                     throw {
                         status: response.status,
-                        message: data.error.message
+                        message: data.error.message,
                     }
                 },
                 () => {
                     throw {
                         status: response.status,
-                        message: response.statusText
+                        message: response.statusText,
                     }
                 }
             )
         }
     },
-    failure: err => {
+    failure: (err) => {
         throw {
-            message: err.message || err.statusText
+            message: err.message || err.statusText,
         }
-    }
+    },
 }
