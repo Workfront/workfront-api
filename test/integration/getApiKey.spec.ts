@@ -21,21 +21,20 @@ import {Api} from '../../dist/workfront-api.es'
 
 const API_URL = 'http://foobar:8080'
 
-describe('getApiKey', function() {
-
+describe('getApiKey', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    it('requests generateApiKey when getApiKey returns blank', function(done) {
+    it('requests generateApiKey when getApiKey returns blank', function (done) {
         fetchMock.mock(
             (url, opts) => opts.body.indexOf('getApiKey') !== -1,
             '{"data": {"result": ""}}',
@@ -47,14 +46,14 @@ describe('getApiKey', function() {
             {name: 'generateApiKey'}
         )
 
-        this.api.getApiKey('foo', 'bar').then(function(apiKey) {
+        this.api.getApiKey('foo', 'bar').then(function (apiKey) {
             should(apiKey).be.equal('baz')
             should(fetchMock.called('getApiKey')).be.true()
             should(fetchMock.called('generateApiKey')).be.true()
             done()
         })
     })
-    it('does not call generateApiKey when getApiKey returns an api key', function(done) {
+    it('does not call generateApiKey when getApiKey returns an api key', function (done) {
         fetchMock.mock(
             (url, opts) => opts.body.indexOf('getApiKey') !== -1,
             '{"data": {"result": "baz"}}',
@@ -71,13 +70,13 @@ describe('getApiKey', function() {
             should(fetchMock.called('getApiKey')).be.true()
             should(fetchMock.called('generateApiKey')).be.false()
             should(fetchMock.calls('getApiKey')).length(1)
-            this.api.getApiKey('foo', 'bar').then(function() {
+            this.api.getApiKey('foo', 'bar').then(function () {
                 should(fetchMock.calls('getApiKey')).length(1)
                 done()
             })
         })
     })
-    it('should get and then clear the apiKey', function(done) {
+    it('should get and then clear the apiKey', function (done) {
         fetchMock.mock(
             (url, opts) => opts.body.indexOf('getApiKey') !== -1,
             '{"data": {"result": "baz"}}',
@@ -97,6 +96,42 @@ describe('getApiKey', function() {
                 should(this.api._httpOptions.headers).not.have.property('apiKey')
                 done()
             })
+        })
+    })
+    it('should getApiKey with subdomain', function () {
+        fetchMock.mock(
+            (url, opts) => opts.body.indexOf('getApiKey') !== -1,
+            '{"data": {"result": ""}}',
+            {name: 'getApiKey'}
+        )
+        fetchMock.mock(
+            (url, opts) => opts.body.indexOf('generateApiKey') !== -1,
+            '{"data": {"result": "baz"}}',
+            {name: 'generateApiKey'}
+        )
+        return this.api.getApiKey('foo', 'bar', 'baz').then(function () {
+            const getApiKeyOpts = fetchMock.lastOptions('getApiKey')
+            const generateApiKeyOpts = fetchMock.lastOptions('generateApiKey')
+            should(getApiKeyOpts.body).containEql('subdomain=baz')
+            should(generateApiKeyOpts.body).containEql('subdomain=baz')
+        })
+    })
+    it('should getApiKey without subdomain', function () {
+        fetchMock.mock(
+            (url, opts) => opts.body.indexOf('getApiKey') !== -1,
+            '{"data": {"result": ""}}',
+            {name: 'getApiKey'}
+        )
+        fetchMock.mock(
+            (url, opts) => opts.body.indexOf('generateApiKey') !== -1,
+            '{"data": {"result": "baz"}}',
+            {name: 'generateApiKey'}
+        )
+        return this.api.getApiKey('foo', 'bar').then(function () {
+            const getApiKeyOpts = fetchMock.lastOptions('getApiKey')
+            const generateApiKeyOpts = fetchMock.lastOptions('generateApiKey')
+            should(getApiKeyOpts.body).not.containEql('subdomain')
+            should(generateApiKeyOpts.body).not.containEql('subdomain')
         })
     })
 })

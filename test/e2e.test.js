@@ -10,7 +10,8 @@ describe('E2E Tests', function() {
     const rootTestTitle = this.title
     let customerID, resellerID, accountRepID
     let USERNAME = 'new@user.attask',
-        PASSWORD = 'user'
+        PASSWORD = 'user',
+        SUBDOMAIN = 'attask'
 
     before('Create Test Customer', function() {
         this.aspInstance = new Workfront.Api({
@@ -54,7 +55,8 @@ describe('E2E Tests', function() {
                                     onDemandOptions: 'PWDDISAB', // PASSWORD_COMPLEXITY_DISABLE
                                     securityModelType: 'D', // Lucid
                                     status: 'A', // ACTIVE
-                                    timeZone: 'UTC'
+                                    timeZone: 'UTC',
+                                    domain: SUBDOMAIN
                                 })
                                 .then(data => {
                                     customerID = data.ID
@@ -118,7 +120,7 @@ describe('E2E Tests', function() {
     describe('Login with username and password', function() {
         beforeEach(function() {
             return this.instance
-                .login(USERNAME, PASSWORD)
+                .login(USERNAME, PASSWORD, SUBDOMAIN)
                 .then(data => {
                     should(data).have.properties('userID', 'sessionID')
                     should.ok(true, 'user logged in')
@@ -486,7 +488,7 @@ describe('E2E Tests', function() {
 
     describe('With no auto-login in beforeEach', function() {
         it("Gets apiKey for the User, gets user's details, clear the apiKey", function() {
-            return this.instance.getApiKey(USERNAME, PASSWORD).then(data => {
+            return this.instance.getApiKey(USERNAME, PASSWORD, SUBDOMAIN).then(data => {
                 should(data)
                     .be.String()
                     .length(32)
@@ -506,7 +508,7 @@ describe('E2E Tests', function() {
                 version: '7.0',
                 alwaysUseGet: true
             })
-            return instance.login(USERNAME, PASSWORD).then(() =>
+            return instance.login(USERNAME, PASSWORD, SUBDOMAIN).then(() =>
                 instance
                     .create('PROJ', {
                         name: 'API Project',
@@ -520,7 +522,7 @@ describe('E2E Tests', function() {
         })
 
         it('Creates a group "Api Group", edits the name to read "Api Group 2", then deletes it -- Chained', function() {
-            const login = () => this.instance.login(USERNAME, PASSWORD)
+            const login = () => this.instance.login(USERNAME, PASSWORD, SUBDOMAIN)
             const createGroup = () => this.instance.create('group', {name: 'Api Group'})
             const editGroup = data =>
                 this.instance.edit('group', data.ID, {name: 'Api Group 2'}, ['ID'])
@@ -533,7 +535,7 @@ describe('E2E Tests', function() {
         })
 
         it('Logs in and logs out', function() {
-            return this.instance.login(USERNAME, PASSWORD).then(data => {
+            return this.instance.login(USERNAME, PASSWORD, SUBDOMAIN).then(data => {
                 should(data).have.properties('userID', 'sessionID')
                 return this.instance.logout()
             })

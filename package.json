@@ -10,11 +10,11 @@
   ],
   "typings": "typings/main.d.ts",
   "dependencies": {
-    "@types/node": "^10.3.0",
-    "form-data": "3.0.0",
-    "isomorphic-fetch": "2.2.1",
-    "tslib": "1.11.1",
-    "workfront-api-constants": "2.0.0"
+    "@types/node": "^12.0.10",
+    "form-data": "^3.0.0",
+    "isomorphic-fetch": "^2.2.0",
+    "tslib": "^1.11.0",
+    "workfront-api-constants": "^2.0.0"
   },
   "devDependencies": {
     "@types/form-data": "2.2.1",
@@ -23,6 +23,7 @@
     "conventional-changelog-cli": "2.0.31",
     "fetch-mock": "6.5.2",
     "http-server": "0.12.1",
+    "husky": "4.2.5",
     "istanbul-instrumenter-loader": "3.0.1",
     "karma": "5.0.1",
     "karma-chrome-launcher": "3.1.0",
@@ -50,7 +51,7 @@
     "tslint": "6.1.1",
     "tslint-config-prettier": "1.18.0",
     "typedoc": "0.17.4",
-    "typescript": "3.5.3",
+    "typescript": "3.8.3",
     "uuid": "7.0.3"
   },
   "scripts": {
@@ -62,7 +63,7 @@
     "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
     "debug": "npm run test:karma -- --auto-watch --browsers Chrome --no-single-run",
     "build": "rollup -c && tsc --emitDeclarationOnly -p ./tsconfig.json -d --declarationDir ./typings",
-    "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\" && touch ./docs/.nojekyll",
+    "docs": "rm -rf ./docs/ && typedoc && touch ./docs/.nojekyll",
     "prepublish": "npm run build",
     "version": "conventional-changelog -i CHANGELOG.md -s && npm run docs && git add docs CHANGELOG.md",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"
@@ -83,17 +84,6 @@
     "Hovhannes Babayan <bhovhannes@gmail.com>",
     "Sassoun Derderian <citizen.sas@gmail.com>"
   ],
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "npm run lint:fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,jsx,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/Workfront/workfront-api/issues"

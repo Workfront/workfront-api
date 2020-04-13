@@ -22,37 +22,32 @@ import loginFixture from '../../fixtures/login.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Login', function() {
-
+describe('Login', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    describe('success', function() {
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api`,
-                loginFixture,
-                {
-                    name: 'login',
-                    method: 'POST'
-                }
-            )
+    describe('success', function () {
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api`, loginFixture, {
+                name: 'login',
+                method: 'POST',
+            })
         })
-        it('should return user data', function() {
-            return this.api.login('foo', 'bar').then(function(data) {
+        it('should return user data', function () {
+            return this.api.login('foo', 'bar').then(function (data) {
                 should(data).have.properties(['userID', 'sessionID'])
             })
         })
-        it('sets sessionID in header', function() {
+        it('sets sessionID in header', function () {
             let opts
             return this.api.login('foo', 'bar').then(() => {
                 opts = fetchMock.lastOptions('login')
@@ -63,27 +58,33 @@ describe('Login', function() {
                 })
             })
         })
-        it('calls with proper params', function() {
+        it('calls with proper params', function () {
             this.api.login('foo', 'bar')
             const [url, opts] = fetchMock.lastCall('login')
             should(url).endWith('login')
             should(opts.body).containEql('username=foo')
             should(opts.body).containEql('password=bar')
         })
-    })
-    describe('authentication exception', function() {
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api`,
-                exceptionFixture,
-                {
-                    name: 'login',
-                    method: 'POST'
-                }
-            )
+        it('with subdomain', function () {
+            this.api.login('foo', 'bar', 'baz')
+            const opts = fetchMock.lastOptions('login')
+            should(opts.body).containEql('subdomain=baz')
         })
-        it('should reject with error message', function() {
-            return this.api.login('foo', 'foo').catch(function(data) {
+        it('without subdomain', function () {
+            this.api.login('foo', 'bar')
+            const opts = fetchMock.lastOptions('login')
+            should(opts.body).not.containEql('subdomain')
+        })
+    })
+    describe('authentication exception', function () {
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api`, exceptionFixture, {
+                name: 'login',
+                method: 'POST',
+            })
+        })
+        it('should reject with error message', function () {
+            return this.api.login('foo', 'foo').catch(function (data) {
                 should(data).have.property('message')
             })
         })
