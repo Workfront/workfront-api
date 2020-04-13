@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>NodeApi | workfront-api</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for workfront-api">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -176,7 +176,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/node.ts#L32">node.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/node.ts#L32">node.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -199,7 +199,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#_httpoptions">_httpOptions</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L66">Api.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L66">Api.ts:66</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -210,7 +210,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#_urigenerationmode">_uriGenerationMode</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L69">Api.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L69">Api.ts:69</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -221,7 +221,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#serveracceptsjson">serverAcceptsJSON</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L67">Api.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L67">Api.ts:67</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -232,15 +232,15 @@
 					<a name="batch" class="tsd-anchor"></a>
 					<h3>batch</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">false</span>, isConcurrent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">true</span>, isConcurrent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>batchApi<span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.ibatchapi.html" class="tsd-signature-type">IBatchApi</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">false</span>, isConcurrent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">batch<span class="tsd-signature-symbol">(</span>uriCollector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>batchApi<span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.ibatchapi.html" class="tsd-signature-type">IBatchApi</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, isAtomic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">true</span>, isConcurrent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#batch">batch</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L499">Api.ts:499</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L501">Api.ts:501</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -256,7 +256,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>uriCollector: <span class="tsd-signature-type">function</span></h5>
+									<h5>uriCollector: <span class="tsd-signature-symbol">(</span>batchApi<span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.ibatchapi.html" class="tsd-signature-type">IBatchApi</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A function which will be invoked with api instance.
 											This instance is special, as all methods there return a url string instead of making a backend call.
@@ -265,8 +265,8 @@
 										That will mean <code>call metadata() method</code> and then <code>call count() method</code>.</p>
 									</div>
 									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
 												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>batchApi<span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.ibatchapi.html" class="tsd-signature-type">IBatchApi</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
@@ -303,16 +303,16 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#batch">batch</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L500">Api.ts:500</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L506">Api.ts:506</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>uriCollector: <span class="tsd-signature-type">function</span></h5>
+									<h5>uriCollector: <span class="tsd-signature-symbol">(</span>batchApi<span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.ibatchapi.html" class="tsd-signature-type">IBatchApi</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
 												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>batchApi<span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.ibatchapi.html" class="tsd-signature-type">IBatchApi</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
@@ -344,14 +344,14 @@
 					<a name="clearapikey" class="tsd-anchor"></a>
 					<h3>clear<wbr>Api<wbr>Key</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">clear<wbr>Api<wbr>Key<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Api<wbr>Key<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#clearapikey">clearApiKey</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L183">Api.ts:183</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L188">Api.ts:188</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -365,7 +365,7 @@
 									</dd>
 								</dl>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A promise which will resolved if everything went ok and rejected otherwise</p>
 						</li>
 					</ul>
@@ -381,7 +381,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#copy">copy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L143">Api.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L148">Api.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -441,7 +441,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#count">count</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L167">Api.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L172">Api.ts:172</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -481,7 +481,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#create">create</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L205">Api.ts:205</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L210">Api.ts:210</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -528,7 +528,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#edit">edit</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L221">Api.ts:221</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L226">Api.ts:226</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -581,7 +581,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#editmultiple">editMultiple</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L236">Api.ts:236</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L241">Api.ts:241</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -628,7 +628,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#execute">execute</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L249">Api.ts:249</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L254">Api.ts:254</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -681,7 +681,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L271">Api.ts:271</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L276">Api.ts:276</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -724,14 +724,14 @@
 					<a name="getapikey" class="tsd-anchor"></a>
 					<h3>get<wbr>Api<wbr>Key</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Api<wbr>Key<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Api<wbr>Key<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, subdomain<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#getapikey">getApiKey</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L107">Api.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L108">Api.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -758,6 +758,12 @@
 										<p>Password to use</p>
 									</div>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> subdomain: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Sub-domain to use</p>
+									</div>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A promise which will resolved with API key if everything went ok and rejected otherwise</p>
@@ -775,7 +781,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#getheaders">getHeaders</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L575">Api.ts:575</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L585">Api.ts:585</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Headers</span></h4>
@@ -786,14 +792,14 @@
 					<a name="login" class="tsd-anchor"></a>
 					<h3>login</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, subdomain<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#login">login</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L297">Api.ts:297</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L303">Api.ts:303</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -821,6 +827,12 @@
 										<p>Password to use</p>
 									</div>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> subdomain: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Sub-domain to use</p>
+									</div>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A promise which will resolved with logged in user data if everything went ok and rejected otherwise</p>
@@ -838,7 +850,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#logout">logout</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L315">Api.ts:315</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L320">Api.ts:320</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -867,7 +879,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#metadata">metadata</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L337">Api.ts:337</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L342">Api.ts:342</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -908,7 +920,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#namedquery">namedQuery</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L354">Api.ts:354</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L359">Api.ts:359</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -961,7 +973,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#remove">remove</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L366">Api.ts:366</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L371">Api.ts:371</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1008,7 +1020,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#report">report</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L393">Api.ts:393</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L398">Api.ts:398</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1036,7 +1048,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> useHttpPost: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> useHttpPost: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1055,7 +1067,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#request">request</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L415">Api.ts:415</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L419">Api.ts:419</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1083,10 +1095,10 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fields: <a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a><span class="tsd-signature-symbol"> =&nbsp;[]</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fields: <a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a><span class="tsd-signature-symbol"> = []</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> method: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;Api.Methods.GET</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> method: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = Api.Methods.GET</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1105,7 +1117,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#search">search</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L470">Api.ts:470</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L472">Api.ts:472</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1133,7 +1145,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fields: <a href="../modules/_api_.html#tfields" class="tsd-signature-type">TFields</a></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> useHttpPost: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> useHttpPost: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1152,7 +1164,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#setapikey">setApiKey</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L539">Api.ts:539</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L549">Api.ts:549</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1187,7 +1199,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#setsessionid">setSessionID</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L548">Api.ts:548</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L558">Api.ts:558</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1224,7 +1236,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#setxsrftoken">setXSRFToken</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L561">Api.ts:561</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L571">Api.ts:571</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1261,7 +1273,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#uploadfilecontent">uploadFileContent</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L569">Api.ts:569</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L579">Api.ts:579</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1287,7 +1299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/node.ts#L37">node.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/node.ts#L37">node.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1313,46 +1325,46 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_api_.api.html">Api</a>.<a href="_api_.api.html#methods">Methods</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L60">Api.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L60">Api.ts:60</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 						<a name="methods.delete" class="tsd-anchor"></a>
 						<h3>DELETE</h3>
-						<div class="tsd-signature tsd-kind-icon">DELETE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DELETE&quot;</span></div>
+						<div class="tsd-signature tsd-kind-icon">DELETE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;DELETE&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L63">Api.ts:63</a></li>
+								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L63">Api.ts:63</a></li>
 							</ul>
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 						<a name="methods.get-1" class="tsd-anchor"></a>
 						<h3>GET</h3>
-						<div class="tsd-signature tsd-kind-icon">GET<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;GET&quot;</span></div>
+						<div class="tsd-signature tsd-kind-icon">GET<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;GET&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L61">Api.ts:61</a></li>
+								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L61">Api.ts:61</a></li>
 							</ul>
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 						<a name="methods.post" class="tsd-anchor"></a>
 						<h3>POST</h3>
-						<div class="tsd-signature tsd-kind-icon">POST<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;POST&quot;</span></div>
+						<div class="tsd-signature tsd-kind-icon">POST<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;POST&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L64">Api.ts:64</a></li>
+								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L64">Api.ts:64</a></li>
 							</ul>
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 						<a name="methods.put" class="tsd-anchor"></a>
 						<h3>PUT</h3>
-						<div class="tsd-signature tsd-kind-icon">PUT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;PUT&quot;</span></div>
+						<div class="tsd-signature tsd-kind-icon">PUT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;PUT&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/adffaf7/src/Api.ts#L62">Api.ts:62</a></li>
+								<li>Defined in <a href="https://github.com/Workfront/workfront-api/blob/478e928/src/Api.ts#L62">Api.ts:62</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1365,115 +1377,19 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_api_.html">"<wbr>Api"</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_api_.html">&quot;<wbr>Api&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_main_.html">"main"</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_node_.html">"node"</a>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_node_.html">&quot;node&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_node_.nodeapi.html" class="tsd-kind-icon">Node<wbr>Api</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_node_.nodeapi.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#_httpoptions" class="tsd-kind-icon">_http<wbr>Options</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#_urigenerationmode" class="tsd-kind-icon">_uri<wbr>Generation<wbr>Mode</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#serveracceptsjson" class="tsd-kind-icon">server<wbr>AcceptsJSON</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#batch" class="tsd-kind-icon">batch</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#clearapikey" class="tsd-kind-icon">clear<wbr>Api<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#copy" class="tsd-kind-icon">copy</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#count" class="tsd-kind-icon">count</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#create" class="tsd-kind-icon">create</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#edit" class="tsd-kind-icon">edit</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#editmultiple" class="tsd-kind-icon">edit<wbr>Multiple</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#execute" class="tsd-kind-icon">execute</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#get" class="tsd-kind-icon">get</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#getapikey" class="tsd-kind-icon">get<wbr>Api<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_node_.nodeapi.html#getheaders" class="tsd-kind-icon">get<wbr>Headers</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#login" class="tsd-kind-icon">login</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#logout" class="tsd-kind-icon">logout</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#metadata" class="tsd-kind-icon">metadata</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#namedquery" class="tsd-kind-icon">named<wbr>Query</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#remove" class="tsd-kind-icon">remove</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#report" class="tsd-kind-icon">report</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#request" class="tsd-kind-icon">request</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#search" class="tsd-kind-icon">search</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#setapikey" class="tsd-kind-icon">set<wbr>Api<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#setsessionid" class="tsd-kind-icon">set<wbr>SessionID</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#setxsrftoken" class="tsd-kind-icon">setXSRFToken</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_node_.nodeapi.html#uploadfilecontent" class="tsd-kind-icon">upload<wbr>File<wbr>Content</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_node_.nodeapi.html#uploadfromstream" class="tsd-kind-icon">upload<wbr>From<wbr>Stream</a>
-							</li>
-							<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_node_.nodeapi.html#methods" class="tsd-kind-icon">Methods</a>
-							</li>
-						</ul>
+					<li class=" tsd-kind-reference tsd-parent-kind-module">
+						<a href="../modules/_node_.html#api" class="tsd-kind-icon">Api</a>
 					</li>
-				</ul>
-				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>
@@ -1484,62 +1400,28 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
