@@ -50,7 +50,7 @@
     "tslint": "6.1.1",
     "tslint-config-prettier": "1.18.0",
     "typedoc": "0.17.4",
-    "typescript": "3.5.3",
+    "typescript": "3.8.3",
     "uuid": "7.0.3"
   },
   "scripts": {
@@ -62,7 +62,7 @@
     "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
     "debug": "npm run test:karma -- --auto-watch --browsers Chrome --no-single-run",
     "build": "rollup -c && tsc --emitDeclarationOnly -p ./tsconfig.json -d --declarationDir ./typings",
-    "docs": "rm -rf ./docs/ && typedoc --out ./docs/ ./src/ --excludePrivate --excludeExternals --exclude \"**/*.spec.ts\" && touch ./docs/.nojekyll",
+    "docs": "rm -rf ./docs/ && typedoc && touch ./docs/.nojekyll",
     "prepublish": "npm run build",
     "version": "conventional-changelog -i CHANGELOG.md -s && npm run docs && git add docs CHANGELOG.md",
     "start": "http-server -a localhost -p 8000 -o --cors -c-1"
