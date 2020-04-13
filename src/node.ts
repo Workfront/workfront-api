@@ -46,3 +46,5 @@ export class NodeApi extends BaseApi {
 }
 
 export {ResponseHandler} from './Api'
+
+export {NodeApi as Api}
