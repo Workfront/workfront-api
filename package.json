@@ -22,7 +22,7 @@
     "codecov": "3.6.5",
     "conventional-changelog-cli": "2.0.31",
     "fetch-mock": "6.5.2",
-    "http-server": "0.12.1",
+    "http-server": "0.12.3",
     "husky": "4.2.5",
     "istanbul-instrumenter-loader": "3.0.1",
     "karma": "5.0.2",
