@@ -50,7 +50,7 @@
     "ts-node": "8.9.1",
     "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
-    "typedoc": "0.17.4",
+    "typedoc": "0.17.6",
     "typescript": "3.8.3",
     "uuid": "7.0.3"
   },
