@@ -29,7 +29,7 @@
     "karma-chrome-launcher": "3.1.0",
     "karma-cli": "2.0.0",
     "karma-coverage": "2.0.2",
-    "karma-mocha": "2.0.0",
+    "karma-mocha": "2.0.1",
     "karma-phantomjs-launcher": "1.0.4",
     "karma-remap-coverage": "0.1.5",
     "karma-rollup-preprocessor": "7.0.5",
