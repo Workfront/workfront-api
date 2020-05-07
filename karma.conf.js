@@ -5,7 +5,6 @@ const CI_MODE = process.env.CI_MODE
 
 module.exports = function (config) {
     config.set({
-
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
 
@@ -21,8 +20,8 @@ module.exports = function (config) {
             'node_modules/should/should.js',
             {
                 pattern: 'test/integration/*.spec.ts',
-                watched: false
-            }
+                watched: false,
+            },
         ],
 
         proxies: {
@@ -33,11 +32,11 @@ module.exports = function (config) {
         },
 
         preprocessors: {
-            'test/integration/*.spec.ts': ['rollup', 'sourcemap']
+            'test/integration/*.spec.ts': ['rollup', 'sourcemap'],
         },
 
         mime: {
-            'text/x-typescript': ['ts']
+            'text/x-typescript': ['ts'],
         },
 
         rollupPreprocessor: {
@@ -48,19 +47,22 @@ module.exports = function (config) {
                 globals: {
                     'isomorphic-fetch': 'fetch',
                     'fetch-mock': 'fetchMock',
-                    'should': 'should',
-                }
+                    should: 'should',
+                },
             },
             plugins: [
-                require('rollup-plugin-node-resolve')(),
-                require('rollup-plugin-json')(),
-                require('rollup-plugin-typescript')(),
+                require('@rollup/plugin-node-resolve')(),
+                require('@rollup/plugin-json')(),
+                require('@rollup/plugin-typescript')({
+                    tsconfig: false,
+                    allowSyntheticDefaultImports: true,
+                    resolveJsonModule: true,
+                    moduleResolution: 'node',
+                    target: 'es5',
+                    include: ['test/integration/*.spec.ts', 'src/*.ts'],
+                }),
             ],
-            external: [
-                'fetch-mock',
-                'should',
-                'isomorphic-fetch'
-            ],
+            external: ['fetch-mock', 'should', 'isomorphic-fetch'],
         },
 
         // level of logging
@@ -70,7 +72,7 @@ module.exports = function (config) {
         reporters: ['progress', 'coverage', 'remap-coverage'],
 
         coverageReporter: {
-            type: 'in-memory'
+            type: 'in-memory',
         },
 
         remapOptions: {
@@ -80,13 +82,13 @@ module.exports = function (config) {
             if (CI) {
                 return {
                     'text-summary': null,
-                    lcovonly: './coverage/lcov.info'
+                    lcovonly: './coverage/lcov.info',
                 }
             }
             return {
                 'text-summary': null,
                 // to show summary in console
-                html: './coverage'
+                html: './coverage',
             }
         })(),
 
@@ -94,37 +96,117 @@ module.exports = function (config) {
         colors: true,
         autoWatch: false,
         browsers: ['PhantomJS'],
-        singleRun: true
+        singleRun: true,
     })
 
     if (CI_MODE === 'saucelabs' && process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY) {
         const chrome = {
-            'SL_Chrome_Latest': {version: 'latest', platform: 'OS X 10.11', browserName: 'chrome', base: 'SauceLabs'},
-            'SL_Chrome_Latest-1': {version: 'latest-1', platform: 'OS X 10.11', browserName: 'chrome', base: 'SauceLabs'},
-            'SL_Chrome_Latest-2': {version: 'latest-2', platform: 'OS X 10.11', browserName: 'chrome', base: 'SauceLabs'}
+            SL_Chrome_Latest: {
+                version: 'latest',
+                platform: 'OS X 10.11',
+                browserName: 'chrome',
+                base: 'SauceLabs',
+            },
+            'SL_Chrome_Latest-1': {
+                version: 'latest-1',
+                platform: 'OS X 10.11',
+                browserName: 'chrome',
+                base: 'SauceLabs',
+            },
+            'SL_Chrome_Latest-2': {
+                version: 'latest-2',
+                platform: 'OS X 10.11',
+                browserName: 'chrome',
+                base: 'SauceLabs',
+            },
         }
         const firefox = {
-            'SL_Firefox_Latest': {version: 'latest', platform: 'OS X 10.11', browserName: 'firefox', base: 'SauceLabs'},
-            'SL_Firefox_Latest-1': {version: 'latest-1', platform: 'OS X 10.11', browserName: 'firefox', base: 'SauceLabs'},
-            'SL_Firefox_Latest-2': {version: 'latest-2', platform: 'OS X 10.11', browserName: 'firefox', base: 'SauceLabs'}
+            SL_Firefox_Latest: {
+                version: 'latest',
+                platform: 'OS X 10.11',
+                browserName: 'firefox',
+                base: 'SauceLabs',
+            },
+            'SL_Firefox_Latest-1': {
+                version: 'latest-1',
+                platform: 'OS X 10.11',
+                browserName: 'firefox',
+                base: 'SauceLabs',
+            },
+            'SL_Firefox_Latest-2': {
+                version: 'latest-2',
+                platform: 'OS X 10.11',
+                browserName: 'firefox',
+                base: 'SauceLabs',
+            },
         }
         const safari = {
-            'SL_Safari_Latest': {version: 'latest', platform: 'OS X 10.12', browserName: 'safari', base: 'SauceLabs'},
-            'SL_Safari_10': {version: '10.0', platform: 'OS X 10.11', browserName: 'safari', base: 'SauceLabs'},
-            'SL_Safari_9': {version: '9.0', platform: 'OS X 10.11', browserName: 'safari', base: 'SauceLabs'}
+            SL_Safari_Latest: {
+                version: 'latest',
+                platform: 'OS X 10.12',
+                browserName: 'safari',
+                base: 'SauceLabs',
+            },
+            SL_Safari_10: {
+                version: '10.0',
+                platform: 'OS X 10.11',
+                browserName: 'safari',
+                base: 'SauceLabs',
+            },
+            SL_Safari_9: {
+                version: '9.0',
+                platform: 'OS X 10.11',
+                browserName: 'safari',
+                base: 'SauceLabs',
+            },
         }
         const ie = {
-            'SL_InternetExplorer_11': {version: '11.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
-            'SL_InternetExplorer_10': {version: '10.0', platform: 'Windows 7', browserName: 'internet explorer', base: 'SauceLabs'},
+            SL_InternetExplorer_11: {
+                version: '11.0',
+                platform: 'Windows 7',
+                browserName: 'internet explorer',
+                base: 'SauceLabs',
+            },
+            SL_InternetExplorer_10: {
+                version: '10.0',
+                platform: 'Windows 7',
+                browserName: 'internet explorer',
+                base: 'SauceLabs',
+            },
         }
         const edge = {
-            'SL_Edge_Latest': {version: 'latest', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'},
-            'SL_Edge_14': {version: '14.14393', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'},
-            'SL_Edge_13': {version: '13.10586', platform: 'Windows 10', browserName: 'MicrosoftEdge', base: 'SauceLabs'}
+            SL_Edge_Latest: {
+                version: 'latest',
+                platform: 'Windows 10',
+                browserName: 'MicrosoftEdge',
+                base: 'SauceLabs',
+            },
+            SL_Edge_14: {
+                version: '14.14393',
+                platform: 'Windows 10',
+                browserName: 'MicrosoftEdge',
+                base: 'SauceLabs',
+            },
+            SL_Edge_13: {
+                version: '13.10586',
+                platform: 'Windows 10',
+                browserName: 'MicrosoftEdge',
+                base: 'SauceLabs',
+            },
         }
         const linux = {
-            'SL_Chrome_Linux': {version: 'latest', platform: 'Linux', browserName: 'chrome', base: 'SauceLabs'},
-            'SL_Firefox_Linux': {version: 'latest', platform: 'Linux', browserName: 'firefox', base: 'SauceLabs'},
+            SL_Chrome_Linux: {
+                version: 'latest',
+                platform: 'Linux',
+                browserName: 'chrome',
+                base: 'SauceLabs',
+            },
+            SL_Firefox_Linux: {
+                version: 'latest',
+                platform: 'Linux',
+                browserName: 'firefox',
+                base: 'SauceLabs',
+            },
         }
 
         // Browsers to run on Sauce Labs
@@ -134,11 +216,16 @@ module.exports = function (config) {
         config.set({
             reporters: ['progress', 'saucelabs'],
             sauceLabs: {
-                build: 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')',
+                build:
+                    'TRAVIS #' +
+                    process.env.TRAVIS_BUILD_NUMBER +
+                    ' (' +
+                    process.env.TRAVIS_BUILD_ID +
+                    ')',
                 connectOptions: {
                     connectRetries: 1,
                     doctor: true,
-                    verbose: true
+                    verbose: true,
                 },
                 commandTimeout: 300,
                 idleTimeout: 600,
@@ -148,14 +235,14 @@ module.exports = function (config) {
                 recordVideo: false,
                 startConnect: false,
                 testName: 'workfront-api',
-                tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+                tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
             },
             captureTimeout: 0,
             customLaunchers: customLaunchers,
 
             // start these browsers
             // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-            browsers: Object.keys(customLaunchers)
+            browsers: Object.keys(customLaunchers),
         })
     }
 }
