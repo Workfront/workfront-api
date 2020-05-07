@@ -98,17 +98,17 @@ Licensed under the Apache License, Version 2.0.
 See the top-level file `LICENSE` and
 (http://www.apache.org/licenses/LICENSE-2.0).
 
-[license-image]: http://img.shields.io/badge/license-APv2-blue.svg?style=flat
+[license-image]: http://img.shields.io/badge/license-APv2-blue.svg?style=flat-square
 [license-url]: LICENSE
 [npm-url]: https://www.npmjs.org/package/workfront-api
-[npm-version-image]: https://img.shields.io/npm/v/workfront-api.svg?style=flat
-[npm-downloads-image]: https://img.shields.io/npm/dm/workfront-api.svg?style=flat
+[npm-version-image]: https://img.shields.io/npm/v/workfront-api.svg?style=flat-square
+[npm-downloads-image]: https://img.shields.io/npm/dm/workfront-api.svg?style=flat-square
 [travis-url]: https://travis-ci.com/Workfront/workfront-api
-[travis-image]: https://img.shields.io/travis/Workfront/workfront-api.svg?style=flat
+[travis-image]: https://img.shields.io/travis/Workfront/workfront-api.svg?style=flat-square
 [codecov-url]: https://codecov.io/gh/Workfront/workfront-api
 [codecov-image]: https://codecov.io/gh/Workfront/workfront-api/branch/master/graph/badge.svg
 [code-climate-url]: https://codeclimate.com/github/Workfront/workfront-api
-[code-climate-image]: https://img.shields.io/codeclimate/github/Workfront/workfront-api.svg?style=flat
+[code-climate-image]: https://img.shields.io/codeclimate/maintainability/Workfront/workfront-api?style=flat-square
 [saucelabs-badge]: https://saucelabs.com/buildstatus/citizensas
 [saucelabs-url]: https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14
 [saucelabs-matrix]: https://saucelabs.com/browser-matrix/citizensas.svg
