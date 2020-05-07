@@ -2107,16 +2107,14 @@ var typedoc,
                         _this.createGroups(),
                         _this.container &&
                             (_this.el.classList.add('active'),
-                            _this.el
-                                .querySelectorAll('.tsd-signature')
-                                .forEach(function (signature) {
-                                    signature.addEventListener('touchstart', function (event) {
-                                        return _this.onClick(event)
-                                    }),
-                                        signature.addEventListener('click', function (event) {
-                                            return _this.onClick(event)
-                                        })
+                            Array.from(_this.el.children).forEach(function (signature) {
+                                signature.addEventListener('touchstart', function (event) {
+                                    return _this.onClick(event)
                                 }),
+                                    signature.addEventListener('click', function (event) {
+                                        return _this.onClick(event)
+                                    })
+                            }),
                             _this.container.classList.add('active'),
                             _this.setIndex(0)),
                         _this
@@ -2145,15 +2143,15 @@ var typedoc,
                         }
                     }),
                     (Signature.prototype.createGroups = function () {
-                        var _this = this,
-                            signatures = this.el.querySelectorAll('.tsd-signature')
+                        var signatures = this.el.children
                         if (!(signatures.length < 2)) {
                             this.container = this.el.nextElementSibling
-                            var descriptions = this.container.querySelectorAll('.tsd-description')
-                            ;(this.groups = []),
-                                signatures.forEach(function (el, index) {
-                                    _this.groups.push(new SignatureGroup(el, descriptions[index]))
-                                })
+                            var descriptions = this.container.children
+                            this.groups = []
+                            for (var index = 0; index < signatures.length; index++)
+                                this.groups.push(
+                                    new SignatureGroup(signatures[index], descriptions[index])
+                                )
                         }
                     }),
                     (Signature.prototype.onClick = function (e) {
