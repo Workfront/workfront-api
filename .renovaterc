@@ -1,7 +1,7 @@
 {
   "extends": ["config:base"],
   "stabilityDays": 3,
-  "prCreation": "not-pending"
+  "prCreation": "not-pending",
   "automerge": true,
   "separateMinorPatch": true,
   "major": {
