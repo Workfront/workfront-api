@@ -38,19 +38,24 @@ API documentation is available at [http://workfront.github.io/workfront-api/](ht
 A number of examples can be found under [examples](examples) directory. It includes examples for both [node](examples/node) and [browser](examples/browser) environments.  
 In order to run these examples clone a copy of workfront-api repository:
 
-    git clone git://github.com/Workfront/workfront-api.git
+```shell script
+git clone git://github.com/Workfront/workfront-api.git
+```
 
 #### Running [node](examples/node) examples
 
 First enter into `workfront-api` directory and install all the dependencies:
 
-
-    cd workfront-api
-    npm install
+```
+cd workfront-api
+yarn
+```
 
 Use `node` to run the examples. For examples:
 
-    node examples/node/get-user-count.js
+```
+node examples/node/get-user-count.js
+```
 
 Each example script outputs all its results into console and contains comments in the source code explaining what is happening in more details.
 
@@ -58,7 +63,9 @@ Each example script outputs all its results into console and contains comments i
 
 To start supplied webserver type:
 
-    npm start
+```shell script
+npm start
+```
 
 Visit [http://localhost:8000/examples/browser/](http://localhost:8000/examples/browser/) to see list of all examples available for browser.
 
@@ -70,11 +77,11 @@ We welcome contributions of all kinds from anyone. It can be either new example 
 
 A bug is a _demonstrable problem_ that is caused by the code in the repository. Good bug reports are extremely helpful - thank you! Please make sure to check these points to make a good bug report:
 
-1.  **Use the GitHub issue search** &mdash; check if the issue has already been
-    reported.
-2.  **Isolate the problem** &mdash; ideally create a [reduced test
-    case](https://css-tricks.com/reduced-test-cases/).
-3.  A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.
+1. **Use the GitHub issue search** &mdash; check if the issue has already been
+   reported.
+1. **Isolate the problem** &mdash; ideally create a [reduced test
+   case](https://css-tricks.com/reduced-test-cases/).
+1. A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.
 
 ### Feature requests
 
