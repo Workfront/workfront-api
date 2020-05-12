@@ -1,3 +1,10 @@
+## <small>7.0.1 (2020-05-12)</small>
+
+-   fix: cjs bundle was broken ([0cc423e](https://github.com/Workfront/workfront-api/commit/0cc423e))
+-   Update dependency conventional-changelog-cli to v2.0.34 ([86c5109](https://github.com/Workfront/workfront-api/commit/86c5109))
+-   Update dependency karma to v5.0.5 ([3ed05fa](https://github.com/Workfront/workfront-api/commit/3ed05fa))
+-   Update dependency karma-sauce-launcher to v4 ([6e4b755](https://github.com/Workfront/workfront-api/commit/6e4b755))
+
 ## 7.0.0 (2020-05-07)
 
 -   chore: fix renovate config ([8478eeb](https://github.com/Workfront/workfront-api/commit/8478eeb))
