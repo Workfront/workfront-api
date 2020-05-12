@@ -51,8 +51,9 @@ module.exports = [
             file: `dist/${name}.cjs.js`,
             format: 'cjs',
             sourcemap: true,
+            exports: 'named'
         },
-        plugins: [typescript()],
-        external: ['form-data', 'isomorphic-fetch', 'workfront-api-constants'],
+        plugins: [typescript(), commonjs({ extensions: ['.js', '.ts'] })],
+        external: ['tslib', 'form-data', 'isomorphic-fetch', 'workfront-api-constants'],
     },
 ]
