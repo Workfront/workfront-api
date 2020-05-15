@@ -9,7 +9,7 @@
     "typings"
   ],
   "sideEffects": false,
-  "typings": "typings/main.d.ts",
+  "typings": "typings/Api.d.ts",
   "dependencies": {
     "@types/node": "^12.0.10",
     "form-data": "^3.0.0",
