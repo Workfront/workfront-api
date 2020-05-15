@@ -1,3 +1,7 @@
+## <small>7.0.2 (2020-05-15)</small>
+
+-   fix: wrong typings path ([3a9cc75](https://github.com/Workfront/workfront-api/commit/3a9cc75))
+
 ## <small>7.0.1 (2020-05-12)</small>
 
 -   fix: cjs bundle was broken ([0cc423e](https://github.com/Workfront/workfront-api/commit/0cc423e))
