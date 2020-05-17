@@ -1,3 +1,8 @@
+## 8.0.0 (2020-05-17)
+
+-   Update dependency tslib to v2 ([f6dcdc7](https://github.com/Workfront/workfront-api/commit/f6dcdc7))
+-   Update dependency typescript to v3.9.2 ([56f17c3](https://github.com/Workfront/workfront-api/commit/56f17c3))
+
 ## <small>7.0.2 (2020-05-15)</small>
 
 -   fix: wrong typings path ([3a9cc75](https://github.com/Workfront/workfront-api/commit/3a9cc75))
