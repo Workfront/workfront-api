@@ -1,5 +1,5 @@
 import typescript from '@rollup/plugin-typescript'
-import resolve from '@rollup/plugin-node-resolve'
+import {nodeResolve} from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import {terser} from 'rollup-plugin-terser'
 
@@ -16,7 +16,7 @@ module.exports = [
                 sourcemap: true,
             },
         ],
-        plugins: [typescript(), resolve(), commonjs()],
+        plugins: [typescript(), nodeResolve(), commonjs()],
     },
     {
         input: 'src/Api.ts',
@@ -31,7 +31,7 @@ module.exports = [
             typescript({
                 module: 'es6',
             }),
-            resolve(),
+            nodeResolve(),
             commonjs(),
         ],
     },
@@ -43,7 +43,7 @@ module.exports = [
             name: 'Wokfront',
             sourcemap: true,
         },
-        plugins: [typescript(), resolve(), commonjs(), terser()],
+        plugins: [typescript(), nodeResolve(), commonjs(), terser()],
     },
     {
         input: 'src/node.ts',
@@ -51,9 +51,9 @@ module.exports = [
             file: `dist/${name}.cjs.js`,
             format: 'cjs',
             sourcemap: true,
-            exports: 'named'
+            exports: 'named',
         },
-        plugins: [typescript(), commonjs({ extensions: ['.js', '.ts'] })],
+        plugins: [typescript(), commonjs({extensions: ['.js', '.ts']})],
         external: ['tslib', 'form-data', 'isomorphic-fetch', 'workfront-api-constants'],
     },
 ]
