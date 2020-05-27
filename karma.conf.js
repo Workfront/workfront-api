@@ -51,7 +51,7 @@ module.exports = function (config) {
                 },
             },
             plugins: [
-                require('@rollup/plugin-node-resolve')(),
+                require('@rollup/plugin-node-resolve').nodeResolve(),
                 require('@rollup/plugin-json')(),
                 require('@rollup/plugin-typescript')({
                     tsconfig: false,
