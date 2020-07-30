@@ -1706,11 +1706,12 @@ var typedoc,
                         oldValue,
                         newValue
                     ) {
-                        ;(this.checkbox.checked = this.value),
+                        this.checkbox &&
+                            ((this.checkbox.checked = this.value),
                             document.documentElement.classList.toggle(
                                 'toggle-' + this.key,
                                 this.value != this.defaultValue
-                            )
+                            ))
                     }),
                     (FilterItemCheckbox.prototype.fromLocalStorage = function (value) {
                         return 'true' == value
@@ -1968,7 +1969,7 @@ var typedoc,
                                         (this.base + row.url) +
                                         '" class="tsd-kind-icon">' +
                                         name +
-                                        "'</a>\n                "),
+                                        '</a>\n                '),
                                     this.results.appendChild(item)
                             }
                         }
