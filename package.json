@@ -24,7 +24,7 @@
     "@rollup/plugin-typescript": "5.0.2",
     "@types/mocha": "8.0.1",
     "codecov": "3.7.2",
-    "conventional-changelog-cli": "2.0.34",
+    "conventional-changelog-cli": "2.0.35",
     "fetch-mock": "6.5.2",
     "http-server": "0.12.3",
     "husky": "4.2.5",
