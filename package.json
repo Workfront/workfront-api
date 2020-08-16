@@ -18,7 +18,7 @@
     "workfront-api-constants": "^2.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "14.0.0",
+    "@rollup/plugin-commonjs": "15.0.0",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "8.4.0",
     "@rollup/plugin-typescript": "5.0.2",
