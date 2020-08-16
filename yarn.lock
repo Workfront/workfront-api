@@ -226,18 +226,18 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@rollup/plugin-commonjs@14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-14.0.0.tgz#4285f9ec2db686a31129e5a2b415c94aa1f836f0"
-  integrity sha512-+PSmD9ePwTAeU106i9FRdc+Zb3XUWyW26mo5Atr2mk82hor8+nPwkztEjFo8/B1fJKfaQDg9aM2bzQkjhi7zOw==
+"@rollup/plugin-commonjs@15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-15.0.0.tgz#690d15a9d54ba829db93555bff9b98ff34e08574"
+  integrity sha512-8uAdikHqVyrT32w1zB9VhW6uGwGjhKgnDNP4pQJsjdnyF4FgCj6/bmv24c7v2CuKhq32CcyCwRzMPEElaKkn0w==
   dependencies:
-    "@rollup/pluginutils" "^3.0.8"
+    "@rollup/pluginutils" "^3.1.0"
     commondir "^1.0.1"
-    estree-walker "^1.0.1"
-    glob "^7.1.2"
-    is-reference "^1.1.2"
-    magic-string "^0.25.2"
-    resolve "^1.11.0"
+    estree-walker "^2.0.1"
+    glob "^7.1.6"
+    is-reference "^1.2.1"
+    magic-string "^0.25.7"
+    resolve "^1.17.0"
 
 "@rollup/plugin-json@4.1.0":
   version "4.1.0"
@@ -289,6 +289,11 @@
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
+
+"@types/estree@*":
+  version "0.0.45"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.45.tgz#e9387572998e5ecdac221950dab3e8c3b16af884"
+  integrity sha512-jnqIUKDUqJbDIUxm0Uj7bnlMnRm1T/eZ9N+AVMqhPgzrba2GhGG5o/jCTwmdPK709nEZsGoMzXEDUjcXHa3W0g==
 
 "@types/estree@0.0.39":
   version "0.0.39"
@@ -1778,6 +1783,11 @@ estree-walker@^1.0.1:
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-1.0.1.tgz#31bc5d612c96b704106b477e6dd5d8aa138cb700"
   integrity sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==
 
+estree-walker@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.1.tgz#f8e030fb21cefa183b44b7ad516b747434e7a3e0"
+  integrity sha512-tF0hv+Yi2Ot1cwj9eYHtxC0jB9bmjacjQs6ZBTj82H8JwUywFuc+7E83NWfNMwHXZc11mjfFcVXPe9gEP4B8dg==
+
 esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
@@ -2106,7 +2116,7 @@ glob-to-regexp@^0.4.0:
   resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.0.tgz#49bd677b1671022bd10921c3788f23cdebf9c7e6"
   integrity sha512-fyPCII4vn9Gvjq2U/oDAfP433aiE64cyP/CJjRJcpVGjqqNdioUYn9+r0cSzT1XPwmGAHuTT7iv+rQT8u/YHKQ==
 
-glob@7.1.6, glob@^7.1.2, glob@^7.1.3, glob@^7.1.6:
+glob@7.1.6, glob@^7.1.3, glob@^7.1.6:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
   integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
@@ -2562,12 +2572,12 @@ is-plain-obj@^1.1.0:
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
   integrity sha1-caUMhCnfync8kqOQpKA7OfzVHT4=
 
-is-reference@^1.1.2:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/is-reference/-/is-reference-1.1.3.tgz#e99059204b66fdbe09305cfca715a29caa5c8a51"
-  integrity sha512-W1iHHv/oyBb2pPxkBxtaewxa1BC58Pn5J0hogyCdefwUIvb6R+TGbAcIa4qPNYLqLhb3EnOgUf2MQkkF76BcKw==
+is-reference@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/is-reference/-/is-reference-1.2.1.tgz#8b2dac0b371f4bc994fdeaba9eb542d03002d0b7"
+  integrity sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==
   dependencies:
-    "@types/estree" "0.0.39"
+    "@types/estree" "*"
 
 is-regex@^1.0.4:
   version "1.0.4"
@@ -3235,10 +3245,10 @@ lunr@^2.3.8:
   resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.3.8.tgz#a8b89c31f30b5a044b97d2d28e2da191b6ba2072"
   integrity sha512-oxMeX/Y35PNFuZoHp+jUj5OSEmLCaIH4KTFJh7a93cHBoFmpw2IoPs22VIz7vyO2YUnx2Tn9dzIwO2P/4quIRg==
 
-magic-string@^0.25.2:
-  version "0.25.3"
-  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.25.3.tgz#34b8d2a2c7fec9d9bdf9929a3fd81d271ef35be9"
-  integrity sha512-6QK0OpF/phMz0Q2AxILkX2mFhi7m+WMwTRg0LQKq/WBB0cDP4rYH3Wp4/d3OTXlrPLVJT/RFqj8tFeAR4nk8AA==
+magic-string@^0.25.7:
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.25.7.tgz#3f497d6fd34c669c6798dcb821f2ef31f5445051"
+  integrity sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==
   dependencies:
     sourcemap-codec "^1.4.4"
 
@@ -4296,13 +4306,6 @@ resolve@^1.10.0, resolve@^1.14.1, resolve@^1.17.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.17.0.tgz#b25941b54968231cc2d1bb76a79cb7f2c0bf8444"
   integrity sha512-ic+7JYiV8Vi2yzQGFWOkiZD5Z9z7O2Zhm9XMaTxdJExKasieFCr+yXZ/WmXsckHiKl12ar0y6XiXDx3m4RHn1w==
-  dependencies:
-    path-parse "^1.0.6"
-
-resolve@^1.11.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.12.0.tgz#3fc644a35c84a48554609ff26ec52b66fa577df6"
-  integrity sha512-B/dOmuoAik5bKcD6s6nXDCjzUKnaDvdkRyAk6rsmsKLipWj4797iothd7jmmUhWTfinVMU+wc56rYKsit2Qy4w==
   dependencies:
     path-parse "^1.0.6"
 
