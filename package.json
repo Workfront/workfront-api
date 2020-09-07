@@ -45,7 +45,7 @@
     "phantomjs-prebuilt": "2.1.16",
     "prettier": "2.1.1",
     "rollup": "2.26.10",
-    "rollup-plugin-terser": "7.0.1",
+    "rollup-plugin-terser": "7.0.2",
     "should": "13.2.3",
     "ts-node": "9.0.0",
     "tslint": "6.1.3",
