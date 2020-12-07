@@ -113,7 +113,7 @@ export class Api {
         if (subdomain !== undefined) {
             loginParams['subdomain'] = subdomain
         }
-        return new Promise((resolve, reject) => {
+        return new Promise<string>((resolve, reject) => {
             if (typeof this._httpOptions.headers.apiKey !== 'undefined') {
                 resolve(this._httpOptions.headers.apiKey)
             } else {
@@ -186,8 +186,8 @@ export class Api {
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
     clearApiKey() {
-        return new Promise((resolve, reject) => {
-            const req = this.execute('USER', null, 'clearApiKey') as Promise<any>
+        return new Promise<void>((resolve, reject) => {
+            const req = this.execute('USER', null, 'clearApiKey')
             req.then((result) => {
                 if (result) {
                     delete this._httpOptions.headers.apiKey
@@ -317,10 +317,10 @@ export class Api {
      * @memberOf Api
      * @return {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
-    logout(): Promise<undefined> {
-        return new Promise((resolve, reject) => {
+    logout(): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
             const req = this.request('logout', null, null, Api.Methods.GET)
-            ;(req as Promise<any>).then((result) => {
+            req.then((result) => {
                 if (result && result.success) {
                     delete this._httpOptions.headers['X-XSRF-TOKEN']
                     delete this._httpOptions.headers.sessionID
@@ -368,14 +368,14 @@ export class Api {
      * @param {Boolean} [bForce]    Pass true to cause the server to remove the specified data and its dependants
      * @returns {Promise}    A promise which will resolved if everything went ok and rejected otherwise
      */
-    remove(objCode: string, objID: string, bForce?: boolean): Promise<undefined> {
+    remove(objCode: string, objID: string, bForce?: boolean): Promise<void> {
         const params = bForce ? {force: true} : null
         const req = this.request(objCode + '/' + objID, params, null, Api.Methods.DELETE)
 
         if (this._uriGenerationMode) {
             return req
         } else {
-            return new Promise((resolve, reject) => {
+            return new Promise<void>((resolve, reject) => {
                 ;(req as Promise<any>).then((result) => {
                     if (result && result.success) {
                         resolve()
@@ -496,7 +496,7 @@ export class Api {
      *
      * @param {boolean} isConcurrent  Requests to the DB are made asynchronously.
      *
-     * @returns {Promise<any[] | undefined>}
+     * @returns {Promise<any[] | void>}
      */
     batch(
         uriCollector: (batchApi: IBatchApi) => string[],
@@ -507,12 +507,12 @@ export class Api {
         uriCollector: (batchApi: IBatchApi) => string[],
         isAtomic?: true,
         isConcurrent?: boolean
-    ): Promise<undefined>
+    ): Promise<void>
     batch(
         uriCollector: (batchApi: IBatchApi) => string[],
         isAtomic?: boolean,
         isConcurrent?: boolean
-    ): Promise<any[] | undefined> {
+    ): Promise<any[] | void> {
         const batchApi = batchApiFactory(this)
         const uris = uriCollector(batchApi)
         if (uris.length === 0) {
