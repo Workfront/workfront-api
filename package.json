@@ -11,7 +11,7 @@
   "sideEffects": false,
   "typings": "typings/Api.d.ts",
   "dependencies": {
-    "@types/node": "^12.0.10",
+    "@types/node": "^12.12.35",
     "form-data": "^3.0.0",
     "isomorphic-fetch": "^3.0.0",
     "tslib": "^2.0.1",
