@@ -14,7 +14,7 @@
     "@types/node": "^12.0.10",
     "form-data": "^3.0.0",
     "isomorphic-fetch": "^3.0.0",
-    "tslib": "^2.0.1",
+    "tslib": "^2.2.0",
     "workfront-api-constants": "^2.0.0"
   },
   "devDependencies": {
