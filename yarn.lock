@@ -3002,10 +3002,10 @@ karma-remap-coverage@0.1.5:
   dependencies:
     remap-istanbul "^0.10"
 
-karma-rollup-preprocessor@7.0.5:
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/karma-rollup-preprocessor/-/karma-rollup-preprocessor-7.0.5.tgz#d2cd9c8e654bc1451c31518bc18e6b022237deff"
-  integrity sha512-VhZI81l8LZBvBrSf4xaojsbur7bcycsSlxXkYaTOjV6DQwx1gtAM0CQVdue7LuIbXB1AohYIg0S5at+dqDtMxQ==
+karma-rollup-preprocessor@7.0.7:
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/karma-rollup-preprocessor/-/karma-rollup-preprocessor-7.0.7.tgz#d06e587b108273ae564cbd5c5914a75602191a23"
+  integrity sha512-Y1QwsTCiCBp8sSALZdqmqry/mWIWIy0V6zonUIpy+0/D/Kpb2XZvR+JZrWfacQvcvKQdZFJvg6EwlnKtjepu3Q==
   dependencies:
     chokidar "^3.3.1"
     debounce "^1.2.0"
