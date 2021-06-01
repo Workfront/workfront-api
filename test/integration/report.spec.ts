@@ -14,53 +14,49 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
 
 import {GROUPBY} from 'workfront-api-constants'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../..'
 import fixture from '../../fixtures/report.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Report', function() {
+describe('Report', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    beforeEach(function() {
+    beforeEach(function () {
         fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
-            name: 'report'
+            name: 'report',
         })
     })
     const objCode = 'TASK',
         query = {
-            ['status' + GROUPBY]: true
+            ['status' + GROUPBY]: true,
         }
-    it('makes a request with proper params, url and method', function() {
-        return this.api.report(objCode, query).then(function(data) {
+    it('makes a request with proper params, url and method', function () {
+        return this.api.report(objCode, query).then(function (data) {
             const [url, opts] = fetchMock.lastCall('report')
             should(opts.method).equal('GET')
             should(opts.body).be.null()
             should(url).endWith(`${objCode}/report?status${GROUPBY}=true`)
-            should(data)
-                .have.propertyByPath('CPL', 'dcount_ID')
-                .be.Number()
-            should(data.CPL)
-                .have.property('status')
-                .be.equal('CPL')
+            should(data).have.propertyByPath('CPL', 'dcount_ID').be.Number()
+            should(data.CPL).have.property('status').be.equal('CPL')
         })
     })
-    it('should do a request with POST method when the useHttpPost=true', function() {
-        return this.api.report(objCode, query, true).then(function() {
+    it('should do a request with POST method when the useHttpPost=true', function () {
+        return this.api.report(objCode, query, true).then(function () {
             const [url, opts] = fetchMock.lastCall('report')
             should(url).endWith(`${objCode}/report`)
             should(opts.method).equal('POST')

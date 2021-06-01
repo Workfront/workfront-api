@@ -217,10 +217,10 @@ module.exports = function (config) {
             reporters: ['progress', 'saucelabs'],
             sauceLabs: {
                 build:
-                    'TRAVIS #' +
-                    process.env.TRAVIS_BUILD_NUMBER +
+                    'Github Workflow' +
+                    process.env.GITHUB_WORKFLOW +
                     ' (' +
-                    process.env.TRAVIS_BUILD_ID +
+                    process.env.GITHUB_RUN_ID +
                     ')',
                 connectOptions: {
                     connectRetries: 1,
@@ -235,7 +235,7 @@ module.exports = function (config) {
                 recordVideo: false,
                 startConnect: false,
                 testName: 'workfront-api',
-                tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+                tunnelIdentifier: process.env.GITHUB_JOB,
             },
             captureTimeout: 0,
             customLaunchers: customLaunchers,

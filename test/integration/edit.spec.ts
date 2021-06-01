@@ -14,46 +14,41 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../..'
 import fixture from '../../fixtures/edit.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Edit', function() {
-
+describe('Edit', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
             url: API_URL,
-            apiKey: 'testapikey'
+            apiKey: 'testapikey',
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    beforeEach(function() {
-        fetchMock.mock(
-            `begin:${API_URL}/attask/api`,
-            fixture,
-            {
-                name: 'edit'
-            }
-        )
+    beforeEach(function () {
+        fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
+            name: 'edit',
+        })
     })
 
-    it('makes a PUT request with proper params and return the edited object', function() {
+    it('makes a PUT request with proper params and return the edited object', function () {
         const params = {
-            name: 'api test 2'
+            name: 'api test 2',
         }
         const objCode = 'PROJ',
             objID = 'foobar'
 
-        return this.api.edit(objCode, objID, params).then(function(data) {
+        return this.api.edit(objCode, objID, params).then(function (data) {
             const [url, opts] = fetchMock.lastCall('edit')
             should(opts.method).equal('PUT')
             should(url).endWith(objCode + '/' + objID)
@@ -65,18 +60,18 @@ describe('Edit', function() {
             should(data.name).equal(params.name)
         })
     })
-    it('should edit an object using the old api (passing updates property)', function() {
+    it('should edit an object using the old api (passing updates property)', function () {
         const api = new Api({
             url: API_URL,
-            version: '4.0'
+            version: '4.0',
         })
         const params = {
-            updates: JSON.stringify({name: 'api test 2'})
+            updates: JSON.stringify({name: 'api test 2'}),
         }
         const objCode = 'PROJ',
             objID = 'foobar'
 
-        return api.edit(objCode, objID, params).then(function(data) {
+        return api.edit(objCode, objID, params).then(function (data) {
             const [url, opts] = fetchMock.lastCall('edit')
             should(opts.method).equal('PUT')
             should(url).endWith(objCode + '/' + objID)

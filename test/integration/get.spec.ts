@@ -14,44 +14,39 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../..'
 import getFixture from '../../fixtures/get.json'
 import getMultipleFixture from '../../fixtures/get_multiple.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Get', function() {
-
+describe('Get', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    describe('Call with single objId (String)', function() {
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api`,
-                getFixture,
-                {
-                    name: 'get'
-                }
-            )
+    describe('Call with single objId (String)', function () {
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api`, getFixture, {
+                name: 'get',
+            })
         })
 
-        it('should call request() with proper params and return value received from request()', function() {
+        it('should call request() with proper params and return value received from request()', function () {
             const objCode = 'PROJ',
                 objID = 'foobar'
 
-            return this.api.get(objCode, objID).then(function(data) {
+            return this.api.get(objCode, objID).then(function (data) {
                 const [url, opts] = fetchMock.lastCall('get')
                 should(url).endWith(objCode + '/' + objID)
                 should(opts.method).equal('GET')
@@ -60,11 +55,11 @@ describe('Get', function() {
                 should(data).have.properties(['ID', 'name', 'objCode'])
             })
         })
-        it('should call request() with proper params and return value received from request() containing internal prefix', function() {
+        it('should call request() with proper params and return value received from request() containing internal prefix', function () {
             const objID = '$$USER',
                 objCode = 'USER'
 
-            return this.api.get(objCode, objID).then(function(data) {
+            return this.api.get(objCode, objID).then(function (data) {
                 const [url, opts] = fetchMock.lastCall('get')
                 should(opts.method).equal('GET')
                 should(url).endWith(objCode + '?id=' + encodeURIComponent(objID))
@@ -73,11 +68,11 @@ describe('Get', function() {
                 should(data).have.properties(['ID', 'name', 'objCode'])
             })
         })
-        it('should call request() with proper params and return value received from request() objID is Array with one item', function() {
+        it('should call request() with proper params and return value received from request() objID is Array with one item', function () {
             const objID = ['foo'],
                 objCode = 'bar'
 
-            return this.api.get(objCode, objID).then(function(data) {
+            return this.api.get(objCode, objID).then(function (data) {
                 const [url, opts] = fetchMock.lastCall('get')
                 should(opts.method).equal('GET')
                 should(url).endWith(objCode + '/' + objID[0])
@@ -87,21 +82,17 @@ describe('Get', function() {
             })
         })
     })
-    describe('Call with single objId (String)', function() {
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api`,
-                getMultipleFixture,
-                {
-                    name: 'get'
-                }
-            )
+    describe('Call with single objId (String)', function () {
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api`, getMultipleFixture, {
+                name: 'get',
+            })
         })
-        it('should call request() with proper params and return value received from request() objID is Array with two items', function() {
+        it('should call request() with proper params and return value received from request() objID is Array with two items', function () {
             const objID = ['foo', 'bar'],
                 objCode = 'baz'
 
-            return this.api.get(objCode, objID).then(function(data) {
+            return this.api.get(objCode, objID).then(function (data) {
                 const [url, opts] = fetchMock.lastCall('get')
                 should(opts.method).equal('GET')
                 should(url).endWith(`${objCode}?id=${objID[0]}&id=${objID[1]}`)

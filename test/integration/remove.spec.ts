@@ -14,61 +14,52 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../..'
 import createFixture from '../../fixtures/create.json'
 import removeFixture from '../../fixtures/remove.json'
 import removeFailureFixture from '../../fixtures/removeFailure.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Remove', function() {
-
+describe('Remove', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    beforeEach(function() {
-        fetchMock.mock(
-            `begin:${API_URL}/attask/api`,
-            createFixture,
-            {
-                method: 'POST',
-                name: 'create'
-            }
-        )
+    beforeEach(function () {
+        fetchMock.mock(`begin:${API_URL}/attask/api`, createFixture, {
+            method: 'POST',
+            name: 'create',
+        })
     })
 
-    describe('successfully removes task', function() {
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api`,
-                removeFixture,
-                {
-                    method: 'DELETE',
-                    name: 'remove'
-                }
-            )
+    describe('successfully removes task', function () {
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api`, removeFixture, {
+                method: 'DELETE',
+                name: 'remove',
+            })
         })
 
-        it('creates and deletes task with proper params', function() {
+        it('creates and deletes task with proper params', function () {
             let objCode, objID
-            return this.api.create('TASK', {projectID: 'foo'}).then( (createData) => {
+            return this.api.create('TASK', {projectID: 'foo'}).then((createData) => {
                 objCode = createData.objCode
                 objID = createData.ID
 
                 should(createData.objCode).equal('TASK')
 
-                return this.api.remove(objCode, objID).then(function(removeData) {
+                return this.api.remove(objCode, objID).then(function (removeData) {
                     const [url, opts] = fetchMock.lastCall('remove')
                     should(url).endWith(`${objCode}/${objID}`)
                     should(opts.method).equal('DELETE')
@@ -77,27 +68,23 @@ describe('Remove', function() {
             })
         })
     })
-    describe('unsuccessfully removes task', function() {
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api`,
-                removeFailureFixture,
-                {
-                    method: 'DELETE',
-                    name: 'remove'
-                }
-            )
+    describe('unsuccessfully removes task', function () {
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api`, removeFailureFixture, {
+                method: 'DELETE',
+                name: 'remove',
+            })
         })
 
-        it('creates and attempts to delete task', function() {
+        it('creates and attempts to delete task', function () {
             let objCode, objID
-            return this.api.create('TASK', {projectID: 'foo'}).then( (createData) => {
+            return this.api.create('TASK', {projectID: 'foo'}).then((createData) => {
                 objCode = createData.objCode
                 objID = createData.ID
 
                 should(createData.objCode).equal('TASK')
 
-                return this.api.remove(objCode, objID).catch(function(error) {
+                return this.api.remove(objCode, objID).catch(function (error) {
                     should(error).have.properties('message', 'status')
                     should(error).not.have.property('success')
                     const [url, opts] = fetchMock.lastCall('remove')

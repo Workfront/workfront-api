@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../..'
 import exceptionFixture from '../../fixtures/exception.json'
 import loginFixture from '../../fixtures/login.json'
 

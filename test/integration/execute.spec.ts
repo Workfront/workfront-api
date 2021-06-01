@@ -14,39 +14,34 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../..'
 import fixture from '../../fixtures/execute.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Execute', function() {
-
+describe('Execute', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    beforeEach(function() {
-        fetchMock.mock(
-            `begin:${API_URL}/attask/api`,
-            fixture,
-            {
-                name: 'execute'
-            }
-        )
+    beforeEach(function () {
+        fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
+            name: 'execute',
+        })
     })
 
-    it('should call request() with proper params (without args)', function() {
-        return this.api.execute('foo', 'bar', 'baz').then(function() {
+    it('should call request() with proper params (without args)', function () {
+        return this.api.execute('foo', 'bar', 'baz').then(function () {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo/bar/baz')
             should(opts.body).equal('method=PUT')
@@ -54,8 +49,8 @@ describe('Execute', function() {
         })
     })
 
-    it('should call request() with proper params (with args)', function() {
-        return this.api.execute('foo', 'bar', 'baz', {foo: 'barbaz'}).then(function() {
+    it('should call request() with proper params (with args)', function () {
+        return this.api.execute('foo', 'bar', 'baz', {foo: 'barbaz'}).then(function () {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo/bar/baz')
             should(opts.body).containEql('foo=barbaz')
@@ -64,8 +59,8 @@ describe('Execute', function() {
         })
     })
 
-    it('should call request() with proper params (with args) when objID is omitted', function() {
-        return this.api.execute('foo', null, 'baz', {foo: 'barbaz'}).then(function() {
+    it('should call request() with proper params (with args) when objID is omitted', function () {
+        return this.api.execute('foo', null, 'baz', {foo: 'barbaz'}).then(function () {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo')
             should(opts.body).containEql('action=baz')
@@ -75,8 +70,8 @@ describe('Execute', function() {
         })
     })
 
-    it('should call request() with proper params (without args) when objID is omitted', function() {
-        return this.api.execute('foo', null, 'baz').then(function() {
+    it('should call request() with proper params (without args) when objID is omitted', function () {
+        return this.api.execute('foo', null, 'baz').then(function () {
             const [url, opts] = fetchMock.lastCall('execute')
             should(url).endWith('foo')
             should(opts.body).containEql('action=baz')

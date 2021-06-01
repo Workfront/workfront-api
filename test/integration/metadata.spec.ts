@@ -14,44 +14,39 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../..'
 import fixture from '../../fixtures/metadata.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Metadata', function() {
-
+describe('Metadata', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    beforeEach(function() {
-        fetchMock.mock(
-            `begin:${API_URL}/attask/api`,
-            fixture,
-            {
-                name: 'metadata'
-            }
-        )
+    beforeEach(function () {
+        fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
+            name: 'metadata',
+        })
     })
-    it('calls without objCode', function() {
+    it('calls without objCode', function () {
         this.api.metadata()
         const [url, opts] = fetchMock.lastCall('metadata')
         should(url).endWith('metadata')
         should(opts.method).equal('GET')
         should(opts.body).be.null()
     })
-    it('calls with objCode', function() {
+    it('calls with objCode', function () {
         const objCode = 'foo'
         this.api.metadata(objCode)
         const [url, opts] = fetchMock.lastCall('metadata')
