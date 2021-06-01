@@ -216,12 +216,7 @@ module.exports = function (config) {
         config.set({
             reporters: ['progress', 'saucelabs'],
             sauceLabs: {
-                build:
-                    'Github Workflow' +
-                    process.env.GITHUB_WORKFLOW +
-                    ' (' +
-                    process.env.GITHUB_RUN_ID +
-                    ')',
+                build: process.env.GITHUB_SHA,
                 connectOptions: {
                     connectRetries: 1,
                     doctor: true,
@@ -235,7 +230,7 @@ module.exports = function (config) {
                 recordVideo: false,
                 startConnect: false,
                 testName: 'workfront-api',
-                tunnelIdentifier: process.env.GITHUB_JOB,
+                tunnelIdentifier: 'github-action-tunnel',
             },
             captureTimeout: 0,
             customLaunchers: customLaunchers,
