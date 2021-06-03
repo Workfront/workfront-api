@@ -13,6 +13,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'node_modules/whatwg-fetch/dist/fetch.umd.js',
             'node_modules/fetch-mock/dist/es5/client-bundle.js',
             'node_modules/should/should.js',
             {
@@ -40,7 +41,10 @@ module.exports = function (config) {
             reports: {
                 html: {directory: 'coverage'},
                 'text-summary': '',
-                json: '',
+                lcovonly: '',
+            },
+            bundlerOptions: {
+                transforms: [require('karma-typescript-es6-transform')()],
             },
         },
 
@@ -125,12 +129,6 @@ module.exports = function (config) {
                 browserName: 'internet explorer',
                 base: 'SauceLabs',
             },
-            SL_InternetExplorer_10: {
-                version: '10.0',
-                platform: 'Windows 7',
-                browserName: 'internet explorer',
-                base: 'SauceLabs',
-            },
         }
         const edge = {
             SL_Edge_Latest: {
@@ -172,7 +170,7 @@ module.exports = function (config) {
 
         // Override config for CI.
         config.set({
-            reporters: ['progress', 'saucelabs'],
+            reporters: ['progress', 'saucelabs', 'karma-typescript'],
             sauceLabs: {
                 build: process.env.GITHUB_SHA,
                 connectOptions: {
