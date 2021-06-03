@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import fetchMock from 'fetch-mock'
+import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../..'
+import {Api} from '../../src/Api'
 import fixture from '../../fixtures/namedQuery.json'
 
 const API_URL = 'http://foobar:8080'

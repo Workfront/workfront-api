@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import fetchMock from 'fetch-mock'
+import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../..'
+import {Api} from '../../src/Api'
 import fixture from '../../fixtures/copy.json'
 
 const API_URL = 'http://foobar:8080'
@@ -68,7 +68,7 @@ describe('Copy', function () {
         })
         it('makes a copy request with copy options', function () {
             const copyOptions = ['cpyOpt1', 'cpyOpt2']
-            return this.api.copy('foo', 'bar', null, null, copyOptions).then(function (data) {
+            return this.api.copy('foo', 'bar', null, null, copyOptions).then(function () {
                 const [url, opts] = fetchMock.lastCall('copy')
                 should(url).endWith('foo')
                 should(opts.method).equal('POST')

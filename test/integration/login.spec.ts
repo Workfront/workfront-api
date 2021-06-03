@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import fetchMock from 'fetch-mock'
+import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../..'
+import {Api} from '../../src/Api'
 import exceptionFixture from '../../fixtures/exception.json'
 import loginFixture from '../../fixtures/login.json'
 
