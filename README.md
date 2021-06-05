@@ -1,6 +1,10 @@
 # workfront-api
 
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Apache v2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Coverage][codecov-image]][codecov-url] [![Code Climate][code-climate-image]][code-climate-url]
+[![NPM downloads][npm-downloads-image]][npm-url]
+[![Apache v2 License][license-image]][license-url]
+![workflow](https://github.com/workfront/workfront-api/actions/workflows/main.yml/badge.svg)
+[![Coverage][codecov-image]][codecov-url]
+[![Code Climate][code-climate-image]][code-climate-url]
 [![Build Status][saucelabs-badge]][saucelabs-url]
 
 [![Build Status][saucelabs-matrix]][saucelabs-url]
@@ -22,7 +26,7 @@ const Workfront = require('workfront-api')
 /**
  * The console.log statement below will output the following:
  * {
- *    NodeApi: [Function: Api],
+ *    Api: [Function: Api],
  *    ResponseHandler: { success: [Function: success], failure: [Function: failure] }
  * }
  */
