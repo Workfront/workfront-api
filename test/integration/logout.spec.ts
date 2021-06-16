@@ -16,53 +16,44 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../../src/Api'
 import loginFixture from '../../fixtures/login.json'
 import logoutFixture from '../../fixtures/logout.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Logout', function() {
-
+describe('Logout', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    describe('success', function() {
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api-internal/logout`,
-                logoutFixture,
-                {
-                    name: 'logout'
-                }
-            )
+    describe('success', function () {
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api-internal/logout`, logoutFixture, {
+                name: 'logout',
+            })
         })
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api-internal/login`,
-                loginFixture,
-                {
-                    name: 'login'
-                }
-            )
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api-internal/login`, loginFixture, {
+                name: 'login',
+            })
         })
-        it('should call with proper params', function() {
+        it('should call with proper params', function () {
             this.api.logout()
             const [url, opts] = fetchMock.lastCall('logout')
             should(url).endWith('logout')
             should(opts.method).equal('GET')
             should(opts.body).be.null()
         })
-        it('removes sessionID from header for later calls', function() {
+        it('removes sessionID from header for later calls', function () {
             let opts
             return this.api.login('foo', 'bar').then(() => {
                 return this.api.logout('foo', 'bar').then(() => {

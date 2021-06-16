@@ -14,39 +14,34 @@
  * limitations under the License.
  */
 
-import fetchMock from 'fetch-mock'
+import * as fetchMock from 'fetch-mock'
 import should from 'should'
 
 import {MOD, Operators} from 'workfront-api-constants'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../../src/Api'
 import fixture from '../../fixtures/search.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Search', function() {
-
+describe('Search', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    beforeEach(function() {
-        fetchMock.mock(
-            `begin:${API_URL}/attask/api`,
-            fixture,
-            {
-                name: 'search'
-            }
-        )
+    beforeEach(function () {
+        fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
+            name: 'search',
+        })
     })
-    it('makes a search request with proper params', function() {
+    it('makes a search request with proper params', function () {
         const objCode = 'ROLE'
         this.api.search(objCode)
         const [url, opts] = fetchMock.lastCall('search')
@@ -54,17 +49,19 @@ describe('Search', function() {
         should(url).endWith(objCode + '/search')
         should(opts.body).be.null()
     })
-    it('makes a request with search criteria', function() {
+    it('makes a request with search criteria', function () {
         const objCode = 'ROLE',
             criteriaField = 'maxUsers',
             criteriaValue = 5,
             query = {
                 [criteriaField + MOD]: Operators.GREATERTHAN,
-                [criteriaField]: criteriaValue
+                [criteriaField]: criteriaValue,
             }
         this.api.search(objCode, query)
         const [url, opts] = fetchMock.lastCall('search')
-        should(url).endWith(`${objCode}/search?${criteriaField}${MOD}=${Operators.GREATERTHAN}&${criteriaField}=${criteriaValue}`)
+        should(url).endWith(
+            `${objCode}/search?${criteriaField}${MOD}=${Operators.GREATERTHAN}&${criteriaField}=${criteriaValue}`
+        )
         should(opts.body).be.null()
     })
 })

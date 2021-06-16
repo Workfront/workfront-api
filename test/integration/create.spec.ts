@@ -16,73 +16,68 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../../src/Api'
 import fixture from '../../fixtures/create.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Create', function() {
-
+describe('Create', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    beforeEach(function() {
-        fetchMock.mock(
-            `begin:${API_URL}/attask/api`,
-            fixture,
-            {
-                name: 'create'
-            }
-        )
+    beforeEach(function () {
+        fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
+            name: 'create',
+        })
     })
 
-    it('makes a request with proper params', function() {
+    it('makes a request with proper params', function () {
         const params = {
-            foo: 'bar'
+            foo: 'bar',
         }
         const fields = ['*', 'zzz:*']
         const objCode = 'baz'
 
-        return this.api.create(objCode, params, fields).then(function() {
+        return this.api.create(objCode, params, fields).then(function () {
             const [url, opts] = fetchMock.lastCall('create')
             should(url).endWith(objCode + '?fields=' + encodeURIComponent('*,zzz:*'))
             should(opts.method).equal('POST')
             should(opts.body).equal('{"foo":"bar"}')
         })
     })
-    it('should return the new created object', function() {
+    it('should return the new created object', function () {
         const params = {
-            name: 'test'
+            name: 'test',
         }
         const fields = 'customerID'
         const objCode = 'TASK'
 
-        return this.api.create(objCode, params, fields).then(function(data) {
+        return this.api.create(objCode, params, fields).then(function (data) {
             should(data).have.properties(['ID', 'name', 'objCode'])
             should(data.objCode).equal(objCode)
             should(data.name).equal(params.name)
         })
     })
-    it('should create an object using the old api (passing updates property)', function() {
+    it('should create an object using the old api (passing updates property)', function () {
         const api = new Api({
             url: API_URL,
-            version: '4.0'
+            version: '4.0',
         })
         const params = {
-            updates: JSON.stringify({name: 'test'})
+            updates: JSON.stringify({name: 'test'}),
         }
         const objCode = 'TASK'
 
-        return api.create(objCode, params).then(function(data) {
+        return api.create(objCode, params).then(function (data) {
             const [url, opts] = fetchMock.lastCall('create')
             should(url).endWith(objCode)
             should(opts.method).equal('POST')
@@ -93,9 +88,9 @@ describe('Create', function() {
             should(data.name).equal('test')
         })
     })
-    it('should not do changes on the given parameter object', function() {
+    it('should not do changes on the given parameter object', function () {
         const params = {
-            updates: JSON.stringify({name: 'test'})
+            updates: JSON.stringify({name: 'test'}),
         }
         const objCode = 'TASK'
 

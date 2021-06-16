@@ -1,6 +1,5 @@
 'use strict'
 
-const CI = process.env.CI
 const CI_MODE = process.env.CI_MODE
 
 module.exports = function (config) {
@@ -10,11 +9,10 @@ module.exports = function (config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha'],
+        frameworks: ['mocha', 'karma-typescript'],
 
         // list of files / patterns to load in the browser
         files: [
-            'node_modules/es6-promise/dist/es6-promise.auto.min.js',
             'node_modules/whatwg-fetch/dist/fetch.umd.js',
             'node_modules/fetch-mock/dist/es5/client-bundle.js',
             'node_modules/should/should.js',
@@ -22,6 +20,7 @@ module.exports = function (config) {
                 pattern: 'test/integration/*.spec.ts',
                 watched: false,
             },
+            'src/Api.ts',
         ],
 
         proxies: {
@@ -32,70 +31,33 @@ module.exports = function (config) {
         },
 
         preprocessors: {
-            'test/integration/*.spec.ts': ['rollup', 'sourcemap'],
+            '**/*.ts': 'karma-typescript',
         },
 
-        mime: {
-            'text/x-typescript': ['ts'],
-        },
-
-        rollupPreprocessor: {
-            output: {
-                format: 'iife',
-                name: 'Workfront',
-                sourcemap: 'inline',
-                globals: {
-                    'isomorphic-fetch': 'fetch',
-                    'fetch-mock': 'fetchMock',
-                    should: 'should',
-                },
+        karmaTypescriptConfig: {
+            tsconfig: './tsconfig.json',
+            include: ['test'],
+            exclude: ['node_modules'],
+            reports: {
+                html: {directory: 'coverage'},
+                'text-summary': '',
+                lcovonly: '',
             },
-            plugins: [
-                require('@rollup/plugin-node-resolve').nodeResolve(),
-                require('@rollup/plugin-json')(),
-                require('@rollup/plugin-typescript')({
-                    tsconfig: false,
-                    allowSyntheticDefaultImports: true,
-                    resolveJsonModule: true,
-                    moduleResolution: 'node',
-                    target: 'es5',
-                    include: ['test/integration/*.spec.ts', 'src/*.ts'],
-                }),
-            ],
-            external: ['fetch-mock', 'should', 'isomorphic-fetch'],
+            bundlerOptions: {
+                transforms: [require('karma-typescript-es6-transform')()],
+            },
         },
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_INFO,
 
-        reporters: ['progress', 'coverage', 'remap-coverage'],
-
-        coverageReporter: {
-            type: 'in-memory',
-        },
-
-        remapOptions: {
-            // warn: function() {}
-        },
-        remapCoverageReporter: (function () {
-            if (CI) {
-                return {
-                    'text-summary': null,
-                    lcovonly: './coverage/lcov.info',
-                }
-            }
-            return {
-                'text-summary': null,
-                // to show summary in console
-                html: './coverage',
-            }
-        })(),
+        reporters: ['progress', 'karma-typescript'],
 
         port: 9876,
         colors: true,
         autoWatch: false,
-        browsers: ['PhantomJS'],
+        browsers: ['ChromeHeadless'],
         singleRun: true,
     })
 
@@ -167,12 +129,6 @@ module.exports = function (config) {
                 browserName: 'internet explorer',
                 base: 'SauceLabs',
             },
-            SL_InternetExplorer_10: {
-                version: '10.0',
-                platform: 'Windows 7',
-                browserName: 'internet explorer',
-                base: 'SauceLabs',
-            },
         }
         const edge = {
             SL_Edge_Latest: {
@@ -214,14 +170,9 @@ module.exports = function (config) {
 
         // Override config for CI.
         config.set({
-            reporters: ['progress', 'saucelabs'],
+            reporters: ['progress', 'saucelabs', 'karma-typescript'],
             sauceLabs: {
-                build:
-                    'TRAVIS #' +
-                    process.env.TRAVIS_BUILD_NUMBER +
-                    ' (' +
-                    process.env.TRAVIS_BUILD_ID +
-                    ')',
+                build: process.env.GITHUB_SHA,
                 connectOptions: {
                     connectRetries: 1,
                     doctor: true,
@@ -235,7 +186,7 @@ module.exports = function (config) {
                 recordVideo: false,
                 startConnect: false,
                 testName: 'workfront-api',
-                tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+                tunnelIdentifier: 'github-action-tunnel',
             },
             captureTimeout: 0,
             customLaunchers: customLaunchers,

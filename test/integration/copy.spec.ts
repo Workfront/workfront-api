@@ -16,68 +16,67 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../../src/Api'
 import fixture from '../../fixtures/copy.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Copy', function() {
-
+describe('Copy', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    describe('success', function() {
-        beforeEach(function() {
-            fetchMock.mock(
-                `begin:${API_URL}/attask/api`,
-                fixture,
-                {
-                    name: 'copy'
-                }
-            )
+    describe('success', function () {
+        beforeEach(function () {
+            fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
+                name: 'copy',
+            })
         })
-        it('makes request to objCode with copySourceID in the params', function() {
-            return this.api.copy('foo', 'bar').then(function() {
+        it('makes request to objCode with copySourceID in the params', function () {
+            return this.api.copy('foo', 'bar').then(function () {
                 const [url, opts] = fetchMock.lastCall('copy')
                 should(url).endWith('foo')
                 should(opts.method).equal('POST')
                 should(opts.body).equal('copySourceID=bar')
             })
         })
-        it('makes request to objCode with copySourceID in the params with some edits to the object', function() {
-            return this.api.copy('foo', 'bar', {name: 'Copy of bar'}).then(function() {
+        it('makes request to objCode with copySourceID in the params with some edits to the object', function () {
+            return this.api.copy('foo', 'bar', {name: 'Copy of bar'}).then(function () {
                 const [url, opts] = fetchMock.lastCall('copy')
                 should(url).endWith('foo')
                 should(opts.method).equal('POST')
-                should(opts.body).containEql('updates=' + encodeURIComponent('{"name":"Copy of bar"}'))
+                should(opts.body).containEql(
+                    'updates=' + encodeURIComponent('{"name":"Copy of bar"}')
+                )
                 should(opts.body).containEql('copySourceID=bar')
                 should(opts.body).not.containEql('options')
             })
         })
-        it('returns data with a new ID', function() {
-            return this.api.copy('foo', 'bar').then(function(data) {
+        it('returns data with a new ID', function () {
+            return this.api.copy('foo', 'bar').then(function (data) {
                 should(data).have.property('ID')
                 should(data.ID).not.containEql('bar')
             })
         })
-        it('makes a copy request with copy options', function() {
+        it('makes a copy request with copy options', function () {
             const copyOptions = ['cpyOpt1', 'cpyOpt2']
-            return this.api.copy('foo', 'bar', null, null, copyOptions).then(function(data) {
+            return this.api.copy('foo', 'bar', null, null, copyOptions).then(function () {
                 const [url, opts] = fetchMock.lastCall('copy')
                 should(url).endWith('foo')
                 should(opts.method).equal('POST')
                 should(opts.body).not.containEql('updates')
                 should(opts.body).containEql('copySourceID=bar')
-                should(opts.body).containEql('options=' + encodeURIComponent(JSON.stringify(copyOptions)))
+                should(opts.body).containEql(
+                    'options=' + encodeURIComponent(JSON.stringify(copyOptions))
+                )
             })
         })
     })

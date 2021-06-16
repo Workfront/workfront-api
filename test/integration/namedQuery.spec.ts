@@ -16,35 +16,30 @@
 
 import * as fetchMock from 'fetch-mock'
 import should from 'should'
-import {Api} from '../../dist/workfront-api.es'
+import {Api} from '../../src/Api'
 import fixture from '../../fixtures/namedQuery.json'
 
 const API_URL = 'http://foobar:8080'
 
-describe('Named Query', function() {
-
+describe('Named Query', function () {
     afterEach(fetchMock.reset)
     afterEach(fetchMock.restore)
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.api = new Api({
-            url: API_URL
+            url: API_URL,
         })
     })
-    afterEach(function() {
+    afterEach(function () {
         this.api = undefined
     })
 
-    beforeEach(function() {
-        fetchMock.mock(
-            `begin:${API_URL}/attask/api`,
-            fixture,
-            {
-                name: 'namedQuery'
-            }
-        )
+    beforeEach(function () {
+        fetchMock.mock(`begin:${API_URL}/attask/api`, fixture, {
+            name: 'namedQuery',
+        })
     })
-    it('makes a request with proper url and method', function() {
+    it('makes a request with proper url and method', function () {
         const objCode = 'CSTEM',
             action = 'projectStatuses'
         this.api.namedQuery(objCode, action)

@@ -1,0 +1,45 @@
+name: Checks
+
+on: [push]
+
+jobs:
+  test-mocha:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install --frozen-lockfile
+      - run: yarn run test:mocha
+
+  test-karma:
+    runs-on: ubuntu-latest
+    env:
+      CI_MODE: saucelabs
+      SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+      SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Use latest Node.js version
+      - uses: saucelabs/sauce-connect-action@v1
+        with:
+          username: ${{ secrets.SAUCE_USERNAME }}
+          accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
+          tunnelIdentifier: github-action-tunnel
+          scVersion: 4.6.4
+      - uses: actions/setup-node@v2
+      - run: yarn install --frozen-lockfile
+      - run: yarn run test:karma
+      - uses: codecov/codecov-action@v1
+        with:
+          directory: ./coverage/
+          fail_ci_if_error: true
+          path_to_write_report: ./coverage/codecov_report.txt
