@@ -22,7 +22,7 @@
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.0.2",
     "@rollup/plugin-typescript": "8.2.3",
-    "@types/mocha": "8.2.3",
+    "@types/mocha": "9.0.0",
     "conventional-changelog-cli": "2.1.1",
     "fetch-mock": "6.5.2",
     "http-server": "0.12.3",
