@@ -21,7 +21,7 @@
     "@rollup/plugin-commonjs": "19.0.2",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.0.4",
-    "@rollup/plugin-typescript": "8.2.3",
+    "@rollup/plugin-typescript": "8.2.5",
     "@types/mocha": "9.0.0",
     "conventional-changelog-cli": "2.1.1",
     "fetch-mock": "6.5.2",
