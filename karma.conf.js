@@ -14,7 +14,7 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'node_modules/whatwg-fetch/dist/fetch.umd.js',
-            'node_modules/fetch-mock/es5/client-legacy-bundle.js',
+            'node_modules/fetch-mock/es5/client-bundle.js',
             'node_modules/should/should.js',
             {
                 pattern: 'test/integration/*.spec.ts',
