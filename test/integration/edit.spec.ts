@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
 import {Api} from '../../src/Api'
 import fixture from '../../fixtures/edit.json'
@@ -22,8 +22,7 @@ import fixture from '../../fixtures/edit.json'
 const API_URL = 'http://foobar:8080'
 
 describe('Edit', function () {
-    afterEach(fetchMock.reset)
-    afterEach(fetchMock.restore)
+    afterEach(() => fetchMock.reset())
 
     beforeEach(function () {
         this.api = new Api({
@@ -52,7 +51,7 @@ describe('Edit', function () {
             const [url, opts] = fetchMock.lastCall('edit')
             should(opts.method).equal('PUT')
             should(url).endWith(objCode + '/' + objID)
-            should(opts.headers.get('apiKey')).equal('testapikey')
+            should((opts.headers as Headers).get('apiKey')).equal('testapikey')
             should(opts.body).containEql(JSON.stringify(params))
 
             should(data).have.properties(['ID', 'name', 'objCode'])

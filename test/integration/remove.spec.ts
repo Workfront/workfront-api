@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
 import {Api} from '../../src/Api'
 import createFixture from '../../fixtures/create.json'
@@ -24,8 +24,7 @@ import removeFailureFixture from '../../fixtures/removeFailure.json'
 const API_URL = 'http://foobar:8080'
 
 describe('Remove', function () {
-    afterEach(fetchMock.reset)
-    afterEach(fetchMock.restore)
+    afterEach(() => fetchMock.reset())
 
     beforeEach(function () {
         this.api = new Api({

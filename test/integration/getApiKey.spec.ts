@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
 
 import {Api} from '../../src/Api'
@@ -22,8 +22,7 @@ import {Api} from '../../src/Api'
 const API_URL = 'http://foobar:8080'
 
 describe('getApiKey', function () {
-    afterEach(fetchMock.reset)
-    afterEach(fetchMock.restore)
+    afterEach(() => fetchMock.reset())
 
     beforeEach(function () {
         this.api = new Api({
@@ -36,12 +35,12 @@ describe('getApiKey', function () {
 
     it('requests generateApiKey when getApiKey returns blank', function (done) {
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('getApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('getApiKey') !== -1,
             '{"data": {"result": ""}}',
             {name: 'getApiKey'}
         )
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('generateApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('generateApiKey') !== -1,
             '{"data": {"result": "baz"}}',
             {name: 'generateApiKey'}
         )
@@ -55,12 +54,12 @@ describe('getApiKey', function () {
     })
     it('does not call generateApiKey when getApiKey returns an api key', function (done) {
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('getApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('getApiKey') !== -1,
             '{"data": {"result": "baz"}}',
             {name: 'getApiKey'}
         )
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('generateApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('generateApiKey') !== -1,
             '{"data": {"result": "baz"}}',
             {name: 'generateApiKey'}
         )
@@ -78,12 +77,12 @@ describe('getApiKey', function () {
     })
     it('should get and then clear the apiKey', function (done) {
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('getApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('getApiKey') !== -1,
             '{"data": {"result": "baz"}}',
             {name: 'getApiKey'}
         )
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('clearApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('clearApiKey') !== -1,
             '{"data": {"success": true}}',
             {name: 'clearApiKey'}
         )
@@ -100,12 +99,12 @@ describe('getApiKey', function () {
     })
     it('should getApiKey with subdomain', function () {
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('getApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('getApiKey') !== -1,
             '{"data": {"result": ""}}',
             {name: 'getApiKey'}
         )
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('generateApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('generateApiKey') !== -1,
             '{"data": {"result": "baz"}}',
             {name: 'generateApiKey'}
         )
@@ -118,12 +117,12 @@ describe('getApiKey', function () {
     })
     it('should getApiKey without subdomain', function () {
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('getApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('getApiKey') !== -1,
             '{"data": {"result": ""}}',
             {name: 'getApiKey'}
         )
         fetchMock.mock(
-            (url, opts) => opts.body.indexOf('generateApiKey') !== -1,
+            (url, opts) => JSON.stringify(opts.body).indexOf('generateApiKey') !== -1,
             '{"data": {"result": "baz"}}',
             {name: 'generateApiKey'}
         )

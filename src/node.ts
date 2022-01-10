@@ -40,7 +40,7 @@ export class NodeApi extends BaseApi {
         return makeFetchCall(this._httpOptions.url + this._httpOptions.path + '/upload', {
             headers: this.getHeaders(),
             body: data as any,
-            method: BaseApi.Methods.POST
+            method: BaseApi.Methods.POST,
         })
     }
 }

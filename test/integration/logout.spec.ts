@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
 import {Api} from '../../src/Api'
 import loginFixture from '../../fixtures/login.json'
@@ -23,8 +23,7 @@ import logoutFixture from '../../fixtures/logout.json'
 const API_URL = 'http://foobar:8080'
 
 describe('Logout', function () {
-    afterEach(fetchMock.reset)
-    afterEach(fetchMock.restore)
+    afterEach(() => fetchMock.reset())
 
     beforeEach(function () {
         this.api = new Api({

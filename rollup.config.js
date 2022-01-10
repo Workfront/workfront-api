@@ -16,7 +16,7 @@ module.exports = [
                 sourcemap: true,
             },
         ],
-        plugins: [typescript(), nodeResolve(), commonjs()],
+        plugins: [typescript({module: 'es6'}), nodeResolve(), commonjs()],
     },
     {
         input: 'src/Api.ts',
@@ -43,7 +43,7 @@ module.exports = [
             name: 'Wokfront',
             sourcemap: true,
         },
-        plugins: [typescript(), nodeResolve(), commonjs(), terser()],
+        plugins: [typescript({module: 'es6'}), nodeResolve(), commonjs(), terser()],
     },
     {
         input: 'src/node.ts',
@@ -53,7 +53,7 @@ module.exports = [
             sourcemap: true,
             exports: 'named',
         },
-        plugins: [typescript(), commonjs({extensions: ['.js', '.ts']})],
+        plugins: [typescript({module: 'es6'}), commonjs({extensions: ['.js', '.ts']})],
         external: ['tslib', 'form-data', 'isomorphic-fetch', 'workfront-api-constants'],
     },
 ]
