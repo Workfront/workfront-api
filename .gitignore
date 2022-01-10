@@ -14,3 +14,4 @@ coverage
 dist
 typings
 es
+test/legacy-build
