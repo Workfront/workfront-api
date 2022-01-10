@@ -115,12 +115,6 @@ module.exports = function (config) {
                 browserName: 'safari',
                 base: 'SauceLabs',
             },
-            SL_Safari_9: {
-                version: '9.0',
-                platform: 'OS X 10.11',
-                browserName: 'safari',
-                base: 'SauceLabs',
-            },
         }
         const edge = {
             SL_Edge_Latest: {
@@ -131,12 +125,6 @@ module.exports = function (config) {
             },
         }
         const linux = {
-            SL_Chrome_Linux: {
-                version: 'latest',
-                platform: 'Linux',
-                browserName: 'chrome',
-                base: 'SauceLabs',
-            },
             SL_Firefox_Linux: {
                 version: 'latest',
                 platform: 'Linux',
