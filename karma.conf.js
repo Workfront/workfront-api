@@ -14,7 +14,7 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'node_modules/whatwg-fetch/dist/fetch.umd.js',
-            'node_modules/fetch-mock/dist/es5/client-bundle.js',
+            'node_modules/fetch-mock/es5/client-bundle.js',
             'node_modules/should/should.js',
             {
                 pattern: 'test/integration/*.spec.ts',
@@ -115,20 +115,6 @@ module.exports = function (config) {
                 browserName: 'safari',
                 base: 'SauceLabs',
             },
-            SL_Safari_9: {
-                version: '9.0',
-                platform: 'OS X 10.11',
-                browserName: 'safari',
-                base: 'SauceLabs',
-            },
-        }
-        const ie = {
-            SL_InternetExplorer_11: {
-                version: '11.0',
-                platform: 'Windows 7',
-                browserName: 'internet explorer',
-                base: 'SauceLabs',
-            },
         }
         const edge = {
             SL_Edge_Latest: {
@@ -137,26 +123,8 @@ module.exports = function (config) {
                 browserName: 'MicrosoftEdge',
                 base: 'SauceLabs',
             },
-            SL_Edge_14: {
-                version: '14.14393',
-                platform: 'Windows 10',
-                browserName: 'MicrosoftEdge',
-                base: 'SauceLabs',
-            },
-            SL_Edge_13: {
-                version: '13.10586',
-                platform: 'Windows 10',
-                browserName: 'MicrosoftEdge',
-                base: 'SauceLabs',
-            },
         }
         const linux = {
-            SL_Chrome_Linux: {
-                version: 'latest',
-                platform: 'Linux',
-                browserName: 'chrome',
-                base: 'SauceLabs',
-            },
             SL_Firefox_Linux: {
                 version: 'latest',
                 platform: 'Linux',
@@ -166,7 +134,7 @@ module.exports = function (config) {
         }
 
         // Browsers to run on Sauce Labs
-        const customLaunchers = Object.assign({}, chrome, firefox, safari, ie, edge, linux)
+        const customLaunchers = Object.assign({}, chrome, firefox, safari, edge, linux)
 
         // Override config for CI.
         config.set({

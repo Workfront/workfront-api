@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
 import {Api} from '../../src/Api'
 import fixture from '../../fixtures/copy.json'
@@ -22,8 +22,7 @@ import fixture from '../../fixtures/copy.json'
 const API_URL = 'http://foobar:8080'
 
 describe('Copy', function () {
-    afterEach(fetchMock.reset)
-    afterEach(fetchMock.restore)
+    afterEach(() => fetchMock.reset())
 
     beforeEach(function () {
         this.api = new Api({

@@ -712,43 +712,43 @@ function batchApiFactory(api: Api): IBatchApi {
             fields?: TFields,
             options?: string[]
         ) => {
-            return (apiClone.copy(objCode, objID, updates, fields, options) as any) as string
+            return apiClone.copy(objCode, objID, updates, fields, options) as any as string
         },
         count: (objCode: string, query?: object) => {
-            return (apiClone.count(objCode, query) as any) as string
+            return apiClone.count(objCode, query) as any as string
         },
         create: (objCode: string, params: any, fields?: TFields) => {
-            return (apiClone.create(objCode, params, fields) as any) as string
+            return apiClone.create(objCode, params, fields) as any as string
         },
         edit: (objCode: string, objID: string, updates: any, fields?: TFields) => {
-            return (apiClone.edit(objCode, objID, updates, fields) as any) as string
+            return apiClone.edit(objCode, objID, updates, fields) as any as string
         },
         editMultiple: (objCode: string, updates: any[], fields?: TFields) => {
-            return (apiClone.editMultiple(objCode, updates, fields) as any) as string
+            return apiClone.editMultiple(objCode, updates, fields) as any as string
         },
         execute: (objCode: string, objID: string | null, action: string, actionArgs?: object) => {
-            return (apiClone.execute(objCode, objID, action, actionArgs) as any) as string
+            return apiClone.execute(objCode, objID, action, actionArgs) as any as string
         },
         get: (objCode: string, objIDs: string | string[], fields?: TFields) => {
-            return (apiClone.get(objCode, objIDs, fields) as any) as string
+            return apiClone.get(objCode, objIDs, fields) as any as string
         },
         metadata: (objCode?: string, fields?: TFields) => {
-            return (apiClone.metadata(objCode, fields) as any) as string
+            return apiClone.metadata(objCode, fields) as any as string
         },
         namedQuery: (objCode: string, query: string, queryArgs?: object, fields?: TFields) => {
-            return (apiClone.namedQuery(objCode, query, queryArgs, fields) as any) as string
+            return apiClone.namedQuery(objCode, query, queryArgs, fields) as any as string
         },
         remove: (objCode: string, objID: string, bForce?: boolean) => {
-            return (apiClone.remove(objCode, objID, bForce) as any) as string
+            return apiClone.remove(objCode, objID, bForce) as any as string
         },
         report: (objCode: string, query: object) => {
-            return (apiClone.report(objCode, query) as any) as string
+            return apiClone.report(objCode, query) as any as string
         },
         request: (path: string, params, fields?: TFields, method: string = Api.Methods.GET) => {
-            return (apiClone.request(path, params, fields, method) as any) as string
+            return apiClone.request(path, params, fields, method) as any as string
         },
         search: (objCode: string, query?: object, fields?: TFields) => {
-            return (apiClone.search(objCode, query, fields, false) as any) as string
+            return apiClone.search(objCode, query, fields, false) as any as string
         },
     }
 }

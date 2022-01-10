@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock'
 import should from 'should'
 import {Api} from '../../src/Api'
 import fixture from '../../fixtures/batch.json'
@@ -22,8 +22,7 @@ import fixture from '../../fixtures/batch.json'
 const API_URL = 'http://foobar:8080'
 
 describe('Batch', function () {
-    afterEach(fetchMock.reset)
-    afterEach(fetchMock.restore)
+    afterEach(() => fetchMock.reset())
 
     beforeEach(function () {
         this.api = new Api({
@@ -88,14 +87,14 @@ describe('Batch', function () {
 
         it('should contain 3 uri params in its body', function () {
             const {body} = fetchMock.lastOptions()
-            const match = decodeURIComponent(body).match(/uri/gi)
+            const match = decodeURIComponent(JSON.stringify(body)).match(/uri/gi)
             should(match).not.empty()
             should(match).has.length(3, 'should have 3 uri params')
         })
 
         it('should contain 3 method=GET params in its body', function () {
             const {body} = fetchMock.lastOptions()
-            const match = decodeURIComponent(body).match(/method=GET/gi)
+            const match = decodeURIComponent(JSON.stringify(body)).match(/method=GET/gi)
             should(match).not.empty()
             should(match).has.length(3, 'should have 3 method=GET params')
         })
