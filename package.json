@@ -50,7 +50,6 @@
   "scripts": {
     "prettier": "prettier --write **/*.{ts,js,css,md}",
     "test": "run-s test:*",
-    "pretest:karma": "tsc node_modules/fetch-mock/es5/client-bundle.js --allowJs --target es5 --outfile test/legacy-build/fetch-mock-client-bundle.js",
     "test:karma": "karma start karma.conf.js",
     "test:mocha": "mocha -r ts-node/register/transpile-only test/*.spec.ts",
     "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
