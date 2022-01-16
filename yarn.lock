@@ -4586,10 +4586,10 @@ karma-sauce-launcher@4.3.6:
     saucelabs "^4.6.3"
     webdriverio "^6.7.0"
 
-karma-typescript-es6-transform@5.5.2:
-  version "5.5.2"
-  resolved "https://registry.yarnpkg.com/karma-typescript-es6-transform/-/karma-typescript-es6-transform-5.5.2.tgz#6f86b0150ab8148acfaf1b06003aaee6c3f52d4a"
-  integrity sha512-Qog/jfI97KAYFoPe/8kQ+4WcmVX4gg1W1QmzD66NeLWfAGUf4szQ/fyb0yQd8rNSelvy0NNMDl+hWh5slMiLIw==
+karma-typescript-es6-transform@5.5.3:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/karma-typescript-es6-transform/-/karma-typescript-es6-transform-5.5.3.tgz#5396da512c20b69d49e3e362a41f250342da5c03"
+  integrity sha512-vB1Cv8z9yxyR2KQuvks5soNKASyS2RPApdMsB3Ad55RqFJeag9G+xyGIwxOdyCHtgOwa4yn1rngMwaN7WBQTbQ==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
