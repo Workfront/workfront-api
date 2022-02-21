@@ -1,9 +1,7 @@
 {
-  "inputFiles": ["./src"],
-  "mode": "modules",
+  "entryPoints": ["./src/Api.ts"],
   "out": "./docs",
   "excludeExternals": true,
   "excludePrivate": true,
-  "exclude": ["**/*.spec.ts"],
-  "toc": ["Api"]
+  "exclude": ["**/*.spec.ts"]
 }
