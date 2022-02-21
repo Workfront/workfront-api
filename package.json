@@ -80,5 +80,8 @@
   "bugs": {
     "url": "https://github.com/Workfront/workfront-api/issues"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
   "homepage": "https://github.com/Workfront/workfront-api"
 }
