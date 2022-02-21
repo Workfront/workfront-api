@@ -1,192 +1,89 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>workfront-api</title>
-	<meta name="description" content="Documentation for workfront-api">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">workfront-api</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1>workfront-api</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#workfront-api" id="workfront-api" style="color: inherit; text-decoration: none;">
-					<h1>workfront-api</h1>
-				</a>
-				<p><a href="https://www.npmjs.org/package/workfront-api"><img src="https://img.shields.io/npm/v/workfront-api.svg?style=flat-square" alt="NPM version"></a> <a href="https://www.npmjs.org/package/workfront-api"><img src="https://img.shields.io/npm/dm/workfront-api.svg?style=flat-square" alt="NPM downloads"></a> <a href="LICENSE"><img src="http://img.shields.io/badge/license-APv2-blue.svg?style=flat-square" alt="Apache v2 License"></a> <a href="https://travis-ci.com/Workfront/workfront-api"><img src="https://img.shields.io/travis/Workfront/workfront-api.svg?style=flat-square" alt="Build Status"></a> <a href="https://codecov.io/gh/Workfront/workfront-api"><img src="https://codecov.io/gh/Workfront/workfront-api/branch/master/graph/badge.svg" alt="Coverage"></a> <a href="https://codeclimate.com/github/Workfront/workfront-api"><img src="https://img.shields.io/codeclimate/maintainability/Workfront/workfront-api?style=flat-square" alt="Code Climate"></a>
-				<a href="https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14"><img src="https://saucelabs.com/buildstatus/citizensas" alt="Build Status"></a></p>
-				<p><a href="https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14"><img src="https://saucelabs.com/browser-matrix/citizensas.svg" alt="Build Status"></a></p>
-				<p>A client for Workfront API which can be used in both server (NodeJS) and client (browsers).</p>
-				<p>If used in browser environment you may need to polyfill Promises (see ES6 Promise for polyfills) and fetch (<a href="https://github.com/fis-components/whatwg-fetch">whatwg-fetch</a>).</p>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
-				<a href="#server-side" id="server-side" style="color: inherit; text-decoration: none;">
-					<h4>Server-side</h4>
-				</a>
-				<p>Install as a dependency: <code>npm install --save workfront-api</code>.
-				Then <code>require(&#39;workfront-api&#39;)</code> in your code. For example:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Workfront = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;workfront-api&#x27;</span>)
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>workfront-api</title><meta name="description" content="Documentation for workfront-api"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">workfront-api</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>workfront-api</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#workfront-api" id="workfront-api" style="color: inherit; text-decoration: none;">
+  <h1>workfront-api</h1>
+</a>
+<p><a href="https://www.npmjs.org/package/workfront-api"><img src="https://img.shields.io/npm/dm/workfront-api.svg?style=flat-square" alt="NPM downloads"></a>
+<a href="LICENSE"><img src="http://img.shields.io/badge/license-APv2-blue.svg?style=flat-square" alt="Apache v2 License"></a>
+<img src="https://github.com/workfront/workfront-api/actions/workflows/main.yml/badge.svg" alt="workflow">
+<a href="https://codecov.io/gh/Workfront/workfront-api"><img src="https://codecov.io/gh/Workfront/workfront-api/branch/master/graph/badge.svg" alt="Coverage"></a>
+<a href="https://codeclimate.com/github/Workfront/workfront-api"><img src="https://img.shields.io/codeclimate/maintainability/Workfront/workfront-api?style=flat-square" alt="Code Climate"></a>
+<a href="https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14"><img src="https://saucelabs.com/buildstatus/citizensas" alt="Build Status"></a></p>
+<p><a href="https://saucelabs.com/beta/builds/1b8be6f71455499c82f02afc881e6c14"><img src="https://saucelabs.com/browser-matrix/citizensas.svg" alt="Build Status"></a></p>
+<p>A client for Workfront API which can be used in both server (NodeJS) and client (browsers).</p>
+<p>If used in browser environment you may need to polyfill Promises (see ES6 Promise for polyfills) and fetch (<a href="https://github.com/fis-components/whatwg-fetch">whatwg-fetch</a>).</p>
 
-<span class="hljs-comment">/**
- * The console.log statement below will output the following:
- * {
- *    NodeApi: [Function: Api],
- *    ResponseHandler: { success: [Function: success], failure: [Function: failure] }
- * }
- */</span>
-<span class="hljs-built_in">console</span>.log(Workfront)</code></pre>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h2>Documentation</h2>
-				</a>
-				<p>API documentation is available at <a href="http://workfront.github.io/workfront-api/">http://workfront.github.io/workfront-api/</a>.</p>
-				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
-					<h2>Examples</h2>
-				</a>
-				<p>A number of examples can be found under <a href="examples">examples</a> directory. It includes examples for both <a href="examples/node">node</a> and <a href="examples/browser">browser</a> environments.<br>In order to run these examples clone a copy of workfront-api repository:</p>
-				<pre><code class="language-shell">git clone git://github.com/Workfront/workfront-api.git</code></pre>
-				<a href="#running-node-examples" id="running-node-examples" style="color: inherit; text-decoration: none;">
-					<h4>Running <a href="examples/node">node</a> examples</h4>
-				</a>
-				<p>First enter into <code>workfront-api</code> directory and install all the dependencies:</p>
-				<pre><code><span class="hljs-built_in">cd</span> workfront-api
-yarn</code></pre>
-				<p>Use <code>node</code> to run the examples. For examples:</p>
-				<pre><code><span class="hljs-keyword">node</span> <span class="hljs-title">examples</span>/<span class="hljs-keyword">node</span><span class="hljs-title">/get-user-count</span>.js</code></pre>
-				<p>Each example script outputs all its results into console and contains comments in the source code explaining what is happening in more details.</p>
-				<a href="#running-browser-examples" id="running-browser-examples" style="color: inherit; text-decoration: none;">
-					<h4>Running <a href="examples/browser">browser</a> examples</h4>
-				</a>
-				<p>To start supplied webserver type:</p>
-				<pre><code class="language-shell">npm start</code></pre>
-				<p>Visit <a href="http://localhost:8000/examples/browser/">http://localhost:8000/examples/browser/</a> to see list of all examples available for browser.</p>
-				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
-					<h2>Contributing</h2>
-				</a>
-				<p>We welcome contributions of all kinds from anyone. It can be either new example or fix or documentation improvement. Please read these guidelines:</p>
-				<a href="#bug-reports" id="bug-reports" style="color: inherit; text-decoration: none;">
-					<h3>Bug Reports</h3>
-				</a>
-				<p>A bug is a <em>demonstrable problem</em> that is caused by the code in the repository. Good bug reports are extremely helpful - thank you! Please make sure to check these points to make a good bug report:</p>
-				<ol>
-					<li><strong>Use the GitHub issue search</strong> &mdash; check if the issue has already been
-					reported.</li>
-					<li><strong>Isolate the problem</strong> &mdash; ideally create a <a href="https://css-tricks.com/reduced-test-cases/">reduced test
-					case</a>.</li>
-					<li>A good bug report shouldn&#39;t leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.</li>
-				</ol>
-				<a href="#feature-requests" id="feature-requests" style="color: inherit; text-decoration: none;">
-					<h3>Feature requests</h3>
-				</a>
-				<p>Feature requests are welcome. But take a moment to find out whether your idea
-					fits with the scope and aims of the project. It&#39;s up to <em>you</em> to make a strong
-					case to convince the project&#39;s developers of the merits of this feature. Please
-				provide as much detail and context as possible.</p>
-				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-					<h2>License</h2>
-				</a>
-				<p>Copyright (c) 2015-2019 Workfront</p>
-				<p>Licensed under the Apache License, Version 2.0.
-					See the top-level file <code>LICENSE</code> and
-				(<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>).</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_api_.html">&quot;<wbr>Api&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_node_.html">&quot;node&quot;</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+
+<a href="#server-side" id="server-side" style="color: inherit; text-decoration: none;">
+  <h4>Server-side</h4>
+</a>
+<p>Install as a dependency: <code>npm install --save workfront-api</code>.<br>Then <code>require(&#39;workfront-api&#39;)</code> in your code. For example:</p>
+<pre><code class="language-javascript"><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">Workfront</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;workfront-api&#39;</span><span class="hl-1">)</span><br/><br/><span class="hl-5">/**</span><br/><span class="hl-5"> * The console.log statement below will output the following:</span><br/><span class="hl-5"> * {</span><br/><span class="hl-5"> *    Api: [Function: Api],</span><br/><span class="hl-5"> *    ResponseHandler: { success: [Function: success], failure: [Function: failure] }</span><br/><span class="hl-5"> * }</span><br/><span class="hl-5"> */</span><br/><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-6">Workfront</span><span class="hl-1">)</span>
+</code></pre>
+
+<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+  <h2>Documentation</h2>
+</a>
+<p>API documentation is available at <a href="http://workfront.github.io/workfront-api/">http://workfront.github.io/workfront-api/</a>.</p>
+
+<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+  <h2>Examples</h2>
+</a>
+<p>A number of examples can be found under <a href="examples">examples</a> directory. It includes examples for both <a href="examples/node">node</a> and <a href="examples/browser">browser</a> environments.<br>In order to run these examples clone a copy of workfront-api repository:</p>
+<pre><code class="language-shell"><span class="hl-1">git clone git://github.com/Workfront/workfront-api.git</span>
+</code></pre>
+
+<a href="#running-node-examples" id="running-node-examples" style="color: inherit; text-decoration: none;">
+  <h4>Running <a href="examples/node">node</a> examples</h4>
+</a>
+<p>First enter into <code>workfront-api</code> directory and install all the dependencies:</p>
+<pre><code><span class="hl-6">cd</span><span class="hl-1"> </span><span class="hl-6">workfront</span><span class="hl-1">-</span><span class="hl-6">api</span><br/><span class="hl-6">yarn</span>
+</code></pre>
+<p>Use <code>node</code> to run the examples. For examples:</p>
+<pre><code><span class="hl-6">node</span><span class="hl-1"> </span><span class="hl-6">examples</span><span class="hl-1">/</span><span class="hl-6">node</span><span class="hl-1">/</span><span class="hl-6">get</span><span class="hl-1">-</span><span class="hl-6">user</span><span class="hl-1">-</span><span class="hl-6">count</span><span class="hl-1">.</span><span class="hl-6">js</span>
+</code></pre>
+<p>Each example script outputs all its results into console and contains comments in the source code explaining what is happening in more details.</p>
+
+<a href="#running-browser-examples" id="running-browser-examples" style="color: inherit; text-decoration: none;">
+  <h4>Running <a href="examples/browser">browser</a> examples</h4>
+</a>
+<p>To start supplied webserver type:</p>
+<pre><code class="language-shell"><span class="hl-1">npm start</span>
+</code></pre>
+<p>Visit <a href="http://localhost:8000/examples/browser/">http://localhost:8000/examples/browser/</a> to see list of all examples available for browser.</p>
+
+<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+  <h2>Contributing</h2>
+</a>
+<p>We welcome contributions of all kinds from anyone. It can be either new example or fix or documentation improvement. Please read these guidelines:</p>
+
+<a href="#bug-reports" id="bug-reports" style="color: inherit; text-decoration: none;">
+  <h3>Bug Reports</h3>
+</a>
+<p>A bug is a <em>demonstrable problem</em> that is caused by the code in the repository. Good bug reports are extremely helpful - thank you! Please make sure to check these points to make a good bug report:</p>
+<ol>
+<li><strong>Use the GitHub issue search</strong> &mdash; check if the issue has already been
+reported.</li>
+<li><strong>Isolate the problem</strong> &mdash; ideally create a <a href="https://css-tricks.com/reduced-test-cases/">reduced test
+case</a>.</li>
+<li>A good bug report shouldn&#39;t leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.</li>
+</ol>
+
+<a href="#feature-requests" id="feature-requests" style="color: inherit; text-decoration: none;">
+  <h3>Feature requests</h3>
+</a>
+<p>Feature requests are welcome. But take a moment to find out whether your idea
+fits with the scope and aims of the project. It&#39;s up to <em>you</em> to make a strong
+case to convince the project&#39;s developers of the merits of this feature. Please
+provide as much detail and context as possible.</p>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p>Copyright (c) 2015-2019 Workfront</p>
+<p>Licensed under the Apache License, Version 2.0.
+See the top-level file <code>LICENSE</code> and
+(<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>).</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/Api.html" class="tsd-kind-icon">Api</a></li><li class="tsd-kind-interface"><a href="interfaces/IApiConfig.html" class="tsd-kind-icon">IApi<wbr/>Config</a></li><li class="tsd-kind-interface"><a href="interfaces/IBatchApi.html" class="tsd-kind-icon">IBatch<wbr/>Api</a></li><li class="tsd-kind-interface"><a href="interfaces/IHttpOptions.html" class="tsd-kind-icon">IHttp<wbr/>Options</a></li><li class="tsd-kind-type-alias"><a href="modules.html#TFailureHandler" class="tsd-kind-icon">TFailure<wbr/>Handler</a></li><li class="tsd-kind-type-alias"><a href="modules.html#TFields" class="tsd-kind-icon">TFields</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#TSuccessHandler" class="tsd-kind-icon">TSuccess<wbr/>Handler</a></li><li class="tsd-kind-variable"><a href="modules.html#ResponseHandler" class="tsd-kind-icon">Response<wbr/>Handler</a></li><li class="tsd-kind-function"><a href="modules.html#makeFetchCall" class="tsd-kind-icon">make<wbr/>Fetch<wbr/>Call</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
