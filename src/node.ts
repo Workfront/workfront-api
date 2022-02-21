@@ -16,7 +16,7 @@
 import * as NodeFormData from 'form-data'
 import 'isomorphic-fetch'
 import {Readable} from 'stream'
-import {Api as BaseApi, makeFetchCall} from './Api'
+import {Api as BaseApi, makeFetchCall, ResponseHandler} from './Api'
 
 /**
  * Starting from version 2.0 API allows users to upload files.
@@ -29,7 +29,7 @@ import {Api as BaseApi, makeFetchCall} from './Api'
  * @param {fs.ReadStream} stream    A readable stream with file contents
  * @param {String} filename Override the filename
  */
-export class NodeApi extends BaseApi {
+class NodeApi extends BaseApi {
     constructor(options) {
         super(options)
     }
@@ -45,6 +45,10 @@ export class NodeApi extends BaseApi {
     }
 }
 
-export {ResponseHandler} from './Api'
+export {ResponseHandler, NodeApi, NodeApi as Api, makeFetchCall}
 
-export {NodeApi as Api}
+export default {
+    NodeApi,
+    ResponseHandler,
+    Api: NodeApi,
+}

@@ -26,7 +26,7 @@ const Workfront = require('workfront-api')
 /**
  * The console.log statement below will output the following:
  * {
- *    NodeApi: [Function: Api],
+ *    Api: [Function: Api],
  *    ResponseHandler: { success: [Function: success], failure: [Function: failure] }
  * }
  */
