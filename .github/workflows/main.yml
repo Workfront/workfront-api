@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: Use Node.js ${{ matrix.node-version }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install --frozen-lockfile
@@ -35,7 +35,7 @@ jobs:
           accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
           tunnelIdentifier: github-action-tunnel
           scVersion: 4.6.4
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
       - run: yarn install --frozen-lockfile
       - run: yarn run test:karma
       - uses: codecov/codecov-action@v1
