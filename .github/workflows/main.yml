@@ -11,7 +11,7 @@ jobs:
         node-version: [12.x, 14.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: Use Node.js ${{ matrix.node-version }}
       - uses: actions/setup-node@v2
         with:
@@ -27,7 +27,7 @@ jobs:
       SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: Use latest Node.js version
       - uses: saucelabs/sauce-connect-action@v2
         with:
