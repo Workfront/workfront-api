@@ -1,7 +1,7 @@
-import typescript from '@rollup/plugin-typescript'
-import {nodeResolve} from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import {terser} from 'rollup-plugin-terser'
+const typescript = require('@rollup/plugin-typescript')
+const {nodeResolve} = require('@rollup/plugin-node-resolve')
+const commonjs = require('@rollup/plugin-commonjs')
+const {terser} = require('rollup-plugin-terser')
 
 const name = 'workfront-api'
 
