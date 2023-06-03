@@ -1,34 +1,26 @@
+'use strict'
+'use strict'
 ;(() => {
-    var Ce = Object.create
-    var J = Object.defineProperty
-    var Pe = Object.getOwnPropertyDescriptor
-    var Oe = Object.getOwnPropertyNames
-    var Re = Object.getPrototypeOf,
-        _e = Object.prototype.hasOwnProperty
-    var Me = (t) => J(t, '__esModule', {value: !0})
-    var Fe = (t, e) => () => (e || t((e = {exports: {}}).exports, e), e.exports)
-    var De = (t, e, r, n) => {
-            if ((e && typeof e == 'object') || typeof e == 'function')
-                for (let i of Oe(e))
-                    !_e.call(t, i) &&
-                        (r || i !== 'default') &&
-                        J(t, i, {get: () => e[i], enumerable: !(n = Pe(e, i)) || n.enumerable})
-            return t
-        },
-        Ae = (t, e) =>
-            De(
-                Me(
-                    J(
-                        t != null ? Ce(Re(t)) : {},
-                        'default',
-                        !e && t && t.__esModule
-                            ? {get: () => t.default, enumerable: !0}
-                            : {value: t, enumerable: !0}
-                    )
-                ),
-                t
-            )
-    var de = Fe((ce, he) => {
+    var Se = Object.create
+    var re = Object.defineProperty
+    var we = Object.getOwnPropertyDescriptor
+    var Te = Object.getOwnPropertyNames
+    var ke = Object.getPrototypeOf,
+        Qe = Object.prototype.hasOwnProperty
+    var Pe = (t, e) => () => (e || t((e = {exports: {}}).exports, e), e.exports)
+    var Ie = (t, e, r, n) => {
+        if ((e && typeof e == 'object') || typeof e == 'function')
+            for (let i of Te(e))
+                !Qe.call(t, i) &&
+                    i !== r &&
+                    re(t, i, {get: () => e[i], enumerable: !(n = we(e, i)) || n.enumerable})
+        return t
+    }
+    var Ce = (t, e, r) => (
+        (r = t != null ? Se(ke(t)) : {}),
+        Ie(e || !t || !t.__esModule ? re(r, 'default', {value: t, enumerable: !0}) : r, t)
+    )
+    var ae = Pe((se, oe) => {
         ;(function () {
             var t = function (e) {
                 var r = new t.Builder()
@@ -169,22 +161,22 @@
             ;(t.tokenizer = function (e, r) {
                 if (e == null || e == null) return []
                 if (Array.isArray(e))
-                    return e.map(function (p) {
-                        return new t.Token(t.utils.asString(p).toLowerCase(), t.utils.clone(r))
+                    return e.map(function (m) {
+                        return new t.Token(t.utils.asString(m).toLowerCase(), t.utils.clone(r))
                     })
                 for (
                     var n = e.toString().toLowerCase(), i = n.length, s = [], o = 0, a = 0;
                     o <= i;
                     o++
                 ) {
-                    var u = n.charAt(o),
-                        l = o - a
-                    if (u.match(t.tokenizer.separator) || o == i) {
-                        if (l > 0) {
-                            var h = t.utils.clone(r) || {}
-                            ;(h.position = [a, l]),
-                                (h.index = s.length),
-                                s.push(new t.Token(n.slice(a, o), h))
+                    var l = n.charAt(o),
+                        u = o - a
+                    if (l.match(t.tokenizer.separator) || o == i) {
+                        if (u > 0) {
+                            var d = t.utils.clone(r) || {}
+                            ;(d.position = [a, u]),
+                                (d.index = s.length),
+                                s.push(new t.Token(n.slice(a, o), d))
                         }
                         a = o + 1
                     }
@@ -250,7 +242,7 @@
                             var a = i(e[o], o, e)
                             if (!(a == null || a === ''))
                                 if (Array.isArray(a))
-                                    for (var u = 0; u < a.length; u++) s.push(a[u])
+                                    for (var l = 0; l < a.length; l++) s.push(a[l])
                                 else s.push(a)
                         }
                         e = s
@@ -317,19 +309,19 @@
                             s = n.length,
                             o = i.length,
                             a = 0,
-                            u = 0,
                             l = 0,
-                            h = 0;
-                        l < s && h < o;
+                            u = 0,
+                            d = 0;
+                        u < s && d < o;
 
                     )
-                        (a = n[l]),
-                            (u = i[h]),
-                            a < u
-                                ? (l += 2)
-                                : a > u
-                                ? (h += 2)
-                                : a == u && ((r += n[l + 1] * i[h + 1]), (l += 2), (h += 2))
+                        (a = n[u]),
+                            (l = i[d]),
+                            a < l
+                                ? (u += 2)
+                                : a > l
+                                ? (d += 2)
+                                : a == l && ((r += n[u + 1] * i[d + 1]), (u += 2), (d += 2))
                     return r
                 }),
                 (t.Vector.prototype.similarity = function (e) {
@@ -385,100 +377,100 @@
                     s = n + '[^aeiouy]*',
                     o = i + '[aeiou]*',
                     a = '^(' + s + ')?' + o + s,
-                    u = '^(' + s + ')?' + o + s + '(' + o + ')?$',
-                    l = '^(' + s + ')?' + o + s + o + s,
-                    h = '^(' + s + ')?' + i,
-                    p = new RegExp(a),
-                    v = new RegExp(l),
-                    b = new RegExp(u),
-                    y = new RegExp(h),
+                    l = '^(' + s + ')?' + o + s + '(' + o + ')?$',
+                    u = '^(' + s + ')?' + o + s + o + s,
+                    d = '^(' + s + ')?' + i,
+                    m = new RegExp(a),
+                    y = new RegExp(u),
+                    b = new RegExp(l),
+                    g = new RegExp(d),
                     E = /^(.+?)(ss|i)es$/,
                     f = /^(.+?)([^s])s$/,
-                    m = /^(.+?)eed$/,
-                    T = /^(.+?)(ed|ing)$/,
-                    w = /.$/,
+                    p = /^(.+?)eed$/,
+                    w = /^(.+?)(ed|ing)$/,
+                    S = /.$/,
                     k = /(at|bl|iz)$/,
-                    M = new RegExp('([^aeiouylsz])\\1$'),
-                    j = new RegExp('^' + s + i + '[^aeiouwxy]$'),
-                    V = /^(.+?[^aeiou])y$/,
-                    B =
+                    _ = new RegExp('([^aeiouylsz])\\1$'),
+                    B = new RegExp('^' + s + i + '[^aeiouwxy]$'),
+                    A = /^(.+?[^aeiou])y$/,
+                    j =
                         /^(.+?)(ational|tional|enci|anci|izer|bli|alli|entli|eli|ousli|ization|ation|ator|alism|iveness|fulness|ousness|aliti|iviti|biliti|logi)$/,
                     q = /^(.+?)(icate|ative|alize|iciti|ical|ful|ness)$/,
-                    H =
+                    V =
                         /^(.+?)(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ou|ism|ate|iti|ous|ive|ize)$/,
                     $ = /^(.+?)(s|t)(ion)$/,
-                    P = /^(.+?)e$/,
-                    W = /ll$/,
-                    U = new RegExp('^' + s + i + '[^aeiouwxy]$'),
-                    z = function (c) {
-                        var g, O, S, d, x, R, D
+                    I = /^(.+?)e$/,
+                    z = /ll$/,
+                    W = new RegExp('^' + s + i + '[^aeiouwxy]$'),
+                    H = function (c) {
+                        var v, C, T, h, x, O, F
                         if (c.length < 3) return c
                         if (
-                            ((S = c.substr(0, 1)),
-                            S == 'y' && (c = S.toUpperCase() + c.substr(1)),
-                            (d = E),
+                            ((T = c.substr(0, 1)),
+                            T == 'y' && (c = T.toUpperCase() + c.substr(1)),
+                            (h = E),
                             (x = f),
-                            d.test(c)
-                                ? (c = c.replace(d, '$1$2'))
+                            h.test(c)
+                                ? (c = c.replace(h, '$1$2'))
                                 : x.test(c) && (c = c.replace(x, '$1$2')),
-                            (d = m),
-                            (x = T),
-                            d.test(c))
+                            (h = p),
+                            (x = w),
+                            h.test(c))
                         ) {
-                            var L = d.exec(c)
-                            ;(d = p), d.test(L[1]) && ((d = w), (c = c.replace(d, '')))
+                            var L = h.exec(c)
+                            ;(h = m), h.test(L[1]) && ((h = S), (c = c.replace(h, '')))
                         } else if (x.test(c)) {
                             var L = x.exec(c)
-                            ;(g = L[1]),
-                                (x = y),
-                                x.test(g) &&
-                                    ((c = g),
+                            ;(v = L[1]),
+                                (x = g),
+                                x.test(v) &&
+                                    ((c = v),
                                     (x = k),
-                                    (R = M),
-                                    (D = j),
+                                    (O = _),
+                                    (F = B),
                                     x.test(c)
                                         ? (c = c + 'e')
-                                        : R.test(c)
-                                        ? ((d = w), (c = c.replace(d, '')))
-                                        : D.test(c) && (c = c + 'e'))
+                                        : O.test(c)
+                                        ? ((h = S), (c = c.replace(h, '')))
+                                        : F.test(c) && (c = c + 'e'))
                         }
-                        if (((d = V), d.test(c))) {
-                            var L = d.exec(c)
-                            ;(g = L[1]), (c = g + 'i')
+                        if (((h = A), h.test(c))) {
+                            var L = h.exec(c)
+                            ;(v = L[1]), (c = v + 'i')
                         }
-                        if (((d = B), d.test(c))) {
-                            var L = d.exec(c)
-                            ;(g = L[1]), (O = L[2]), (d = p), d.test(g) && (c = g + e[O])
+                        if (((h = j), h.test(c))) {
+                            var L = h.exec(c)
+                            ;(v = L[1]), (C = L[2]), (h = m), h.test(v) && (c = v + e[C])
                         }
-                        if (((d = q), d.test(c))) {
-                            var L = d.exec(c)
-                            ;(g = L[1]), (O = L[2]), (d = p), d.test(g) && (c = g + r[O])
+                        if (((h = q), h.test(c))) {
+                            var L = h.exec(c)
+                            ;(v = L[1]), (C = L[2]), (h = m), h.test(v) && (c = v + r[C])
                         }
-                        if (((d = H), (x = $), d.test(c))) {
-                            var L = d.exec(c)
-                            ;(g = L[1]), (d = v), d.test(g) && (c = g)
+                        if (((h = V), (x = $), h.test(c))) {
+                            var L = h.exec(c)
+                            ;(v = L[1]), (h = y), h.test(v) && (c = v)
                         } else if (x.test(c)) {
                             var L = x.exec(c)
-                            ;(g = L[1] + L[2]), (x = v), x.test(g) && (c = g)
+                            ;(v = L[1] + L[2]), (x = y), x.test(v) && (c = v)
                         }
-                        if (((d = P), d.test(c))) {
-                            var L = d.exec(c)
-                            ;(g = L[1]),
-                                (d = v),
+                        if (((h = I), h.test(c))) {
+                            var L = h.exec(c)
+                            ;(v = L[1]),
+                                (h = y),
                                 (x = b),
-                                (R = U),
-                                (d.test(g) || (x.test(g) && !R.test(g))) && (c = g)
+                                (O = W),
+                                (h.test(v) || (x.test(v) && !O.test(v))) && (c = v)
                         }
                         return (
-                            (d = W),
-                            (x = v),
-                            d.test(c) && x.test(c) && ((d = w), (c = c.replace(d, ''))),
-                            S == 'y' && (c = S.toLowerCase() + c.substr(1)),
+                            (h = z),
+                            (x = y),
+                            h.test(c) && x.test(c) && ((h = S), (c = c.replace(h, ''))),
+                            T == 'y' && (c = T.toLowerCase() + c.substr(1)),
                             c
                         )
                     }
-                return function (F) {
-                    return F.update(z)
+                return function (R) {
+                    return R.update(H)
                 }
             })()),
                 t.Pipeline.registerFunction(t.stemmer, 'stemmer')
@@ -656,14 +648,14 @@
                                 })
                         }
                         if (s.editsRemaining != 0) {
-                            if ('*' in s.node.edges) var u = s.node.edges['*']
+                            if ('*' in s.node.edges) var l = s.node.edges['*']
                             else {
-                                var u = new t.TokenSet()
-                                s.node.edges['*'] = u
+                                var l = new t.TokenSet()
+                                s.node.edges['*'] = l
                             }
                             if (
-                                (s.str.length == 0 && (u.final = !0),
-                                i.push({node: u, editsRemaining: s.editsRemaining - 1, str: s.str}),
+                                (s.str.length == 0 && (l.final = !0),
+                                i.push({node: l, editsRemaining: s.editsRemaining - 1, str: s.str}),
                                 s.str.length > 1 &&
                                     i.push({
                                         node: s.node,
@@ -673,30 +665,30 @@
                                 s.str.length == 1 && (s.node.final = !0),
                                 s.str.length >= 1)
                             ) {
-                                if ('*' in s.node.edges) var l = s.node.edges['*']
+                                if ('*' in s.node.edges) var u = s.node.edges['*']
                                 else {
-                                    var l = new t.TokenSet()
-                                    s.node.edges['*'] = l
+                                    var u = new t.TokenSet()
+                                    s.node.edges['*'] = u
                                 }
-                                s.str.length == 1 && (l.final = !0),
+                                s.str.length == 1 && (u.final = !0),
                                     i.push({
-                                        node: l,
+                                        node: u,
                                         editsRemaining: s.editsRemaining - 1,
                                         str: s.str.slice(1),
                                     })
                             }
                             if (s.str.length > 1) {
-                                var h = s.str.charAt(0),
-                                    p = s.str.charAt(1),
-                                    v
-                                p in s.node.edges
-                                    ? (v = s.node.edges[p])
-                                    : ((v = new t.TokenSet()), (s.node.edges[p] = v)),
-                                    s.str.length == 1 && (v.final = !0),
+                                var d = s.str.charAt(0),
+                                    m = s.str.charAt(1),
+                                    y
+                                m in s.node.edges
+                                    ? (y = s.node.edges[m])
+                                    : ((y = new t.TokenSet()), (s.node.edges[m] = y)),
+                                    s.str.length == 1 && (y.final = !0),
                                     i.push({
-                                        node: v,
+                                        node: y,
                                         editsRemaining: s.editsRemaining - 1,
-                                        str: h + s.str.slice(2),
+                                        str: d + s.str.slice(2),
                                     })
                             }
                         }
@@ -709,8 +701,8 @@
                             a = i == s - 1
                         if (o == '*') (r.edges[o] = r), (r.final = a)
                         else {
-                            var u = new t.TokenSet()
-                            ;(u.final = a), (r.edges[o] = u), (r = u)
+                            var l = new t.TokenSet()
+                            ;(l.final = a), (r.edges[o] = l), (r = l)
                         }
                     }
                     return n
@@ -757,24 +749,24 @@
                             var s = Object.keys(n.qNode.edges),
                                 o = s.length,
                                 a = Object.keys(n.node.edges),
-                                u = a.length,
-                                l = 0;
-                            l < o;
-                            l++
+                                l = a.length,
+                                u = 0;
+                            u < o;
+                            u++
                         )
-                            for (var h = s[l], p = 0; p < u; p++) {
-                                var v = a[p]
-                                if (v == h || h == '*') {
-                                    var b = n.node.edges[v],
-                                        y = n.qNode.edges[h],
-                                        E = b.final && y.final,
+                            for (var d = s[u], m = 0; m < l; m++) {
+                                var y = a[m]
+                                if (y == d || d == '*') {
+                                    var b = n.node.edges[y],
+                                        g = n.qNode.edges[d],
+                                        E = b.final && g.final,
                                         f = void 0
-                                    v in n.output.edges
-                                        ? ((f = n.output.edges[v]), (f.final = f.final || E))
+                                    y in n.output.edges
+                                        ? ((f = n.output.edges[y]), (f.final = f.final || E))
                                         : ((f = new t.TokenSet()),
                                           (f.final = E),
-                                          (n.output.edges[v] = f)),
-                                        i.push({qNode: y, output: f, node: b})
+                                          (n.output.edges[y] = f)),
+                                        i.push({qNode: g, output: f, node: b})
                                 }
                             }
                     }
@@ -845,112 +837,112 @@
                             s = Object.create(null),
                             o = Object.create(null),
                             a = Object.create(null),
-                            u = 0;
-                        u < this.fields.length;
-                        u++
+                            l = 0;
+                        l < this.fields.length;
+                        l++
                     )
-                        i[this.fields[u]] = new t.Vector()
+                        i[this.fields[l]] = new t.Vector()
                     e.call(r, r)
-                    for (var u = 0; u < r.clauses.length; u++) {
-                        var l = r.clauses[u],
-                            h = null,
-                            p = t.Set.empty
-                        l.usePipeline
-                            ? (h = this.pipeline.runString(l.term, {fields: l.fields}))
-                            : (h = [l.term])
-                        for (var v = 0; v < h.length; v++) {
-                            var b = h[v]
-                            l.term = b
-                            var y = t.TokenSet.fromClause(l),
-                                E = this.tokenSet.intersect(y).toArray()
-                            if (E.length === 0 && l.presence === t.Query.presence.REQUIRED) {
-                                for (var f = 0; f < l.fields.length; f++) {
-                                    var m = l.fields[f]
-                                    o[m] = t.Set.empty
+                    for (var l = 0; l < r.clauses.length; l++) {
+                        var u = r.clauses[l],
+                            d = null,
+                            m = t.Set.empty
+                        u.usePipeline
+                            ? (d = this.pipeline.runString(u.term, {fields: u.fields}))
+                            : (d = [u.term])
+                        for (var y = 0; y < d.length; y++) {
+                            var b = d[y]
+                            u.term = b
+                            var g = t.TokenSet.fromClause(u),
+                                E = this.tokenSet.intersect(g).toArray()
+                            if (E.length === 0 && u.presence === t.Query.presence.REQUIRED) {
+                                for (var f = 0; f < u.fields.length; f++) {
+                                    var p = u.fields[f]
+                                    o[p] = t.Set.empty
                                 }
                                 break
                             }
-                            for (var T = 0; T < E.length; T++)
+                            for (var w = 0; w < E.length; w++)
                                 for (
-                                    var w = E[T], k = this.invertedIndex[w], M = k._index, f = 0;
-                                    f < l.fields.length;
+                                    var S = E[w], k = this.invertedIndex[S], _ = k._index, f = 0;
+                                    f < u.fields.length;
                                     f++
                                 ) {
-                                    var m = l.fields[f],
-                                        j = k[m],
-                                        V = Object.keys(j),
-                                        B = w + '/' + m,
-                                        q = new t.Set(V)
+                                    var p = u.fields[f],
+                                        B = k[p],
+                                        A = Object.keys(B),
+                                        j = S + '/' + p,
+                                        q = new t.Set(A)
                                     if (
-                                        (l.presence == t.Query.presence.REQUIRED &&
-                                            ((p = p.union(q)),
-                                            o[m] === void 0 && (o[m] = t.Set.complete)),
-                                        l.presence == t.Query.presence.PROHIBITED)
+                                        (u.presence == t.Query.presence.REQUIRED &&
+                                            ((m = m.union(q)),
+                                            o[p] === void 0 && (o[p] = t.Set.complete)),
+                                        u.presence == t.Query.presence.PROHIBITED)
                                     ) {
-                                        a[m] === void 0 && (a[m] = t.Set.empty),
-                                            (a[m] = a[m].union(q))
+                                        a[p] === void 0 && (a[p] = t.Set.empty),
+                                            (a[p] = a[p].union(q))
                                         continue
                                     }
                                     if (
-                                        (i[m].upsert(M, l.boost, function (Qe, Ie) {
-                                            return Qe + Ie
+                                        (i[p].upsert(_, u.boost, function (Ee, be) {
+                                            return Ee + be
                                         }),
-                                        !s[B])
+                                        !s[j])
                                     ) {
-                                        for (var H = 0; H < V.length; H++) {
-                                            var $ = V[H],
-                                                P = new t.FieldRef($, m),
-                                                W = j[$],
-                                                U
-                                            ;(U = n[P]) === void 0
-                                                ? (n[P] = new t.MatchData(w, m, W))
-                                                : U.add(w, m, W)
+                                        for (var V = 0; V < A.length; V++) {
+                                            var $ = A[V],
+                                                I = new t.FieldRef($, p),
+                                                z = B[$],
+                                                W
+                                            ;(W = n[I]) === void 0
+                                                ? (n[I] = new t.MatchData(S, p, z))
+                                                : W.add(S, p, z)
                                         }
-                                        s[B] = !0
+                                        s[j] = !0
                                     }
                                 }
                         }
-                        if (l.presence === t.Query.presence.REQUIRED)
-                            for (var f = 0; f < l.fields.length; f++) {
-                                var m = l.fields[f]
-                                o[m] = o[m].intersect(p)
+                        if (u.presence === t.Query.presence.REQUIRED)
+                            for (var f = 0; f < u.fields.length; f++) {
+                                var p = u.fields[f]
+                                o[p] = o[p].intersect(m)
                             }
                     }
                     for (
-                        var z = t.Set.complete, F = t.Set.empty, u = 0;
-                        u < this.fields.length;
-                        u++
+                        var H = t.Set.complete, R = t.Set.empty, l = 0;
+                        l < this.fields.length;
+                        l++
                     ) {
-                        var m = this.fields[u]
-                        o[m] && (z = z.intersect(o[m])), a[m] && (F = F.union(a[m]))
+                        var p = this.fields[l]
+                        o[p] && (H = H.intersect(o[p])), a[p] && (R = R.union(a[p]))
                     }
                     var c = Object.keys(n),
-                        g = [],
-                        O = Object.create(null)
+                        v = [],
+                        C = Object.create(null)
                     if (r.isNegated()) {
                         c = Object.keys(this.fieldVectors)
-                        for (var u = 0; u < c.length; u++) {
-                            var P = c[u],
-                                S = t.FieldRef.fromString(P)
-                            n[P] = new t.MatchData()
+                        for (var l = 0; l < c.length; l++) {
+                            var I = c[l],
+                                T = t.FieldRef.fromString(I)
+                            n[I] = new t.MatchData()
                         }
                     }
-                    for (var u = 0; u < c.length; u++) {
-                        var S = t.FieldRef.fromString(c[u]),
-                            d = S.docRef
-                        if (!!z.contains(d) && !F.contains(d)) {
-                            var x = this.fieldVectors[S],
-                                R = i[S.fieldName].similarity(x),
-                                D
-                            if ((D = O[d]) !== void 0) (D.score += R), D.matchData.combine(n[S])
+                    for (var l = 0; l < c.length; l++) {
+                        var T = t.FieldRef.fromString(c[l]),
+                            h = T.docRef
+                        if (H.contains(h) && !R.contains(h)) {
+                            var x = this.fieldVectors[T],
+                                O = i[T.fieldName].similarity(x),
+                                F
+                            if ((F = C[h]) !== void 0) (F.score += O), F.matchData.combine(n[T])
                             else {
-                                var L = {ref: d, score: R, matchData: n[S]}
-                                ;(O[d] = L), g.push(L)
+                                var L = {ref: h, score: O, matchData: n[T]}
+                                ;(C[h] = L), v.push(L)
                             }
                         }
                     }
-                    return g.sort(function (Se, ke) {
-                        return ke.score - Se.score
+                    return v.sort(function (xe, Le) {
+                        return Le.score - xe.score
                     })
                 }),
                 (t.Index.prototype.toJSON = function () {
@@ -977,7 +969,7 @@
                         s = Object.create(null),
                         o = e.invertedIndex,
                         a = new t.TokenSet.Builder(),
-                        u = t.Pipeline.load(e.pipeline)
+                        l = t.Pipeline.load(e.pipeline)
                     e.version != t.version &&
                         t.utils.warn(
                             "Version mismatch when loading serialised index. Current version of lunr '" +
@@ -986,17 +978,17 @@
                                 e.version +
                                 "'"
                         )
-                    for (var l = 0; l < i.length; l++) {
-                        var h = i[l],
-                            p = h[0],
-                            v = h[1]
-                        n[p] = new t.Vector(v)
+                    for (var u = 0; u < i.length; u++) {
+                        var d = i[u],
+                            m = d[0],
+                            y = d[1]
+                        n[m] = new t.Vector(y)
                     }
-                    for (var l = 0; l < o.length; l++) {
-                        var h = o[l],
-                            b = h[0],
-                            y = h[1]
-                        a.insert(b), (s[b] = y)
+                    for (var u = 0; u < o.length; u++) {
+                        var d = o[u],
+                            b = d[0],
+                            g = d[1]
+                        a.insert(b), (s[b] = g)
                     }
                     return (
                         a.finish(),
@@ -1004,7 +996,7 @@
                         (r.fieldVectors = n),
                         (r.invertedIndex = s),
                         (r.tokenSet = a.root),
-                        (r.pipeline = u),
+                        (r.pipeline = l),
                         new t.Index(r)
                     )
                 })
@@ -1045,34 +1037,34 @@
                     for (var s = 0; s < i.length; s++) {
                         var o = i[s],
                             a = this._fields[o].extractor,
-                            u = a ? a(e) : e[o],
-                            l = this.tokenizer(u, {fields: [o]}),
-                            h = this.pipeline.run(l),
-                            p = new t.FieldRef(n, o),
-                            v = Object.create(null)
-                        ;(this.fieldTermFrequencies[p] = v),
-                            (this.fieldLengths[p] = 0),
-                            (this.fieldLengths[p] += h.length)
-                        for (var b = 0; b < h.length; b++) {
-                            var y = h[b]
+                            l = a ? a(e) : e[o],
+                            u = this.tokenizer(l, {fields: [o]}),
+                            d = this.pipeline.run(u),
+                            m = new t.FieldRef(n, o),
+                            y = Object.create(null)
+                        ;(this.fieldTermFrequencies[m] = y),
+                            (this.fieldLengths[m] = 0),
+                            (this.fieldLengths[m] += d.length)
+                        for (var b = 0; b < d.length; b++) {
+                            var g = d[b]
                             if (
-                                (v[y] == null && (v[y] = 0),
-                                (v[y] += 1),
-                                this.invertedIndex[y] == null)
+                                (y[g] == null && (y[g] = 0),
+                                (y[g] += 1),
+                                this.invertedIndex[g] == null)
                             ) {
                                 var E = Object.create(null)
                                 ;(E._index = this.termIndex), (this.termIndex += 1)
                                 for (var f = 0; f < i.length; f++) E[i[f]] = Object.create(null)
-                                this.invertedIndex[y] = E
+                                this.invertedIndex[g] = E
                             }
-                            this.invertedIndex[y][o][n] == null &&
-                                (this.invertedIndex[y][o][n] = Object.create(null))
-                            for (var m = 0; m < this.metadataWhitelist.length; m++) {
-                                var T = this.metadataWhitelist[m],
-                                    w = y.metadata[T]
-                                this.invertedIndex[y][o][n][T] == null &&
-                                    (this.invertedIndex[y][o][n][T] = []),
-                                    this.invertedIndex[y][o][n][T].push(w)
+                            this.invertedIndex[g][o][n] == null &&
+                                (this.invertedIndex[g][o][n] = Object.create(null))
+                            for (var p = 0; p < this.metadataWhitelist.length; p++) {
+                                var w = this.metadataWhitelist[p],
+                                    S = g.metadata[w]
+                                this.invertedIndex[g][o][n][w] == null &&
+                                    (this.invertedIndex[g][o][n][w] = []),
+                                    this.invertedIndex[g][o][n][w].push(S)
                             }
                         }
                     }
@@ -1090,9 +1082,9 @@
                             n[a] || (n[a] = 0),
                             (n[a] += this.fieldLengths[o])
                     }
-                    for (var u = Object.keys(this._fields), s = 0; s < u.length; s++) {
-                        var l = u[s]
-                        n[l] = n[l] / i[l]
+                    for (var l = Object.keys(this._fields), s = 0; s < l.length; s++) {
+                        var u = l[s]
+                        n[u] = n[u] / i[u]
                     }
                     this.averageFieldLength = n
                 }),
@@ -1109,38 +1101,38 @@
                         for (
                             var o = t.FieldRef.fromString(r[s]),
                                 a = o.fieldName,
-                                u = this.fieldLengths[o],
-                                l = new t.Vector(),
-                                h = this.fieldTermFrequencies[o],
-                                p = Object.keys(h),
-                                v = p.length,
+                                l = this.fieldLengths[o],
+                                u = new t.Vector(),
+                                d = this.fieldTermFrequencies[o],
+                                m = Object.keys(d),
+                                y = m.length,
                                 b = this._fields[a].boost || 1,
-                                y = this._documents[o.docRef].boost || 1,
+                                g = this._documents[o.docRef].boost || 1,
                                 E = 0;
-                            E < v;
+                            E < y;
                             E++
                         ) {
-                            var f = p[E],
-                                m = h[f],
-                                T = this.invertedIndex[f]._index,
-                                w,
+                            var f = m[E],
+                                p = d[f],
+                                w = this.invertedIndex[f]._index,
+                                S,
                                 k,
-                                M
+                                _
                             i[f] === void 0
-                                ? ((w = t.idf(this.invertedIndex[f], this.documentCount)),
-                                  (i[f] = w))
-                                : (w = i[f]),
+                                ? ((S = t.idf(this.invertedIndex[f], this.documentCount)),
+                                  (i[f] = S))
+                                : (S = i[f]),
                                 (k =
-                                    (w * ((this._k1 + 1) * m)) /
+                                    (S * ((this._k1 + 1) * p)) /
                                     (this._k1 *
-                                        (1 - this._b + this._b * (u / this.averageFieldLength[a])) +
-                                        m)),
+                                        (1 - this._b + this._b * (l / this.averageFieldLength[a])) +
+                                        p)),
                                 (k *= b),
-                                (k *= y),
-                                (M = Math.round(k * 1e3) / 1e3),
-                                l.insert(T, M)
+                                (k *= g),
+                                (_ = Math.round(k * 1e3) / 1e3),
+                                u.insert(w, _)
                         }
-                        e[o] = l
+                        e[o] = u
                     }
                     this.fieldVectors = e
                 }),
@@ -1185,15 +1177,15 @@
                         this.metadata[i] == null && (this.metadata[i] = Object.create(null))
                         for (var o = 0; o < s.length; o++) {
                             var a = s[o],
-                                u = Object.keys(e.metadata[i][a])
+                                l = Object.keys(e.metadata[i][a])
                             this.metadata[i][a] == null &&
                                 (this.metadata[i][a] = Object.create(null))
-                            for (var l = 0; l < u.length; l++) {
-                                var h = u[l]
-                                this.metadata[i][a][h] == null
-                                    ? (this.metadata[i][a][h] = e.metadata[i][a][h])
-                                    : (this.metadata[i][a][h] = this.metadata[i][a][h].concat(
-                                          e.metadata[i][a][h]
+                            for (var u = 0; u < l.length; u++) {
+                                var d = l[u]
+                                this.metadata[i][a][d] == null
+                                    ? (this.metadata[i][a][d] = e.metadata[i][a][d])
+                                    : (this.metadata[i][a][d] = this.metadata[i][a][d].concat(
+                                          e.metadata[i][a][d]
                                       ))
                             }
                         }
@@ -1574,174 +1566,100 @@
                 (function (e, r) {
                     typeof define == 'function' && define.amd
                         ? define(r)
-                        : typeof ce == 'object'
-                        ? (he.exports = r())
+                        : typeof se == 'object'
+                        ? (oe.exports = r())
                         : (e.lunr = r())
                 })(this, function () {
                     return t
                 })
         })()
     })
-    var le = []
-    function N(t, e) {
-        le.push({selector: e, constructor: t})
+    var ne = []
+    function G(t, e) {
+        ne.push({selector: e, constructor: t})
     }
-    var X = class {
+    var U = class {
         constructor() {
-            this.createComponents(document.body)
+            this.alwaysVisibleMember = null
+            this.createComponents(document.body),
+                this.ensureActivePageVisible(),
+                this.ensureFocusedElementVisible(),
+                this.listenForCodeCopies(),
+                window.addEventListener('hashchange', () => this.ensureFocusedElementVisible())
         }
         createComponents(e) {
-            le.forEach((r) => {
+            ne.forEach((r) => {
                 e.querySelectorAll(r.selector).forEach((n) => {
                     n.dataset.hasInstance ||
-                        (new r.constructor({el: n}), (n.dataset.hasInstance = String(!0)))
+                        (new r.constructor({el: n, app: this}),
+                        (n.dataset.hasInstance = String(!0)))
+                })
+            })
+        }
+        filterChanged() {
+            this.ensureFocusedElementVisible()
+        }
+        ensureActivePageVisible() {
+            let e = document.querySelector('.tsd-navigation .current'),
+                r = e?.parentElement
+            for (; r && !r.classList.contains('.tsd-navigation'); )
+                r instanceof HTMLDetailsElement && (r.open = !0), (r = r.parentElement)
+            if (e) {
+                let n = e.getBoundingClientRect().top - document.documentElement.clientHeight / 4
+                document.querySelector('.site-menu').scrollTop = n
+            }
+        }
+        ensureFocusedElementVisible() {
+            if (
+                (this.alwaysVisibleMember &&
+                    (this.alwaysVisibleMember.classList.remove('always-visible'),
+                    this.alwaysVisibleMember.firstElementChild.remove(),
+                    (this.alwaysVisibleMember = null)),
+                !location.hash)
+            )
+                return
+            let e = document.getElementById(location.hash.substring(1))
+            if (!e) return
+            let r = e.parentElement
+            for (; r && r.tagName !== 'SECTION'; ) r = r.parentElement
+            if (r && r.offsetParent == null) {
+                ;(this.alwaysVisibleMember = r), r.classList.add('always-visible')
+                let n = document.createElement('p')
+                n.classList.add('warning'),
+                    (n.textContent = 'This member is normally hidden due to your filter settings.'),
+                    r.prepend(n)
+            }
+        }
+        listenForCodeCopies() {
+            document.querySelectorAll('pre > button').forEach((e) => {
+                let r
+                e.addEventListener('click', () => {
+                    e.previousElementSibling instanceof HTMLElement &&
+                        navigator.clipboard.writeText(e.previousElementSibling.innerText.trim()),
+                        (e.textContent = 'Copied!'),
+                        e.classList.add('visible'),
+                        clearTimeout(r),
+                        (r = setTimeout(() => {
+                            e.classList.remove('visible'),
+                                (r = setTimeout(() => {
+                                    e.textContent = 'Copy'
+                                }, 100))
+                        }, 1e3))
                 })
             })
         }
     }
-    var Q = class {
-        constructor(e) {
-            this.el = e.el
-        }
-    }
-    var Z = class {
-        constructor() {
-            this.listeners = {}
-        }
-        addEventListener(e, r) {
-            e in this.listeners || (this.listeners[e] = []), this.listeners[e].push(r)
-        }
-        removeEventListener(e, r) {
-            if (!(e in this.listeners)) return
-            let n = this.listeners[e]
-            for (let i = 0, s = n.length; i < s; i++)
-                if (n[i] === r) {
-                    n.splice(i, 1)
-                    return
-                }
-        }
-        dispatchEvent(e) {
-            if (!(e.type in this.listeners)) return !0
-            let r = this.listeners[e.type].slice()
-            for (let n = 0, i = r.length; n < i; n++) r[n].call(this, e)
-            return !e.defaultPrevented
-        }
-    }
-    var K = (t, e = 100) => {
-        let r = Date.now()
-        return (...n) => {
-            r + e - Date.now() < 0 && (t(...n), (r = Date.now()))
-        }
-    }
-    var ee = class extends Z {
-            constructor() {
-                super()
-                this.scrollTop = 0
-                this.lastY = 0
-                this.width = 0
-                this.height = 0
-                this.showToolbar = !0
-                ;(this.toolbar = document.querySelector('.tsd-page-toolbar')),
-                    (this.secondaryNav = document.querySelector('.tsd-navigation.secondary')),
-                    window.addEventListener(
-                        'scroll',
-                        K(() => this.onScroll(), 10)
-                    ),
-                    window.addEventListener(
-                        'resize',
-                        K(() => this.onResize(), 10)
-                    ),
-                    this.onResize(),
-                    this.onScroll()
-            }
-            triggerResize() {
-                let e = new CustomEvent('resize', {
-                    detail: {width: this.width, height: this.height},
-                })
-                this.dispatchEvent(e)
-            }
-            onResize() {
-                ;(this.width = window.innerWidth || 0), (this.height = window.innerHeight || 0)
-                let e = new CustomEvent('resize', {
-                    detail: {width: this.width, height: this.height},
-                })
-                this.dispatchEvent(e)
-            }
-            onScroll() {
-                this.scrollTop = window.scrollY || 0
-                let e = new CustomEvent('scroll', {detail: {scrollTop: this.scrollTop}})
-                this.dispatchEvent(e), this.hideShowToolbar()
-            }
-            hideShowToolbar() {
-                var r
-                let e = this.showToolbar
-                ;(this.showToolbar = this.lastY >= this.scrollTop || this.scrollTop <= 0),
-                    e !== this.showToolbar &&
-                        (this.toolbar.classList.toggle('tsd-page-toolbar--hide'),
-                        (r = this.secondaryNav) == null ||
-                            r.classList.toggle('tsd-navigation--toolbar-hide')),
-                    (this.lastY = this.scrollTop)
-            }
-        },
-        I = ee
-    I.instance = new ee()
-    var te = class extends Q {
-        constructor(e) {
-            super(e)
-            this.anchors = []
-            this.index = -1
-            I.instance.addEventListener('resize', () => this.onResize()),
-                I.instance.addEventListener('scroll', (r) => this.onScroll(r)),
-                this.createAnchors()
-        }
-        createAnchors() {
-            let e = window.location.href
-            e.indexOf('#') != -1 && (e = e.substr(0, e.indexOf('#'))),
-                this.el.querySelectorAll('a').forEach((r) => {
-                    let n = r.href
-                    if (n.indexOf('#') == -1 || n.substr(0, e.length) != e) return
-                    let i = n.substr(n.indexOf('#') + 1),
-                        s = document.querySelector('a.tsd-anchor[name=' + i + ']'),
-                        o = r.parentNode
-                    !s || !o || this.anchors.push({link: o, anchor: s, position: 0})
-                }),
-                this.onResize()
-        }
-        onResize() {
-            let e
-            for (let n = 0, i = this.anchors.length; n < i; n++) {
-                e = this.anchors[n]
-                let s = e.anchor.getBoundingClientRect()
-                e.position = s.top + document.body.scrollTop
-            }
-            this.anchors.sort((n, i) => n.position - i.position)
-            let r = new CustomEvent('scroll', {detail: {scrollTop: I.instance.scrollTop}})
-            this.onScroll(r)
-        }
-        onScroll(e) {
-            let r = e.detail.scrollTop + 5,
-                n = this.anchors,
-                i = n.length - 1,
-                s = this.index
-            for (; s > -1 && n[s].position > r; ) s -= 1
-            for (; s < i && n[s + 1].position < r; ) s += 1
-            this.index != s &&
-                (this.index > -1 && this.anchors[this.index].link.classList.remove('focus'),
-                (this.index = s),
-                this.index > -1 && this.anchors[this.index].link.classList.add('focus'))
-        }
-    }
-    var ue = (t, e = 100) => {
+    var ie = (t, e = 100) => {
         let r
-        return (...n) => {
-            clearTimeout(r), (r = setTimeout(() => t(n), e))
+        return () => {
+            clearTimeout(r), (r = setTimeout(() => t(), e))
         }
     }
-    var fe = Ae(de())
-    function pe() {
+    var ce = Ce(ae())
+    function de() {
         let t = document.getElementById('tsd-search')
         if (!t) return
-        let e = document.getElementById('search-script')
+        let e = document.getElementById('tsd-search-script')
         t.classList.add('loading'),
             e &&
                 (e.addEventListener('error', () => {
@@ -1764,26 +1682,26 @@
                 i || ((i = !1), t.classList.remove('has-focus'))
             })
         let s = {base: t.dataset.base + '/'}
-        Ve(t, n, r, s)
+        Oe(t, n, r, s)
     }
-    function Ve(t, e, r, n) {
+    function Oe(t, e, r, n) {
         r.addEventListener(
             'input',
-            ue(() => {
-                ze(t, e, r, n)
+            ie(() => {
+                Re(t, e, r, n)
             }, 200)
         )
         let i = !1
         r.addEventListener('keydown', (s) => {
             ;(i = !0),
                 s.key == 'Enter'
-                    ? Ne(e, r)
+                    ? Fe(e, r)
                     : s.key == 'Escape'
                     ? r.blur()
                     : s.key == 'ArrowUp'
-                    ? me(e, -1)
+                    ? ue(e, -1)
                     : s.key === 'ArrowDown'
-                    ? me(e, 1)
+                    ? ue(e, 1)
                     : (i = !1)
         }),
             r.addEventListener('keypress', (s) => {
@@ -1796,34 +1714,40 @@
                     (!r.matches(':focus') && s.key === '/' && (r.focus(), s.preventDefault()))
             })
     }
-    function He(t, e) {
+    function _e(t, e) {
         t.index ||
             (window.searchData &&
                 (e.classList.remove('loading'),
                 e.classList.add('ready'),
                 (t.data = window.searchData),
-                (t.index = fe.Index.load(window.searchData.index))))
+                (t.index = ce.Index.load(window.searchData.index))))
     }
-    function ze(t, e, r, n) {
-        if ((He(n, t), !n.index || !n.data)) return
+    function Re(t, e, r, n) {
+        if ((_e(n, t), !n.index || !n.data)) return
         e.textContent = ''
         let i = r.value.trim(),
-            s = n.index.search(`*${i}*`)
+            s = i ? n.index.search(`*${i}*`) : []
+        for (let o = 0; o < s.length; o++) {
+            let a = s[o],
+                l = n.data.rows[Number(a.ref)],
+                u = 1
+            l.name.toLowerCase().startsWith(i.toLowerCase()) &&
+                (u *= 1 + 1 / (1 + Math.abs(l.name.length - i.length))),
+                (a.score *= u)
+        }
+        s.sort((o, a) => a.score - o.score)
         for (let o = 0, a = Math.min(10, s.length); o < a; o++) {
-            let u = n.data.rows[Number(s[o].ref)],
-                l = ve(u.name, i)
-            u.parent && (l = `<span class="parent">${ve(u.parent, i)}.</span>${l}`)
-            let h = document.createElement('li')
-            h.classList.value = u.classes
-            let p = document.createElement('a')
-            ;(p.href = n.base + u.url),
-                p.classList.add('tsd-kind-icon'),
-                (p.innerHTML = l),
-                h.append(p),
-                e.appendChild(h)
+            let l = n.data.rows[Number(s[o].ref)],
+                u = le(l.name, i)
+            globalThis.DEBUG_SEARCH_WEIGHTS && (u += ` (score: ${s[o].score.toFixed(2)})`),
+                l.parent && (u = `<span class="parent">${le(l.parent, i)}.</span>${u}`)
+            let d = document.createElement('li')
+            d.classList.value = l.classes ?? ''
+            let m = document.createElement('a')
+            ;(m.href = n.base + l.url), (m.innerHTML = u), d.append(m), e.appendChild(d)
         }
     }
-    function me(t, e) {
+    function ue(t, e) {
         let r = t.querySelector('.current')
         if (!r)
             (r = t.querySelector(e == 1 ? 'li:first-child' : 'li:last-child')),
@@ -1831,22 +1755,22 @@
         else {
             let n = r
             if (e === 1)
-                do n = n.nextElementSibling
+                do n = n.nextElementSibling ?? void 0
                 while (n instanceof HTMLElement && n.offsetParent == null)
             else
-                do n = n.previousElementSibling
+                do n = n.previousElementSibling ?? void 0
                 while (n instanceof HTMLElement && n.offsetParent == null)
             n && (r.classList.remove('current'), n.classList.add('current'))
         }
     }
-    function Ne(t, e) {
+    function Fe(t, e) {
         let r = t.querySelector('.current')
         if ((r || (r = t.querySelector('li:first-child')), r)) {
             let n = r.querySelector('a')
             n && (window.location.href = n.href), e.blur()
         }
     }
-    function ve(t, e) {
+    function le(t, e) {
         if (e === '') return t
         let r = t.toLocaleLowerCase(),
             n = e.toLocaleLowerCase(),
@@ -1854,326 +1778,234 @@
             s = 0,
             o = r.indexOf(n)
         for (; o != -1; )
-            i.push(re(t.substring(s, o)), `<b>${re(t.substring(o, o + n.length))}</b>`),
+            i.push(K(t.substring(s, o)), `<b>${K(t.substring(o, o + n.length))}</b>`),
                 (s = o + n.length),
                 (o = r.indexOf(n, s))
-        return i.push(re(t.substring(s))), i.join('')
+        return i.push(K(t.substring(s))), i.join('')
     }
-    var je = {'&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;'}
-    function re(t) {
-        return t.replace(/[&<>"'"]/g, (e) => je[e])
+    var Me = {'&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;'}
+    function K(t) {
+        return t.replace(/[&<>"'"]/g, (e) => Me[e])
     }
-    var ge = class {
-            constructor(e, r) {
-                ;(this.signature = e), (this.description = r)
-            }
-            addClass(e) {
-                return this.signature.classList.add(e), this.description.classList.add(e), this
-            }
-            removeClass(e) {
-                return (
-                    this.signature.classList.remove(e), this.description.classList.remove(e), this
-                )
-            }
-        },
-        ne = class extends Q {
-            constructor(e) {
-                super(e)
-                this.groups = []
-                this.index = -1
-                this.createGroups(),
-                    this.container &&
-                        (this.el.classList.add('active'),
-                        Array.from(this.el.children).forEach((r) => {
-                            r.addEventListener('touchstart', (n) => this.onClick(n)),
-                                r.addEventListener('click', (n) => this.onClick(n))
-                        }),
-                        this.container.classList.add('active'),
-                        this.setIndex(0))
-            }
-            setIndex(e) {
-                if (
-                    (e < 0 && (e = 0),
-                    e > this.groups.length - 1 && (e = this.groups.length - 1),
-                    this.index == e)
-                )
-                    return
-                let r = this.groups[e]
-                if (this.index > -1) {
-                    let n = this.groups[this.index]
-                    n.removeClass('current').addClass('fade-out'),
-                        r.addClass('current'),
-                        r.addClass('fade-in'),
-                        I.instance.triggerResize(),
-                        setTimeout(() => {
-                            n.removeClass('fade-out'), r.removeClass('fade-in')
-                        }, 300)
-                } else r.addClass('current'), I.instance.triggerResize()
-                this.index = e
-            }
-            createGroups() {
-                let e = this.el.children
-                if (e.length < 2) return
-                this.container = this.el.nextElementSibling
-                let r = this.container.children
-                this.groups = []
-                for (let n = 0; n < e.length; n++) this.groups.push(new ge(e[n], r[n]))
-            }
-            onClick(e) {
-                this.groups.forEach((r, n) => {
-                    r.signature === e.currentTarget && this.setIndex(n)
-                })
-            }
+    var P = class {
+        constructor(e) {
+            ;(this.el = e.el), (this.app = e.app)
         }
-    var C = 'mousedown',
-        ye = 'mousemove',
-        _ = 'mouseup',
-        G = {x: 0, y: 0},
-        xe = !1,
-        ie = !1,
-        Be = !1,
-        A = !1,
-        Le = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    }
+    var M = 'mousedown',
+        fe = 'mousemove',
+        N = 'mouseup',
+        J = {x: 0, y: 0},
+        he = !1,
+        ee = !1,
+        De = !1,
+        D = !1,
+        pe = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
             navigator.userAgent
         )
-    document.documentElement.classList.add(Le ? 'is-mobile' : 'not-mobile')
-    Le &&
+    document.documentElement.classList.add(pe ? 'is-mobile' : 'not-mobile')
+    pe &&
         'ontouchstart' in document.documentElement &&
-        ((Be = !0), (C = 'touchstart'), (ye = 'touchmove'), (_ = 'touchend'))
-    document.addEventListener(C, (t) => {
-        ;(ie = !0), (A = !1)
-        let e = C == 'touchstart' ? t.targetTouches[0] : t
-        ;(G.y = e.pageY || 0), (G.x = e.pageX || 0)
+        ((De = !0), (M = 'touchstart'), (fe = 'touchmove'), (N = 'touchend'))
+    document.addEventListener(M, (t) => {
+        ;(ee = !0), (D = !1)
+        let e = M == 'touchstart' ? t.targetTouches[0] : t
+        ;(J.y = e.pageY || 0), (J.x = e.pageX || 0)
     })
-    document.addEventListener(ye, (t) => {
-        if (!!ie && !A) {
-            let e = C == 'touchstart' ? t.targetTouches[0] : t,
-                r = G.x - (e.pageX || 0),
-                n = G.y - (e.pageY || 0)
-            A = Math.sqrt(r * r + n * n) > 10
+    document.addEventListener(fe, (t) => {
+        if (ee && !D) {
+            let e = M == 'touchstart' ? t.targetTouches[0] : t,
+                r = J.x - (e.pageX || 0),
+                n = J.y - (e.pageY || 0)
+            D = Math.sqrt(r * r + n * n) > 10
         }
     })
-    document.addEventListener(_, () => {
-        ie = !1
+    document.addEventListener(N, () => {
+        ee = !1
     })
     document.addEventListener('click', (t) => {
-        xe && (t.preventDefault(), t.stopImmediatePropagation(), (xe = !1))
+        he && (t.preventDefault(), t.stopImmediatePropagation(), (he = !1))
     })
-    var se = class extends Q {
-        constructor(e) {
-            super(e)
+    var X = class extends P {
+        constructor(r) {
+            super(r)
             ;(this.className = this.el.dataset.toggle || ''),
-                this.el.addEventListener(_, (r) => this.onPointerUp(r)),
-                this.el.addEventListener('click', (r) => r.preventDefault()),
-                document.addEventListener(C, (r) => this.onDocumentPointerDown(r)),
-                document.addEventListener(_, (r) => this.onDocumentPointerUp(r))
+                this.el.addEventListener(N, (n) => this.onPointerUp(n)),
+                this.el.addEventListener('click', (n) => n.preventDefault()),
+                document.addEventListener(M, (n) => this.onDocumentPointerDown(n)),
+                document.addEventListener(N, (n) => this.onDocumentPointerUp(n))
         }
-        setActive(e) {
-            if (this.active == e) return
-            ;(this.active = e),
-                document.documentElement.classList.toggle('has-' + this.className, e),
-                this.el.classList.toggle('active', e)
-            let r = (this.active ? 'to-has-' : 'from-has-') + this.className
-            document.documentElement.classList.add(r),
-                setTimeout(() => document.documentElement.classList.remove(r), 500)
+        setActive(r) {
+            if (this.active == r) return
+            ;(this.active = r),
+                document.documentElement.classList.toggle('has-' + this.className, r),
+                this.el.classList.toggle('active', r)
+            let n = (this.active ? 'to-has-' : 'from-has-') + this.className
+            document.documentElement.classList.add(n),
+                setTimeout(() => document.documentElement.classList.remove(n), 500)
         }
-        onPointerUp(e) {
-            A || (this.setActive(!0), e.preventDefault())
+        onPointerUp(r) {
+            D || (this.setActive(!0), r.preventDefault())
         }
-        onDocumentPointerDown(e) {
+        onDocumentPointerDown(r) {
             if (this.active) {
-                if (e.target.closest('.col-menu, .tsd-filter-group')) return
+                if (r.target.closest('.col-sidebar, .tsd-filter-group')) return
                 this.setActive(!1)
             }
         }
-        onDocumentPointerUp(e) {
-            if (!A && this.active && e.target.closest('.col-menu')) {
-                let r = e.target.closest('a')
-                if (r) {
-                    let n = window.location.href
-                    n.indexOf('#') != -1 && (n = n.substr(0, n.indexOf('#'))),
-                        r.href.substr(0, n.length) == n && setTimeout(() => this.setActive(!1), 250)
+        onDocumentPointerUp(r) {
+            if (!D && this.active && r.target.closest('.col-sidebar')) {
+                let n = r.target.closest('a')
+                if (n) {
+                    let i = window.location.href
+                    i.indexOf('#') != -1 && (i = i.substring(0, i.indexOf('#'))),
+                        n.href.substring(0, i.length) == i &&
+                            setTimeout(() => this.setActive(!1), 250)
                 }
             }
         }
     }
-    var oe = class {
-            constructor(e, r) {
-                ;(this.key = e),
-                    (this.value = r),
-                    (this.defaultValue = r),
-                    this.initialize(),
-                    window.localStorage[this.key] &&
-                        this.setValue(this.fromLocalStorage(window.localStorage[this.key]))
-            }
-            initialize() {}
-            setValue(e) {
-                if (this.value == e) return
-                let r = this.value
-                ;(this.value = e),
-                    (window.localStorage[this.key] = this.toLocalStorage(e)),
-                    this.handleValueChange(r, e)
-            }
-        },
-        ae = class extends oe {
-            initialize() {
-                let e = document.querySelector('#tsd-filter-' + this.key)
-                !e ||
-                    ((this.checkbox = e),
-                    this.checkbox.addEventListener('change', () => {
-                        this.setValue(this.checkbox.checked)
-                    }))
-            }
-            handleValueChange(e, r) {
-                !this.checkbox ||
-                    ((this.checkbox.checked = this.value),
-                    document.documentElement.classList.toggle(
-                        'toggle-' + this.key,
-                        this.value != this.defaultValue
-                    ))
-            }
-            fromLocalStorage(e) {
-                return e == 'true'
-            }
-            toLocalStorage(e) {
-                return e ? 'true' : 'false'
-            }
-        },
-        Ee = class extends oe {
-            initialize() {
-                document.documentElement.classList.add('toggle-' + this.key + this.value)
-                let e = document.querySelector('#tsd-filter-' + this.key)
-                if (!e) return
-                this.select = e
-                let r = () => {
-                        this.select.classList.add('active')
-                    },
-                    n = () => {
-                        this.select.classList.remove('active')
-                    }
-                this.select.addEventListener(C, r),
-                    this.select.addEventListener('mouseover', r),
-                    this.select.addEventListener('mouseleave', n),
-                    this.select.querySelectorAll('li').forEach((i) => {
-                        i.addEventListener(_, (s) => {
-                            e.classList.remove('active'),
-                                this.setValue(s.target.dataset.value || '')
-                        })
-                    }),
-                    document.addEventListener(C, (i) => {
-                        this.select.contains(i.target) || this.select.classList.remove('active')
-                    })
-            }
-            handleValueChange(e, r) {
-                this.select.querySelectorAll('li.selected').forEach((s) => {
-                    s.classList.remove('selected')
-                })
-                let n = this.select.querySelector('li[data-value="' + r + '"]'),
-                    i = this.select.querySelector('.tsd-select-label')
-                n && i && (n.classList.add('selected'), (i.textContent = n.textContent)),
-                    document.documentElement.classList.remove('toggle-' + e),
-                    document.documentElement.classList.add('toggle-' + r)
-            }
-            fromLocalStorage(e) {
-                return e
-            }
-            toLocalStorage(e) {
-                return e
-            }
-        },
-        Y = class extends Q {
-            constructor(e) {
-                super(e)
-                ;(this.optionVisibility = new Ee('visibility', 'private')),
-                    (this.optionInherited = new ae('inherited', !0)),
-                    (this.optionExternals = new ae('externals', !0))
-            }
-            static isSupported() {
-                try {
-                    return typeof window.localStorage != 'undefined'
-                } catch {
-                    return !1
-                }
-            }
+    var te
+    try {
+        te = localStorage
+    } catch {
+        te = {
+            getItem() {
+                return null
+            },
+            setItem() {},
         }
-    function be(t) {
-        let e = localStorage.getItem('tsd-theme') || 'os'
+    }
+    var Q = te
+    var me = document.head.appendChild(document.createElement('style'))
+    me.dataset.for = 'filters'
+    var Y = class extends P {
+        constructor(r) {
+            super(r)
+            ;(this.key = `filter-${this.el.name}`),
+                (this.value = this.el.checked),
+                this.el.addEventListener('change', () => {
+                    this.setLocalStorage(this.el.checked)
+                }),
+                this.setLocalStorage(this.fromLocalStorage()),
+                (me.innerHTML += `html:not(.${this.key}) .tsd-is-${this.el.name} { display: none; }
+`)
+        }
+        fromLocalStorage() {
+            let r = Q.getItem(this.key)
+            return r ? r === 'true' : this.el.checked
+        }
+        setLocalStorage(r) {
+            Q.setItem(this.key, r.toString()), (this.value = r), this.handleValueChange()
+        }
+        handleValueChange() {
+            ;(this.el.checked = this.value),
+                document.documentElement.classList.toggle(this.key, this.value),
+                this.app.filterChanged(),
+                document.querySelectorAll('.tsd-index-section').forEach((r) => {
+                    r.style.display = 'block'
+                    let n = Array.from(r.querySelectorAll('.tsd-index-link')).every(
+                        (i) => i.offsetParent == null
+                    )
+                    r.style.display = n ? 'none' : 'block'
+                })
+        }
+    }
+    var Z = class extends P {
+        constructor(r) {
+            super(r)
+            ;(this.summary = this.el.querySelector('.tsd-accordion-summary')),
+                (this.icon = this.summary.querySelector('svg')),
+                (this.key = `tsd-accordion-${
+                    this.summary.dataset.key ??
+                    this.summary.textContent.trim().replace(/\s+/g, '-').toLowerCase()
+                }`)
+            let n = Q.getItem(this.key)
+            ;(this.el.open = n ? n === 'true' : this.el.open),
+                this.el.addEventListener('toggle', () => this.update()),
+                this.update()
+        }
+        update() {
+            ;(this.icon.style.transform = `rotate(${this.el.open ? 0 : -90}deg)`),
+                Q.setItem(this.key, this.el.open.toString())
+        }
+    }
+    function ve(t) {
+        let e = Q.getItem('tsd-theme') || 'os'
         ;(t.value = e),
-            we(e),
+            ye(e),
             t.addEventListener('change', () => {
-                localStorage.setItem('tsd-theme', t.value), we(t.value)
+                Q.setItem('tsd-theme', t.value), ye(t.value)
             })
     }
-    function we(t) {
-        switch (t) {
-            case 'os':
-                document.body.classList.remove('light', 'dark')
-                break
-            case 'light':
-                document.body.classList.remove('dark'), document.body.classList.add('light')
-                break
-            case 'dark':
-                document.body.classList.remove('light'), document.body.classList.add('dark')
-                break
-        }
+    function ye(t) {
+        document.documentElement.dataset.theme = t
     }
-    pe()
-    N(te, '.menu-highlight')
-    N(ne, '.tsd-signatures')
-    N(se, 'a[data-toggle]')
-    Y.isSupported() ? N(Y, '#tsd-filter') : document.documentElement.classList.add('no-filter')
-    var Te = document.getElementById('theme')
-    Te && be(Te)
-    var qe = new X()
-    Object.defineProperty(window, 'app', {value: qe})
+    de()
+    G(X, 'a[data-toggle]')
+    G(Z, '.tsd-index-accordion')
+    G(Y, '.tsd-filter-item input[type=checkbox]')
+    var ge = document.getElementById('tsd-theme')
+    ge && ve(ge)
+    var Ae = new U()
+    Object.defineProperty(window, 'app', {value: Ae})
+    document.querySelectorAll('summary a').forEach((t) => {
+        t.addEventListener('click', () => {
+            location.assign(t.href)
+        })
+    })
 })()
-/*!
- * lunr.Builder
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.Index
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.Pipeline
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.Set
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.TokenSet
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.Vector
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.stemmer
- * Copyright (C) 2020 Oliver Nightingale
- * Includes code from - http://tartarus.org/~martin/PorterStemmer/js.txt
- */
-/*!
- * lunr.stopWordFilter
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.tokenizer
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.trimmer
- * Copyright (C) 2020 Oliver Nightingale
- */
-/*!
- * lunr.utils
- * Copyright (C) 2020 Oliver Nightingale
- */
-/**
- * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not as bright - 2.3.9
- * Copyright (C) 2020 Oliver Nightingale
- * @license MIT
- */
+/*! Bundled license information:
+
+lunr/lunr.js:
+  (**
+   * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not as bright - 2.3.9
+   * Copyright (C) 2020 Oliver Nightingale
+   * @license MIT
+   *)
+  (*!
+   * lunr.utils
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.Set
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.tokenizer
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.Pipeline
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.Vector
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.stemmer
+   * Copyright (C) 2020 Oliver Nightingale
+   * Includes code from - http://tartarus.org/~martin/PorterStemmer/js.txt
+   *)
+  (*!
+   * lunr.stopWordFilter
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.trimmer
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.TokenSet
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.Index
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+  (*!
+   * lunr.Builder
+   * Copyright (C) 2020 Oliver Nightingale
+   *)
+*/

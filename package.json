@@ -1,6 +1,6 @@
 {
   "name": "workfront-api",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "description": "A Workfront API for the Node.js and the Web",
   "main": "dist/workfront-api.cjs.js",
   "module": "dist/workfront-api.es.js",
@@ -80,8 +80,8 @@
   "bugs": {
     "url": "https://github.com/Workfront/workfront-api/issues"
   },
-  "engines" : {
-    "node" : ">=14.0.0"
+  "engines": {
+    "node": ">=14.0.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
