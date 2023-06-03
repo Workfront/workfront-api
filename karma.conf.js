@@ -81,20 +81,8 @@ module.exports = function (config) {
                 platformName: 'Windows 11',
                 base: 'SauceLabs',
             },
-            SL_Chrome_Previous_Windows: {
-                browserName: 'chrome',
-                browserVersion: 'latest-1',
-                platformName: 'Windows 10',
-                base: 'SauceLabs',
-            },
         }
         const firefox = {
-            SL_Firefox_Latest_Windows: {
-                browserName: 'firefox',
-                browserVersion: 'latest',
-                platformName: 'Windows 11',
-                base: 'SauceLabs',
-            },
             SL_Firefox_Latest_Mac: {
                 browserName: 'firefox',
                 browserVersion: 'latest',
@@ -103,13 +91,13 @@ module.exports = function (config) {
             },
         }
         const safari = {
-            SL_Safari_Latest: {
+            SL_Safari_Latest_Mac: {
                 browserName: 'safari',
                 browserVersion: '16',
                 platformName: 'macOS 13',
                 base: 'SauceLabs',
             },
-            SL_Safari_Previous: {
+            SL_Safari_Previous_Mac: {
                 browserName: 'safari',
                 browserVersion: '15',
                 platformName: 'macOS 12',
