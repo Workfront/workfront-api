@@ -1,9 +1,9 @@
 const typescript = require('@rollup/plugin-typescript')
 const {nodeResolve} = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
-const {terser} = require('rollup-plugin-terser')
+const terser = require('@rollup/plugin-terser')
 
-const name = 'workfront-api'
+const {name} = require('./package.json')
 
 module.exports = [
     {
@@ -16,7 +16,7 @@ module.exports = [
                 sourcemap: true,
             },
         ],
-        plugins: [typescript({module: 'es6'}), nodeResolve(), commonjs()],
+        plugins: [typescript({module: 'es2020'}), nodeResolve(), commonjs()],
     },
     {
         input: 'src/Api.ts',
@@ -29,10 +29,10 @@ module.exports = [
         ],
         plugins: [
             typescript({
-                module: 'es6',
+                module: 'es2020',
             }),
             nodeResolve(),
-            commonjs(),
+            commonjs({defaultIsModuleExports: true}),
         ],
     },
     {
@@ -43,7 +43,7 @@ module.exports = [
             name: 'Wokfront',
             sourcemap: true,
         },
-        plugins: [typescript({module: 'es6'}), nodeResolve(), commonjs(), terser()],
+        plugins: [typescript({module: 'es2020'}), nodeResolve(), commonjs(), terser()],
     },
     {
         input: 'src/node.ts',
@@ -53,7 +53,7 @@ module.exports = [
             sourcemap: true,
             exports: 'named',
         },
-        plugins: [typescript({module: 'es6'}), commonjs({extensions: ['.js', '.ts']})],
+        plugins: [typescript({module: 'es2020'}), commonjs({extensions: ['.js', '.ts']})],
         external: ['tslib', 'form-data', 'isomorphic-fetch', 'workfront-api-constants'],
     },
 ]

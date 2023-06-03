@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import * as NodeFormData from 'form-data'
+import NodeFormData from 'form-data'
 import 'isomorphic-fetch'
 import {Readable} from 'stream'
 import {Api as BaseApi, makeFetchCall, ResponseHandler} from './Api'
