@@ -63,78 +63,76 @@ module.exports = function (config) {
 
     if (CI_MODE === 'saucelabs' && process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY) {
         const chrome = {
-            SL_Chrome_Latest: {
-                version: 'latest',
-                platform: 'OS X 10.11',
+            SL_Chrome_Latest_Mac: {
                 browserName: 'chrome',
+                browserVersion: 'latest',
+                platformName: 'macOS 13',
                 base: 'SauceLabs',
             },
-            'SL_Chrome_Latest-1': {
-                version: 'latest-1',
-                platform: 'OS X 10.11',
+            SL_Chrome_Previous_Mac: {
                 browserName: 'chrome',
+                browserVersion: 'latest-1',
+                platformName: 'macOS 12',
                 base: 'SauceLabs',
             },
-            'SL_Chrome_Latest-2': {
-                version: 'latest-2',
-                platform: 'OS X 10.11',
+            SL_Chrome_Latest_Windows: {
                 browserName: 'chrome',
+                browserVersion: 'latest',
+                platformName: 'Windows 11',
+                base: 'SauceLabs',
+            },
+            SL_Chrome_Previous_Windows: {
+                browserName: 'chrome',
+                browserVersion: 'latest-1',
+                platformName: 'Windows 10',
                 base: 'SauceLabs',
             },
         }
         const firefox = {
-            SL_Firefox_Latest: {
-                version: 'latest',
-                platform: 'OS X 10.11',
+            SL_Firefox_Latest_Windows: {
                 browserName: 'firefox',
+                browserVersion: 'latest',
+                platformName: 'Windows 11',
                 base: 'SauceLabs',
             },
-            'SL_Firefox_Latest-1': {
-                version: 'latest-1',
-                platform: 'OS X 10.11',
+            SL_Firefox_Latest_Mac: {
                 browserName: 'firefox',
-                base: 'SauceLabs',
-            },
-            'SL_Firefox_Latest-2': {
-                version: 'latest-2',
-                platform: 'OS X 10.11',
-                browserName: 'firefox',
+                browserVersion: 'latest',
+                platformName: 'macOS 13',
                 base: 'SauceLabs',
             },
         }
         const safari = {
             SL_Safari_Latest: {
-                version: 'latest',
-                platform: 'OS X 10.12',
                 browserName: 'safari',
+                browserVersion: '16',
+                platformName: 'macOS 13',
                 base: 'SauceLabs',
             },
-            SL_Safari_10: {
-                version: '10.0',
-                platform: 'OS X 10.11',
+            SL_Safari_Previous: {
                 browserName: 'safari',
+                browserVersion: '15',
+                platformName: 'macOS 12',
                 base: 'SauceLabs',
             },
         }
         const edge = {
             SL_Edge_Latest: {
-                version: 'latest',
-                platform: 'Windows 10',
                 browserName: 'MicrosoftEdge',
+                browserVersion: 'latest',
+                platformName: 'Windows 11',
                 base: 'SauceLabs',
             },
-        }
-        const linux = {
-            SL_Firefox_Linux: {
-                version: 'latest',
-                platform: 'Linux',
-                browserName: 'firefox',
+            SL_Edge_Previous: {
+                browserName: 'MicrosoftEdge',
+                browserVersion: 'latest-1',
+                platformName: 'Windows 10',
                 base: 'SauceLabs',
             },
         }
 
         // Browsers to run on Sauce Labs
-        const customLaunchers = Object.assign({}, chrome, firefox, safari, edge, linux)
+        const customLaunchers = Object.assign({}, chrome, firefox, safari, edge)
 
         // Override config for CI.
         config.set({
