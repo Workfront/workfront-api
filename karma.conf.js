@@ -120,7 +120,11 @@ module.exports = function (config) {
         }
 
         // Browsers to run on Sauce Labs
-        const customLaunchers = Object.assign({}, chrome, firefox, safari, edge)
+        const allCustomLaunchers = Object.assign({}, chrome, firefox, safari, edge)
+        const firstLauncher = Object.entries(allCustomLaunchers)[0]
+        const customLaunchers = {
+            [firstLauncher[0]]: firstLauncher[1]
+        }
 
         // Override config for CI.
         config.set({
