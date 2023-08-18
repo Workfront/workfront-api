@@ -18,7 +18,7 @@
     "workfront-api-constants": "^2.0.0"
   },
   "devDependencies": {
-    "@evilmartians/lefthook": "1.4.8",
+    "@evilmartians/lefthook": "1.4.9",
     "@rollup/plugin-commonjs": "25.0.4",
     "@rollup/plugin-json": "6.0.0",
     "@rollup/plugin-node-resolve": "15.1.0",
