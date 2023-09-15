@@ -45,7 +45,7 @@
     "tslint-config-prettier": "1.18.0",
     "typedoc": "0.24.8",
     "typescript": "5.2.2",
-    "uuid": "9.0.0"
+    "uuid": "9.0.1"
   },
   "scripts": {
     "prettier": "prettier --write **/*.{ts,js,css,md}",
