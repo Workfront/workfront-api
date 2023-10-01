@@ -38,7 +38,7 @@
     "mocha": "9.2.2",
     "npm-run-all": "4.1.5",
     "prettier": "3.0.3",
-    "rollup": "3.29.3",
+    "rollup": "3.29.4",
     "should": "13.2.3",
     "ts-node": "10.9.1",
     "tslint": "6.1.3",
