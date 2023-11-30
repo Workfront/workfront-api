@@ -1261,10 +1261,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@evilmartians/lefthook@1.5.3":
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.5.3.tgz#711021c4d793c5fd2afb2e1e568fbc6f7c9b7501"
-  integrity sha512-vJnbJTNpPHrqQ2+9tHKNAE6eIIBvVboZgT7JIUwWCIhbQlzAJ06qamF/14Pl5zpEZ1FOwKKqgS7pKcETGFAuZA==
+"@evilmartians/lefthook@1.5.4":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@evilmartians/lefthook/-/lefthook-1.5.4.tgz#ccf8f8d68a46adef3eaf9ec6a429bd207bf761b3"
+  integrity sha512-oyfKxXgZ9QjLFzj67RzqAfmqIUQ4hhIb5lZcfWuFf6COObjMHkb4HQQb8jgEmMPFWwk3JEuVJgxatrwZ2M8J5g==
 
 "@hutson/parse-repository-url@^3.0.0":
   version "3.0.2"
