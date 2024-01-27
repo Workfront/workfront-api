@@ -10,7 +10,7 @@
   "minor": {
     "automerge": false
   },
-  "packageRules": {
+  "packageRules": [
     {
       "extends": ["packages:linters"],
       "automerge": true,
@@ -37,5 +37,5 @@
       "automerge": true,
       "automergeType": "branch"
     }
-  }
+  ]
 }
