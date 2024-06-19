@@ -3095,10 +3095,10 @@ fd-slicer@~1.1.0:
   dependencies:
     pend "~1.2.0"
 
-fetch-mock@10.0.4:
-  version "10.0.4"
-  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-10.0.4.tgz#c510d4e1334ae9e1e56f35dc969b7a7cc3449b64"
-  integrity sha512-ySs2Qm+AX+bD6oDLIFQH2Kjm57BglPeUrVDoQw7Xz0XJrV/vI2isAaNLTr+M/gaMT4wL/xahSzRHmIWsEDFkwg==
+fetch-mock@10.0.5:
+  version "10.0.5"
+  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-10.0.5.tgz#09a239a894fa33cbaa06cb3327f5411fe5474197"
+  integrity sha512-vR+3dD3/wJmt+/MQdlOFqxpK7MP3FNPTe/eKoDg7RyXplYz46K5L9J9gqlGSiQZDUwyFrSUcY6ZqH/sKDFBqSA==
   dependencies:
     debug "^4.1.1"
     glob-to-regexp "^0.4.0"
