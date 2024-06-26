@@ -6255,10 +6255,10 @@ type-is@~1.6.17:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typedoc@0.26.1:
-  version "0.26.1"
-  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.26.1.tgz#fc43108abdea64929a2e636877e250d5dea50957"
-  integrity sha512-APsVXqh93jTlpkLuw6+/IORx7n5LN8hzJV8nvMIrYYaIva0VCq0CoDN7Z3hsRThEYVExI/qoFHnAAxrhG+Wd7Q==
+typedoc@0.26.2:
+  version "0.26.2"
+  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.26.2.tgz#f9538e6e9a081fda1f2416d0ee0d7dfab480cbec"
+  integrity sha512-q/t+M+PZqhN9gPWLBZ3CCvP+KT8O1tyYkSzEYbcQ6mo89avdIrMlBEl3vfo5BgSzwC6Lbmq0W64E8RkY+eVsLA==
   dependencies:
     lunr "^2.3.9"
     markdown-it "^14.1.0"
