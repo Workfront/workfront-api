@@ -23,7 +23,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "15.2.4",
     "@rollup/plugin-terser": "0.4.4",
-    "@rollup/plugin-typescript": "11.1.6",
+    "@rollup/plugin-typescript": "12.1.0",
     "@types/mocha": "9.1.1",
     "conventional-changelog-cli": "5.0.0",
     "fetch-mock": "10.1.1",
