@@ -1366,6 +1366,11 @@
   resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.0.tgz"
   integrity sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==
 
+"@types/glob-to-regexp@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@types/glob-to-regexp/-/glob-to-regexp-0.4.4.tgz#409e71290253203185b1ea8a3d6ea406a4bdc902"
+  integrity sha512-nDKoaKJYbnn1MZxUY0cA1bPmmgZbg0cTq7Rh13d0KWYNOiKbqoR+2d89SnRPszGh7ROzSwZ/GOjZ4jPbmmZ6Eg==
+
 "@types/hast@^3.0.0", "@types/hast@^3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/hast/-/hast-3.0.4.tgz#1d6b39993b82cea6ad783945b0508c25903e15aa"
@@ -3192,14 +3197,14 @@ fd-slicer@~1.1.0:
   dependencies:
     pend "~1.2.0"
 
-fetch-mock@10.1.1:
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-10.1.1.tgz#09f5f14aff5587095fc1632c271523a5aff1e79c"
-  integrity sha512-R6MwxuGwlUe0K6GzdLY1Wa9voX/GbUBDZjNHBsvlBhrpXurCYpQN4EW0iFCmtWddDTuS0ubR93OtFSgy9E/L2A==
+fetch-mock@11.1.4:
+  version "11.1.4"
+  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-11.1.4.tgz#c51826ffda5f223955932e41907927665c6a04cd"
+  integrity sha512-Enndh1ApARgYDPfWFgfzLeSgdQVasMj6qDWDArya6quj3Z83AVGsl1YrVe8OxWVWsN7a+56RQRoGNmo9HdldAg==
   dependencies:
-    debug "^4.1.1"
+    "@types/glob-to-regexp" "^0.4.4"
     dequal "^2.0.3"
-    globrex "^0.1.2"
+    glob-to-regexp "^0.4.1"
     is-subset "^0.1.1"
     regexparam "^3.0.0"
 
@@ -3476,6 +3481,11 @@ glob-parent@~5.1.2:
   dependencies:
     is-glob "^4.0.1"
 
+glob-to-regexp@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz#c75297087c851b9a578bd217dd59a92f59fe546e"
+  integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
+
 glob@7.2.0, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7:
   version "7.2.0"
   resolved "https://registry.npmjs.org/glob/-/glob-7.2.0.tgz"
@@ -3523,11 +3533,6 @@ globalthis@^1.0.1:
   integrity sha512-ZQnSFO1la8P7auIOQECnm0sSuoMeaSq0EEdXMBFF2QJO4uNcwbyhSgG3MruWNbFTqCLmxVwGOl7LZ9kASvHdeQ==
   dependencies:
     define-properties "^1.1.3"
-
-globrex@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
-  integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
 got@^11.0.2, got@^11.7.0:
   version "11.8.2"
