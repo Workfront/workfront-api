@@ -1,0 +1,62 @@
+name: Verify
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-mocha:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 20.x, 22.x ]
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@workfront'
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - run: npm run test:mocha
+
+  test-karma:
+    runs-on: ubuntu-latest
+    env:
+      CI_MODE: saucelabs
+      SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+      SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Use Node LTS version
+      - uses: saucelabs/sauce-connect-action@v2
+        with:
+          username: ${{ secrets.SAUCE_USERNAME }}
+          accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
+          tunnelIdentifier: github-action-tunnel
+          scVersion: 4.6.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@workfront'
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - run: npm run test:karma
+      - uses: codecov/codecov-action@v4
+        with:
+          directory: ./coverage/
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}

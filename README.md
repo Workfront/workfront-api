@@ -1,8 +1,7 @@
-# workfront-api
+# @workfront/api
 
 [![NPM downloads][npm-downloads-image]][npm-url]
 [![Apache v2 License][license-image]][license-url]
-![workflow](https://github.com/workfront/workfront-api/actions/workflows/main.yml/badge.svg)
 [![Coverage][codecov-image]][codecov-url]
 [![Code Climate][code-climate-image]][code-climate-url]
 [![Build Status][saucelabs-badge]][saucelabs-url]
@@ -17,11 +16,11 @@ If used in browser environment you may need to polyfill Promises (see ES6 Promis
 
 #### Server-side
 
-Install as a dependency: `npm install --save workfront-api`.  
-Then `require('workfront-api')` in your code. For example:
+Install as a dependency: `npm install --save @workfront/api`.  
+Then `require('@workfront/api')` in your code. For example:
 
 ```javascript
-const Workfront = require('workfront-api')
+const Workfront = require('@workfront/api')
 
 /**
  * The console.log statement below will output the following:
@@ -52,7 +51,7 @@ First enter into `workfront-api` directory and install all the dependencies:
 
 ```
 cd workfront-api
-yarn
+npm install
 ```
 
 Use `node` to run the examples. For examples:
@@ -83,8 +82,7 @@ A bug is a _demonstrable problem_ that is caused by the code in the repository. 
 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
    reported.
-1. **Isolate the problem** &mdash; ideally create a [reduced test
-   case](https://css-tricks.com/reduced-test-cases/).
+1. **Isolate the problem** &mdash; ideally create a [reduced test case](https://css-tricks.com/reduced-test-cases/).
 1. A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.
 
 ### Feature requests
@@ -104,11 +102,9 @@ See the top-level file `LICENSE` and
 
 [license-image]: http://img.shields.io/badge/license-APv2-blue.svg?style=flat-square
 [license-url]: LICENSE
-[npm-url]: https://www.npmjs.org/package/workfront-api
-[npm-version-image]: https://img.shields.io/npm/v/workfront-api.svg?style=flat-square
-[npm-downloads-image]: https://img.shields.io/npm/dm/workfront-api.svg?style=flat-square
-[travis-url]: https://travis-ci.com/Workfront/workfront-api
-[travis-image]: https://img.shields.io/travis/Workfront/workfront-api.svg?style=flat-square
+[npm-url]: https://www.npmjs.org/package/@workfront/api
+[npm-version-image]: https://img.shields.io/npm/v/@workfront/api.svg?style=flat-square
+[npm-downloads-image]: https://img.shields.io/npm/dm/@workfront/api.svg?style=flat-square
 [codecov-url]: https://codecov.io/gh/Workfront/workfront-api
 [codecov-image]: https://codecov.io/gh/Workfront/workfront-api/branch/master/graph/badge.svg
 [code-climate-url]: https://codeclimate.com/github/Workfront/workfront-api

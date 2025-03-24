@@ -1,0 +1,58 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      SEMVER_TYPE:
+        description: 'Semver type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  publish-npm:
+    environment: Public NPM registry
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+      - name: Check if on main branch
+        run: |
+          if [[ $GITHUB_REF != 'refs/heads/main' ]]; then
+            echo "This workflow must run on the 'main' branch."
+            exit 1
+          fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@workfront'
+      - run: npm ci --no-fund --no-audit
+      - name: Bump package version
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          echo "Bumping version as ${{ github.event.inputs.SEMVER_TYPE }}"
+          npm version --no-commit-hooks ${{ github.event.inputs.SEMVER_TYPE }}
+          git push origin main --follow-tags
+      - name: Publish to NPM
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Draft release
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          gh release create v$VERSION --generate-notes --draft --verify-tag --fail-on-no-commits
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ inputs.next_version }}

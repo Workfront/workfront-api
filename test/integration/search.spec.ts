@@ -17,7 +17,7 @@
 import fetchMock from 'fetch-mock'
 import should from 'should'
 
-import {MOD, Operators} from 'workfront-api-constants'
+import {MOD, Operators} from '@workfront/api-constants'
 import {Api} from '../../src/Api'
 import fixture from '../../fixtures/search.json'
 
@@ -59,7 +59,7 @@ describe('Search', function () {
         this.api.search(objCode, query)
         const [url, opts] = fetchMock.lastCall('search')
         should(url).endWith(
-            `${objCode}/search?${criteriaField}${MOD}=${Operators.GREATERTHAN}&${criteriaField}=${criteriaValue}`
+            `${objCode}/search?${criteriaField}${MOD}=${Operators.GREATERTHAN}&${criteriaField}=${criteriaValue}`,
         )
         should(opts.body).be.null()
     })

@@ -54,6 +54,6 @@ module.exports = [
             exports: 'named',
         },
         plugins: [typescript({module: 'es2020'}), commonjs({extensions: ['.js', '.ts']})],
-        external: ['tslib', 'form-data', 'isomorphic-fetch', 'workfront-api-constants'],
+        external: ['tslib', 'form-data', 'isomorphic-fetch', '@workfront/api-constants'],
     },
 ]

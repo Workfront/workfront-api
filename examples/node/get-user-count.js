@@ -18,37 +18,37 @@
  * Logs in, returns number of active users
  */
 
-'use strict';
-var Workfront = require('./../../');
-var ApiConstants = require('workfront-api-constants');
-var util = require('util');
+'use strict'
+var Workfront = require('./../../')
+var ApiConstants = require('@workfront/api-constants')
+var util = require('util')
 
 var instance = new Workfront.NodeApi({
     url: 'http://localhost:8080',
-    version: '7.0'
-});
+    version: '7.0',
+})
 
-console.log('Logs in, returns number of active users\n');
-util.log('Logging in ...');
+console.log('Logs in, returns number of active users\n')
+util.log('Logging in ...')
 instance.login('new@user.attask', 'user').then(
-	function() {
-		util.log('Getting number of active users ...');
-		var query = {};
-		query['isActive'] = true;
-		query['isActive' + ApiConstants.MOD] = ApiConstants.Operators.EQUAL;
-		instance.count('user', query).then(
-			function(data) {
-				util.log('Get success. Received data:');
-				console.log(util.inspect(data, {colors:true}));
-			},
-			function(error) {
-				util.log('Get failure. Received data:');
-				console.log(util.inspect(error, {colors:true}));
-			}
-		);
-	},
-	function(error) {
-		util.log('Login failure. Received data:');
-		console.log(util.inspect(error, {colors:true}));
-	}
-);
+    function () {
+        util.log('Getting number of active users ...')
+        var query = {}
+        query['isActive'] = true
+        query['isActive' + ApiConstants.MOD] = ApiConstants.Operators.EQUAL
+        instance.count('user', query).then(
+            function (data) {
+                util.log('Get success. Received data:')
+                console.log(util.inspect(data, {colors: true}))
+            },
+            function (error) {
+                util.log('Get failure. Received data:')
+                console.log(util.inspect(error, {colors: true}))
+            },
+        )
+    },
+    function (error) {
+        util.log('Login failure. Received data:')
+        console.log(util.inspect(error, {colors: true}))
+    },
+)

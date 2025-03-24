@@ -18,42 +18,43 @@
  * Obtains an API key, returns detailed info of logged in user using that key, and then clears the key
  */
 
-'use strict';
-var Workfront = require('./../../');
-var ApiConstants = require('workfront-api-constants');
-var util = require('util');
+'use strict'
+var Workfront = require('./../../')
+var ApiConstants = require('@workfront/api-constants')
+var util = require('util')
 
 var instance = new Workfront.NodeApi({
     url: 'http://localhost:8080',
-    version: '5.0'
-});
+    version: '5.0',
+})
 
+var getApiKey = function () {
+    util.log('Obtaining API key ...')
+    return instance.getApiKey('new@user.attask', 'user')
+}
 
+var getUserInfo = function (apiKey) {
+    util.log('Obtained API key ' + apiKey)
+    util.log('Getting logged in user info ...')
+    return instance.get('user', ApiConstants.WildCards.USER, '*')
+}
 
-var getApiKey = function() {
-    util.log('Obtaining API key ...');
-    return instance.getApiKey('new@user.attask', 'user');
-};
+var clearApiKey = function (data) {
+    util.log('Get success. Received data:')
+    console.log(util.inspect(data, {colors: true}))
+    util.log('Releasing API key ...')
+    return instance.clearApiKey()
+}
 
-var getUserInfo = function(apiKey) {
-    util.log('Obtained API key ' + apiKey);
-    util.log('Getting logged in user info ...');
-    return instance.get('user', ApiConstants.WildCards.USER, '*');
-};
-
-var clearApiKey = function(data) {
-    util.log('Get success. Received data:');
-    console.log(util.inspect(data, {colors:true}));
-    util.log('Releasing API key ...');
-    return instance.clearApiKey();
-};
-
-getApiKey().then(getUserInfo).then(clearApiKey).then(
-    function() {
-        util.log('Success');
-    },
-    function(error) {
-        util.log('Error. Received data:');
-        console.log(util.inspect(error, {colors:true}));
-    }
-);
+getApiKey()
+    .then(getUserInfo)
+    .then(clearApiKey)
+    .then(
+        function () {
+            util.log('Success')
+        },
+        function (error) {
+            util.log('Error. Received data:')
+            console.log(util.inspect(error, {colors: true}))
+        },
+    )

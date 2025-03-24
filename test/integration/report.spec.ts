@@ -17,7 +17,7 @@
 import fetchMock from 'fetch-mock'
 import should from 'should'
 
-import {GROUPBY} from 'workfront-api-constants'
+import {GROUPBY} from '@workfront/api-constants'
 import {Api} from '../../src/Api'
 import fixture from '../../fixtures/report.json'
 

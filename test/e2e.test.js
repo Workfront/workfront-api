@@ -1,7 +1,7 @@
-const fs = require('fs')
+const fs = require('node:fs')
+const {randomUUID} = require('node:crypto')
 const should = require('should')
-const ApiConstants = require('workfront-api-constants')
-const uuidv1 = require('uuid').v1
+const ApiConstants = require('@workfront/api-constants')
 
 const Workfront = require('./../').default
 
@@ -19,7 +19,7 @@ describe('E2E Tests', function () {
             version: 'asp',
         })
         const testName = this.currentTest ? this.currentTest.title : rootTestTitle
-        const uuid = uuidv1()
+        const uuid = randomUUID()
         return this.aspInstance.login('asproot', 'user').then(() => {
             return this.aspInstance
                 .create('Reseller', {
@@ -89,8 +89,8 @@ describe('E2E Tests', function () {
                         Promise.all([
                             this.aspInstance.remove('Reseller', resellerID),
                             this.aspInstance.remove('AccountRep', accountRepID),
-                        ])
-                    )
+                        ]),
+                    ),
             )
     })
 
@@ -197,7 +197,7 @@ describe('E2E Tests', function () {
             const name = 'API Project'
             const description = 'This project has been created using API'
             const objCode = 'PROJ'
-            const newUsername = uuidv1() + '@bar.baz'
+            const newUsername = randomUUID() + '@bar.baz'
             return this.instance
                 .create('USER', {
                     name: 'foo',
@@ -300,8 +300,8 @@ describe('E2E Tests', function () {
                     .search('PROJ', query, ['ID'])
                     .then((data) =>
                         Promise.all(
-                            data.map((project) => this.instance.remove('PROJ', project.ID, true))
-                        )
+                            data.map((project) => this.instance.remove('PROJ', project.ID, true)),
+                        ),
                     )
             })
         })
@@ -462,7 +462,7 @@ describe('E2E Tests', function () {
                             },
                         ],
                     }),
-                })
+                }),
             )
         })
     })
@@ -494,7 +494,7 @@ describe('E2E Tests', function () {
                     .then((data) => {
                         should(data).have.properties('ID', 'objCode')
                         return instance.remove(data.objCode, data.ID, true)
-                    })
+                    }),
             )
         })
 
