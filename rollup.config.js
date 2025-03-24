@@ -3,7 +3,7 @@ const {nodeResolve} = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
 const terser = require('@rollup/plugin-terser')
 
-const {name} = require('./package.json')
+const name = require('./package.json').name.replace(/@/gi, '').replace(/\//gi, '-')
 
 module.exports = [
     {
