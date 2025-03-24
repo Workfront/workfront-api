@@ -1,3 +1,9 @@
+## 9.0.0 (2025-03-24)
+
+* chore: update package name to "@workfront/workfront-api" ([4d46da7](https://github.com/Workfront/workfront-api/commit/4d46da7))
+
+
+
 ## <small>8.1.1 (2023-06-03)</small>
 
 -   chore: specify minimum supported Node version ([84f08ea](https://github.com/Workfront/workfront-api/commit/84f08ea))
