@@ -1,3 +1,13 @@
+## 9.0.0 (2025-03-24)
+
+* feat!: move package to workfront scope ([a057641](https://github.com/Workfront/workfront-api/commit/a057641))
+
+
+### BREAKING CHANGE
+
+* workfront-api is deprecated. use "@workfront/api" instead.
+
+
 ## <small>8.1.1 (2023-06-03)</small>
 
 -   chore: specify minimum supported Node version ([84f08ea](https://github.com/Workfront/workfront-api/commit/84f08ea))
