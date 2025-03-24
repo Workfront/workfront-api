@@ -1,3 +1,9 @@
+## 10.0.0 (2025-03-24)
+
+* fix: sanitize package name in rollup config ([8a7bfef](https://github.com/Workfront/workfront-api/commit/8a7bfef))
+
+
+
 ## 9.0.0 (2025-03-24)
 
 * feat!: move package to workfront scope ([a057641](https://github.com/Workfront/workfront-api/commit/a057641))
