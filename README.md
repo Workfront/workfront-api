@@ -1,4 +1,4 @@
-# @workfront/api
+# @workfront/workfront-api
 
 [![NPM downloads][npm-downloads-image]][npm-url]
 [![Apache v2 License][license-image]][license-url]
@@ -16,11 +16,11 @@ If used in browser environment you may need to polyfill Promises (see ES6 Promis
 
 #### Server-side
 
-Install as a dependency: `npm install --save @workfront/api`.  
-Then `require('@workfront/api')` in your code. For example:
+Install as a dependency: `npm install --save @workfront/workfront-api`.  
+Then `require('@workfront/workfront-api')` in your code. For example:
 
 ```javascript
-const Workfront = require('@workfront/api')
+const Workfront = require('@workfront/workfront-api')
 
 /**
  * The console.log statement below will output the following:
@@ -102,9 +102,9 @@ See the top-level file `LICENSE` and
 
 [license-image]: http://img.shields.io/badge/license-APv2-blue.svg?style=flat-square
 [license-url]: LICENSE
-[npm-url]: https://www.npmjs.org/package/@workfront/api
-[npm-version-image]: https://img.shields.io/npm/v/@workfront/api.svg?style=flat-square
-[npm-downloads-image]: https://img.shields.io/npm/dm/@workfront/api.svg?style=flat-square
+[npm-url]: https://www.npmjs.org/package/@workfront/workfront-api
+[npm-version-image]: https://img.shields.io/npm/v/@workfront/workfront-api.svg?style=flat-square
+[npm-downloads-image]: https://img.shields.io/npm/dm/@workfront/workfront-api.svg?style=flat-square
 [codecov-url]: https://codecov.io/gh/Workfront/workfront-api
 [codecov-image]: https://codecov.io/gh/Workfront/workfront-api/branch/master/graph/badge.svg
 [code-climate-url]: https://codeclimate.com/github/Workfront/workfront-api

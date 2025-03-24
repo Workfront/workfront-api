@@ -1,6 +1,6 @@
 {
-  "name": "@workfront/api",
-  "version": "10.0.0",
+  "name": "@workfront/workfront-api",
+  "version": "8.1.1",
   "description": "A Workfront API for the Node.js and the Web",
   "main": "dist/workfront-api.cjs.js",
   "module": "dist/workfront-api.es.js",
