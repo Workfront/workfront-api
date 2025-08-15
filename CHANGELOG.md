@@ -1,3 +1,9 @@
+## <small>9.0.1 (2025-08-15)</small>
+
+* fix: bundle name is wrong (#1484) ([c9234f6](https://github.com/Workfront/workfront-api/commit/c9234f6)), closes [#1484](https://github.com/Workfront/workfront-api/issues/1484)
+
+
+
 ## 9.0.0 (2025-03-24)
 
 * chore: update package name to "@workfront/workfront-api" ([4d46da7](https://github.com/Workfront/workfront-api/commit/4d46da7))
