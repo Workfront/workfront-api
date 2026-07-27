@@ -21,6 +21,11 @@
 
 import {INTERNAL_PREFIX} from '@workfront/api-constants'
 
+export interface IImsCredentials {
+    imsToken: string
+    imsOrgId: string
+}
+
 export interface IHttpOptions {
     path?: string
     method?: string
@@ -30,6 +35,8 @@ export interface IHttpOptions {
         sessionID?: string
         'X-XSRF-TOKEN'?: string
         apiKey?: string
+        Authorization?: string
+        'x-gw-ims-org-id'?: string
     }
 }
 export interface IApiConfig {
@@ -575,6 +582,20 @@ export class Api {
             delete this._httpOptions.headers['X-XSRF-TOKEN']
         }
     }
+    /**
+     * Sets the 'x-gw-ims-org-id' and 'Authorization' header
+     * @memberof Api
+     * @param {IImsCredentials} imsCredentials ims token and ims org id to set
+     */
+    setImsCredentials(imsCredentials?: IImsCredentials) {
+        if (imsCredentials) {
+            this._httpOptions.headers.Authorization = 'Bearer ' + imsCredentials.imsToken
+            this._httpOptions.headers['x-gw-ims-org-id'] = imsCredentials.imsOrgId
+        } else {
+            delete this._httpOptions.headers.Authorization
+            delete this._httpOptions.headers['x-gw-ims-org-id']
+        }
+    }
 
     uploadFileContent(fileContent, filename: string) {
         const data = new FormData()
@@ -591,6 +612,12 @@ export class Api {
             headers.append('X-XSRF-TOKEN', this._httpOptions.headers['X-XSRF-TOKEN'])
         } else if (this._httpOptions.headers.apiKey) {
             headers.append('apiKey', this._httpOptions.headers.apiKey)
+        } else if (
+            this._httpOptions.headers.Authorization &&
+            this._httpOptions.headers['x-gw-ims-org-id']
+        ) {
+            headers.append('Authorization', this._httpOptions.headers.Authorization)
+            headers.append('x-gw-ims-org-id', this._httpOptions.headers['x-gw-ims-org-id'])
         }
         return headers
     }

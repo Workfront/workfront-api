@@ -38,6 +38,7 @@ describe('Create new instance for API', function () {
         should(api.uploadFileContent).be.a.Function().and.has.lengthOf(2)
         should(api.setApiKey).be.a.Function().and.has.lengthOf(1)
         should(api.clearApiKey).be.a.Function().and.has.lengthOf(0)
+        should(api.setImsCredentials).be.a.Function().and.has.lengthOf(1)
     })
 
     it('should set correct API path based on passed configuration (version is passed)', function () {
@@ -53,5 +54,17 @@ describe('Create new instance for API', function () {
     it('should set correct API path based on passed configuration (version="asp")', function () {
         const api = new Api({url: 'http://localhost', version: 'asp'})
         should(api._httpOptions.path).equal('/attask/api-asp')
+    })
+
+    it('should store IMS headers when credentials are set', function () {
+        const api = new Api({url: 'http://localhost'})
+        api.setImsCredentials({imsToken: 'abc123', imsOrgId: 'org-1'})
+
+        should(api._httpOptions.headers.Authorization).equal('Bearer abc123')
+        should(api._httpOptions.headers['x-gw-ims-org-id']).equal('org-1')
+
+        const headers = (api as any).getHeaders()
+        should(headers.get('Authorization')).equal('Bearer abc123')
+        should(headers.get('x-gw-ims-org-id')).equal('org-1')
     })
 })
