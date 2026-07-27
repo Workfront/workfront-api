@@ -1,3 +1,9 @@
+## 9.1.0 (2026-07-27)
+
+* ci: add registry config (#1486) ([244df57](https://github.com/Workfront/workfront-api/commit/244df57)), closes [#1486](https://github.com/Workfront/workfront-api/issues/1486)
+
+
+
 ## <small>9.0.1 (2025-08-15)</small>
 
 * fix: bundle name is wrong (#1484) ([c9234f6](https://github.com/Workfront/workfront-api/commit/c9234f6)), closes [#1484](https://github.com/Workfront/workfront-api/issues/1484)
