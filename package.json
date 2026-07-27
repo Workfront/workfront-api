@@ -8,6 +8,9 @@
     "dist",
     "typings"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com"
+  },
   "sideEffects": false,
   "typings": "typings/node.d.ts",
   "dependencies": {
